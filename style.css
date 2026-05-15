@@ -1,38 +1,36 @@
-/* الكود ده هيجبر الكلمة تفضل في سطر واحد */
-.brand-name {
-    display: block;
-    width: 100%;
-    text-align: center;
-    /* استخدمنا clamp عشان نحدد أصغر حجم وأكبر حجم للخط */
-    font-size: clamp(24px, 8vw, 80px); 
-    font-weight: 900;
-    margin: 0 auto;
-    opacity: 0;
-    /* قللنا المسافة جداً للموبايل عشان الحروف متخرجش برا */
-    letter-spacing: 0.15em; 
-    filter: blur(10px);
-    animation: revealTitle 2.5s cubic-bezier(0.21, 0.6, 0.35, 1) forwards;
-    animation-delay: 1s;
-    
-    /* دي أهم 3 سطور لمنع النزول لسطر جديد */
-    white-space: nowrap !important;
-    word-break: keep-all !important;
-    overflow: visible;
-}
+/* الكلمة الأساسية */
+        .brand-name {
+            display: block;
+            width: 100%;
+            text-align: center;
+            font-weight: 900;
+            margin: 0 auto;
+            opacity: 0;
+            filter: blur(10px);
+            animation: revealTitle 2.5s cubic-bezier(0.21, 0.6, 0.35, 1) forwards;
+            animation-delay: 1s;
+            
+            /* منع النزول لسطر جديد نهائياً */
+            white-space: nowrap !important;
+            word-spacing: normal !important;
+        }
 
-/* تعديل خاص للشاشات الصغيرة جداً (الموبايلات) */
-@media (max-width: 480px) {
-    .brand-name {
-        font-size: 28px !important; /* حجم ثابت للموبايل عشان نضمن الثبات */
-        letter-spacing: 5px !important;
-        padding: 0 10px;
-    }
-    .brand-logo {
-        max-width: 90px !important;
-        margin-bottom: 10px !important;
-    }
-    .tagline {
-        font-size: 8px !important;
-        letter-spacing: 2px !important;
-    }
-}
+        /* تعديلات الموبايل (هنا الحل) */
+        @media (max-width: 480px) {
+            .brand-name {
+                font-size: 22px !important; /* صغرنا الخط أكتر عشان يضمن المساحة */
+                letter-spacing: 2px !important; /* المسافة بقت ضيقة جداً عشان الحروف تمسك في بعض */
+                transform: scaleX(1.1); /* "مطة" خفيفة بالعرض عشان تعوض ضيق المسافات */
+            }
+            .brand-logo {
+                max-width: 80px !important; /* اللوجو بقى أصغر وأرق */
+            }
+        }
+
+        /* تعديلات الكمبيوتر (تفضل زي ما هي فخمة) */
+        @media (min-width: 769px) {
+            .brand-name {
+                font-size: 7vw;
+                letter-spacing: 25px;
+            }
+        }
