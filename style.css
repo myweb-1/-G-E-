@@ -1,4 +1,4 @@
-/* --- 1. إعدادات الصفحة الأساسية --- */
+/* --- 1. الإعدادات الأساسية --- */
 * {
     margin: 0;
     padding: 0;
@@ -11,7 +11,7 @@ body, html {
     background-color: #000;
     color: #fff;
     font-family: 'Segoe UI', Tahoma, sans-serif;
-    overflow: hidden; /* يمنع السكرول عشان يفضل شكل الأبلكيشن ثابت */
+    overflow: hidden; /* لمنع السكرول المزعج */
 }
 
 /* --- 2. البار العلوي --- */
@@ -27,35 +27,30 @@ body, html {
 }
 
 .nav-logo img {
-    height: 16px; /* حجم اللوجو بالأعلى */
+    height: 16px;
 }
 
-/* --- 3. نظام تبديل الصور الذكي (The Magic) --- */
+/* --- 3. نظام الخلفيات الذكي --- */
 .hero-section {
     width: 100%;
     height: 100vh;
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover; /* عشان الصورة تملأ الشاشة تماماً */
-    transition: background-image 0.3s ease-in-out;
+    background-size: cover;
+    
+    /* [صورة التابلت هي الأساس] - عشان نضمن إنها تظهر لو المقاس مش موبايل ولا كمبيوتر */
+    background-image: url('bg.jpg'); 
 }
 
-/* [1] حالة الموبايل: شاشات أصغر من 480 بكسل */
-@media (max-width: 480px) {
+/* [تعديل للموبايل] - الشاشات الأصغر من 600 بكسل */
+@media (max-width: 600px) {
     .hero-section {
         background-image: url('bg-mobile.jpg');
     }
 }
 
-/* [2] حالة التابلت: شاشات بين 481 و 1024 بكسل */
-@media (min-width: 481px) and (max-width: 1024px) {
-    .hero-section {
-        background-image: url('bg.jpg');
-    }
-}
-
-/* [3] حالة الكمبيوتر: شاشات أكبر من 1025 بكسل */
-@media (min-width: 1025px) {
+/* [تعديل للكمبيوتر] - الشاشات الأكبر من 1100 بكسل */
+@media (min-width: 1100px) {
     .hero-section {
         background-image: url('bg-desktop.jpg');
     }
@@ -111,11 +106,24 @@ body, html {
     letter-spacing: 1px;
 }
 
-.btn-white { background-color: #fff; color: #000; }
-.btn-dark { background-color: transparent; color: #fff; border: 1px solid #fff; }
+.btn-white {
+    background-color: #fff;
+    color: #000;
+}
 
-/* ضبط الزراير في شاشات الكمبيوتر عشان متبقاش عريضة بزيادة */
-@media (min-width: 1025px) {
-    .action-footer { justify-content: center; gap: 20px; }
-    .btn { max-width: 280px; }
+.btn-dark {
+    background-color: transparent;
+    color: #fff;
+    border: 1px solid #fff;
+}
+
+/* تحسين شكل الأزرار في الشاشات الكبيرة */
+@media (min-width: 1100px) {
+    .action-footer {
+        justify-content: center;
+        gap: 30px;
+    }
+    .btn {
+        max-width: 280px;
+    }
 }
