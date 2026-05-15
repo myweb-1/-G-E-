@@ -1,18 +1,40 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ANGER BRAND</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        body { margin: 0; background: #000; overflow: hidden; font-family: Arial; }
+        .hero { 
+            height: 100vh; 
+            width: 100%; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            background-image: url('bg.jpg'); /* ده أهم سطر */
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        /* طبقة سواد فوق الصورة عشان الكلام يبان */
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        .text { 
+            position: relative; 
+            color: white; 
+            text-align: center; 
+            z-index: 10;
+        }
+        h1 { font-size: 80px; letter-spacing: 25px; margin: 0; }
+        p { color: #666; letter-spacing: 5px; }
+    </style>
 </head>
 <body>
     <div class="hero">
-        <img src="bg.jpg" alt="Background" class="bg-img">
-        
-        <div class="overlay"></div>
-
-        <div class="content">
+        <div class="text">
             <h1>Λ И G E Я</h1>
             <p>EVOLUTION IN PROGRESS</p>
         </div>
