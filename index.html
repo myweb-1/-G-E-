@@ -31,7 +31,7 @@
         .bg-image {
             position: absolute;
             inset: 0;
-            background-image: url('bg.jpg'); /* اسم الصورة */
+            background-image: url('bg.jpg'); /* اسم الصورة الخلفية */
             background-size: cover;
             background-position: center;
             z-index: 1;
@@ -54,28 +54,28 @@
             color: #fff;
             display: flex;
             flex-direction: column;
-            align-items: center; /* سنتر اللوجو مع الكلام */
+            align-items: center;
         }
 
-        /* ستايل اللوجو الجديد */
+        /* ستايل اللوجو */
         .brand-logo {
-            max-width: 150px; /* تحكم في حجم اللوجو من هنا */
-            margin-bottom: 20px; /* مسافة بين اللوجو والكلمة */
-            opacity: 0; /* يبدأ مخفي */
+            max-width: 150px; /* تحكم في حجم اللوجو */
+            margin-bottom: 20px;
+            opacity: 0;
             animation: fadeInUpLogo 2s ease-out forwards;
-            animation-delay: 0.3s; /* يظهر أولاً */
+            animation-delay: 0.3s;
         }
 
-        /* أنيميشن ظهور الاسم Λ И G E Я */
+        /* أنيميشن الاسم */
         .brand-name {
-            font-size: 7vw; /* صغّرنا الحجم قليلاً */
+            font-size: 7vw;
             font-weight: 900;
             margin: 0;
             opacity: 0;
             letter-spacing: 40px;
             filter: blur(10px);
             animation: revealTitle 2.5s cubic-bezier(0.21, 0.6, 0.35, 1) forwards;
-            animation-delay: 1s; /* يظهر بعد اللوجو */
+            animation-delay: 1s;
         }
 
         /* أنيميشن الجملة التحتية */
@@ -88,7 +88,7 @@
             opacity: 0;
             transform: translateY(20px);
             animation: fadeInUpTagline 2s ease-out forwards;
-            animation-delay: 2s; /* يظهر في النهاية */
+            animation-delay: 2s;
         }
 
         /* تعريف الحركات */
@@ -99,7 +99,7 @@
 
         @keyframes fadeInUpLogo {
             to {
-                opacity: 0.9; /* شفافية بسيطة للوجو ليدمج مع الخلفية */
+                opacity: 0.9;
                 transform: translateY(0);
             }
         }
