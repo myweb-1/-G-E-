@@ -44,10 +44,15 @@ h1 {
 }
 
 p {
-    letter-spacing: 0.5rem;
-    color: #888;
-    text-transform: uppercase;
-    font-size: 12px;
-    margin-top: 20px;
-}
-/bg.jpg
+   /* تعديل الاسم ليكون مناسب جداً لشاشة الفون */
+        .brand-name {
+            font-size: 10vw; /* صغرنا الحجم من 12 لـ 10 */
+            font-weight: 900;
+            margin: 0;
+            opacity: 0;
+            letter-spacing: 8px; /* قللنا المسافة بين الحروف عشان الكلمة تلم نفسها */
+            filter: blur(10px);
+            animation: revealTitle 2.5s cubic-bezier(0.21, 0.6, 0.35, 1) forwards;
+            animation-delay: 1s;
+            white-space: nowrap; /* يمنع الكلمة إنها تنزل في سطرين */
+        }
