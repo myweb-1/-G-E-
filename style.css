@@ -1,71 +1,38 @@
-body, html {
-    margin: 0;
-    padding: 0;
+/* الكود ده هيجبر الكلمة تفضل في سطر واحد */
+.brand-name {
+    display: block;
     width: 100%;
-    height: 100%;
-    background-color: black;
-    font-family: 'Arial', sans-serif;
-    overflow: hidden;
-}
-
-.hero {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.bg-img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* دي بتخلي الصورة تفرش على كامل الشاشة */
-    z-index: 1; /* الطبقة اللي تحت */
-    opacity: 0.6; 
-}
-
-.content {
-    position: relative;
-    z-index: 10; /* الطبقة اللي فوق عشان الكلام يظهر */
     text-align: center;
-    color: white;
-}
-
-h1 {
-    font-size: 8vw;
-    letter-spacing: 2rem;
-    margin: 0;
+    /* استخدمنا clamp عشان نحدد أصغر حجم وأكبر حجم للخط */
+    font-size: clamp(24px, 8vw, 80px); 
     font-weight: 900;
-    text-shadow: 0 0 20px rgba(255,255,255,0.2);
+    margin: 0 auto;
+    opacity: 0;
+    /* قللنا المسافة جداً للموبايل عشان الحروف متخرجش برا */
+    letter-spacing: 0.15em; 
+    filter: blur(10px);
+    animation: revealTitle 2.5s cubic-bezier(0.21, 0.6, 0.35, 1) forwards;
+    animation-delay: 1s;
+    
+    /* دي أهم 3 سطور لمنع النزول لسطر جديد */
+    white-space: nowrap !important;
+    word-break: keep-all !important;
+    overflow: visible;
 }
 
-p {
-  .brand-name {
-            display: block;
-            width: 100%;
-            text-align: center;
-            font-size: 8vw; /* صغرنا الحجم عشان يلم نفسه */
-            font-weight: 900;
-            margin: 0;
-            opacity: 0;
-            letter-spacing: 5px; /* قللنا المسافات عشان الحروف تمسك في بعض */
-            filter: blur(10px);
-            animation: revealTitle 2.5s cubic-bezier(0.21, 0.6, 0.35, 1) forwards;
-            animation-delay: 1s;
-            white-space: nowrap; /* السطر ده "إجباري" عشان يمنع الحروف تنزل تحت بعض */
-        }
-
-        /* تعديلات مخصصة للموبايلات الصغيرة جداً */
-        @media (max-width: 480px) {
-            .brand-name {
-                font-size: 7vw; /* صغرنا كمان شوية للموبايل */
-                letter-spacing: 3px;
-            }
-            .brand-logo {
-                max-width: 100px; /* صغرنا اللوجو عشان مياكلش الشاشة */
-            }
-        }
+/* تعديل خاص للشاشات الصغيرة جداً (الموبايلات) */
+@media (max-width: 480px) {
+    .brand-name {
+        font-size: 28px !important; /* حجم ثابت للموبايل عشان نضمن الثبات */
+        letter-spacing: 5px !important;
+        padding: 0 10px;
+    }
+    .brand-logo {
+        max-width: 90px !important;
+        margin-bottom: 10px !important;
+    }
+    .tagline {
+        font-size: 8px !important;
+        letter-spacing: 2px !important;
+    }
+}
