@@ -1,7 +1,9 @@
-/* التصميم الأساسي */
+/* الكلمة الأساسية - Λ И G E Я */
         .brand-name {
-            display: block;
-            text-align: center;
+            display: flex; /* تحويل الكلمة لنظام الفليكس عشان نتحكم في المسافات بالملي */
+            justify-content: center;
+            align-items: center;
+            width: 100%;
             font-weight: 900;
             margin: 0 auto;
             opacity: 0;
@@ -11,22 +13,31 @@
             white-space: nowrap !important;
         }
 
-        /* الموبايل - القوة الجبرية */
+        /* الموبايل - الحل النهائي والجذري */
         @media (max-width: 480px) {
             .brand-name {
-                font-size: 1.5rem !important; /* صغرنا الخط جداً للتجربة */
-                letter-spacing: 1px !important; /* لغينا المسافات تماماً */
-                width: 100% !important;
+                font-size: 26px !important; /* حجم خط ثابت ومناسب جداً للفون */
+                letter-spacing: 0 !important; /* إلغاء المسافات القديمة تماماً */
+                gap: 8px; /* نتحكم في المسافة بين الحروف يدوياً هنا */
             }
             .brand-logo {
-                max-width: 70px !important;
+                max-width: 80px !important;
+                margin-bottom: 10px !important;
+            }
+            .tagline {
+                font-size: 9px !important;
+                letter-spacing: 3px !important;
             }
         }
 
-        /* الكمبيوتر - يفضل فخم */
+        /* الكمبيوتر - يفضل زي ما هو فخم وواسع */
         @media (min-width: 769px) {
             .brand-name {
                 font-size: 7vw;
                 letter-spacing: 25px;
             }
+        }
+
+        @keyframes revealTitle {
+            to { opacity: 1; filter: blur(0); }
         }
