@@ -1,43 +1,40 @@
 /* الكلمة الأساسية - Λ И G E Я */
-        .brand-name {
-            display: flex; /* تحويل الكلمة لنظام الفليكس عشان نتحكم في المسافات بالملي */
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            font-weight: 900;
-            margin: 0 auto;
-            opacity: 0;
-            filter: blur(10px);
-            animation: revealTitle 2.5s ease-out forwards;
-            animation-delay: 1s;
-            white-space: nowrap !important;
-        }
+.brand-name {
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    font-weight: 900;
+    margin: 0 auto;
+    opacity: 0;
+    filter: blur(10px);
+    animation: revealTitle 2.5s ease-out forwards;
+    animation-delay: 1s;
+    white-space: nowrap !important;
+}
 
-        /* الموبايل - الحل النهائي والجذري */
-        @media (max-width: 480px) {
-            .brand-name {
-                font-size: 26px !important; /* حجم خط ثابت ومناسب جداً للفون */
-                letter-spacing: 0 !important; /* إلغاء المسافات القديمة تماماً */
-                gap: 8px; /* نتحكم في المسافة بين الحروف يدوياً هنا */
-            }
-            .brand-logo {
-                max-width: 80px !important;
-                margin-bottom: 10px !important;
-            }
-            .tagline {
-                font-size: 9px !important;
-                letter-spacing: 3px !important;
-            }
-        }
+/* الموبايل - الحل النهائي والجذري */
+@media (max-width: 480px) {
+    .brand-name {
+        font-size: 26px !important; 
+        letter-spacing: 0 !important; 
+        gap: 12px; /* المسافة بين الحروف يدوياً لضمان التناسق */
+    }
+    .brand-logo {
+        max-width: 90px !important; /* حجم متناسق مع الخط الجديد */
+        margin-bottom: 15px !important;
+    }
+    .tagline {
+        font-size: 8px !important;
+        letter-spacing: 3px !important;
+        margin-top: 10px !important;
+    }
+}
 
-        /* الكمبيوتر - يفضل زي ما هو فخم وواسع */
-        @media (min-width: 769px) {
-            .brand-name {
-                font-size: 7vw;
-                letter-spacing: 25px;
-            }
-        }
-
-        @keyframes revealTitle {
-            to { opacity: 1; filter: blur(0); }
-        }
+/* الكمبيوتر - يفضل زي ما هو فخم وواسع */
+@media (min-width: 769px) {
+    .brand-name {
+        font-size: 7vw;
+        letter-spacing: 25px;
+    }
+}
