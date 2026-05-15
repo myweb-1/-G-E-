@@ -3,7 +3,7 @@
             display: block;
             width: 100%;
             text-align: center;
-            font-weight: 900;
+            font-weight: 700;
             margin: 0 auto;
             opacity: 0;
             filter: blur(10px);
@@ -16,14 +16,14 @@
         }
 
         /* تعديلات الموبايل (هنا الحل) */
-        @media (max-width: 480px) {
+        @media (max-width: 350px) {
             .brand-name {
-                font-size: 22px !important; /* صغرنا الخط أكتر عشان يضمن المساحة */
-                letter-spacing: 2px !important; /* المسافة بقت ضيقة جداً عشان الحروف تمسك في بعض */
-                transform: scaleX(1.1); /* "مطة" خفيفة بالعرض عشان تعوض ضيق المسافات */
+                font-size: 18px !important; /* صغرنا الخط أكتر عشان يضمن المساحة */
+                letter-spacing: 1px !important; /* المسافة بقت ضيقة جداً عشان الحروف تمسك في بعض */
+                transform: scaleX(1.0); /* "مطة" خفيفة بالعرض عشان تعوض ضيق المسافات */
             }
             .brand-logo {
-                max-width: 80px !important; /* اللوجو بقى أصغر وأرق */
+                max-width: 60px !important; /* اللوجو بقى أصغر وأرق */
             }
         }
 
