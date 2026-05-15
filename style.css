@@ -1,20 +1,20 @@
-/* الإعدادات العامة */
+/* --- 1. الإعدادات الأساسية (General Settings) --- */
 * {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
 body, html {
-    margin: 0;
-    padding: 0;
     width: 100%;
     height: 100%;
     background-color: #000;
     color: #fff;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    overflow: hidden; /* يمنع السكرول عشان يظهر كأنه تطبيق */
+    overflow: hidden; /* يمنع التمرير لمنح إحساس التطبيق */
 }
 
-/* الناف بار */
+/* --- 2. الناف بار العلوي (Navbar) --- */
 .navbar {
     position: fixed;
     top: 0;
@@ -22,39 +22,59 @@ body, html {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 25px;
+    padding: 20px 25px;
     z-index: 100;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
+    background: linear-gradient(to bottom, rgba(0,0,0,0.7), transparent);
+}
+
+.menu-btn {
+    font-size: 24px;
+    cursor: pointer;
 }
 
 .nav-logo img {
-    height: 22px; /* حجم اللوجو اللي في النص */
+    height: 25px; /* حجم لوجو Anger الصغير */
+    filter: brightness(1);
 }
 
 .nav-icons {
     display: flex;
     gap: 15px;
-    font-size: 1.2rem;
+    font-size: 20px;
 }
 
-/* الخلفية */
+/* --- 3. منطقة الخلفية (Hero Section) --- */
 .hero-section {
+    position: relative;
     width: 100%;
     height: 100vh;
-    background-image: url('bg.jpg'); /* تأكد من وجود ملف بنفس الاسم */
+    background-image: url('bg.jpg'); /* تأكد أن الصورة بنفس الاسم والإمتداد */
     background-size: cover;
     background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-/* تصميم الشريط المتحرك */
+/* طبقة تظليل فوق الصورة عشان الكلام يظهر */
+.hero-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4); 
+    z-index: 1;
+}
+
+/* --- 4. الشريط المتحرك (Marquee Bar) --- */
 .marquee-bar {
     position: fixed;
     bottom: 85px; /* مكانه فوق الزراير */
     width: 100%;
     background: #000;
-    border-top: 0.5px solid #333;
-    border-bottom: 0.5px solid #333;
-    padding: 12px 0;
+    border-top: 1px solid #222;
+    border-bottom: 1px solid #222;
+    padding: 15px 0;
     overflow: hidden;
     white-space: nowrap;
     z-index: 50;
@@ -64,6 +84,7 @@ body, html {
     display: inline-block;
     font-size: 1.1rem;
     font-weight: bold;
+    color: #fff;
     animation: scroll-left 15s linear infinite;
 }
 
@@ -72,7 +93,7 @@ body, html {
     to { transform: translateX(-50%); }
 }
 
-/* الأزرار اللي تحت */
+/* --- 5. الأزرار السفلية (Action Buttons) --- */
 .action-footer {
     position: fixed;
     bottom: 0;
@@ -86,13 +107,14 @@ body, html {
 
 .btn {
     flex: 1;
-    padding: 16px;
+    padding: 18px;
     text-align: center;
     text-decoration: none;
-    font-weight: 800;
-    font-size: 14px;
+    font-weight: 900;
+    font-size: 13px;
     text-transform: uppercase;
-    border-radius: 2px;
+    border-radius: 4px;
+    letter-spacing: 2px;
     transition: 0.3s;
 }
 
@@ -107,4 +129,19 @@ body, html {
     color: #fff;
     border: 1px solid #fff;
 }
+
+/* --- 6. تحسينات الموبايل (Mobile Optimization) --- */
+@media (max-width: 480px) {
+    .marquee-content {
+        font-size: 0.95rem;
+    }
+    .btn {
+        padding: 15px;
+        font-size: 11px;
+    }
+    .navbar {
+        padding: 15px 20px;
+    }
+}
+
 
