@@ -8,13 +8,14 @@
 body, html {
     width: 100%;
     height: 100%;
-    background-color: #000; /* خلفية سوداء بالكامل */
+    background-color: #000;
     color: #fff;
     font-family: 'Segoe UI', Tahoma, sans-serif;
-    overflow: hidden; /* لمنع السكرول المزعج في الموبايل */
+    overflow-x: hidden;
+    overflow-y: hidden; /* لمنع السكرول ليظهر كأنه تطبيق */
 }
 
-/* --- 2. البار العلوي (توسيط اللوجو) --- */
+/* --- 2. البار العلوي --- */
 .navbar {
     position: fixed;
     top: 0;
@@ -27,27 +28,25 @@ body, html {
 }
 
 .nav-logo img {
-    height: 16px; /* حجم اللوجو الصغير بالأعلى */
+    height: 16px;
 }
 
-/* --- 3. حاوية الصورة المركزية --- */
+/* --- 3. منطقة الصورة المرنة (الضبط لكل الشاشات) --- */
 .hero-section {
     width: 100%;
-    height: 100vh; /* طول الشاشة بالكامل */
+    height: 100vh;
     display: flex;
-    justify-content: center; /* توسيط الصورة عرضياً */
-    align-items: center;     /* توسيط الصورة طولياً */
-    padding: 0 15px;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
     background-color: #000;
 }
 
-/* الصورة نفسها وإعدادات المرونة */
 .main-img {
-    max-width: 100%;    /* لا تخرج عن عرض الشاشة */
-    max-height: 55vh;   /* طولها لا يتعدى 55% من الشاشة لترك مساحة للشريط والزراير */
-    object-fit: contain; /* يحافظ على أبعاد الصورة الأصلية تماماً بدون أي مط */
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* يضمن ظهور الصورة كاملة بدون قص أو زوم */
     display: block;
-    box-shadow: 0 0 20px rgba(0,0,0,0.5); /* ظل خفيف */
 }
 
 /* --- 4. الشريط المتحرك --- */
@@ -101,27 +100,30 @@ body, html {
     transition: 0.3s;
 }
 
-.btn-white {
-    background-color: #fff;
-    color: #000;
-}
+.btn-white { background-color: #fff; color: #000; }
+.btn-dark { background-color: transparent; color: #fff; border: 1px solid #fff; }
 
-.btn-dark {
-    background-color: transparent;
-    color: #fff;
-    border: 1px solid #fff;
-}
+/* --- 6. التوافق الذكي (Media Queries) --- */
 
-/* --- 6. تعديلات الشاشات الكبيرة (الكمبيوتر) --- */
-@media (min-width: 1024px) {
+/* الموبايل */
+@media (max-width: 480px) {
+    .hero-section {
+        height: 55vh; 
+        margin-top: 60px;
+    }
     .main-img {
-        max-height: 70vh; /* الصورة تظهر أكبر في الكمبيوتر */
+        width: 100%;
+        height: auto;
     }
-    .action-footer {
-        justify-content: center;
-        gap: 20px;
+}
+
+/* الكمبيوتر */
+@media (min-width: 1025px) {
+    .main-img {
+        max-width: 80%;
+        max-height: 75vh;
     }
-    .btn {
-        max-width: 280px;
-    }
+    .hero-section { height: 75vh; }
+    .action-footer { justify-content: center; gap: 30px; }
+    .btn { max-width: 300px; }
 }
