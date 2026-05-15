@@ -1,4 +1,4 @@
-/* --- 1. الأساسيات --- */
+/* --- 1. إعدادات الصفحة الأساسية --- */
 * {
     margin: 0;
     padding: 0;
@@ -8,45 +8,46 @@
 body, html {
     width: 100%;
     height: 100%;
-    background-color: #000;
+    background-color: #000; /* خلفية سوداء بالكامل */
     color: #fff;
-    font-family: 'Segoe UI', sans-serif;
-    overflow-x: hidden;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    overflow: hidden; /* لمنع السكرول المزعج في الموبايل */
 }
 
-/* --- 2. البار العلوي --- */
+/* --- 2. البار العلوي (توسيط اللوجو) --- */
 .navbar {
     position: fixed;
     top: 0;
     width: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
     padding: 20px 0;
     z-index: 100;
-    background: linear-gradient(to bottom, #000, transparent);
+    background: linear-gradient(to bottom, rgba(0,0,0,1), transparent);
 }
 
-.nav-icons, .menu-btn { display: none !important; }
-.nav-logo img { height: 18px; }
+.nav-logo img {
+    height: 16px; /* حجم اللوجو الصغير بالأعلى */
+}
 
-/* --- 3. منطقة الصورة (الحل الجذري هنا) --- */
+/* --- 3. حاوية الصورة المركزية --- */
 .hero-section {
-    position: relative;
     width: 100%;
-    height: 60vh; /* طول مناسب جداً للموبايل والكمبيوتر */
-    margin-top: 70px;
-    background-image: url('bg.jpg'); 
-    
-    /* دي أهم 3 سطور عشان الصورة تظبط على الكل */
-    background-size: cover;    /* الصورة تملأ المساحة المتاحة */
-    background-position: center; /* سنتر الصورة هو اللي يظهر دايماً */
-    background-repeat: no-repeat;
-    
-    border-radius: 8px; /* لمسة جمالية كأنها كارت */
-    max-width: 95%;     /* سبيس بسيط من الجوانب */
-    margin-left: auto;
-    margin-right: auto;
+    height: 100vh; /* طول الشاشة بالكامل */
+    display: flex;
+    justify-content: center; /* توسيط الصورة عرضياً */
+    align-items: center;     /* توسيط الصورة طولياً */
+    padding: 0 15px;
+    background-color: #000;
+}
+
+/* الصورة نفسها وإعدادات المرونة */
+.main-img {
+    max-width: 100%;    /* لا تخرج عن عرض الشاشة */
+    max-height: 55vh;   /* طولها لا يتعدى 55% من الشاشة لترك مساحة للشريط والزراير */
+    object-fit: contain; /* يحافظ على أبعاد الصورة الأصلية تماماً بدون أي مط */
+    display: block;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5); /* ظل خفيف */
 }
 
 /* --- 4. الشريط المتحرك --- */
@@ -67,7 +68,7 @@ body, html {
     display: inline-block;
     font-size: 1rem;
     font-weight: bold;
-    animation: scroll-left 15s linear infinite;
+    animation: scroll-left 18s linear infinite;
 }
 
 @keyframes scroll-left {
@@ -75,7 +76,7 @@ body, html {
     to { transform: translateX(-50%); }
 }
 
-/* --- 5. الزراير --- */
+/* --- 5. الأزرار السفلية --- */
 .action-footer {
     position: fixed;
     bottom: 0;
@@ -93,30 +94,34 @@ body, html {
     text-align: center;
     text-decoration: none;
     font-weight: 800;
-    font-size: 12px;
+    font-size: 11px;
     text-transform: uppercase;
     border-radius: 4px;
+    letter-spacing: 1px;
+    transition: 0.3s;
 }
 
-.btn-white { background-color: #fff; color: #000; }
-.btn-dark { background-color: transparent; color: #fff; border: 1px solid #fff; }
-
-/* --- 6. تعديلات ذكية لكل شاشة (Responsiveness) --- */
-
-/* الموبايل */
-@media (max-width: 767px) {
-    .hero-section {
-        height: 55vh; /* طول الصورة في الموبايل */
-        background-attachment: scroll;
-    }
+.btn-white {
+    background-color: #fff;
+    color: #000;
 }
 
-/* الكمبيوتر والتابلت */
-@media (min-width: 768px) {
-    .hero-section {
-        height: 75vh; /* الصورة تطول أكتر في الشاشات الكبيرة */
-        max-width: 800px; /* بنحجم عرضها عشان متبقاش ممسوحة بالعرض */
+.btn-dark {
+    background-color: transparent;
+    color: #fff;
+    border: 1px solid #fff;
+}
+
+/* --- 6. تعديلات الشاشات الكبيرة (الكمبيوتر) --- */
+@media (min-width: 1024px) {
+    .main-img {
+        max-height: 70vh; /* الصورة تظهر أكبر في الكمبيوتر */
     }
-    .btn { max-width: 250px; }
-    .action-footer { justify-content: center; }
+    .action-footer {
+        justify-content: center;
+        gap: 20px;
+    }
+    .btn {
+        max-width: 280px;
+    }
 }
