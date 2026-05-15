@@ -50,8 +50,8 @@ p {
             font-weight: 900;
             margin: 0;
             opacity: 0;
-            letter-spacing: 8px; /* قللنا المسافة بين الحروف عشان الكلمة تلم نفسها */
-            filter: blur(10px);
+            letter-spacing: 3px; /* قللنا المسافة بين الحروف عشان الكلمة تلم نفسها */
+            filter: blur(7px);
             animation: revealTitle 2.5s cubic-bezier(0.21, 0.6, 0.35, 1) forwards;
             animation-delay: 1s;
             white-space: nowrap; /* يمنع الكلمة إنها تنزل في سطرين */
