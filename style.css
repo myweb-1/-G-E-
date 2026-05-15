@@ -1,40 +1,110 @@
-/* الكلمة الأساسية - Λ И G E Я */
-.brand-name {
-    display: flex; 
-    justify-content: center;
-    align-items: center;
+/* الإعدادات العامة */
+* {
+    box-sizing: border-box;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
     width: 100%;
-    font-weight: 900;
-    margin: 0 auto;
-    opacity: 0;
-    filter: blur(10px);
-    animation: revealTitle 2.5s ease-out forwards;
-    animation-delay: 1s;
-    white-space: nowrap !important;
+    height: 100%;
+    background-color: #000;
+    color: #fff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden; /* يمنع السكرول عشان يظهر كأنه تطبيق */
 }
 
-/* الموبايل - الحل النهائي والجذري */
-@media (max-width: 480px) {
-    .brand-name {
-        font-size: 26px !important; 
-        letter-spacing: 0 !important; 
-        gap: 12px; /* المسافة بين الحروف يدوياً لضمان التناسق */
-    }
-    .brand-logo {
-        max-width: 90px !important; /* حجم متناسق مع الخط الجديد */
-        margin-bottom: 15px !important;
-    }
-    .tagline {
-        font-size: 8px !important;
-        letter-spacing: 3px !important;
-        margin-top: 10px !important;
-    }
+/* الناف بار */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 25px;
+    z-index: 100;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
 }
 
-/* الكمبيوتر - يفضل زي ما هو فخم وواسع */
-@media (min-width: 769px) {
-    .brand-name {
-        font-size: 7vw;
-        letter-spacing: 25px;
-    }
+.nav-logo img {
+    height: 22px; /* حجم اللوجو اللي في النص */
 }
+
+.nav-icons {
+    display: flex;
+    gap: 15px;
+    font-size: 1.2rem;
+}
+
+/* الخلفية */
+.hero-section {
+    width: 100%;
+    height: 100vh;
+    background-image: url('bg.jpg'); /* تأكد من وجود ملف بنفس الاسم */
+    background-size: cover;
+    background-position: center;
+}
+
+/* تصميم الشريط المتحرك */
+.marquee-bar {
+    position: fixed;
+    bottom: 85px; /* مكانه فوق الزراير */
+    width: 100%;
+    background: #000;
+    border-top: 0.5px solid #333;
+    border-bottom: 0.5px solid #333;
+    padding: 12px 0;
+    overflow: hidden;
+    white-space: nowrap;
+    z-index: 50;
+}
+
+.marquee-content {
+    display: inline-block;
+    font-size: 1.1rem;
+    font-weight: bold;
+    animation: scroll-left 15s linear infinite;
+}
+
+@keyframes scroll-left {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+/* الأزرار اللي تحت */
+.action-footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    padding: 15px;
+    gap: 12px;
+    background: #000;
+    z-index: 100;
+}
+
+.btn {
+    flex: 1;
+    padding: 16px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 14px;
+    text-transform: uppercase;
+    border-radius: 2px;
+    transition: 0.3s;
+}
+
+.btn-white {
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #fff;
+}
+
+.btn-dark {
+    background-color: transparent;
+    color: #fff;
+    border: 1px solid #fff;
+}
+
