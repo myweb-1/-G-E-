@@ -44,15 +44,28 @@ h1 {
 }
 
 p {
-   /* تعديل الاسم ليكون مناسب جداً لشاشة الفون */
-        .brand-name {
-            font-size: 10vw; /* صغرنا الحجم من 12 لـ 10 */
+  .brand-name {
+            display: block;
+            width: 100%;
+            text-align: center;
+            font-size: 8vw; /* صغرنا الحجم عشان يلم نفسه */
             font-weight: 900;
             margin: 0;
             opacity: 0;
-            letter-spacing: 3px; /* قللنا المسافة بين الحروف عشان الكلمة تلم نفسها */
-            filter: blur(7px);
+            letter-spacing: 5px; /* قللنا المسافات عشان الحروف تمسك في بعض */
+            filter: blur(10px);
             animation: revealTitle 2.5s cubic-bezier(0.21, 0.6, 0.35, 1) forwards;
             animation-delay: 1s;
-            white-space: nowrap; /* يمنع الكلمة إنها تنزل في سطرين */
+            white-space: nowrap; /* السطر ده "إجباري" عشان يمنع الحروف تنزل تحت بعض */
+        }
+
+        /* تعديلات مخصصة للموبايلات الصغيرة جداً */
+        @media (max-width: 480px) {
+            .brand-name {
+                font-size: 7vw; /* صغرنا كمان شوية للموبايل */
+                letter-spacing: 3px;
+            }
+            .brand-logo {
+                max-width: 100px; /* صغرنا اللوجو عشان مياكلش الشاشة */
+            }
         }
