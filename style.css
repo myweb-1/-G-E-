@@ -1,0 +1,57 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    font-family: 'Arial', sans-serif;
+    overflow: hidden;
+}
+
+.hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bg-img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    opacity: 0.6; /* شفافية الصورة عشان الكلام يظهر */
+}
+
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle, transparent 20%, black 90%);
+    z-index: 2;
+}
+
+.content {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    color: white;
+}
+
+h1 {
+    font-size: 8vw;
+    letter-spacing: 2rem;
+    margin: 0;
+    font-weight: 900;
+    text-shadow: 0 0 20px rgba(255,255,255,0.2);
+}
+
+p {
+    letter-spacing: 0.5rem;
+    color: #888;
+    text-transform: uppercase;
+    font-size: 12px;
+    margin-top: 20px;
+}
