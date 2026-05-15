@@ -2,7 +2,7 @@
 <html lang="ar">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Λ И G E Я | Official</title>
     <style>
         body, html {
@@ -11,13 +11,13 @@
             width: 100%;
             height: 100%;
             background-color: #000;
-            overflow-x: hidden; /* يمنع الهز يمين وشمال في الموبايل */
+            overflow: hidden; /* منع التمرير تماماً لمنح إحساس التطبيق */
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         .hero {
             position: relative;
-            width: 100vw;
+            width: 100%;
             height: 100vh;
             display: flex;
             align-items: center;
@@ -32,13 +32,15 @@
             background-size: cover;
             background-position: center;
             z-index: 1;
-            animation: kenBurns 10s ease-out forwards;
+            /* أنيميشن الدخول الهادئ للخلفية */
+            animation: kenBurns 15s ease-out forwards;
         }
 
         .overlay {
             position: absolute;
             inset: 0;
-            background: radial-gradient(circle, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.85) 100%);
+            /* تدرج لوني أقوى لضمان وضوح اللوجو الأبيض */
+            background: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.9) 100%);
             z-index: 2;
         }
 
@@ -50,69 +52,75 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            width: 90%; /* عشان ميبقاش لازق في الحواف في الموبايل */
+            width: 100%;
+            padding: 0 20px;
+            box-sizing: border-box;
         }
 
         .brand-logo {
-            max-width: 120px; /* أصغر شوية للموبايل */
-            margin-bottom: 20px;
+            width: 140px; /* حجم ثابت ومناسب للموبايل */
+            height: auto;
+            margin-bottom: 40px;
             opacity: 0;
-            animation: fadeInUpLogo 2s ease-out forwards;
-            animation-delay: 0.3s;
+            transform: translateY(30px);
+            animation: fadeInUp 1.5s ease-out forwards;
+            animation-delay: 0.5s;
         }
 
-        /* تعديل الاسم */
         .brand-name {
-            font-size: 12vw; /* حجم ديناميكي يكبر ويصغر مع الشاشة */
+            /* تعديل الـ vw ليناسب الشاشات الصغيرة جداً دون كسر الكلمة */
+            font-size: clamp(2rem, 10vw, 5rem); 
             font-weight: 900;
             margin: 0;
             opacity: 0;
-            letter-spacing: 15px; /* قللنا المسافة شوية للموبايل */
+            letter-spacing: 12px; /* تقليل المسافة قليلاً للموبايل */
+            text-indent: 12px; /* لموازنة الكلمة في النص */
             filter: blur(10px);
-            animation: revealTitle 2.5s cubic-bezier(0.21, 0.6, 0.35, 1) forwards;
-            animation-delay: 1s;
+            animation: revealTitle 2s cubic-bezier(0.21, 0.6, 0.35, 1) forwards;
+            animation-delay: 1.2s;
+            white-space: nowrap; /* يمنع الحروف تنزل سطر جديد */
         }
 
         .tagline {
-            font-size: 10px; /* أصغر للموبايل */
+            font-size: 10px;
             text-transform: uppercase;
-            letter-spacing: 4px;
-            color: #888;
-            margin-top: 15px;
+            letter-spacing: 5px;
+            color: #aaa;
+            margin-top: 25px;
             opacity: 0;
             transform: translateY(20px);
-            animation: fadeInUpTagline 2s ease-out forwards;
-            animation-delay: 2s;
+            animation: fadeInUp 1.5s ease-out forwards;
+            animation-delay: 2.2s;
         }
 
-        /* --- شاشات الكمبيوتر الكبيرة --- */
+        /* --- التحسينات الخاصة بالشاشات الكبيرة (الكمبيوتر) --- */
         @media (min-width: 768px) {
             .brand-name {
-                font-size: 7vw;
+                font-size: 6vw;
                 letter-spacing: 25px;
+                text-indent: 25px;
             }
             .brand-logo {
-                max-width: 150px;
+                width: 180px;
             }
             .tagline {
                 font-size: 14px;
-                letter-spacing: 8px;
+                letter-spacing: 10px;
             }
         }
 
-        /* الأنيميشنز */
-        @keyframes kenBurns {
-            from { transform: scale(1.15); }
-            to { transform: scale(1); }
+        /* أنيميشن موحد للدخول */
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
         }
-        @keyframes fadeInUpLogo {
-            to { opacity: 0.9; transform: translateY(0); }
-        }
+
         @keyframes revealTitle {
             to { opacity: 1; filter: blur(0); }
         }
-        @keyframes fadeInUpTagline {
-            to { opacity: 1; transform: translateY(0); }
+
+        @keyframes kenBurns {
+            from { transform: scale(1.2); }
+            to { transform: scale(1); }
         }
     </style>
 </head>
@@ -122,7 +130,7 @@
         <div class="bg-image"></div>
         <div class="overlay"></div>
         <div class="content">
-            <img src="logo.png" alt="Logo" class="brand-logo">
+            <img src="logo.png" alt="Anger Logo" class="brand-logo">
             <h1 class="brand-name">Λ И G E Я</h1>
             <p class="tagline">EVOLUTION IN PROGRESS</p>
         </div>
