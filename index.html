@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Λ И G E Я | Evolution</title>
+    <title>Λ И G E Я | Official</title>
     <style>
         /* إعدادات الصفحة */
         body, html {
@@ -27,18 +27,18 @@
             overflow: hidden;
         }
 
-        /* أنيميشن الخلفية - الزووم الهادئ */
+        /* أنيميشن الخلفية */
         .bg-image {
             position: absolute;
             inset: 0;
-            background-image: url('bg.jpg'); /* اتأكد ان اسم الصورة bg.jpg */
+            background-image: url('bg.jpg'); /* اسم الصورة */
             background-size: cover;
             background-position: center;
             z-index: 1;
             animation: kenBurns 10s ease-out forwards;
         }
 
-        /* طبقة سواد عشان البراند يظهر */
+        /* طبقة سواد */
         .overlay {
             position: absolute;
             inset: 0;
@@ -46,24 +46,36 @@
             z-index: 2;
         }
 
-        /* المحتوى النصي */
+        /* المحتوى النصي واللوجو */
         .content {
             position: relative;
             z-index: 3;
             text-align: center;
             color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* سنتر اللوجو مع الكلام */
+        }
+
+        /* ستايل اللوجو الجديد */
+        .brand-logo {
+            max-width: 150px; /* تحكم في حجم اللوجو من هنا */
+            margin-bottom: 20px; /* مسافة بين اللوجو والكلمة */
+            opacity: 0; /* يبدأ مخفي */
+            animation: fadeInUpLogo 2s ease-out forwards;
+            animation-delay: 0.3s; /* يظهر أولاً */
         }
 
         /* أنيميشن ظهور الاسم Λ И G E Я */
         .brand-name {
-            font-size: 8vw;
+            font-size: 7vw; /* صغّرنا الحجم قليلاً */
             font-weight: 900;
             margin: 0;
             opacity: 0;
             letter-spacing: 40px;
             filter: blur(10px);
             animation: revealTitle 2.5s cubic-bezier(0.21, 0.6, 0.35, 1) forwards;
-            animation-delay: 0.5s;
+            animation-delay: 1s; /* يظهر بعد اللوجو */
         }
 
         /* أنيميشن الجملة التحتية */
@@ -72,17 +84,24 @@
             text-transform: uppercase;
             letter-spacing: 8px;
             color: #888;
-            margin-top: 20px;
+            margin-top: 15px;
             opacity: 0;
             transform: translateY(20px);
-            animation: fadeInUp 2s ease-out forwards;
-            animation-delay: 1.8s;
+            animation: fadeInUpTagline 2s ease-out forwards;
+            animation-delay: 2s; /* يظهر في النهاية */
         }
 
         /* تعريف الحركات */
         @keyframes kenBurns {
             from { transform: scale(1.2); }
             to { transform: scale(1); }
+        }
+
+        @keyframes fadeInUpLogo {
+            to {
+                opacity: 0.9; /* شفافية بسيطة للوجو ليدمج مع الخلفية */
+                transform: translateY(0);
+            }
         }
 
         @keyframes revealTitle {
@@ -93,7 +112,7 @@
             }
         }
 
-        @keyframes fadeInUp {
+        @keyframes fadeInUpTagline {
             to { 
                 opacity: 1; 
                 transform: translateY(0); 
@@ -107,6 +126,8 @@
         <div class="bg-image"></div>
         <div class="overlay"></div>
         <div class="content">
+            <img src="logo.png" alt="Λ И G E Я Logo" class="brand-logo">
+            
             <h1 class="brand-name">Λ И G E Я</h1>
             <p class="tagline">EVOLUTION IN PROGRESS</p>
         </div>
