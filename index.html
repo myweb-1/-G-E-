@@ -18,6 +18,104 @@
     <meta property="og:type" content="website">
 
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        .collection-section {
+            padding: 60px 20px;
+            background: #000000;
+            text-align: center;
+        }
+        .collection-title {
+            color: #ffffff;
+            font-size: 28px;
+            letter-spacing: 3px;
+            margin-bottom: 40px;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .product-card {
+            background: #0b0c10;
+            border: 1px solid #1f2833;
+            border-radius: 0px; /* ستايل حاد ورياضي */
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .product-card:hover {
+            border-color: #ffffff;
+            transform: translateY(-5px);
+        }
+        .product-img-box {
+            width: 100%;
+            height: 380px;
+            background: #15191d;
+            overflow: hidden;
+        }
+        .product-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .product-card:hover .product-img-box img {
+            transform: scale(1.05);
+        }
+        .product-details {
+            padding: 20px;
+            text-align: right;
+        }
+        .product-name {
+            color: #ffffff;
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+        .product-price {
+            color: #ffffff;
+            font-size: 20px;
+            font-weight: 900;
+            margin-bottom: 15px;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .product-price span {
+            font-size: 14px;
+            color: #888;
+            text-decoration: line-through;
+            font-weight: 400;
+        }
+        .whatsapp-btn {
+            display: block;
+            background: #ffffff;
+            color: #000000;
+            text-align: center;
+            padding: 12px;
+            text-decoration: none;
+            font-weight: 900;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border: 1px solid #ffffff;
+        }
+        .whatsapp-btn:hover {
+            background: transparent;
+            color: #ffffff;
+        }
+        /* إخفاء الهيرو سيكشن الفاضي لو مش محتاجه أو سيبه لو هتحط فيه صورة بعدين */
+        .hero-section {
+            min-height: 60vh;
+        }
+    </style>
 </head>
 <body>
 
@@ -36,9 +134,49 @@
         </div>
     </div>
 
+    <section class="collection-section">
+        <h2 class="collection-title">THE COMPRESSION DROP</h2>
+        <div class="products-grid">
+            
+            <div class="product-card">
+                <div class="product-img-box">
+                    <img src="black.jpg" alt="تيشيرت كومبريشن اسود ضاغط للجيم - Anger Studio">
+                </div>
+                <div class="product-details">
+                    <h3 class="product-name">ANGEL BLACK COMPRESSION</h3>
+                    <div class="product-price">450 EGP <span>550 EGP</span></div>
+                    <a href="https://wa.me/201080403165?text=يا%20كابتن%20عايز%20أطلب%20تيشيرت%20ANGEL%20BLACK%20COMPRESSION" class="whatsapp-btn" target="_blank">Order via WhatsApp</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-img-box">
+                    <img src="grey.jpg" alt="تيشيرت راش جارد كومبريشن رمادي للجيم - Anger Studio">
+                </div>
+                <div class="product-details">
+                    <h3 class="product-name">PHANTOM GREY RASHGUARD</h3>
+                    <div class="product-price">450 EGP <span>550 EGP</span></div>
+                    <a href="https://wa.me/201080403165?text=يا%20كابتن%20عايز%20أطلب%20تيشيرت%20PHANTOM%20GREY%20RASHGUARD" class="whatsapp-btn" target="_blank">Order via WhatsApp</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-img-box">
+                    <img src="white.jpg" alt="تيشيرت كومبريشن ابيض رياضي - Anger Studio">
+                </div>
+                <div class="product-details">
+                    <h3 class="product-name">CYBER WHITE COMPRESSION</h3>
+                    <div class="product-price">490 EGP <span>590 EGP</span></div>
+                    <a href="https://wa.me/201080403165?text=يا%20كابتن%20عايز%20أطلب%20تيشيرت%20CYBER%20WHITE%20COMPRESSION" class="whatsapp-btn" target="_blank">Order via WhatsApp</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
     <div class="action-footer">
-        <a href="#" class="btn btn-white">Shop Now</a>
-        <a href="#" class="btn btn-dark">Explore</a>
+        <a href="https://wa.me/201080403165" class="btn btn-white" target="_blank">Contact Us</a>
+        <a href="https://instagram.com/" class="btn btn-dark" target="_blank">Instagram</a>
     </div>
 
 </body>
