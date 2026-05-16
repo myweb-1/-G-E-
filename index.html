@@ -31,65 +31,256 @@
         <h2 class="collection-title">THE COMPRESSION DROP</h2>
         <div class="products-grid">
             
-            <div class="product-card">
+            <div class="product-card" data-id="1" data-name="COMPRESSION DROP 01" data-price="450">
                 <div class="product-img-box">
                     <img src="prod1-front.jpg" alt="Λ И G E Я" class="img-front">
                     <img src="prod1-back.jpg" alt="Λ И G E Я" class="img-back">
                 </div>
                 <div class="product-details">
                     <div class="product-price">450 EGP <span>550 EGP</span></div>
-                    <div class="product-sizes">
-                        <span>M</span>
-                        <span>L</span>
-                        <span>XL</span>
-                        <span>XXL</span>
+                    
+                    <div class="product-sizes-select">
+                        <label><input type="radio" name="size-1" value="M" checked><span>M</span></label>
+                        <label><input type="radio" name="size-1" value="L"><span>L</span></label>
+                        <label><input type="radio" name="size-1" value="XL"><span>XL</span></label>
+                        <label><input type="radio" name="size-1" value="XXL"><span>XXL</span></label>
                     </div>
-                    <a href="https://wa.me/201275859172?text=يا%20كابتن%20عايز%20أطلب%20تيشيرت%20ANIGER%20DROP%2001" class="whatsapp-btn" target="_blank">Order via WhatsApp</a>
+                    
+                    <button class="add-to-cart-btn" onclick="addToCart(1)">Add to Cart</button>
                 </div>
             </div>
 
-            <div class="product-card">
+            <div class="product-card" data-id="2" data-name="COMPRESSION DROP 02" data-price="450">
                 <div class="product-img-box">
                     <img src="prod2-front.jpg" alt="Λ И G E Я" class="img-front">
                     <img src="prod2-back.jpg" alt="Λ И G E Я" class="img-back">
                 </div>
                 <div class="product-details">
                     <div class="product-price">450 EGP <span>550 EGP</span></div>
-                    <div class="product-sizes">
-                        <span>M</span>
-                        <span>L</span>
-                        <span>XL</span>
-                        <span>XXL</span>
+                    
+                    <div class="product-sizes-select">
+                        <label><input type="radio" name="size-2" value="M" checked><span>M</span></label>
+                        <label><input type="radio" name="size-2" value="L"><span>L</span></label>
+                        <label><input type="radio" name="size-2" value="XL"><span>XL</span></label>
+                        <label><input type="radio" name="size-2" value="XXL"><span>XXL</span></label>
                     </div>
-                    <a href="https://wa.me/201275859172?text=يا%20كابتن%20عايز%20أطلب%20تيشيرت%20ANIGER%20DROP%2002" class="whatsapp-btn" target="_blank">Order via WhatsApp</a>
+                    
+                    <button class="add-to-cart-btn" onclick="addToCart(2)">Add to Cart</button>
                 </div>
             </div>
 
-            <div class="product-card">
+            <div class="product-card" data-id="3" data-name="COMPRESSION DROP 03" data-price="450">
                 <div class="product-img-box">
-                    <img src="prod1-front.jpg" alt="Λ И G E Я" class="img-front">
-                    <img src="prod1-back.jpg" alt="Λ И G E Я" class="img-back">
+                    <img src="prod2-front.jpg" alt="Λ И G E Я" class="img-front">
+                    <img src="prod2-back.jpg" alt="Λ И G E Я" class="img-back">
                 </div>
                 <div class="product-details">
                     <div class="product-price">450 EGP <span>550 EGP</span></div>
-                    <div class="product-sizes">
-                        <span>M</span>
-                        <span>L</span>
-                        <span>XL</span>
-                        <span>XXL</span>
+                    
+                    <div class="product-sizes-select">
+                        <label><input type="radio" name="size-3" value="M" checked><span>M</span></label>
+                        <label><input type="radio" name="size-3" value="L"><span>L</span></label>
+                        <label><input type="radio" name="size-3" value="XL"><span>XL</span></label>
+                        <label><input type="radio" name="size-3" value="XXL"><span>XXL</span></label>
                     </div>
-                    <a href="https://wa.me/201275859172?text=يا%20كابتن%20عايز%20أطلب%20منتج%20جديد" class="whatsapp-btn" target="_blank">Order via WhatsApp</a>
+                    
+                    <button class="add-to-cart-btn" onclick="addToCart(3)">Add to Cart</button>
                 </div>
             </div>
 
         </div>
     </section>
 
-    <a href="https://wa.me/201275859172" class="floating-whatsapp" target="_blank" rel="noopener noreferrer">
-        <svg viewBox="0 0 32 32" class="whatsapp-black-svg">
-            <path d="M16 0c-8.837 0-16 7.163-16 16 0 2.825.737 5.607 2.137 8.048l-2.137 7.952 8.133-2.132c2.379 1.292 5.061 1.975 7.867 1.975 8.837 0 16-7.163 16-16s-7.163-16-16-16zm8.936 21.916c-.368 1.037-1.815 1.897-2.519 1.944-.693.048-1.559.088-2.531-.225-3.836-1.233-6.425-5.112-6.616-5.367-.191-.255-1.537-2.043-1.537-3.896 0-1.852.969-2.759 1.313-3.111.344-.352.753-.44 1.006-.44.253 0 .506.002.724.012.226.01.528-.088.827.632.305.734 1.041 2.541 1.131 2.724.09.184.15.397.027.641-.123.244-.185.397-.368.611-.184.214-.385.478-.551.642-.184.183-.377.382-.163.75.214.368.951 1.564 2.041 2.535 1.402 1.251 2.585 1.637 2.953 1.821.368.184.584.153.801-.097.217-.25 1.026-1.191 1.302-1.603.276-.411.551-.336.93-.193.379.143 2.404 1.132 2.506 1.183.102.051.171.244.123.385-.049.141-.123.633-.491 1.67z"/>
+    <div class="floating-cart" onclick="toggleCart()">
+        <svg viewBox="0 0 24 24" class="cart-svg-icon">
+            <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
         </svg>
-    </a>
+        <span class="cart-count" id="cartCount">0</span>
+    </div>
 
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>سلة التسوق</h3>
+            <button class="close-cart-btn" onclick="toggleCart()">✕</button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <p class="empty-msg">السلة فارغة حالياً</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total-box">
+                <span>إجمالي الحساب:</span>
+                <span id="cartTotal">0 EGP</span>
+            </div>
+            <button class="checkout-btn" onclick="openCheckoutForm()">تأكيد الأوردر</button>
+        </div>
+    </div>
+
+    <div class="checkout-overlay" id="checkoutOverlay">
+        <div class="checkout-modal">
+            <h3>بيانات طلب الأوردر</h3>
+            <form id="orderForm" onsubmit="sendOrder(event)">
+                <div class="form-group">
+                    <label>اسم العميل بالكامل</label>
+                    <input type="text" id="clientName" required placeholder="أحمد محمد...">
+                </div>
+                <div class="form-group">
+                    <label>الحساب النهائي للمنتجات</label>
+                    <input type="text" id="finalTotalDisplay" readonly>
+                </div>
+                <div class="form-group">
+                    <label>رقم التواصل الأول</label>
+                    <input type="tel" id="clientPhone1" required placeholder="01xxxxxxxxx">
+                </div>
+                <div class="form-group">
+                    <label>رقم تواصل بديل (ثاني)</label>
+                    <input type="tel" id="clientPhone2" required placeholder="01xxxxxxxxx">
+                </div>
+                <div class="form-group">
+                    <label>العنوان بالتفصيل ممل</label>
+                    <textarea id="clientAddress" required placeholder="المحافظة، المدينة، اسم الشارع، رقم العمارة والدور..."></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="submit-order-btn">إرسال عبر الواتساب</button>
+                    <button type="button" class="cancel-btn" onclick="closeCheckoutForm()">إلغاء</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <script>
+        let cart = [];
+        const whatsappNumber = "201275859172"; // رقم الواتساب الخاص بك
+
+        function toggleCart() {
+            document.getElementById('cartSidebar').classList.toggle('active');
+        }
+
+        function addToCart(productId) {
+            const productCard = document.querySelector(`.product-card[data-id="${productId}"]`);
+            const name = productCard.getAttribute('data-name');
+            const price = parseInt(productCard.getAttribute('data-price'));
+            
+            // جلب المقاس المختار من الـ radio button
+            const selectedSize = document.querySelector(`input[name="size-${productId}"]:checked`).value;
+
+            // التحقق لو المنتج بنفس المقاس مضاف مسبقاً
+            const existingItem = cart.find(item => item.id === productId && item.size === selectedSize);
+
+            if (existingItem) {
+                existingItem.qty += 1;
+            } else {
+                cart.push({ id: productId, name: name, price: price, size: selectedSize, qty: 1 });
+            }
+
+            updateCartUI();
+            
+            // تأثير بصري بسيط للزر عند الضغط
+            const btn = productCard.querySelector('.add-to-cart-btn');
+            btn.innerText = "✓ Added";
+            btn.style.background = "#25D366";
+            setTimeout(() => {
+                btn.innerText = "Add to Cart";
+                btn.style.background = "#ffffff";
+            }, 1000);
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const cartItemsContainer = document.getElementById('cartItems');
+            const cartCountElement = document.getElementById('cartCount');
+            const cartTotalElement = document.getElementById('cartTotal');
+
+            // تحديث العدد الكلي فوق أيقونة السلة
+            const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
+            cartCountElement.innerText = totalQty;
+
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<p class="empty-msg">السلة فارغة حالياً</p>';
+                cartTotalElement.innerText = '0 EGP';
+                return;
+            }
+
+            let html = '';
+            let totalCost = 0;
+
+            cart.forEach((item, index) => {
+                const itemTotal = item.price * item.qty;
+                totalCost += itemTotal;
+                html += `
+                    <div class="cart-item">
+                        <div class="item-info">
+                            <h4>${item.name}</h4>
+                            <p>المقاس: <strong>${item.size}</strong> | العدد: ${item.qty}</p>
+                            <span>${itemTotal} EGP</span>
+                        </div>
+                        <button class="remove-item-btn" onclick="removeFromCart(${index})">✕</button>
+                    </div>
+                `;
+            });
+
+            cartItemsContainer.innerHTML = html;
+            cartTotalElement.innerText = `${totalCost} EGP`;
+        }
+
+        function openCheckoutForm() {
+            if (cart.length === 0) {
+                alert("سلتك فارغة! ضيف منتجات الأول يا بطل.");
+                return;
+            }
+            const totalCost = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            document.getElementById('finalTotalDisplay').value = `${totalCost} EGP`;
+            document.getElementById('checkoutOverlay').classList.add('active');
+            toggleCart(); // إغلاق قائمة السلة الجانبية عند فتح الاستمارة
+        }
+
+        function closeCheckoutForm() {
+            document.getElementById('checkoutOverlay').classList.remove('active');
+        }
+
+        function sendOrder(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('clientName').value;
+            const phone1 = document.getElementById('clientPhone1').value;
+            const phone2 = document.getElementById('clientPhone2').value;
+            const address = document.getElementById('clientAddress').value;
+            const finalTotal = document.getElementById('finalTotalDisplay').value;
+
+            // تفنيط المنتجات المشتراة لرسالة الواتساب المكتوبة بعناية
+            let itemsText = '';
+            cart.forEach((item, i) => {
+                itemsText += `${i+1}- منتج: ${item.name} \n   المقاس: ${item.size} \n   الكمية: ${item.qty}\n-------------------------\n`;
+            });
+
+            // صياغة شيت البيانات النهائي المبعوث للواتساب بالملي
+            const message = encodeURIComponent(
+`🔥 طلب أوردر جديد من الموقع 🔥
+
+📦 المنتجات المطلوبة:
+-------------------------
+${itemsText}
+💰 الحساب الإجمالي للمنتجات: ${finalTotal}
+
+👤 بيانات العميل والشحن:
+- اسم العميل: ${name}
+- رقم التواصل الأول: ${phone1}
+- رقم التواصل الثاني: ${phone2}
+- العنوان بالتفصيل: ${address}`
+            );
+
+            // توجيه العميل فوراً إلى الواتساب الخاص بك بالرسالة المعدة
+            window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
+            
+            // تفريغ السلة وإغلاق الاستمارة بعد التأكيد والنجاح
+            cart = [];
+            updateCartUI();
+            closeCheckoutForm();
+        }
+    </script>
 </body>
 </html>
