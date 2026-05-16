@@ -1,4 +1,4 @@
-/* إعادة تعيين الأبعاد العامة */
+/* الأبعاد والخطوط العامة */
 * {
     margin: 0;
     padding: 0;
@@ -12,26 +12,25 @@ body {
     overflow-x: hidden;
 }
 
-/* البار العلوي الثابت الصارم بأسلوب براند Mavin الفاخر */
+/* البار العلوي الثابت الصارم (منيو + لوجو بالسنتر فقط) */
 .navbar {
     display: flex !important;
     flex-direction: row !important;
     justify-content: space-between !important;
     align-items: center !important;
     padding: 0 20px !important;
-    background: rgba(0, 0, 0, 0.75) !important; /* خلفية شفافة غامقة لإبراز العناصر */
-    backdrop-filter: blur(12px) !important; /* تأثير التمويه الزجاجي لـ Mavin */
+    background: rgba(0, 0, 0, 0.75) !important;
+    backdrop-filter: blur(12px) !important;
     -webkit-backdrop-filter: blur(12px) !important;
-    position: fixed !important; /* تثبيت دائم وحقيقي */
+    position: fixed !important;
     top: 0 !important;
     left: 0 !important;
     width: 100% !important;
     height: 65px !important;
-    z-index: 999999 !important; /* ظهور مطلق فوق كل عناصر الموقع */
+    z-index: 999999 !important;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-/* توزيع عناصر البار الصارمة (يسار - سنتر - يمين) لمنع التداخل نهائياً */
 .nav-left {
     width: 20%;
     display: flex;
@@ -47,13 +46,10 @@ body {
 }
 
 .nav-right {
-    width: 20%;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
+    width: 20%; 
 }
 
-/* زر الـ 3 شرط (المنيو) على اليسار */
+/* زر الـ 3 شرط للمنيو */
 .nav-menu-btn {
     display: flex;
     flex-direction: column;
@@ -68,10 +64,9 @@ body {
     width: 100%;
     height: 2px;
     background-color: #ffffff !important;
-    transition: all 0.3s ease;
 }
 
-/* لوجو براند Anger في السنتر بالظبط */
+/* لوجو براند Anger في السنتر هندسياً */
 .nav-brand-text {
     color: #ffffff !important;
     font-size: 22px !important;
@@ -82,38 +77,7 @@ body {
     white-space: nowrap;
 }
 
-/* أيقونة السلة الشيك على اليمين بالبار */
-.nav-cart-btn {
-    position: relative;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.nav-cart-icon {
-    width: 22px;
-    height: 22px;
-    fill: #ffffff !important;
-}
-
-.nav-cart-count {
-    position: absolute;
-    top: -6px;
-    right: -8px;
-    background: #ff3b30;
-    color: #ffffff;
-    font-size: 10px;
-    font-weight: bold;
-    width: 17px;
-    height: 17px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* المنيو الجانبي المتجاوب */
+/* القائمة الجانبية للمنيو */
 .menu-sidebar {
     position: fixed;
     top: 0;
@@ -161,7 +125,7 @@ body {
     font-weight: 500;
 }
 
-/* واجهة العرض الرئيسية الهيرو المعدلة لتنزيل المحتوى أسفل البار الثابت */
+/* قسم الهيرو الرئيسي */
 .hero-section {
     height: 100vh;
     width: 100%;
@@ -173,10 +137,10 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    padding-top: 65px; /* نفس ارتفاع البار عشان مفيش حاجة تندفن تحته */
+    padding-top: 65px;
 }
 
-/* الشريط المتحرك */
+/* الشريط المتحرك الفاصل */
 .marquee-bar {
     background: #ffffff;
     color: #000000;
@@ -199,7 +163,7 @@ body {
     100% { transform: translate3d(-100%, 0, 0); }
 }
 
-/* قسم المنتجات */
+/* قسم المنتجات وتوزيعه المتجاوب */
 .collection-section {
     padding: 40px 10px;
     background: #000000;
@@ -214,7 +178,6 @@ body {
     font-weight: 900;
 }
 
-/* الـ 3 منتجات في سطر واحد ثابت دون انقسام */
 .products-grid {
     display: grid !important;
     grid-template-columns: repeat(3, 1fr) !important;
@@ -287,7 +250,6 @@ body {
     text-decoration: line-through;
 }
 
-/* اختيار المقاسات التفاعلية السلسة */
 .product-sizes-select {
     display: flex;
     flex-wrap: wrap;
@@ -321,7 +283,6 @@ body {
     border-color: #ffffff;
 }
 
-/* زر الـ Add to Cart */
 .add-to-cart-btn {
     display: block;
     width: 100%;
@@ -342,35 +303,59 @@ body {
     color: #ffffff;
 }
 
-/* حل أزمة الواتساب العملاق: تم إنشاؤه بحجم صغير ناعم وثابت بالأسفل */
-.floating-whatsapp-fixed {
+/* حاوية السلة العائمة المثبتة في منتصف الجانب الأيمن تماماً عمودياً */
+.floating-controls-container {
     position: fixed !important;
-    bottom: 25px !important;
-    right: 20px !important;
-    width: 50px !important;
-    height: 50px !important;
-    background-color: #25D366 !important; /* لون الواتساب الأصلي الأخضر المريح أو استبدله بـ #000000 */
+    top: 50% !important; /* لتنزيلها لنصف الشاشة بالظبط */
+    right: 20px !important; /* مسافتها من الجانب الأيمن */
+    transform: translateY(-50%) !important; /* التوسيط العمودي الهندسي الدقيق */
+    display: flex !important;
+    z-index: 999999 !important;
+}
+
+/* تصميم السلة الدائرية الفخمة باللون الأسود والأبيض والرقم الأحمر */
+.floating-cart {
+    position: relative !important;
+    width: 55px !important;
+    height: 55px !important;
+    background-color: #000000 !important;
+    border: 2px solid #ffffff !important;
     border-radius: 50% !important;
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.4) !important; 
-    z-index: 99999 !important;
-    transition: transform 0.3s ease !important;
+    cursor: pointer !important;
+    box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.2) !important;
+    transition: transform 0.2s ease;
 }
 
-.floating-whatsapp-fixed:hover {
-    transform: scale(1.1) !important;
+.floating-cart:hover {
+    transform: scale(1.05);
 }
 
-.whatsapp-fixed-svg {
-    width: 28px !important;
-    height: 28px !important;
-    fill: #ffffff !important;
-    display: block !important;
+.cart-svg-icon {
+    width: 24px;
+    height: 24px;
+    fill: #ffffff;
 }
 
-/* سلة التسوق الجانبية الشيت الفخمة */
+.cart-count {
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    background: #ff3b30;
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: bold;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* سلة التسوق الشيت الجانبية */
 .cart-sidebar {
     position: fixed;
     top: 0;
@@ -483,7 +468,7 @@ body {
     text-align: center;
 }
 
-/* استمارة الشحن والبيانات المودال */
+/* استمارة طلب الأوردر وشحن البيانات */
 .checkout-overlay {
     position: fixed;
     top: 0;
@@ -563,11 +548,11 @@ body {
 
 .submit-order-btn {
     flex: 2;
-    background: #25D366;
-    color: #ffffff;
+    background: #ffffff;
+    color: #000000;
+    font-weight: bold;
     border: none;
     padding: 12px;
-    font-weight: bold;
     cursor: pointer;
 }
 
@@ -580,7 +565,7 @@ body {
     cursor: pointer;
 }
 
-/* شاشات الموبايل والتابلت - تجاوب صارم ونظيف جداً */
+/* شاشات الموبايل والتابلت المتجاوبة تماماً */
 @media (max-width: 768px) {
     .hero-section {
         background-image: url('bg.jpg');
@@ -627,5 +612,12 @@ body {
     }
     .cart-sidebar {
         width: 290px;
+    }
+    .floating-controls-container {
+        right: 12px !important; /* مسافة أضيق وممتازة على شاشات الموبايل حتى لا تحجب الكلمات */
+    }
+    .floating-cart {
+        width: 48px !important;
+        height: 48px !important;
     }
 }
