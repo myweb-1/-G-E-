@@ -12,7 +12,7 @@ body {
     overflow-x: hidden;
 }
 
-/* البار العلوي الثابت الصارم (منيو + لوجو بالسنتر فقط) */
+/* البار العلوي الثابت الصارم بأسلوب Mavin الفاخر */
 .navbar {
     display: flex !important;
     flex-direction: row !important;
@@ -570,6 +570,9 @@ body {
     .hero-section {
         background-image: url('bg.jpg');
     }
+    .product-grid {
+         grid-template-columns: repeat(2, 1fr) !important; /* ليعرض منتجين في السطر على التابلت بشكل منسق */
+    }
     .product-img-box {
         height: 220px;
     }
@@ -593,6 +596,9 @@ body {
         font-size: 18px;
         margin-bottom: 20px;
     }
+    .products-grid {
+        grid-template-columns: repeat(3, 1fr) !important; /* الحفاظ على الـ 3 منتجات في السطر الواحد على الموبايل بناءً على رغبتك */
+    }
     .product-img-box {
         height: 155px;
     }
@@ -614,7 +620,7 @@ body {
         width: 290px;
     }
     .floating-controls-container {
-        right: 12px !important; /* مسافة أضيق وممتازة على شاشات الموبايل حتى لا تحجب الكلمات */
+        right: 12px !important; /* مسافة أضيق وممتازة على شاشات الموبايل لتفادي حجب المحتوى */
     }
     .floating-cart {
         width: 48px !important;
