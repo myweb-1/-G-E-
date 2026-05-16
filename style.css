@@ -1,129 +1,246 @@
-/* --- 1. الإعدادات الأساسية --- */
+/* إعادة تعيين الهوامش الأساسية */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-body, html {
-    width: 100%;
-    height: 100%;
-    background-color: #000;
-    color: #fff;
-    font-family: 'Segoe UI', Tahoma, sans-serif;
-    overflow: hidden; /* لمنع السكرول المزعج */
+body {
+    background-color: #000000;
+    color: #ffffff;
+    overflow-x: hidden;
 }
 
-/* --- 2. البار العلوي --- */
+/* الهيدر واللوجو */
 .navbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
     display: flex;
     justify-content: center;
-    padding: 20px 0;
-    z-index: 100;
-    background: linear-gradient(to bottom, rgba(0,0,0,1), transparent);
+    align-items: center;
+    padding: 20px;
+    background: transparent;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 10;
 }
 
 .nav-logo img {
-    height: 16px;
+    height: 50px;
+    object-fit: contain;
 }
 
-/* --- 3. نظام الخلفيات الذكي --- */
+/* الهيرو سيكشن - تم ضبط المساحة عشان ما يغطيش على المنتجات */
 .hero-section {
-    width: 100%;
-    height: 100vh;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    
-    /* [صورة التابلت هي الأساس] - عشان نضمن إنها تظهر لو المقاس مش موبايل ولا كمبيوتر */
-    background-image: url('bg.jpg'); 
+    min-height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background: #000000;
 }
 
-/* [تعديل للموبايل] - الشاشات الأصغر من 600 بكسل */
-@media (max-width: 600px) {
-    .hero-section {
-        background-image: url('bg-mobile.jpg');
-    }
-}
-
-/* [تعديل للكمبيوتر] - الشاشات الأكبر من 1100 بكسل */
-@media (min-width: 1100px) {
-    .hero-section {
-        background-image: url('bg-desktop.jpg');
-    }
-}
-
-/* --- 4. الشريط المتحرك --- */
+/* الشريط المتحرك (Marquee) */
 .marquee-bar {
-    position: fixed;
-    bottom: 85px; 
-    width: 100%;
-    background: rgba(0,0,0,0.8);
-    border-top: 0.5px solid #222;
-    border-bottom: 0.5px solid #222;
+    background: #ffffff;
+    color: #000000;
     padding: 12px 0;
     overflow: hidden;
     white-space: nowrap;
-    z-index: 50;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .marquee-content {
     display: inline-block;
-    font-size: 1rem;
-    font-weight: bold;
-    animation: scroll-left 18s linear infinite;
+    padding-left: 100%;
+    animation: marquee 15s linear infinite;
 }
 
-@keyframes scroll-left {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
+@keyframes marquee {
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-100%, 0, 0); }
 }
 
-/* --- 5. الأزرار السفلية --- */
-.action-footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    display: flex;
-    padding: 15px;
-    gap: 10px;
-    background: #000;
-    z-index: 100;
-}
-
-.btn {
-    flex: 1;
-    padding: 16px;
+/* قسم الكوليكشن والمنتجات */
+.collection-section {
+    padding: 60px 20px;
+    background: #000000;
     text-align: center;
-    text-decoration: none;
-    font-weight: 800;
-    font-size: 11px;
+}
+
+.collection-title {
+    color: #ffffff;
+    font-size: 26px;
+    letter-spacing: 3px;
+    margin-bottom: 40px;
+    font-weight: 900;
     text-transform: uppercase;
-    border-radius: 4px;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.product-card {
+    background: #0b0c10;
+    border: 1px solid #1f2833;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.product-card:hover {
+    border-color: #ffffff;
+}
+
+/* نظام قلب الصورة وش وضهر */
+.product-img-box {
+    width: 100%;
+    height: 400px;
+    background: #15191d;
+    overflow: hidden;
+    position: relative;
+}
+
+.product-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.img-back {
+    opacity: 0;
+}
+
+/* التأثير عند تمرير الماوس أو اللمس */
+.product-card:hover .img-front {
+    opacity: 0;
+}
+
+.product-card:hover .img-back {
+    opacity: 1;
+    transform: scale(1.02);
+}
+
+/* تفاصيل المنتج وزر الواتساب */
+.product-details {
+    padding: 20px;
+    text-align: right;
+}
+
+.product-name {
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 8px;
     letter-spacing: 1px;
 }
 
+.product-price {
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 900;
+    margin-bottom: 15px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.product-price span {
+    font-size: 14px;
+    color: #888;
+    text-decoration: line-through;
+    font-weight: 400;
+}
+
+.whatsapp-btn {
+    display: block;
+    background: #ffffff;
+    color: #000000;
+    text-align: center;
+    padding: 12px;
+    text-decoration: none;
+    font-weight: 900;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    border: 1px solid #ffffff;
+}
+
+.whatsapp-btn:hover {
+    background: transparent;
+    color: #ffffff;
+}
+
+/* الأزرار السفلية (Action Footer) */
+.action-footer {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    padding: 40px 20px;
+    background: #000000;
+}
+
+.btn {
+    padding: 12px 30px;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    text-align: center;
+    flex: 1;
+    max-width: 200px;
+}
+
 .btn-white {
-    background-color: #fff;
-    color: #000;
+    background: #ffffff;
+    color: #000000;
+    border-color: #ffffff;
+}
+
+.btn-white:hover {
+    background: transparent;
+    color: #ffffff;
 }
 
 .btn-dark {
-    background-color: transparent;
-    color: #fff;
-    border: 1px solid #fff;
+    background: transparent;
+    color: #ffffff;
+    border-color: #ffffff;
 }
 
-/* تحسين شكل الأزرار في الشاشات الكبيرة */
-@media (min-width: 1100px) {
-    .action-footer {
-        justify-content: center;
-        gap: 30px;
+.btn-dark:hover {
+    background: #ffffff;
+    color: #000000;
+}
+
+/* تظبيط مقاسات الشاشات الصغيرة للموبايل */
+@media (max-width: 480px) {
+    .hero-section {
+        min-height: 40vh;
     }
-    .btn {
-        max-width: 280px;
+    .product-img-box {
+        height: 350px;
+    }
+    .collection-title {
+        font-size: 22px;
+    }
+    .action-footer {
+        flex-direction: row;
+        width: 100%;
+        padding: 20px;
     }
 }
