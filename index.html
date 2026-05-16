@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MAVIN</title>
+    <title>MAVIN / ANGER</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -28,20 +28,24 @@
         </div>
         <div class="menu-links">
             <a href="#">الرئيسية / HOME</a>
-            <a href="#">المجموعة / COLLECTION</a>
+            <a href="#">المجموعة / PRODUCTS</a>
             <a href="#" id="openBuyModalBtn">كيفية الشراء / HOW TO BUY</a> 
-            <a href="#" id="openFabricBtn">تفاصيل الخامات / FABRICS</a>
-            <a href="#" id="openAboutBtn">عن البراند / OUR STORY</a>
-            <a href="#" id="openReviewBtn">أضف تقييمك / ADD REVIEW</a>
+            <a href="#" id="openFabricBtn">تفاصيل الخامات / FABRIC INFO</a>
+            <a href="#" id="openAboutBtn">عن البراند / ABOUT US (THE ABYSS)</a>
+            <a href="#" id="openReviewBtn">أضف تقييمك / SUBMIT REVIEW</a>
         </div>
         
         <hr class="menu-divider">
         
         <div class="complaints-section">
-            <span class="complaints-title">الدعم والشكاوى</span>
+            <span class="complaints-title">💀 SUPPORT & COMPLAINTS</span>
             <div class="complaints-buttons">
-                <a href="https://wa.me/123456789" class="complaint-btn wa-btn" target="_blank">واتساب / WhatsApp</a>
-                <a href="tel:123456789" class="complaint-btn call-btn">اتصال هاتفى / Call us</a>
+                <a href="https://wa.me/123456789" class="complaint-btn wa-btn" target="_blank">
+                    <span class="btn-icon">💬</span> WHATSAPP SUPPORT
+                </a>
+                <a href="tel:123456789" class="complaint-btn call-btn">
+                    <span class="btn-icon">📞</span> DIRECT CALL
+                </a>
             </div>
         </div>
     </div>
@@ -51,44 +55,51 @@
 
     <div class="marquee-bar">
         <div class="marquee-content">
-            شحن سريع لجميع المحافظات • الدفع عند الاستلام • معاينة المنتج قبل الاستلام • شحن سريع لجميع المحافظات • 
+            معاينة الشحنة وقيسها قبل ما تدفع للمندوب • استبدال مجاني خلال 14 يوم • شحن سريع خلال 48 ساعة فقط • 
         </div>
     </div>
 
     <section class="collection-section">
-        <h2 class="collection-title">المجموعة الجديدة / NEW COLLECTION</h2>
+        <h2 class="collection-title">THE COMPRESSION DROP</h2>
         <div class="products-grid">
             
             <div class="product-card">
                 <div class="product-img-box">
-                    <img src="product1-front.jpg" class="img-front" alt="Product Front">
-                    <img src="product1-back.jpg" class="img-back" alt="Product Back">
+                    <img src="product1.jpg" class="img-front" alt="COMPRESSION DROP 01">
                 </div>
                 <div class="product-details">
-                    <h4 class="product-card-title">تيشيرت مافن أسود / MAVIN BLACK T-SHIRT</h4>
-                    <div class="product-price">750 EGP <span>950 EGP</span></div>
+                    <h4 class="product-card-title">COMPRESSION DROP 01</h4>
+                    <div class="product-price">EGP 450 <span>EGP 550</span></div>
                 </div>
             </div>
 
             <div class="product-card">
                 <div class="product-img-box">
-                    <img src="product2-front.jpg" class="img-front" alt="Product Front">
-                    <img src="product2-back.jpg" class="img-back" alt="Product Back">
+                    <img src="product2.jpg" class="img-front" alt="COMPRESSION DROP 02">
                 </div>
                 <div class="product-details">
-                    <h4 class="product-card-title">تيشيرت مافن أبيض / MAVIN WHITE T-SHIRT</h4>
-                    <div class="product-price">750 EGP <span>950 EGP</span></div>
+                    <h4 class="product-card-title">COMPRESSION DROP 02</h4>
+                    <div class="product-price">EGP 450 <span>EGP 550</span></div>
                 </div>
             </div>
 
             <div class="product-card">
                 <div class="product-img-box">
-                    <img src="product3-front.jpg" class="img-front" alt="Product Front">
-                    <img src="product3-back.jpg" class="img-back" alt="Product Back">
+                    <img src="product3.jpg" class="img-front" alt="COMPRESSION DROP 03">
                 </div>
                 <div class="product-details">
-                    <h4 class="product-card-title">هودي مافن / MAVIN OVERSIZED HOODIE</h4>
-                    <div class="product-price">1200 EGP <span>1500 EGP</span></div>
+                    <h4 class="product-card-title">COMPRESSION DROP 03</h4>
+                    <div class="product-price">EGP 450 <span>EGP 550</span></div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-img-box">
+                    <img src="product4.jpg" class="img-front" alt="COMPRESSION DROP 04">
+                </div>
+                <div class="product-details">
+                    <h4 class="product-card-title">COMPRESSION DROP 04</h4>
+                    <div class="product-price">EGP 450 <span>EGP 550</span></div>
                 </div>
             </div>
 
@@ -113,38 +124,17 @@
                     <label>المحافظة والعنوان بالتفصيل</label>
                     <textarea placeholder="المحافظة، المدينة، اسم الشارع، ورقم العقار"></textarea>
                 </div>
-                <div class="form-group">
-                    <label>المنتج المحدد حالياً</label>
-                    <input type="text" value="سيتم تحديد المنتج تلقائياً عند الاختيار من الأعلى" readonly>
-                </div>
-                <button type="submit" class="submit-order-btn" style="width:100%; background:#ff3b30; color:#fff; font-weight:bold;">تأكيد الأوردر الآن</button>
+                <button type="submit" class="submit-order-btn" style="width:100%; background:#ff3b30; color:#fff; font-weight:bold; border-radius:0;">تأكيد الأوردر الآن</button>
             </form>
-        </div>
-    </section>
-
-    <section class="site-reviews-section">
-        <h2 class="reviews-section-title">THE VOICES OF RAGE</h2>
-        <p class="reviews-section-subtitle">What the community says about our gear:</p>
-        <div class="reviews-showcase-grid">
-            <div class="showcase-card">
-                <div class="showcase-stars">★★★★★</div>
-                <p class="showcase-comment">"فخم جداً، يستاهل كل قرش بصراحة وهطلب تاني أكيد والـ Design رايق اوي."</p>
-                <span class="showcase-author">— كريم ت. - الجيزة</span>
-            </div>
-            <div class="showcase-card">
-                <div class="showcase-stars">★★★★★</div>
-                <p class="showcase-comment">"الخامه موت وتقفيل الشغل عالي بجد تبارك الله."</p>
-                <span class="showcase-author">— أشرف —</span>
-            </div>
         </div>
     </section>
 
     <footer class="mavin-footer">
         <div class="mavin-footer-container">
             <div class="footer-nav-menu">
-                <a href="#" id="footerAboutBtn">عن البراند / OUR STORY</a>
-                <a href="#" id="footerFabricBtn">تفاصيل الخامات / FABRICS</a>
-                <a href="#" id="footerReviewBtn">أضف تقييمك / ADD REVIEW</a>
+                <a href="#" id="footerAboutBtn">ABOUT US</a>
+                <a href="#" id="footerFabricBtn">FABRIC INFO</a>
+                <a href="#" id="footerReviewBtn">SUBMIT REVIEW</a>
             </div>
             <div class="footer-socials-row">
                 <a href="#" target="_blank">Instagram</a>
@@ -155,7 +145,6 @@
                 <p class="footer-copyright">&copy; 2026 MAVIN. Built from anger.</p>
             </div>
         </div>
-        <button class="scroll-top-btn" id="scrollTopBtn">&#9650;</button>
     </footer>
 
     <div class="buy-modal-overlay" id="buyModalOverlay">
@@ -167,72 +156,14 @@
                     <div class="step-icon">📞</div>
                     <div class="step-text-box">
                         <h4>أولاً: تأكيد الطلب</h4>
-                        <p>بعد إتمام طلبك، سيقوم أحد ممثلي خدمة العملاء بالتواصل معك هاتفياً أو عبر الواتساب لتأكيد البيانات والمقاس المختار.</p>
-                    </div>
-                </div>
-                <div class="step-item">
-                    <div class="step-icon">🚛</div>
-                    <div class="step-text-box">
-                        <h4>ثانياً: التوصيل والشحن</h4>
-                        <p>يتم تجهيز طلبك بعناية وشحنه ليصلك حتى باب البيت في خلال من 3 إلى 7 أيام عمل كحد أقصى.</p>
+                        <p>بعد إتمام طلبك، سيتواصل معك ممثلي خدمة العملاء لتأكيد المقاس المختار.</p>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-
-    <div class="fabric-modal-overlay" id="fabricModalOverlay">
-        <div class="fabric-modal-content">
-            <button class="close-fabric-btn" id="closeFabricModalBtn">&times;</button>
-            <h3 class="fabric-title">تفاصيل الخامات</h3>
-            <p class="fabric-subtitle">جودة مصممة لتدوم طويلاً</p>
-            <div class="fabric-features">
-                <div class="feature-item">
-                    <div>
-                        <h4>قطن مصري 100%</h4>
-                        <p>نسيج فاخر وثقيل يوفر لك الراحة المثالية والمظهر الحاد والمستقيم.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="about-modal-overlay" id="aboutModalOverlay">
-        <div class="about-modal-content">
-            <button class="close-about-btn" id="closeAboutModalBtn">&times;</button>
-            <h3 class="about-title">OUR STORY</h3>
-            <p class="dark-quote">"Welcome to the abyss. We have been expecting you."</p>
-            <p class="about-p">مافن هي مساحة للتعبير عن القوة والتميز من خلال أزياء عصرية حادة تناسب أسلوب حياتك الفريد.</p>
-            <p class="dark-footer-quote">MAVIN // BUILT FROM ANGER</p>
-        </div>
-    </div>
-
-    <div class="review-overlay" id="reviewModalOverlay">
-        <div class="review-modal">
-            <button class="close-review-modal-btn" id="closeReviewModalBtn">&times;</button>
-            <h3 class="review-title">أضف تقييمك</h3>
-            <p class="review-subtitle">رأيك يهمنا في تطوير مجموعاتنا القادمة</p>
-            <div class="rating-stars">
-                <span class="star" data-value="5">&#9733;</span>
-                <span class="star" data-value="4">&#9733;</span>
-                <span class="star" data-value="3">&#9733;</span>
-                <span class="star" data-value="2">&#9733;</span>
-                <span class="star" data-value="1">&#9733;</span>
-            </div>
-            <form>
-                <div class="form-group">
-                    <input type="text" placeholder="اسمك">
-                </div>
-                <div class="form-group">
-                    <textarea placeholder="اكتب تعليقك هنا عن الخامة والتجربة"></textarea>
-                </div>
-                <button type="submit" class="submit-review-btn">إرسال التقييم</button>
-            </form>
         </div>
     </div>
 
     <script>
-        // الـ Sidebar الجانبي
         const menuToggleBtn = document.getElementById('menuToggleBtn');
         const menuSidebar = document.getElementById('menuSidebar');
         const closeMenuBtn = document.getElementById('closeMenuBtn');
@@ -240,7 +171,6 @@
         menuToggleBtn.addEventListener('click', () => menuSidebar.classList.add('active'));
         closeMenuBtn.addEventListener('click', () => menuSidebar.classList.remove('active'));
 
-        // نظام النوافذ (Modals Function)
         function setupModal(openBtnId, modalOverlayId, closeBtnId) {
             const openBtn = document.getElementById(openBtnId);
             const modal = document.getElementById(modalOverlayId);
@@ -250,7 +180,7 @@
                 openBtn.addEventListener('click', (e) => {
                     e.preventDefault();
                     modal.classList.add('active');
-                    menuSidebar.classList.remove('active'); // إغلاق القائمة الجانبية إذا كانت مفتوحة
+                    menuSidebar.classList.remove('active');
                 });
                 closeBtn.addEventListener('click', () => modal.classList.remove('active'));
                 modal.addEventListener('click', (e) => {
@@ -258,21 +188,7 @@
                 });
             }
         }
-
-        // تشغيل النوافذ وربطها بالـ IDs الجديدة
         setupModal('openBuyModalBtn', 'buyModalOverlay', 'closeBuyModalBtn');
-        setupModal('openFabricBtn', 'fabricModalOverlay', 'closeFabricModalBtn');
-        setupModal('footerFabricBtn', 'fabricModalOverlay', 'closeFabricModalBtn');
-        setupModal('openAboutBtn', 'aboutModalOverlay', 'closeAboutModalBtn');
-        setupModal('footerAboutBtn', 'aboutModalOverlay', 'closeAboutModalBtn');
-        setupModal('openReviewBtn', 'reviewModalOverlay', 'closeReviewModalBtn');
-        setupModal('footerReviewBtn', 'reviewModalOverlay', 'closeReviewModalBtn');
-
-        // زر الصعود لأعلى الصفحة (Scroll Top)
-        const scrollTopBtn = document.getElementById('scrollTopBtn');
-        scrollTopBtn.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
     </script>
 </body>
 </html>
