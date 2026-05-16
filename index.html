@@ -49,7 +49,7 @@
             object-fit: contain;
         }
 
-        /* السلايد الأولى (الواجهة) بكامل مساحة الشاشة */
+        /* السلايد الأولى (الواجهة) بكامل مساحة الشاشة وإرجاع الصورة */
         .hero-section {
             height: 100vh;
             width: 100%;
@@ -57,10 +57,12 @@
             justify-content: center;
             align-items: center;
             position: relative;
-            background-image: url('hero.png'); /* تأكد أن الصورة مرفوعة باسم hero.png */
+            /* تأكد أن الصورة المرفوعة على جيت هاب باسم hero.png أو غير الامتداد هنا لـ .jpg لو كانت كذا */
+            background-image: url('hero.png'); 
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
+            background-color: #000000; /* خلفية احتياطية سوداء */
         }
 
         /* الشريط المتحرك */
@@ -73,6 +75,8 @@
             font-weight: bold;
             text-transform: uppercase;
             letter-spacing: 1px;
+            position: relative;
+            z-index: 2;
         }
 
         .marquee-content {
@@ -91,6 +95,8 @@
             padding: 60px 20px;
             background: #000000;
             text-align: center;
+            position: relative;
+            z-index: 2;
         }
 
         .collection-title {
@@ -204,13 +210,15 @@
             color: #ffffff;
         }
 
-        /* أزرار التواصل في الفوتر أسفل الصفحة تماماً */
+        /* أزرار التواصل في نهاية الصفحة تماماً */
         .action-footer {
             display: flex;
             justify-content: center;
             gap: 15px;
             padding: 60px 20px;
             background: #000000;
+            position: relative;
+            z-index: 2;
         }
 
         .btn {
@@ -267,7 +275,7 @@
 
     <nav class="navbar">
         <div class="nav-logo">
-            <img src="logo.png" alt="Anger Studio Logo">
+            <img src="logo.png" alt="لوجو براند انيجر - Anger Studio Logo">
         </div>
     </nav>
 
@@ -286,8 +294,8 @@
             
             <div class="product-card">
                 <div class="product-img-box">
-                    <img src="prod1-front.jpg" alt="تيشيرت كومبريشن رياضي من الأمام - Λ И G E Я" class="img-front">
-                    <img src="prod1-back.jpg" alt="تيشيرت كومبريشن رياضي من الخلف - Λ И G E Я" class="img-back">
+                    <img src="prod1-front.jpg" alt="تيشيرت كومبريشن - Λ И G E Я" class="img-front">
+                    <img src="prod1-back.jpg" alt="تيشيرت كومبريشن - Λ И G E Я" class="img-back">
                 </div>
                 <div class="product-details">
                     <h3 class="product-name">Λ И G E Я - DROP 01</h3>
@@ -298,8 +306,8 @@
 
             <div class="product-card">
                 <div class="product-img-box">
-                    <img src="prod2-front.jpg" alt="تيشيرت راش جارد للجيم من الأمام - Λ И G E Я" class="img-front">
-                    <img src="prod2-back.jpg" alt="تيشيرت راش جارد للجيم من الخلف - Λ И G E Я" class="img-back">
+                    <img src="prod2-front.jpg" alt="تيشيرت راش جارد - Λ И G E Я" class="img-front">
+                    <img src="prod2-back.jpg" alt="تيشيرت راش جارد - Λ И G E Я" class="img-back">
                 </div>
                 <div class="product-details">
                     <h3 class="product-name">Λ И G E Я - DROP 02</h3>
