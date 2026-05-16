@@ -122,7 +122,7 @@ body {
     100% { transform: translate3d(-100%, 0, 0); }
 }
 
-/* جرد كروت عرض المنتجات (ثلاثة كروت في الصف على الموبايل والسطح) */
+/* جرد كروت عرض المنتجات */
 .collection-section { padding: 40px 10px; background: #000000; text-align: center; }
 .collection-title { color: #ffffff; font-size: 24px; letter-spacing: 3px; margin-bottom: 30px; font-weight: 900; }
 
@@ -182,7 +182,73 @@ body {
 .product-price span { font-size: 11px; color: #888; text-decoration: line-through; }
 
 /* ==========================================================================
-   إصلاح وتنسيق نظام الـ Modal ليعمل كـ Pop-up حقيقي ومستقل
+   تنسيق الـ Footer الفخم الجديد في نهاية الموقع
+   ========================================================================== */
+.site-footer {
+    background-color: #0b0c10;
+    border-top: 1px solid #1f2833;
+    padding: 30px 20px;
+    text-align: center;
+    margin-top: 50px;
+    width: 100%;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    max-width: 800px;
+    margin: 0 auto 20px auto;
+    flex-wrap: wrap;
+}
+
+.footer-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #cccccc;
+}
+
+.footer-item span {
+    letter-spacing: 1px;
+}
+
+.footer-divider {
+    width: 1px;
+    height: 25px;
+    background-color: #1f2833;
+}
+
+/* الأيقونات التفاعلية السلسة */
+.social-icon {
+    width: 24px;
+    height: 24px;
+    fill: #ffffff;
+    transition: transform 0.2s ease, fill 0.2s ease;
+    cursor: pointer;
+    display: block;
+}
+
+.social-icon:hover {
+    transform: scale(1.15);
+}
+
+.whatsapp-color:hover {
+    fill: #25D366; /* لون الواتساب المميز عند التمرير */
+}
+
+.footer-bottom {
+    font-size: 11px;
+    color: #555555;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* ==========================================================================
+   نظام الـ Modal المنبثق لصور المنتجات
    ========================================================================== */
 .product-modal-overlay {
     position: fixed !important;
@@ -191,7 +257,7 @@ body {
     width: 100vw !important;
     height: 100vh !important;
     background: rgba(0, 0, 0, 0.95) !important;
-    z-index: 9999999 !important; /* ليكون أعلى طبقة على الإطلاق لحل التداخل */
+    z-index: 9999999 !important; 
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
@@ -210,7 +276,7 @@ body {
     background: #0b0c10 !important;
     border: 1px solid #1f2833 !important;
     width: 100% !important;
-    max-width: 500px !important; /* مقاس طولي فخم وملموم يناسب صور الكومبريشن */
+    max-width: 500px !important; 
     border-radius: 8px !important;
     position: relative !important;
     padding: 25px 20px 20px 20px !important;
@@ -310,7 +376,6 @@ body {
 .modal-product-price { font-size: 16px !important; font-weight: 900 !important; color: #ffffff !important; margin-bottom: 15px !important; }
 .size-section-title { font-size: 13px !important; color: #aaaaaa !important; margin-bottom: 8px !important; }
 
-/* إصلاح الراديو بوتون للمقاسات بدون الدوائر العشوائية البدائية */
 .modal-sizes-select {
     display: flex !important;
     gap: 8px !important;
@@ -335,7 +400,6 @@ body {
 }
 .modal-sizes-select input[type="radio"]:checked + span { color: #000000 !important; background: #ffffff !important; border-color: #ffffff !important; }
 
-/* أزرار الإجراءات الفورية منسقة طولياً */
 .modal-action-buttons {
     display: flex !important;
     flex-direction: column !important;
@@ -491,6 +555,8 @@ body {
 @media (max-width: 768px) {
     .hero-section { background-image: url('bg.jpg'); }
     .product-modal-content { max-height: 90vh; }
+    .footer-divider { display: none; }
+    .footer-container { flex-direction: column; gap: 15px; }
 }
 
 @media (max-width: 480px) {
@@ -499,7 +565,6 @@ body {
     .hero-section { height: 100vh; background-image: url('bg-mobile.jpg'); padding-top: 60px; }
     .collection-title { font-size: 18px; margin-bottom: 20px; }
     
-    /* الجرد الثلاثي الصارم للمنتجات بدون أي ترهل */
     .products-grid { grid-template-columns: repeat(3, 1fr) !important; gap: 6px; }
     .product-img-box { height: 135px; }
     .product-card-title { font-size: 9px; margin-bottom: 3px; }
@@ -509,4 +574,6 @@ body {
     .cart-sidebar { width: 290px; }
     .floating-controls-container { right: 12px !important; }
     .floating-cart { width: 48px !important; height: 48px !important; }
+    
+    .footer-item { font-size: 13px; }
 }
