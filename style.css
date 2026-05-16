@@ -97,7 +97,7 @@ body {
 .call-btn:hover { background: #ffffff !important; color: #000000 !important; }
 
 /* Modals System styling */
-.fabric-modal-overlay, .about-modal-overlay, .review-overlay, .product-modal-overlay, .checkout-overlay {
+.fabric-modal-overlay, .about-modal-overlay, .review-overlay, .product-modal-overlay, .checkout-overlay, .buy-modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -113,11 +113,11 @@ body {
     transition: opacity 0.3s ease;
     padding: 20px;
 }
-.fabric-modal-overlay.active, .about-modal-overlay.active, .review-overlay.active, .product-modal-overlay.active, .checkout-overlay.active { opacity: 1; pointer-events: auto; }
+.fabric-modal-overlay.active, .about-modal-overlay.active, .review-overlay.active, .product-modal-overlay.active, .checkout-overlay.active, .buy-modal-overlay.active { opacity: 1; pointer-events: auto; }
 
-.fabric-modal-content, .about-modal-content, .review-modal, .checkout-modal { background: #050508; border: 1px solid #1f2833; width: 100%; max-width: 460px; border-radius: 4px; position: relative; padding: 35px 25px; box-shadow: 0 10px 40px rgba(0,0,0,0.8); text-align: left; }
-.close-fabric-btn, .close-about-btn, .close-review-modal-btn, .close-modal-btn { position: absolute; top: 15px; right: 15px; background: rgba(255, 255, 255, 0.05); border: none; color: #ffffff; font-size: 14px; width: 30px; height: 30px; border-radius: 50%; cursor: pointer; display: flex; justify-content: center; align-items: center; transition: background 0.2s; }
-.close-fabric-btn:hover, .close-about-btn:hover, .close-review-modal-btn:hover:hover { background: #ff3b30; color: #000; }
+.fabric-modal-content, .about-modal-content, .review-modal, .checkout-modal, .buy-modal-content { background: #050508; border: 1px solid #1f2833; width: 100%; max-width: 460px; border-radius: 4px; position: relative; padding: 35px 25px; box-shadow: 0 10px 40px rgba(0,0,0,0.8); text-align: left; }
+.close-fabric-btn, .close-about-btn, .close-review-modal-btn, .close-modal-btn, .close-buy-btn { position: absolute; top: 15px; right: 15px; background: rgba(255, 255, 255, 0.05); border: none; color: #ffffff; font-size: 14px; width: 30px; height: 30px; border-radius: 50%; cursor: pointer; display: flex; justify-content: center; align-items: center; transition: background 0.2s; }
+.close-fabric-btn:hover, .close-about-btn:hover, .close-review-modal-btn:hover, .close-modal-btn:hover, .close-buy-btn:hover { background: #ff3b30; color: #000; }
 
 .fabric-title { font-size: 20px; font-weight: bold; color: #ffffff; margin-bottom: 8px; }
 .fabric-subtitle { font-size: 13px; color: #8a929a; margin-bottom: 25px; }
@@ -125,6 +125,60 @@ body {
 .feature-item { display: flex; gap: 15px; align-items: flex-start; background: #11141a; padding: 15px; border: 1px solid #1a212d; }
 .feature-item h4 { font-size: 14px; color: #ffffff; margin-bottom: 5px; }
 .feature-item p { font-size: 12px; color: #aaaaaa; line-height: 1.5; }
+
+/* New How To Buy Modal Formatting */
+.buy-modal-content {
+    text-align: right !important;
+    direction: rtl !important;
+}
+.buy-title {
+    font-size: 22px;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 25px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: 12px;
+}
+.buy-steps-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.step-item {
+    display: flex;
+    gap: 15px;
+    align-items: flex-start;
+    background: #11141a;
+    padding: 15px;
+    border: 1px solid #1a212d;
+}
+.step-icon {
+    font-size: 22px;
+    background: #000000;
+    border: 1px solid #222222;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    height: 44px;
+    border-radius: 4px;
+}
+.step-item h4 {
+    font-size: 15px;
+    font-weight: 700;
+    color: #ff3b30;
+    margin-bottom: 5px;
+}
+.step-item p {
+    font-size: 13px;
+    color: #b0b5bc;
+    line-height: 1.6;
+}
+.close-buy-btn {
+    right: auto !important;
+    left: 15px !important;
+}
 
 /* About Us Modal */
 .about-title { font-family: 'Impact', sans-serif; font-size: 24px; color: #ff3b30; letter-spacing: 2px; text-align: center; margin-bottom: 20px; border-bottom: 1px solid rgba(255, 59, 48, 0.2); padding-bottom: 10px; }
@@ -152,7 +206,7 @@ body {
 
 .products-grid { 
     display: grid !important; 
-    grid-template-columns: repeat(3, 1fr) !important; /* ثابتة 3 في الصف للشاشات الكبيرة */
+    grid-template-columns: repeat(3, 1fr) !important; 
     gap: 20px; 
     max-width: 1200px; 
     margin: 0 auto; 
@@ -294,7 +348,7 @@ body {
 .size-guide-table th { background: #111116; color: #fff; }
 
 .modal-buy-now-btn { width: 100% !important; background: #ffffff !important; color: #000000 !important; border: none !important; padding: 13px !important; font-weight: bold !important; font-size: 13px !important; text-transform: uppercase !important; margin-bottom: 8px; cursor: pointer; }
-.modal-add-to-cart-btn { width: 100% !important; background: transparent !important; color: #ffffff !important; border: 1px solid #333 !important; padding: 13px !important; font-weight: bold !size: 13px !important; text-transform: uppercase !important; cursor: pointer; }
+.modal-add-to-cart-btn { width: 100% !important; background: transparent !important; color: #ffffff !important; border: 1px solid #333 !important; padding: 13px !important; font-weight: bold !important; font-size: 13px !important; text-transform: uppercase !important; cursor: pointer; }
 .modal-add-to-cart-btn:hover { border-color: #fff; }
 
 /* Shopping Cart Controls */
@@ -326,29 +380,26 @@ body {
 .cancel-btn { flex: 1; background: #1c1c1c; color: #fff; border: none; padding: 13px; cursor: pointer; font-size: 13px; }
 
 /* ========================================================
-   Responsive Media Queries (تعديل الـ 3 منتجات القاتل)
+   Responsive Media Queries
    ======================================================== */
 
-/* الشاشات المتوسطة وشاشات اللاب توب والتابلت العريض (بتفضل 3 منتجات) */
 @media (max-width: 1024px) {
     .products-grid { 
-        grid-template-columns: repeat(3, 1fr) !important; /* مجبر يفضل 3 هنا كمان */
+        grid-template-columns: repeat(3, 1fr) !important; 
         gap: 15px; 
     } 
     .product-img-box { height: 320px; }
 }
 
-/* شاشات الـ iPad الصغير والتابلت العمودي */
 @media (max-width: 768px) {
     .hero-section { background-image: url('bg.jpg'); }
     .products-grid { 
-        grid-template-columns: repeat(3, 1fr) !important; /* بيفضل 3 عشان طلبك */
+        grid-template-columns: repeat(3, 1fr) !important; 
         gap: 10px; 
     } 
     .product-img-box { height: 240px; }
 }
 
-/* الموبايلات فقط (هنا بيتحول لـ 2 عشان مستحيل شاشة الموبايل تشيل 3 جمب بعض بدون ما يبوظوا) */
 @media (max-width: 480px) {
     .navbar { padding: 0 15px !important; height: 60px !important; }
     .nav-brand-text { font-size: 17px !important; letter-spacing: 2px; }
@@ -367,4 +418,13 @@ body {
     .floating-cart { width: 46px !important; height: 46px !important; }
     
     .mavin-footer { padding: 40px 15px 40px 15px; }
+    
+    /* ضبط اتجاه وسهم الإغلاق للنافذة الجديدة في شاشات الموبايل الضيقة */
+    .close-buy-btn {
+        left: 10px !important;
+        top: 10px !important;
+    }
+    .buy-modal-content {
+        padding: 30px 15px !important;
+    }
 }
