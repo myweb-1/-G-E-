@@ -58,6 +58,29 @@
         </div>
     </div>
 
+    <div class="buy-modal-overlay" id="buyModal" onclick="closeBuyModalOnOutsideClick(event)">
+        <div class="buy-modal-content">
+            <button class="close-buy-btn" onclick="closeBuyModal()">✕</button>
+            <h3 class="buy-title">⚡ طريقة الشراء والاستلام</h3>
+            <div class="buy-steps-content">
+                <div class="step-item">
+                    <span class="step-icon">📞</span>
+                    <div>
+                        <h4>أولاً: تأكيد الطلب</h4>
+                        <p>بعد إتمام طلبك، سيقوم أحد ممثلي خدمة العملاء بالتواصل معك هاتفياً أو عبر الواتساب لتأكيد البيانات والمقاس المختار.</p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <span class="step-icon">🚚</span>
+                    <div>
+                        <h4>ثانياً: التوصيل والشحن</h4>
+                        <p>يتم تجهيز طلبك بعناية وشحنه ليصلك حتى باب البيت في خلال <strong>من 3 إلى 7 أيام عمل</strong> كحد أقصى.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="fabric-modal-overlay" id="fabricModal" onclick="closeFabricModalOnOutsideClick(event)">
         <div class="fabric-modal-content">
             <button class="close-fabric-btn" onclick="closeFabricModal()">✕</button>
@@ -252,6 +275,7 @@
             <div class="footer-nav-menu">
                 <a href="https://wa.me/201275859172?text=I%20have%20a%20complaint%20or%20inquiry%20regarding%20%CE%9B%20%D0%98%20G%20E%20%D0%Я" target="_blank">Help Center</a>
                 <a href="#" onclick="openReviewModalFromFooter(event)">Submit Review</a>
+                <a href="#" onclick="openBuyModal(event)">How to Buy</a>
                 <a href="#" onclick="openFabricModal(event)">Fabric Info</a>
                 <a href="#" onclick="openAboutModal(event)">About Us</a>
             </div>
@@ -425,7 +449,6 @@
             loadSavedReviews();
         });
 
-        // كود تشغيل الصوت المخفي بذكاء لتخطي حظر المتصفحات التلقائي
         function startHiddenAudio() {
             const audio = document.getElementById('bgAudio');
             audio.play().then(() => {
@@ -442,6 +465,20 @@
             document.getElementById('menuSidebar').classList.toggle('active');
         }
 
+        // دوال النافذة الجديدة لطريقة الشراء
+        function openBuyModal(e) {
+            e.preventDefault();
+            document.getElementById('buyModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeBuyModal() {
+            document.getElementById('buyModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        function closeBuyModalOnOutsideClick(e) {
+            if(e.target.id === 'buyModal') closeBuyModal();
+        }
+
         function openFabricModal(e) {
             e.preventDefault();
             const sidebar = document.getElementById('menuSidebar');
@@ -450,7 +487,6 @@
             document.body.style.overflow = 'hidden';
         }
 
-        // باقي دوال الجافاسكريبت للتحكم بالمتجر والمودالز
         function closeFabricModal() { document.getElementById('fabricModal').classList.remove('active'); document.body.style.overflow = ''; }
         function closeFabricModalOnOutsideClick(e) { if(e.target.id === 'fabricModal') closeFabricModal(); }
         function openAboutModal(e) { e.preventDefault(); const sidebar = document.getElementById('menuSidebar'); if (sidebar.classList.contains('active')) toggleMenu(); document.getElementById('aboutModal').classList.add('active'); document.body.style.overflow = 'hidden'; }
@@ -558,7 +594,7 @@
             if (selectedRating === 0) { alert("Please select your rating star count!"); return; }
             if (!comment) { alert("Please write your review comment!"); return; }
             btn.innerText = "⚡ Transmitting to Abyss..."; btn.disabled = true;
-            const grid = document.getElementById('reviewsShowcaseGrid'); const starsStr = '★'.repeat(selectedRating) + '☆'.repeat(5 - selectedRating);
+            const grid = document.getElementById('reviewsShowcaseGrid'); const starsStr = '★'.repeat(selectedRating) + '::video-toggle-selection::'.repeat(5 - selectedRating);
             const card = document.createElement('div'); card.className = 'showcase-card animate-review';
             card.innerHTML = `<div class="showcase-stars">${starsStr}</div><p class="showcase-comment">${comment}</p><span class="showcase-author">— ${name}</span>`;
             grid.insertBefore(card, grid.firstChild);
