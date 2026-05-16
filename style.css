@@ -146,13 +146,13 @@ body {
 .marquee-content { display: inline-block; padding-left: 100%; animation: marquee 15s linear infinite; }
 @keyframes marquee { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
 
-/* Grid Collection - FIXED FOR MOBILE & DESKTOP */
+/* Grid Collection - RESPONSIVE MULTI-COLUMN DESIGN */
 .collection-section { padding: 40px 15px; background: #000000; text-align: center; }
 .collection-title { color: #ffffff; font-size: 24px; letter-spacing: 3px; margin-bottom: 30px; font-weight: 900; }
 
 .products-grid { 
     display: grid !important; 
-    grid-template-columns: repeat(4, 1fr) !important; /* 4 أعمدة على ديسكتوب */
+    grid-template-columns: repeat(4, 1fr) !important; 
     gap: 15px; 
     max-width: 1200px; 
     margin: 0 auto; 
@@ -180,59 +180,69 @@ body {
 .showcase-comment { font-size: 13px; color: #cccccc; line-height: 1.6; margin-bottom: 15px; }
 .showcase-author { font-size: 11px; color: #8a929a; font-weight: bold; }
 
-/* Mavin Style Minimalist Footer - FIXED BLUE LINKS */
+/* Mavin Style Minimalist Footer - UPDATED DEDICATED SOCIAL BAR */
 .mavin-footer {
     background-color: #000000;
     border-top: 1px solid #1c1c1c;
-    padding: 40px 20px 60px 20px;
+    padding: 40px 20px 40px 20px;
     width: 100%;
     position: relative;
 }
+
 .mavin-footer-container {
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 30px; 
 }
+
 .footer-nav-menu {
     display: flex;
     flex-direction: column;
     gap: 16px;
     text-align: left;
 }
+
 .footer-nav-menu a {
-    color: #ffffff !important; /* لمنع اللون الأزرق التلقائي */
+    color: #ffffff !important;
     text-decoration: none;
     font-size: 15px;
     font-weight: 400;
     transition: color 0.2s ease;
 }
+
 .footer-nav-menu a:hover {
     color: #8a8a8a !important;
 }
-.footer-bottom-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-top: 1px solid #121212;
-    padding-top: 25px;
-}
-.footer-socials {
+
+/* Dedicated Row for Socials (Insta & WhatsApp) */
+.footer-socials-row {
     display: flex;
     align-items: center;
-    gap: 10px;
-    font-size: 13px;
+    justify-content: flex-start;
+    gap: 12px;
+    font-size: 14px;
     color: #555555;
+    padding-top: 10px;
 }
-.footer-socials a {
-    color: #8a8a8a !important;
+
+.footer-socials-row a {
+    color: #8a8a8a !important; 
     text-decoration: none;
     transition: color 0.2s ease;
 }
-.footer-socials a:hover {
-    color: #ffffff !important;
+
+.footer-socials-row a:hover {
+    color: #ffffff !important; 
 }
+
+.footer-copyright-row {
+    border-top: 1px solid #121212;
+    padding-top: 20px;
+    text-align: left;
+}
+
 .footer-copyright {
     font-size: 12px;
     color: #555555;
@@ -255,6 +265,7 @@ body {
     font-size: 12px;
     transition: background 0.2s, color 0.2s;
 }
+
 .scroll-top-btn:hover {
     background: #ffffff;
     color: #000000;
@@ -317,13 +328,13 @@ body {
 
 /* Responsive Media Queries - FIXED TABLET & MOBILE VIEW */
 @media (max-width: 992px) {
-    .products-grid { grid-template-columns: repeat(3, 1fr) !important; } /* 3 منتجات للشاشات المتوسطة */
+    .products-grid { grid-template-columns: repeat(3, 1fr) !important; } 
     .product-img-box { height: 280px; }
 }
 
 @media (max-width: 768px) {
     .hero-section { background-image: url('bg.jpg'); }
-    .products-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 10px; } /* منتجين جنب بعض للموبايل الكبير */
+    .products-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 10px; } 
     .product-img-box { height: 240px; }
 }
 
@@ -332,16 +343,23 @@ body {
     .nav-brand-text { font-size: 17px !important; letter-spacing: 2px; }
     .hero-section { background-image: url('bg-mobile.jpg'); }
     
-    /* عرض منتجين احترافيين متناسقين تماماً بدلاً من الانكماش لـ 3 */
+    /* Perfect Mobile Grid (2 Items per row) */
     .products-grid { 
         grid-template-columns: repeat(2, 1fr) !important; 
         gap: 8px; 
     }
-    .product-img-box { height: 180px; } /* طول مثالي ليناسب العرض الجديد */
+    .product-img-box { height: 180px; } 
     .product-card-title { font-size: 11px; font-weight: bold; }
     .product-price { font-size: 12px; }
     .product-price span { font-size: 9px; }
     
     .floating-controls-container { right: 12px !important; }
     .floating-cart { width: 46px !important; height: 46px !important; }
+    
+    .mavin-footer {
+        padding: 40px 15px 40px 15px;
+    }
+    .footer-socials-row {
+        font-size: 13px;
+    }
 }
