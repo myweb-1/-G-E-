@@ -306,11 +306,10 @@
             setModalImage(modalImagesArray[currentImageIndex], currentImageIndex);
         }
 
-        // 1. ميزة شراء الآن (تأخذ هذا المنتج تحديداً وتفتح استمارة البيانات مباشرة كأوردر فوري وسريع)
+        // ميزة "شراء الآن" من داخل المودال (شحن فوري لهذا المنتج المختار)
         function buyItNowFromModal() {
             const selectedSize = document.querySelector('input[name="modal-size"]:checked').value;
             
-            // تفريغ السلة القديمة ووضع هذا المنتج الفردي لضمان إتمام سريع
             cart = [{ 
                 id: currentModalProductId, 
                 name: currentModalProductName, 
@@ -322,12 +321,11 @@
             updateCartUI();
             closeProductModal();
             
-            // فتح الاستمارة فوراً
             document.getElementById('finalTotalDisplay').value = `${currentModalProductPrice} EGP`;
             document.getElementById('checkoutOverlay').classList.add('active');
         }
 
-        // 2. ميزة إضافة إلى السلة التقليدية
+        // ميزة إضافة المنتج إلى السلة والاحتفاظ به لإكمال التصفح
         function addFromModalToCart() {
             const selectedSize = document.querySelector('input[name="modal-size"]:checked').value;
             const existingItem = cart.find(item => item.id === currentModalProductId && item.size === selectedSize);
