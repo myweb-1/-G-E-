@@ -182,12 +182,12 @@ body {
 .product-price span { font-size: 11px; color: #888; text-decoration: line-through; }
 
 /* ==========================================================================
-   تنسيق الـ Footer الفخم الجديد في نهاية الموقع
+   تنسيق الـ Footer المطور بالخط الهجومي والمخيف والشعارات الحصرية
    ========================================================================== */
 .site-footer {
-    background-color: #0b0c10;
-    border-top: 1px solid #1f2833;
-    padding: 30px 20px;
+    background-color: #050507; /* درجة أسود أعمق وأفخم */
+    border-top: 1px solid #11161d;
+    padding: 40px 20px;
     text-align: center;
     margin-top: 50px;
     width: 100%;
@@ -199,30 +199,26 @@ body {
     align-items: center;
     gap: 30px;
     max-width: 800px;
-    margin: 0 auto 20px auto;
+    margin: 0 auto 30px auto;
     flex-wrap: wrap;
 }
 
 .footer-item {
     display: flex;
     align-items: center;
-    gap: 10px;
-    font-size: 15px;
-    font-weight: 600;
-    color: #cccccc;
-}
-
-.footer-item span {
+    gap: 12px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #8a929a;
     letter-spacing: 1px;
 }
 
 .footer-divider {
     width: 1px;
-    height: 25px;
+    height: 20px;
     background-color: #1f2833;
 }
 
-/* الأيقونات التفاعلية السلسة */
 .social-icon {
     width: 24px;
     height: 24px;
@@ -233,18 +229,41 @@ body {
 }
 
 .social-icon:hover {
-    transform: scale(1.15);
+    transform: scale(1.2) rotate(5deg);
 }
 
 .whatsapp-color:hover {
-    fill: #25D366; /* لون الواتساب المميز عند التمرير */
+    fill: #25D366;
 }
 
-.footer-bottom {
-    font-size: 11px;
-    color: #555555;
-    letter-spacing: 2px;
-    text-transform: uppercase;
+/* ستايل الخط المخيف والهجومي المخصص للـ Quotes الحصرية فقط */
+.footer-rage-quotes {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 15px;
+    padding: 0 10px;
+}
+
+/* الجملة الأساسية العنيفة الصارمة */
+.quote-primary {
+    font-family: 'Impact', 'Arial Black', sans-serif !important;
+    font-size: 20px !important;
+    font-weight: 900 !important;
+    color: #ffffff !important;
+    letter-spacing: 2px !important;
+    text-transform: uppercase !important;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.15);
+}
+
+/* الجملة الثانوية العميقة */
+.quote-secondary {
+    font-family: 'Courier New', Courier, monospace !important;
+    font-size: 13px !important;
+    font-weight: bold !important;
+    color: #ff3b30 !important; /* لمحة حمراء دموية للغضب والألم */
+    letter-spacing: 3px !important;
+    text-transform: uppercase !important;
 }
 
 /* ==========================================================================
@@ -556,7 +575,9 @@ body {
     .hero-section { background-image: url('bg.jpg'); }
     .product-modal-content { max-height: 90vh; }
     .footer-divider { display: none; }
-    .footer-container { flex-direction: column; gap: 15px; }
+    .footer-container { flex-direction: column; gap: 15px; margin-bottom: 20px; }
+    .quote-primary { font-size: 17px !important; }
+    .quote-secondary { font-size: 11px !important; }
 }
 
 @media (max-width: 480px) {
