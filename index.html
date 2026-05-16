@@ -164,8 +164,10 @@
                 </a>
             </div>
         </div>
-        <div class="footer-bottom">
-            &copy; 2026 Λ И G E Я. All Rights Reserved.
+        
+        <div class="footer-rage-quotes">
+            <p class="quote-primary">“No mercy. No limits. Just rage and iron.”</p>
+            <p class="quote-secondary">“Built from anger… fueled by pain.”</p>
         </div>
     </footer>
 
@@ -331,7 +333,6 @@
             setModalImage(modalImagesArray[currentImageIndex], currentImageIndex);
         }
 
-        // ميزة "شراء الآن" من داخل المودال
         function buyItNowFromModal() {
             const selectedSize = document.querySelector('input[name="modal-size"]:checked').value;
             
@@ -350,7 +351,6 @@
             document.getElementById('checkoutOverlay').classList.add('active');
         }
 
-        // ميزة إضافة المنتج إلى السلة
         function addFromModalToCart() {
             const selectedSize = document.querySelector('input[name="modal-size"]:checked').value;
             const existingItem = cart.find(item => item.id === currentModalProductId && item.size === selectedSize);
