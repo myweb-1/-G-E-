@@ -146,13 +146,13 @@ body {
 .marquee-content { display: inline-block; padding-left: 100%; animation: marquee 15s linear infinite; }
 @keyframes marquee { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
 
-/* Grid Collection (3 columns layout setup) */
+/* Grid Collection (3 columns layout as requested) */
 .collection-section { padding: 40px 15px; background: #000000; text-align: center; }
 .collection-title { color: #ffffff; font-size: 24px; letter-spacing: 3px; margin-bottom: 30px; font-weight: 900; }
 
 .products-grid { 
     display: grid !important; 
-    grid-template-columns: repeat(3, 1fr) !important; /* الأساسي 3 في الصف للشاشات الكبيرة */
+    grid-template-columns: repeat(3, 1fr) !important; 
     gap: 20px; 
     max-width: 1200px; 
     margin: 0 auto; 
@@ -325,42 +325,31 @@ body {
 .submit-order-btn { flex: 2; background: #ffffff; color: #000000; font-weight: bold; border: none; padding: 13px; cursor: pointer; font-size: 13px; }
 .cancel-btn { flex: 1; background: #1c1c1c; color: #fff; border: none; padding: 13px; cursor: pointer; font-size: 13px; }
 
-/* ========================================================
-   Responsive Media Queries (تثبيت الـ 3 منتجات في كل مكان)
-   ======================================================== */
-
-@media (max-width: 1024px) {
-    .products-grid { 
-        grid-template-columns: repeat(3, 1fr) !important; 
-        gap: 15px; 
-    } 
-    .product-img-box { height: 320px; }
+/* Responsive Media Queries */
+@media (max-width: 992px) {
+    .products-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 15px; } 
+    .product-img-box { height: 300px; }
 }
 
 @media (max-width: 768px) {
     .hero-section { background-image: url('bg.jpg'); }
-    .products-grid { 
-        grid-template-columns: repeat(3, 1fr) !important; 
-        gap: 10px; 
-    } 
+    .products-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 10px; } 
     .product-img-box { height: 240px; }
 }
 
-/* تعديل الموبايل الحاسم ليعرض 3 منتجات بناءً على طلبك */
 @media (max-width: 480px) {
     .navbar { padding: 0 15px !important; height: 60px !important; }
     .nav-brand-text { font-size: 17px !important; letter-spacing: 2px; }
     .hero-section { background-image: url('bg-mobile.jpg'); }
     
     .products-grid { 
-        grid-template-columns: repeat(3, 1fr) !important; /* بقت 3 منتجات رسمياً على الموبايل */
-        gap: 5px; /* صغرنا المسافة شوية عشان المساحة */
+        grid-template-columns: repeat(2, 1fr) !important; 
+        gap: 8px; 
     }
-    .product-img-box { height: 130px; } /* صغرنا ارتفاع الصورة عشان تطلع متناسقة ومربعة */
-    
-    .product-card-title { font-size: 9px; font-weight: bold; letter-spacing: 0px; } /* صغرنا الخطوط */
-    .product-price { font-size: 10px; flex-direction: column; gap: 1px; } /* السعر والخصم تحت بعض عشان الشاشة */
-    .product-price span { font-size: 8px; }
+    .product-img-box { height: 180px; } 
+    .product-card-title { font-size: 11px; font-weight: bold; }
+    .product-price { font-size: 12px; }
+    .product-price span { font-size: 9px; }
     
     .floating-controls-container { right: 12px !important; }
     .floating-cart { width: 46px !important; height: 46px !important; }
