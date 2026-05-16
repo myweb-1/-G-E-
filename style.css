@@ -1,3 +1,4 @@
+/* إعادة تعيين الهوامش */
 * {
     margin: 0;
     padding: 0;
@@ -11,11 +12,12 @@ body {
     overflow-x: hidden;
 }
 
+/* البار العلوي - مخصص لوضع اللوجو الصغير بالأعلى منفصلاً */
 .navbar {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px;
+    padding: 15px;
     background: transparent;
     position: absolute;
     top: 0;
@@ -23,11 +25,13 @@ body {
     z-index: 10;
 }
 
+/* تصغير حجم اللوجو ليرجع طبيعي كما كان في البداية */
 .nav-logo img {
-    height: 50px;
+    height: 35px; /* تصغير الارتفاع ليتطابق مع طلبك */
     object-fit: contain;
 }
 
+/* السلايد الأولى - تقرأ صور الخلفية الذكية */
 .hero-section {
     height: 100vh;
     width: 100%;
@@ -41,6 +45,7 @@ body {
     background-repeat: no-repeat;
 }
 
+/* الشريط المتحرك */
 .marquee-bar {
     background: #ffffff;
     color: #000000;
@@ -63,6 +68,7 @@ body {
     100% { transform: translate3d(-100%, 0, 0); }
 }
 
+/* قسم المنتجات */
 .collection-section {
     padding: 60px 20px;
     background: #000000;
@@ -178,11 +184,11 @@ body {
     color: #ffffff;
 }
 
-/* تصميم أيقونة الواتساب العائمة أسفل اليمين */
+/* نظام أيقونة الواتساب العائمة أسفل اليمين */
 .floating-whatsapp {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
+    bottom: 25px;
+    right: 25px;
     background-color: #25d366;
     width: 60px;
     height: 60px;
@@ -190,8 +196,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
-    z-index: 100;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.4);
+    z-index: 999;
     transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
@@ -201,11 +207,11 @@ body {
 }
 
 .whatsapp-icon {
-    width: 35px;
-    height: 35px;
+    width: 32px;
+    height: 32px;
 }
 
-/* التجاوب مع الأجهزة */
+/* شاشات التابلت والموبايل وتأمين ظهور الصور بالشكل الصحيح */
 @media (max-width: 768px) {
     .hero-section {
         background-image: url('bg.jpg');
@@ -217,6 +223,9 @@ body {
         height: 100vh;
         background-image: url('bg-mobile.jpg');
     }
+    .nav-logo img {
+        height: 30px; /* تصغير إضافي متناسق مع الموبايل */
+    }
     .product-img-box {
         height: 380px;
     }
@@ -224,13 +233,13 @@ body {
         font-size: 22px;
     }
     .floating-whatsapp {
-        bottom: 15px;
-        right: 15px;
+        bottom: 20px;
+        right: 20px;
         width: 55px;
         height: 55px;
     }
     .whatsapp-icon {
-        width: 30px;
-        height: 30px;
+        width: 28px;
+        height: 28px;
     }
 }
