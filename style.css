@@ -1,4 +1,4 @@
-/* إعادة تعيين الهوامش */
+/* إعادة تعيين الهوامش العامة */
 * {
     margin: 0;
     padding: 0;
@@ -12,12 +12,12 @@ body {
     overflow-x: hidden;
 }
 
-/* البار العلوي - مخصص لوضع اللوجو الصغير بالأعلى منفصلاً */
+/* البار العلوي الشفاف */
 .navbar {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 15px;
+    padding: 20px;
     background: transparent;
     position: absolute;
     top: 0;
@@ -25,13 +25,17 @@ body {
     z-index: 10;
 }
 
-/* تصغير حجم اللوجو ليرجع طبيعي كما كان في البداية */
-.nav-logo img {
-    height: 35px; /* تصغير الارتفاع ليتطابق مع طلبك */
-    object-fit: contain;
+/* تنسيق كلمة البراند بالأعلى */
+.nav-brand-text {
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    text-align: center;
 }
 
-/* السلايد الأولى - تقرأ صور الخلفية الذكية */
+/* الواجهة الرئيسية مع الخلفيات الذكية */
 .hero-section {
     height: 100vh;
     width: 100%;
@@ -68,7 +72,7 @@ body {
     100% { transform: translate3d(-100%, 0, 0); }
 }
 
-/* قسم المنتجات */
+/* قسم المنتجات العام */
 .collection-section {
     padding: 60px 20px;
     background: #000000;
@@ -84,11 +88,12 @@ body {
     text-transform: uppercase;
 }
 
+/* شبكة المنتجات - الافتراضي 3 منتجات بجانب بعض للكمبيوتر */
 .products-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-    max-width: 900px;
+    grid-template-columns: repeat(3, 1fr); /* 3 أعمدة صريحة بجانب بعض */
+    gap: 25px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
@@ -105,7 +110,7 @@ body {
 
 .product-img-box {
     width: 100%;
-    height: 400px;
+    height: 420px;
     background: #15191d;
     overflow: hidden;
     position: relative;
@@ -139,29 +144,39 @@ body {
     text-align: right;
 }
 
-.product-name {
-    color: #ffffff;
-    font-size: 18px;
-    font-weight: 700;
-    margin-bottom: 8px;
-    letter-spacing: 1px;
-}
-
+/* تنسيق السعر */
 .product-price {
     color: #ffffff;
-    font-size: 20px;
+    font-size: 19px;
     font-weight: 900;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
     display: flex;
     gap: 10px;
     align-items: center;
 }
 
 .product-price span {
-    font-size: 14px;
+    font-size: 13px;
     color: #888;
     text-decoration: line-through;
     font-weight: 400;
+}
+
+/* تنسيق وعرض المقاسات */
+.product-sizes {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.product-sizes span {
+    font-size: 11px;
+    font-weight: bold;
+    color: #888888;
+    border: 1px solid #333333;
+    padding: 3px 8px;
+    background: #000000;
+    text-transform: uppercase;
 }
 
 .whatsapp-btn {
@@ -184,62 +199,74 @@ body {
     color: #ffffff;
 }
 
-/* نظام أيقونة الواتساب العائمة أسفل اليمين */
+/* الأيقونة العائمة السوداء الفخمة المرتفعة عن الحواف */
 .floating-whatsapp {
-    position: fixed;
-    bottom: 25px;
-    right: 25px;
-    background-color: #25d366;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.4);
-    z-index: 999;
-    transition: transform 0.3s ease, background-color 0.3s ease;
+    position: fixed !important;
+    bottom: 40px !important; 
+    right: 25px !important;
+    width: 55px !important;
+    height: 55px !important;
+    background-color: #000000 !important; 
+    border: 2px solid #ffffff !important; 
+    border-radius: 50% !important;
+    z-index: 9999 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.2) !important; 
+    transition: transform 0.3s ease, background-color 0.3s ease !important;
+}
+
+.whatsapp-black-svg {
+    width: 30px !important;
+    height: 30px !important;
+    fill: #ffffff !important; 
+    display: block !important;
 }
 
 .floating-whatsapp:hover {
-    transform: scale(1.1);
-    background-color: #20ba5a;
+    transform: scale(1.1) !important;
+    background-color: #111111 !important;
 }
 
-.whatsapp-icon {
-    width: 32px;
-    height: 32px;
-}
-
-/* شاشات التابلت والموبايل وتأمين ظهور الصور بالشكل الصحيح */
-@media (max-width: 768px) {
+/* التجاوب مع شاشات التابلت */
+@media (max-width: 992px) {
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr); /* يعرض 2 منتجات للتابلت */
+    }
     .hero-section {
         background-image: url('bg.jpg');
     }
 }
 
-@media (max-width: 480px) {
+/* التجاوب التام والمثالي لشاشات الموبايل */
+@media (max-width: 576px) {
+    .products-grid {
+        grid-template-columns: repeat(1, 1fr); /* منتج واحد واضح وكبير في الموبايل عشان الجودة والشكل */
+        gap: 30px;
+    }
     .hero-section {
         height: 100vh;
         background-image: url('bg-mobile.jpg');
     }
-    .nav-logo img {
-        height: 30px; /* تصغير إضافي متناسق مع الموبايل */
+    .nav-brand-text {
+        font-size: 20px;
+        letter-spacing: 3px;
     }
     .product-img-box {
-        height: 380px;
+        height: 400px;
     }
     .collection-title {
         font-size: 22px;
     }
     .floating-whatsapp {
-        bottom: 20px;
-        right: 20px;
-        width: 55px;
-        height: 55px;
+        bottom: 35px !important; 
+        right: 20px !important;
+        width: 50px !important;
+        height: 50px !important;
     }
-    .whatsapp-icon {
-        width: 28px;
-        height: 28px;
+    .whatsapp-black-svg {
+        width: 26px !important;
+        height: 26px !important;
     }
 }
