@@ -25,7 +25,6 @@ body {
     z-index: 10;
 }
 
-/* تنسيق كلمة البراند بالأعلى */
 .nav-brand-text {
     color: #ffffff;
     font-size: 24px;
@@ -35,7 +34,7 @@ body {
     text-align: center;
 }
 
-/* الواجهة الرئيسية مع الخلفيات الذكية */
+/* الواجهة الرئيسية */
 .hero-section {
     height: 100vh;
     width: 100%;
@@ -74,7 +73,7 @@ body {
 
 /* قسم المنتجات العام */
 .collection-section {
-    padding: 60px 20px;
+    padding: 40px 10px;
     background: #000000;
     text-align: center;
 }
@@ -83,16 +82,16 @@ body {
     color: #ffffff;
     font-size: 26px;
     letter-spacing: 3px;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
     font-weight: 900;
     text-transform: uppercase;
 }
 
-/* شبكة المنتجات - الافتراضي 3 منتجات بجانب بعض للكمبيوتر */
+/* 3 أعمدة دايماً جنب بعض في الكمبيوتر */
 .products-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 أعمدة صريحة بجانب بعض */
-    gap: 25px;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 12px;
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -110,7 +109,7 @@ body {
 
 .product-img-box {
     width: 100%;
-    height: 420px;
+    height: 320px;
     background: #15191d;
     overflow: hidden;
     position: relative;
@@ -140,111 +139,361 @@ body {
 }
 
 .product-details {
-    padding: 20px;
+    padding: 12px 8px;
     text-align: right;
 }
 
-/* تنسيق السعر */
 .product-price {
     color: #ffffff;
-    font-size: 19px;
+    font-size: 16px;
     font-weight: 900;
     margin-bottom: 12px;
     display: flex;
-    gap: 10px;
+    flex-wrap: wrap;
+    gap: 5px;
     align-items: center;
 }
 
 .product-price span {
-    font-size: 13px;
+    font-size: 11px;
     color: #888;
     text-decoration: line-through;
     font-weight: 400;
 }
 
-/* تنسيق وعرض المقاسات */
-.product-sizes {
+/* تنسيق اختيار المقاسات التفاعلي الشيك بالضغط الـ Radio */
+.product-sizes-select {
     display: flex;
-    gap: 8px;
-    margin-bottom: 15px;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 12px;
 }
 
-.product-sizes span {
+.product-sizes-select label {
+    cursor: pointer;
+}
+
+.product-sizes-select input[type="radio"] {
+    display: none; /* إخفاء الدائرة التقليدية المقرفة */
+}
+
+.product-sizes-select span {
     font-size: 11px;
     font-weight: bold;
     color: #888888;
     border: 1px solid #333333;
-    padding: 3px 8px;
+    padding: 4px 8px;
     background: #000000;
     text-transform: uppercase;
+    display: inline-block;
+    transition: all 0.2s ease;
 }
 
-.whatsapp-btn {
+/* تأثير تحول اللون والجمال للمقاس المختار حالياً */
+.product-sizes-select input[type="radio"]:checked + span {
+    color: #000000;
+    background: #ffffff;
+    border-color: #ffffff;
+}
+
+/* زر إضافة إلى السلة المطور */
+.add-to-cart-btn {
     display: block;
+    width: 100%;
     background: #ffffff;
     color: #000000;
     text-align: center;
-    padding: 12px;
-    text-decoration: none;
+    padding: 10px 5px;
     font-weight: 900;
-    font-size: 14px;
+    font-size: 12px;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
     transition: all 0.3s ease;
     border: 1px solid #ffffff;
+    cursor: pointer;
 }
 
-.whatsapp-btn:hover {
+.add-to-cart-btn:hover {
     background: transparent;
     color: #ffffff;
 }
 
-/* الأيقونة العائمة السوداء الفخمة المرتفعة عن الحواف */
-.floating-whatsapp {
-    position: fixed !important;
-    bottom: 40px !important; 
-    right: 25px !important;
-    width: 55px !important;
-    height: 55px !important;
-    background-color: #000000 !important; 
-    border: 2px solid #ffffff !important; 
-    border-radius: 50% !important;
-    z-index: 9999 !important;
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-    box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.2) !important; 
-    transition: transform 0.3s ease, background-color 0.3s ease !important;
+/* أيقونة السلة العائمة (أعلى اليمين لسهولة الاستخدام والتصفح السليم) */
+.floating-cart {
+    position: fixed;
+    top: 25px;
+    right: 25px;
+    width: 55px;
+    height: 55px;
+    background-color: #000000;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s ease;
 }
 
-.whatsapp-black-svg {
-    width: 30px !important;
-    height: 30px !important;
-    fill: #ffffff !important; 
-    display: block !important;
+.floating-cart:hover {
+    transform: scale(1.1);
 }
 
-.floating-whatsapp:hover {
-    transform: scale(1.1) !important;
-    background-color: #111111 !important;
+.cart-svg-icon {
+    width: 24px;
+    height: 24px;
+    fill: #ffffff;
 }
 
-/* التجاوب مع شاشات التابلت */
-@media (max-width: 992px) {
-    .products-grid {
-        grid-template-columns: repeat(2, 1fr); /* يعرض 2 منتجات للتابلت */
-    }
+/* عداد المنتجات الأحمر الصغير فوق الأيقونة */
+.cart-count {
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    background: #ff3b30;
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: bold;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* السلة الجانبية الشيت (تخرج من اليسار فجأة بنعومة) */
+.cart-sidebar {
+    position: fixed;
+    top: 0;
+    left: -350px; /* مخفية برة الشاشة يساراً */
+    width: 320px;
+    height: 100vh;
+    background: #0b0c10;
+    border-right: 1px solid #1f2833;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    transition: left 0.3s ease;
+    text-align: right;
+}
+
+.cart-sidebar.active {
+    left: 0; /* تظهر عل طول عند التفعيل */
+}
+
+.cart-header {
+    padding: 20px;
+    border-bottom: 1px solid #1f2833;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cart-header h3 {
+    font-size: 18px;
+    color: #ffffff;
+}
+
+.close-cart-btn {
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.cart-items {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+}
+
+.empty-msg {
+    text-align: center;
+    color: #666;
+    margin-top: 40px;
+}
+
+/* كارت المنتج الفردي المضاف بداخل السلة */
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #15191d;
+    padding: 12px;
+    border: 1px solid #1f2833;
+    margin-bottom: 12px;
+}
+
+.item-info h4 {
+    font-size: 13px;
+    margin-bottom: 4px;
+}
+
+.item-info p {
+    font-size: 11px;
+    color: #aaa;
+    margin-bottom: 4px;
+}
+
+.item-info span {
+    font-size: 13px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.remove-item-btn {
+    background: transparent;
+    border: none;
+    color: #ff3b30;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.cart-footer {
+    padding: 20px;
+    border-top: 1px solid #1f2833;
+    background: #000000;
+}
+
+.cart-total-box {
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.checkout-btn {
+    display: block;
+    width: 100%;
+    background: #ffffff;
+    color: #000000;
+    border: none;
+    padding: 12px;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    text-align: center;
+    transition: background 0.2s ease;
+}
+
+.checkout-btn:hover {
+    background: #dddddd;
+}
+
+/* شيت الأوفرلاي والنافذة المنبثقة لملء البيانات الشيك جداً */
+.checkout-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.85);
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.checkout-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.checkout-modal {
+    background: #0b0c10;
+    border: 1px solid #1f2833;
+    width: 90%;
+    max-width: 450px;
+    padding: 25px;
+    border-radius: 4px;
+    text-align: right;
+}
+
+.checkout-modal h3 {
+    margin-bottom: 20px;
+    font-size: 20px;
+    border-bottom: 1px solid #1f2833;
+    padding-bottom: 10px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 13px;
+    color: #aaa;
+    margin-bottom: 6px;
+}
+
+.form-group input, .form-group textarea {
+    width: 100%;
+    background: #15191d;
+    border: 1px solid #1f2833;
+    padding: 10px;
+    color: #ffffff;
+    font-size: 14px;
+    outline: none;
+    text-align: right;
+}
+
+.form-group input[readonly] {
+    background: #000000;
+    color: #25D366;
+    font-weight: bold;
+    border-color: #333;
+}
+
+.form-group textarea {
+    height: 70px;
+    resize: none;
+}
+
+.form-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.submit-order-btn {
+    flex: 2;
+    background: #25D366;
+    color: #ffffff;
+    border: none;
+    padding: 12px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.cancel-btn {
+    flex: 1;
+    background: #333;
+    color: #fff;
+    border: none;
+    padding: 12px;
+    cursor: pointer;
+}
+
+/* التجاوب مع شاشات الموبايل والتابلت للشبكة والمكونات */
+@media (max-width: 768px) {
     .hero-section {
         background-image: url('bg.jpg');
     }
+    .product-img-box {
+        height: 240px;
+    }
 }
 
-/* التجاوب التام والمثالي لشاشات الموبايل */
-@media (max-width: 576px) {
-    .products-grid {
-        grid-template-columns: repeat(1, 1fr); /* منتج واحد واضح وكبير في الموبايل عشان الجودة والشكل */
-        gap: 30px;
-    }
+@media (max-width: 480px) {
     .hero-section {
         height: 100vh;
         background-image: url('bg-mobile.jpg');
@@ -253,20 +502,29 @@ body {
         font-size: 20px;
         letter-spacing: 3px;
     }
-    .product-img-box {
-        height: 400px;
-    }
     .collection-title {
-        font-size: 22px;
+        font-size: 20px;
+        margin-bottom: 20px;
     }
-    .floating-whatsapp {
-        bottom: 35px !important; 
-        right: 20px !important;
-        width: 50px !important;
-        height: 50px !important;
+    .product-img-box {
+        height: 160px;
     }
-    .whatsapp-black-svg {
-        width: 26px !important;
-        height: 26px !important;
+    .product-price {
+        font-size: 11px;
+    }
+    .product-price span {
+        font-size: 8px;
+    }
+    .product-sizes-select span {
+        font-size: 8px;
+        padding: 2px 4px;
+    }
+    .add-to-cart-btn {
+        font-size: 10px;
+        padding: 8px 2px;
+    }
+    /* جعل السلة تأخذ الشاشة كلها تقريباً في الموبايل لتسهيل الرؤية والكتابة */
+    .cart-sidebar {
+        width: 290px;
     }
 }
