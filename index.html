@@ -402,6 +402,10 @@
         </div>
     </div>
 
+    <audio id="bgAudio" loop>
+        <source src="background-sound.mp3" type="audio/mpeg">
+    </audio>
+
     <script>
         let cart = [];
         const whatsappNumber = "201275859172"; 
@@ -421,6 +425,19 @@
             loadSavedReviews();
         });
 
+        // كود تشغيل الصوت المخفي بذكاء لتخطي حظر المتصفحات التلقائي
+        function startHiddenAudio() {
+            const audio = document.getElementById('bgAudio');
+            audio.play().then(() => {
+                document.removeEventListener('click', startHiddenAudio);
+                document.removeEventListener('touchstart', startHiddenAudio);
+            }).catch((error) => {
+                console.log("Audio play blocked, waiting for user click.", error);
+            });
+        }
+        document.addEventListener('click', startHiddenAudio);
+        document.addEventListener('touchstart', startHiddenAudio);
+
         function toggleMenu() {
             document.getElementById('menuSidebar').classList.toggle('active');
         }
@@ -433,82 +450,33 @@
             document.body.style.overflow = 'hidden';
         }
 
-        function closeFabricModal() {
-            document.getElementById('fabricModal').classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        function closeFabricModalOnOutsideClick(e) {
-            if(e.target.id === 'fabricModal') closeFabricModal();
-        }
-
-        function openAboutModal(e) {
-            e.preventDefault();
-            const sidebar = document.getElementById('menuSidebar');
-            if (sidebar.classList.contains('active')) toggleMenu();
-            document.getElementById('aboutModal').classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeAboutModal() {
-            document.getElementById('aboutModal').classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        function closeAboutModalOnOutsideClick(e) {
-            if(e.target.id === 'aboutModal') closeAboutModal();
-        }
-
-        function openReviewModalFromFooter(e) {
-            e.preventDefault();
-            document.getElementById('reviewOverlay').classList.add('active');
-            initStars();
-        }
-
-        function closeReviewModalOnOutsideClick(e) {
-            if(e.target.id === 'reviewOverlay') closeReviewAndReset();
-        }
-
-        function toggleCart() {
-            document.getElementById('cartSidebar').classList.toggle('active');
-        }
-
-        function scrollToTop() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
+        // باقي دوال الجافاسكريبت للتحكم بالمتجر والمودالز
+        function closeFabricModal() { document.getElementById('fabricModal').classList.remove('active'); document.body.style.overflow = ''; }
+        function closeFabricModalOnOutsideClick(e) { if(e.target.id === 'fabricModal') closeFabricModal(); }
+        function openAboutModal(e) { e.preventDefault(); const sidebar = document.getElementById('menuSidebar'); if (sidebar.classList.contains('active')) toggleMenu(); document.getElementById('aboutModal').classList.add('active'); document.body.style.overflow = 'hidden'; }
+        function closeAboutModal() { document.getElementById('aboutModal').classList.remove('active'); document.body.style.overflow = ''; }
+        function closeAboutModalOnOutsideClick(e) { if(e.target.id === 'aboutModal') closeAboutModal(); }
+        function openReviewModalFromFooter(e) { e.preventDefault(); document.getElementById('reviewOverlay').classList.add('active'); initStars(); }
+        function closeReviewModalOnOutsideClick(e) { if(e.target.id === 'reviewOverlay') closeReviewAndReset(); }
+        function toggleCart() { document.getElementById('cartSidebar').classList.toggle('active'); }
+        function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
 
         function openProductModal(id, name, price, frontImg, backImg) {
-            currentModalProductId = id;
-            currentModalProductName = name;
-            currentModalProductPrice = price;
-            modalImagesArray = [frontImg, backImg];
-            currentImageIndex = 0;
-
+            currentModalProductId = id; currentModalProductName = name; currentModalProductPrice = price;
+            modalImagesArray = [frontImg, backImg]; currentImageIndex = 0;
             document.getElementById('modalProductTitle').innerText = name;
             document.getElementById('modalProductPrice').innerHTML = `${price} EGP <span style="font-size:14px; color:#888; text-decoration:line-through; margin-left:8px;">550 EGP</span>`;
-            
-            document.getElementById('thumbFront').src = frontImg;
-            document.getElementById('thumbBack').src = backImg;
-            
+            document.getElementById('thumbFront').src = frontImg; document.getElementById('thumbBack').src = backImg;
             setModalImage(frontImg, 0);
-
             document.getElementById('productModal').classList.add('active');
             document.body.style.overflow = 'hidden'; 
         }
 
-        function closeProductModal() {
-            document.getElementById('productModal').classList.remove('active');
-            document.body.style.overflow = ''; 
-        }
-
-        function closeProductModalOnOutsideClick(e) {
-            if(e.target.id === 'productModal') closeProductModal();
-        }
-
+        function closeProductModal() { document.getElementById('productModal').classList.remove('active'); document.body.style.overflow = ''; }
+        function closeProductModalOnOutsideClick(e) { if(e.target.id === 'productModal') closeProductModal(); }
+        
         function setModalImage(src, index) {
-            currentImageIndex = index;
-            document.getElementById('modalMainImage').src = src;
-            
+            currentImageIndex = index; document.getElementById('modalMainImage').src = src;
             document.getElementById('thumbFront').classList.remove('active-thumb');
             document.getElementById('thumbBack').classList.remove('active-thumb');
             if(index === 0) document.getElementById('thumbFront').classList.add('active-thumb');
@@ -525,8 +493,7 @@
         function buyItNowFromModal() {
             const selectedSize = document.querySelector('input[name="modal-size"]:checked').value;
             cart = [{ id: currentModalProductId, name: currentModalProductName, price: currentModalProductPrice, size: selectedSize, qty: 1 }];
-            updateCartUI();
-            closeProductModal();
+            updateCartUI(); closeProductModal();
             document.getElementById('finalTotalDisplay').value = `${currentModalProductPrice} EGP`;
             document.getElementById('checkoutOverlay').classList.add('active');
         }
@@ -534,32 +501,17 @@
         function addFromModalToCart() {
             const selectedSize = document.querySelector('input[name="modal-size"]:checked').value;
             const existingItem = cart.find(item => item.id === currentModalProductId && item.size === selectedSize);
-
-            if (existingItem) {
-                existingItem.qty += 1;
-            } else {
-                cart.push({ id: currentModalProductId, name: currentModalProductName, price: currentModalProductPrice, size: selectedSize, qty: 1 });
-            }
-
+            if (existingItem) { existingItem.qty += 1; } else { cart.push({ id: currentModalProductId, name: currentModalProductName, price: currentModalProductPrice, size: selectedSize, qty: 1 }); }
             updateCartUI();
             const btn = document.getElementById('modalAddToCartBtn');
-            btn.innerText = "✓ Added To Cart";
-            btn.style.background = "#ffffff";
-            btn.style.color = "#000000";
-            
+            btn.innerText = "✓ Added To Cart"; btn.style.background = "#ffffff"; btn.style.color = "#000000";
             setTimeout(() => {
-                btn.innerText = "Add To Cart";
-                btn.style.background = "transparent";
-                btn.style.color = "#ffffff";
-                closeProductModal();
-                toggleCart(); 
+                btn.innerText = "Add To Cart"; btn.style.background = "transparent"; btn.style.color = "#ffffff";
+                closeProductModal(); toggleCart(); 
             }, 800);
         }
 
-        function removeFromCart(index) {
-            cart.splice(index, 1);
-            updateCartUI();
-        }
+        function removeFromCart(index) { cart.splice(index, 1); updateCartUI(); }
 
         function updateCartUI() {
             const cartItemsContainer = document.getElementById('cartItems');
@@ -567,87 +519,28 @@
             const cartTotalElement = document.getElementById('cartTotal');
             const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
             cartCountElement.innerText = totalQty;
-
-            if (cart.length === 0) {
-                cartItemsContainer.innerHTML = '<p class="empty-msg">Your cart is empty</p>';
-                cartTotalElement.innerText = '0 EGP';
-                return;
-            }
-
-            let html = '';
-            let totalCost = 0;
+            if (cart.length === 0) { cartItemsContainer.innerHTML = '<p class="empty-msg">Your cart is empty</p>'; cartTotalElement.innerText = '0 EGP'; return; }
+            let html = ''; let totalCost = 0;
             cart.forEach((item, index) => {
-                const itemTotal = item.price * item.qty;
-                totalCost += itemTotal;
-                html += `
-                    <div class="cart-item">
-                        <div class="item-info">
-                            <h4>${item.name}</h4>
-                            <p>Size: <strong>${item.size}</strong> | Qty: ${item.qty}</p>
-                            <span>${itemTotal} EGP</span>
-                        </div>
-                        <button class="remove-item-btn" onclick="removeFromCart(${index})">✕</button>
-                    </div>
-                `;
+                const itemTotal = item.price * item.qty; totalCost += itemTotal;
+                html += `<div class="cart-item"><div class="item-info"><h4>${item.name}</h4><p>Size: <strong>${item.size}</strong> | Qty: ${item.qty}</p><span>${itemTotal} EGP</span></div><button class="remove-item-btn" onclick="removeFromCart(${index})">✕</button></div>`;
             });
-            cartItemsContainer.innerHTML = html;
-            cartTotalElement.innerText = `${totalCost} EGP`;
+            cartItemsContainer.innerHTML = html; cartTotalElement.innerText = `${totalCost} EGP`;
         }
 
-        function openCheckoutForm() {
-            if (cart.length === 0) {
-                alert("Your cart is empty!");
-                return;
-            }
-            const totalCost = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
-            document.getElementById('finalTotalDisplay').value = `${totalCost} EGP`;
-            document.getElementById('checkoutOverlay').classList.add('active');
-            toggleCart(); 
-        }
-
-        function closeCheckoutForm() {
-            document.getElementById('checkoutOverlay').classList.remove('active');
-        }
+        function openCheckoutForm() { if (cart.length === 0) { alert("Your cart is empty!"); return; } const totalCost = cart.reduce((sum, item) => sum + (item.price * item.qty), 0); document.getElementById('finalTotalDisplay').value = `${totalCost} EGP`; document.getElementById('checkoutOverlay').classList.add('active'); toggleCart(); }
+        function closeCheckoutForm() { document.getElementById('checkoutOverlay').classList.remove('active'); }
 
         function sendOrder(event) {
             event.preventDefault();
-
-            const name = document.getElementById('clientName').value;
-            const phone1 = document.getElementById('clientPhone1').value;
-            const phone2 = document.getElementById('clientPhone2').value;
-            const address = document.getElementById('clientAddress').value;
+            const name = document.getElementById('clientName').value; const phone1 = document.getElementById('clientPhone1').value;
+            const phone2 = document.getElementById('clientPhone2').value; const address = document.getElementById('clientAddress').value;
             const finalTotal = document.getElementById('finalTotalDisplay').value;
-
-            let itemsText = '';
-            cart.forEach((item, i) => {
-                itemsText += `${i+1}- Item: ${item.name} \n   Size: ${item.size} \n   Qty: ${item.qty}\n-------------------------\n`;
-            });
-
-            const message = encodeURIComponent(
-`🔥 New Order from Λ И G E Я 🔥
-
-📦 Ordered Items:
--------------------------
-${itemsText}
-💰 Total Amount: ${finalTotal}
-
-👤 Shipping Details:
-- Customer Name: ${name}
-- Phone 1: ${phone1}
-- Phone 2: ${phone2}
-- Delivery Address: ${address}`
-            );
-
+            let itemsText = ''; cart.forEach((item, i) => { itemsText += `${i+1}- Item: ${item.name} \n   Size: ${item.size} \n   Qty: ${item.qty}\n-------------------------\n`; });
+            const message = encodeURIComponent(`🔥 New Order from Λ И G E Я 🔥\n\n📦 Ordered Items:\n-------------------------\n${itemsText}💰 Total Amount: ${finalTotal}\n\n👤 Shipping Details:\n- Customer Name: ${name}\n- Phone 1: ${phone1}\n- Phone 2: ${phone2}\n- Delivery Address: ${address}`);
             window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
-            
-            cart = [];
-            updateCartUI();
-            closeCheckoutForm();
-
-            setTimeout(() => {
-                document.getElementById('reviewOverlay').classList.add('active');
-                initStars();
-            }, 600);
+            cart = []; updateCartUI(); closeCheckoutForm();
+            setTimeout(() => { document.getElementById('reviewOverlay').classList.add('active'); initStars(); }, 600);
         }
 
         function initStars() {
@@ -655,95 +548,28 @@ ${itemsText}
             stars.forEach(star => {
                 star.onclick = function() {
                     selectedRating = parseInt(this.getAttribute('data-value'));
-                    stars.forEach(s => {
-                        if (parseInt(s.getAttribute('data-value')) <= selectedRating) {
-                            s.classList.add('selected');
-                        } else {
-                            s.classList.remove('selected');
-                        }
-                    });
+                    stars.forEach(s => { if (parseInt(s.getAttribute('data-value')) <= selectedRating) { s.classList.add('selected'); } else { s.classList.remove('selected'); } });
                 }
             });
         }
 
         function submitReview() {
-            const name = document.getElementById('reviewerName').value.trim() || "Anonymous Rogue";
-            const comment = document.getElementById('reviewText').value.trim();
-            const btn = document.getElementById('submitReviewBtn');
-
-            if (selectedRating === 0) {
-                alert("Please select your rating star count!");
-                return;
-            }
-            if (!comment) {
-                alert("Please write your review comment!");
-                return;
-            }
-
-            btn.innerText = "⚡ Transmitting to Abyss...";
-            btn.disabled = true;
-
-            const grid = document.getElementById('reviewsShowcaseGrid');
-            const starsStr = '★'.repeat(selectedRating) + '☆'.repeat(5 - selectedRating);
-            const card = document.createElement('div');
-            card.className = 'showcase-card animate-review';
-            card.innerHTML = `
-                <div class="showcase-stars">${starsStr}</div>
-                <p class="showcase-comment">${comment}</p>
-                <span class="showcase-author">— ${name}</span>
-            `;
+            const name = document.getElementById('reviewerName').value.trim() || "Anonymous Rogue"; const comment = document.getElementById('reviewText').value.trim(); const btn = document.getElementById('submitReviewBtn');
+            if (selectedRating === 0) { alert("Please select your rating star count!"); return; }
+            if (!comment) { alert("Please write your review comment!"); return; }
+            btn.innerText = "⚡ Transmitting to Abyss..."; btn.disabled = true;
+            const grid = document.getElementById('reviewsShowcaseGrid'); const starsStr = '★'.repeat(selectedRating) + '☆'.repeat(5 - selectedRating);
+            const card = document.createElement('div'); card.className = 'showcase-card animate-review';
+            card.innerHTML = `<div class="showcase-stars">${starsStr}</div><p class="showcase-comment">${comment}</p><span class="showcase-author">— ${name}</span>`;
             grid.insertBefore(card, grid.firstChild);
-
             let currentSaved = localStorage.getItem('anger_reviews') ? JSON.parse(localStorage.getItem('anger_reviews')) : [];
-            currentSaved.unshift({ name, rating: selectedRating, comment });
-            localStorage.setItem('anger_reviews', JSON.stringify(currentSaved));
-
-            const templateParams = {
-                to_email: 'anger.wear11@gmail.com',
-                reviewer_name: name,
-                rating_stars: selectedRating + " Stars",
-                reviewer_comment: comment
-            };
-
-            emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
-                .then(() => {
-                    alert("Your review has been cast into the Abyss successfully! 💀");
-                    closeReviewAndReset();
-                }, (error) => {
-                    alert("Review posted successfully onto the site!");
-                    closeReviewAndReset();
-                });
+            currentSaved.unshift({ name, rating: selectedRating, comment }); localStorage.setItem('anger_reviews', JSON.stringify(currentSaved));
+            const templateParams = { to_email: 'anger.wear11@gmail.com', reviewer_name: name, rating_stars: selectedRating + " Stars", reviewer_comment: comment };
+            emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams).then(() => { alert("Your review has been cast into the Abyss successfully! 💀"); closeReviewAndReset(); }, (error) => { alert("Review posted successfully onto the site!"); closeReviewAndReset(); });
         }
 
-        function closeReviewAndReset() {
-            const btn = document.getElementById('submitReviewBtn');
-            btn.innerText = "Submit to The Abyss";
-            btn.disabled = false;
-            document.getElementById('reviewOverlay').classList.remove('active');
-            document.getElementById('reviewerName').value = '';
-            document.getElementById('reviewText').value = '';
-            selectedRating = 0;
-            document.querySelectorAll('.rating-stars .star').forEach(s => s.classList.remove('selected'));
-        }
-
-        function loadSavedReviews() {
-            const saved = localStorage.getItem('anger_reviews');
-            if (saved) {
-                const reviewsArr = JSON.parse(saved);
-                const grid = document.getElementById('reviewsShowcaseGrid');
-                reviewsArr.forEach(rev => {
-                    const starsStr = '★'.repeat(rev.rating) + '☆'.repeat(5 - rev.rating);
-                    const card = document.createElement('div');
-                    card.className = 'showcase-card';
-                    card.innerHTML = `
-                        <div class="showcase-stars">${starsStr}</div>
-                        <p class="showcase-comment">${rev.comment}</p>
-                        <span class="showcase-author">— ${rev.name}</span>
-                    `;
-                    grid.appendChild(card);
-                });
-            }
-        }
+        function closeReviewAndReset() { const btn = document.getElementById('submitReviewBtn'); btn.innerText = "Submit to The Abyss"; btn.disabled = false; document.getElementById('reviewOverlay').classList.remove('active'); document.getElementById('reviewerName').value = ''; document.getElementById('reviewText').value = ''; selectedRating = 0; document.querySelectorAll('.rating-stars .star').forEach(s => s.classList.remove('selected')); }
+        function loadSavedReviews() { const saved = localStorage.getItem('anger_reviews'); if (saved) { const reviewsArr = JSON.parse(saved); const grid = document.getElementById('reviewsShowcaseGrid'); reviewsArr.forEach(rev => { const starsStr = '★'.repeat(rev.rating) + '☆'.repeat(5 - rev.rating); const card = document.createElement('div'); card.className = 'showcase-card'; card.innerHTML = `<div class="showcase-stars">${starsStr}</div><p class="showcase-comment">${rev.comment}</p><span class="showcase-author">— ${rev.name}</span>`; grid.appendChild(card); }); } }
     </script>
 </body>
 </html>
