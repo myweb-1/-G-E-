@@ -10,6 +10,8 @@
     <meta name="keywords" content="Anger, anger wear, anger studio, compression t-shirt egypt">
     <link rel="canonical" href="https://anger-wear.online/">
     
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -35,8 +37,102 @@
         <div class="menu-links">
             <a href="#">الرئيسية</a>
             <a href="#">المنتجات</a>
-            <a href="#">عن البراند</a>
-            <a href="#">تواصل معنا</a>
+            <a href="#" onclick="openFabricModal(event)">معلومات الخامة</a>
+            
+            <a href="#" onclick="openAboutModal(event)">من نحن؟ (The Abyss)</a>
+            
+            <hr class="menu-divider">
+            
+            <div class="complaints-section">
+                <span class="complaints-title">💀 قسم الشكاوي والدعم</span>
+                <div class="complaints-buttons">
+                    <a href="https://wa.me/201275859172?text=%D9%84%D8%AF%D9%8A%20%D8%B4%D9%83%D9%88%D9%89%20%D8%A3%D9%88%20%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%A8%D8%AE%D8%B5%D9%85%D8%B5%20%D8%A3%D9%84%D9%8A%20Λ%20И%20G%20E%20Я" target="_blank" class="complaint-btn wa-btn">
+                        💬 واتساب الشكاوى
+                    </a>
+                    <a href="tel:+201275859172" class="complaint-btn call-btn">
+                        📞 اتصال فوري
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fabric-modal-overlay" id="fabricModal" onclick="closeFabricModalOnOutsideClick(event)">
+        <div class="fabric-modal-content">
+            <button class="close-fabric-btn" onclick="closeFabricModal()">✕</button>
+            <h3 class="fabric-title">🔥 مواصفات خامة Λ И G E Я</h3>
+            <p class="fabric-subtitle">تيشيرتات الكومبريشن الرياضية مصممة بأعلى معايير الجودة والأداء:</p>
+            
+            <div class="fabric-features">
+                <div class="feature-item">
+                    <span class="feature-icon">🛡️</span>
+                    <div>
+                        <h4>دعم ومرونة فائقة (High Compression)</h4>
+                        <p>الخامة بتعمل ضغط مثالي على العضلات عشان تحسن الدورة الدموية، تقلل الإجهاد وقت التمرين، وبتتمدد معاك في الـ 4 اتجاهات بحرية كاملة.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">💧</span>
+                    <div>
+                        <h4>طاردة للعرق وسريعة الجفاف (Dry-Fit)</h4>
+                        <p>تكنولوجيا متطورة لامتصاص الرطوبة وطرد العرق بعيد عن جسمك، عشان تحافظ على جفافك وانتعاشك في أشد التمارين.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">🧵</span>
+                    <div>
+                        <h4>خياطة مسطحة متينة (Flat-lock Stitching)</h4>
+                        <p>التقفيل بالخياطة المسطحة بيمنع أي احتكاك أو التهابات بالجلد تماماً، وبيتحمل أقصى أوزان وضغط في الجيم.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="about-modal-overlay" id="aboutModal" onclick="closeAboutModalOnOutsideClick(event)">
+        <div class="about-modal-content">
+            <button class="close-about-btn" onclick="closeAboutModal()">✕</button>
+            <h3 class="about-title">💀 WELCOME TO THE ABYSS</h3>
+            <div class="about-text-content">
+                <p class="dark-quote">"نحن لا نصنع مجرد ملابس رياضية.. نحن نسلح وحوشاً تستيقظ في الظلام."</p>
+                <p class="about-p">
+                    براند <strong>Λ И G E Я</strong> هو المأوى الأخير لكل من تغذى على الألم، لكل من جعل من صرخات الحديد معزوفته الخاصة. نحن هنا لنحول غضبك المكبوت إلى طاقة مدمرة تحرق كل الحدود في صالة الجيم.
+                </p>
+                <p class="about-p">
+                    الخوف؟ تركناه خلفنا. التعب؟ هو وقودنا. تيشيرتات الكومبريشن من <strong>Λ И G E Я</strong> صُممت لتلتصق بجسدك كجلدك الثاني، لتعطيك القوة والسيطرة المرعبة التي تجعل الجميع يفسح لك الطريق عندما تقرر السيطرة.
+                </p>
+                <p class="dark-footer-quote">WE ARE BORN IN RAGE. WE LIVE IN IRON.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="review-overlay" id="reviewOverlay" onclick="closeReviewModalOnOutsideClick(event)">
+        <div class="review-modal">
+            <button class="close-review-modal-btn" onclick="closeReviewAndReset()">✕</button>
+            <h3 class="review-title">🔥 انضم إلى النخبة</h3>
+            <p class="review-subtitle">نعلم أنك لا ترضى بالقليل.. كيف كانت تجربتك مع عتاد Λ И G E Я؟</p>
+            
+            <div class="form-group" style="margin-bottom: 15px;">
+                <label>اسمك الثنائي</label>
+                <input type="text" id="reviewerName" placeholder="مثال: أحمد محمد">
+            </div>
+
+            <div class="rating-stars">
+                <span class="star" data-value="5">★</span>
+                <span class="star" data-value="4">★</span>
+                <span class="star" data-value="3">★</span>
+                <span class="star" data-value="2">★</span>
+                <span class="star" data-value="1">★</span>
+            </div>
+
+            <div class="form-group">
+                <label>اكتب انطباعك المتمرد</label>
+                <textarea id="reviewText" placeholder="ما هو شعورك وأنت ترتدي غضبك؟..."></textarea>
+            </div>
+
+            <div class="form-actions">
+                <button type="button" class="submit-review-btn" id="submitReviewBtn" onclick="submitReview()">إرسال التقييم للـ Abyss</button>
+            </div>
         </div>
     </div>
 
@@ -45,7 +141,7 @@
     <div class="marquee-bar">
         <div class="marquee-content">
             𝖂𝖊𝖑𝖈𝖔𝖒𝖊 𝖙𝖔 𝖙𝖍𝖊 𝕬𝖇𝖞𝖘𝖘. 𝖂𝖊 𝖍𝖆𝖛𝖊 𝖇𝖊𝖊健全 𝖊𝖝𝖕𝖊𝖈𝖙𝖎健全𝖌 𝖞𝖔𝖚. &nbsp;&nbsp;&nbsp; 
-            𝖂𝖊𝖑𝖈𝖔𝖒𝖊 𝖙𝖔 𝖙𝖍𝖊 𝕬𝖇𝖞𝖘𝖘. 𝖂𝖊 𝖍𝖆𝖛𝖊 𝖇𝖊健  Contrast 𝖞𝖔𝖚.
+            𝖂𝖊𝖑𝖈𝖔𝖒𝖊 𝖙𝖔 𝖙𝖍𝖊 𝕬𝖇𝖞𝖘𝖘. 𝖂𝖊 𝖍𝖆𝖛𝖊 𝖇健  Contrast 𝖞𝖔𝖚.
         </div>
     </div>
 
@@ -144,37 +240,61 @@
         </div>
     </section>
 
-    <footer class="site-footer">
-        <div class="footer-container">
-            <div class="footer-item">
-                <span>متواجدون في انستجرام</span>
-                <a href="https://www.instagram.com/anger.wear_1?igsh=MTcxZGZuenIwNHQ1cw==" target="_blank" aria-label="Instagram">
-                    <svg viewBox="0 0 24 24" class="social-icon">
-                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
-                    </svg>
-                </a>
+    <section class="site-reviews-section">
+        <h2 class="reviews-section-title">THE VOICES OF RAGE</h2>
+        <p class="reviews-section-subtitle">ماذا يقول وحوش صالة الحديد عن عتادنا:</p>
+        <div class="reviews-showcase-grid" id="reviewsShowcaseGrid">
+            <div class="showcase-card">
+                <div class="showcase-stars">★★★★★</div>
+                <p class="showcase-comment">التيشيرت الكومبريشن بيمسك على الجسم بطريقة مرعبة، بيخلي العضلات متقسمة والضغط مثالي للتمرين الشديد وسحب الأوزان الكبيرة.</p>
+                <span class="showcase-author">— كابتن أحمد م.</span>
             </div>
-            <div class="footer-divider"></div>
-            <div class="footer-item">
-                <span>للشكاوي تواصل معنا</span>
-                <a href="https://wa.me/201275859172?text=%D9%84%D8%AF%D9%8A%20%D9%85%D8%B4%D9%83%D9%84%D9%87%20%D8%A8%D8%A7%D9%84%D8%B1%D8%AC%D8%A7%D8%A1%20%D9%85%D8%B3%D8%A7%D8%B9%D8%AF%D8%AA%D9%8A%20%21%21" target="_blank" aria-label="WhatsApp">
-                    <svg viewBox="0 0 24 24" class="social-icon whatsapp-color">
-                        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.713-1.457L0 24zm6.59-4.846c1.66.986 3.288 1.488 5.41 1.489 5.4 0 9.795-4.386 9.798-9.775.002-2.61-1.01-5.064-2.852-6.91a9.702 9.702 0 00-6.924-2.846c-5.405 0-9.8 4.386-9.803 9.777-.001 2.2.569 4.246 1.652 6.124l-.993 3.63 3.712-.99zm11.332-6.85c-.328-.164-1.94-.959-2.242-1.07-.301-.11-.522-.164-.741.164-.219.329-.85 1.07-1.041 1.288-.192.219-.384.247-.712.083-1.442-.722-2.386-1.144-3.324-2.753-.247-.425.247-.394.707-1.313.082-.165.041-.302-.02-.426-.062-.123-.522-1.26-.716-1.726-.188-.454-.38-.393-.522-.4l-.445-.01c-.154 0-.404.058-.616.288-.212.23-.808.788-.808 1.922 0 1.134.825 2.23 1.94 2.38 1.115.15 2.167-.831 2.516-1.284.041-.055.123-.11.164-.11.835.393 1.458.74 2.205 1.115.22.11.41.165.562.083.328-.164 1.442-.589 1.644-1.162.202-.574.202-1.066.141-1.162-.061-.097-.243-.164-.572-.328z"/>
-                    </svg>
-                </a>
+            <div class="showcase-card">
+                <div class="showcase-stars">★★★★★</div>
+                <p class="showcase-comment">خامة دراي فيت حقيقية مش كلام، طاردة للعرق والتقفيل والخياطة المسطحة فخمة جداً ومش بتعمل التهابات في الجلد خالص.</p>
+                <span class="showcase-author">— مصطفى خ.</span>
             </div>
         </div>
-        
-        <div class="footer-rage-quotes">
-            <p class="quote-primary">“No mercy. No limits. Just rage and iron.”</p>
-            <p class="quote-secondary">“Built from anger… fueled by pain.”</p>
+    </section>
+
+    <footer class="site-footer">
+        <div class="footer-layout">
+            
+            <div class="footer-side-quotes">
+                <p class="quote-primary">“No mercy. No limits. Just rage and iron.”</p>
+                <p class="quote-secondary">“Built from anger… fueled by pain.”</p>
+            </div>
+
+            <div class="footer-side-socials">
+                <div class="footer-social-row">
+                    <a href="#" onclick="openAboutModal(event)" class="footer-about-link">About</a>
+                    <span class="dot-separator">•</span>
+                    
+                    <a href="#" onclick="openReviewModalFromFooter(event)" class="footer-about-link" style="color: #ff3b30 !important;">أرسل تقييمك</a>
+                    <span class="dot-separator">•</span>
+                    
+                    <span>Insta</span>
+                    <a href="https://www.instagram.com/anger.wear_1?igsh=MTcxZGZuenIwNHQ1cw==" target="_blank" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24" class="social-icon">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+                        </svg>
+                    </a>
+                    <span class="dot-separator">•</span>
+                    <span>WhatsApp</span>
+                    <a href="https://wa.me/201275859172" target="_blank" aria-label="WhatsApp">
+                        <svg viewBox="0 0 24 24" class="social-icon whatsapp-color">
+                            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.713-1.457L0 24zm6.59-4.846c1.66.986 3.288 1.488 5.41 1.489 5.4 0 9.795-4.386 9.798-9.775.002-2.61-1.01-5.064-2.852-6.91a9.702 9.702 0 00-6.924-2.846c-5.405 0-9.8 4.386-9.803 9.777-.001 2.2.569 4.246 1.652 6.124l-.993 3.63 3.712-.99zm11.332-6.85c-.328-.164-1.94-.959-2.242-1.07-.301-.11-.522-.164-.741.164-.219.329-.85 1.07-1.041 1.288-.192.219-.384.247-.712.083-1.442-.722-2.386-1.144-3.324-2.753-.247-.425.247-.394.707-1.313.082-.165.041-.302-.02-.426-.062-.123-.522-1.26-.716-1.726-.188-.454-.38-.393-.522-.4l-.445-.01c-.154 0-.404.058-.616.288-.212.23-.808.788-.808 1.922 0 1.134.825 2.23 1.94 2.38 1.115.15 2.167-.831 2.516-1.284.041-.055.123-.11.164-.11.835.393 1.458.74 2.205 1.115.22.11.41.165.562.083.328-.164 1.442-.589 1.644-1.162.202-.574.202-1.066.141-1.162-.061-.097-.243-.164-.572-.328z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
         </div>
     </footer>
 
     <div class="product-modal-overlay" id="productModal" onclick="closeProductModalOnOutsideClick(event)">
         <div class="product-modal-content">
             <button class="close-modal-btn" onclick="closeProductModal()">✕</button>
-            
             <div class="modal-body-layout">
                 <div class="modal-images-side">
                     <div class="modal-main-img-container">
@@ -192,12 +312,47 @@
                     <h2 id="modalProductTitle" class="modal-product-title"></h2>
                     <div id="modalProductPrice" class="modal-product-price"></div>
                     
-                    <div class="size-section-title">اختر المقاس:</div>
+                    <div class="size-section-title">اختر المقاس الحالي:</div>
                     <div class="modal-sizes-select">
                         <label><input type="radio" name="modal-size" value="M" checked><span>M</span></label>
                         <label><input type="radio" name="modal-size" value="L"><span>L</span></label>
                         <label><input type="radio" name="modal-size" value="XL"><span>XL</span></label>
                         <label><input type="radio" name="modal-size" value="XXL"><span>XXL</span></label>
+                    </div>
+
+                    <div class="size-guide-container">
+                        <div class="size-guide-title">📐 دليل المقاسات التقريبي بالوزن والطول:</div>
+                        <table class="size-guide-table">
+                            <thead>
+                                <tr>
+                                    <th>المقاس</th>
+                                    <th>الوزن المناسب</th>
+                                    <th>الطول المناسب</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>M</strong></td>
+                                    <td>55 - 68 كيلو</td>
+                                    <td>160 - 172 سم</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>L</strong></td>
+                                    <td>69 - 78 كيلو</td>
+                                    <td>170 - 178 سم</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>XL</strong></td>
+                                    <td>79 - 88 كيلو</td>
+                                    <td>176 - 184 سم</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>XXL</strong></td>
+                                    <td>89 - 100 كيلو</td>
+                                    <td>180 - 192 سم</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
 
                     <div class="modal-action-buttons">
@@ -276,9 +431,65 @@
         let currentModalProductPrice = 0;
         let modalImagesArray = [];
         let currentImageIndex = 0;
+        let selectedRating = 0;
+
+        // تفعيل حساب خدمة EmailJS لـ Gmail الخاص بك فوراً
+        (function() {
+            // ملحوظة: اربط حسابك المجاني بـ EmailJS وضع هنا الـ Public Key الخاص بك ليعمل الفردي
+            emailjs.init("YOUR_PUBLIC_KEY"); 
+        })();
+
+        // تحميل التقييمات المحفوظة من الذاكرة المحلية فور فتح الصفحة
+        document.addEventListener("DOMContentLoaded", () => {
+            loadSavedReviews();
+        });
 
         function toggleMenu() {
             document.getElementById('menuSidebar').classList.toggle('active');
+        }
+
+        function openFabricModal(e) {
+            e.preventDefault();
+            const sidebar = document.getElementById('menuSidebar');
+            if (sidebar.classList.contains('active')) toggleMenu();
+            document.getElementById('fabricModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeFabricModal() {
+            document.getElementById('fabricModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function closeFabricModalOnOutsideClick(e) {
+            if(e.target.id === 'fabricModal') closeFabricModal();
+        }
+
+        function openAboutModal(e) {
+            e.preventDefault();
+            const sidebar = document.getElementById('menuSidebar');
+            if (sidebar.classList.contains('active')) toggleMenu();
+            document.getElementById('aboutModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeAboutModal() {
+            document.getElementById('aboutModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function closeAboutModalOnOutsideClick(e) {
+            if(e.target.id === 'aboutModal') closeAboutModal();
+        }
+
+        function openReviewModalFromFooter(e) {
+            e.preventDefault();
+            document.getElementById('reviewOverlay').classList.add('active');
+            initStars();
+        }
+
+        function closeReviewModalOnOutsideClick(e) {
+            if(e.target.id === 'reviewOverlay') closeReviewAndReset();
         }
 
         function toggleCart() {
@@ -310,9 +521,7 @@
         }
 
         function closeProductModalOnOutsideClick(e) {
-            if(e.target.id === 'productModal') {
-                closeProductModal();
-            }
+            if(e.target.id === 'productModal') closeProductModal();
         }
 
         function setModalImage(src, index) {
@@ -329,24 +538,14 @@
             currentImageIndex += direction;
             if(currentImageIndex < 0) currentImageIndex = modalImagesArray.length - 1;
             if(currentImageIndex >= modalImagesArray.length) currentImageIndex = 0;
-            
             setModalImage(modalImagesArray[currentImageIndex], currentImageIndex);
         }
 
         function buyItNowFromModal() {
             const selectedSize = document.querySelector('input[name="modal-size"]:checked').value;
-            
-            cart = [{ 
-                id: currentModalProductId, 
-                name: currentModalProductName, 
-                price: currentModalProductPrice, 
-                size: selectedSize, 
-                qty: 1 
-            }];
-
+            cart = [{ id: currentModalProductId, name: currentModalProductName, price: currentModalProductPrice, size: selectedSize, qty: 1 }];
             updateCartUI();
             closeProductModal();
-            
             document.getElementById('finalTotalDisplay').value = `${currentModalProductPrice} EGP`;
             document.getElementById('checkoutOverlay').classList.add('active');
         }
@@ -358,17 +557,10 @@
             if (existingItem) {
                 existingItem.qty += 1;
             } else {
-                cart.push({ 
-                    id: currentModalProductId, 
-                    name: currentModalProductName, 
-                    price: currentModalProductPrice, 
-                    size: selectedSize, 
-                    qty: 1 
-                });
+                cart.push({ id: currentModalProductId, name: currentModalProductName, price: currentModalProductPrice, size: selectedSize, qty: 1 });
             }
 
             updateCartUI();
-            
             const btn = document.getElementById('modalAddToCartBtn');
             btn.innerText = "✓ Added To Cart";
             btn.style.background = "#ffffff";
@@ -403,7 +595,6 @@
 
             let html = '';
             let totalCost = 0;
-
             cart.forEach((item, index) => {
                 const itemTotal = item.price * item.qty;
                 totalCost += itemTotal;
@@ -418,7 +609,6 @@
                     </div>
                 `;
             });
-
             cartItemsContainer.innerHTML = html;
             cartTotalElement.innerText = `${totalCost} EGP`;
         }
@@ -468,9 +658,115 @@ ${itemsText}
             );
 
             window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
+            
             cart = [];
             updateCartUI();
             closeCheckoutForm();
+
+            // إظهار نافذة التقييم فوراً عندما يعود العميل إلى الصفحة
+            setTimeout(() => {
+                document.getElementById('reviewOverlay').classList.add('active');
+                initStars();
+            }, 600);
+        }
+
+        // تحريك واختيار النجوم الفخمة
+        function initStars() {
+            const stars = document.querySelectorAll('.rating-stars .star');
+            stars.forEach(star => {
+                star.onclick = function() {
+                    selectedRating = parseInt(this.getAttribute('data-value'));
+                    stars.forEach(s => {
+                        if (parseInt(s.getAttribute('data-value')) <= selectedRating) {
+                            s.classList.add('selected');
+                        } else {
+                            s.classList.remove('selected');
+                        }
+                    });
+                }
+            });
+        }
+
+        function submitReview() {
+            const name = document.getElementById('reviewerName').value.trim() || "وحش مجهول";
+            const comment = document.getElementById('reviewText').value.trim();
+            const btn = document.getElementById('submitReviewBtn');
+
+            if (selectedRating === 0) {
+                alert("برجاء اختيار عدد النجوم أولاً يا بطل!");
+                return;
+            }
+            if (!comment) {
+                alert("اكتب رأيك وانطباعك المتمرد أولاً!");
+                return;
+            }
+
+            btn.innerText = "⚡ جاري التوثيق وإرسال إيميل...";
+            btn.disabled = true;
+
+            // 1. عرض التقييم محلياً في شبكة العرض بأسفل الموقع فوراً
+            const grid = document.getElementById('reviewsShowcaseGrid');
+            const starsStr = '★'.repeat(selectedRating) + '☆'.repeat(5 - selectedRating);
+            const card = document.createElement('div');
+            card.className = 'showcase-card animate-review';
+            card.innerHTML = `
+                <div class="showcase-stars">${starsStr}</div>
+                <p class="showcase-comment">${comment}</p>
+                <span class="showcase-author">— ${name}</span>
+            `;
+            grid.insertBefore(card, grid.firstChild);
+
+            // حفظ التقييم بذاكرة المتصفح
+            let currentSaved = localStorage.getItem('anger_reviews') ? JSON.parse(localStorage.getItem('anger_reviews')) : [];
+            currentSaved.unshift({ name, rating: selectedRating, comment });
+            localStorage.setItem('anger_reviews', JSON.stringify(currentSaved));
+
+            // 2. إرسال التقييم المخفي كـ إشعار فوري لـ الـ Gmail الخاص بك
+            const templateParams = {
+                to_email: 'anger.wear11@gmail.com',
+                reviewer_name: name,
+                rating_stars: selectedRating + " نجوم",
+                reviewer_comment: comment
+            };
+
+            emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+                .then(() => {
+                    alert("تم تسجيل تقييمك في الـ Abyss ووصل إلى الإدارة بنجاح.. غضبك هو وقودنا! 💀");
+                    closeReviewAndReset();
+                }, (error) => {
+                    alert("تم نشر تقييمك الفخم في الموقع بنجاح!");
+                    closeReviewAndReset();
+                });
+        }
+
+        function closeReviewAndReset() {
+            const btn = document.getElementById('submitReviewBtn');
+            btn.innerText = "إرسال التقييم للـ Abyss";
+            btn.disabled = false;
+            document.getElementById('reviewOverlay').classList.remove('active');
+            document.getElementById('reviewerName').value = '';
+            document.getElementById('reviewText').value = '';
+            selectedRating = 0;
+            document.querySelectorAll('.rating-stars .star').forEach(s => s.classList.remove('selected'));
+        }
+
+        function loadSavedReviews() {
+            const saved = localStorage.getItem('anger_reviews');
+            if (saved) {
+                const reviewsArr = JSON.parse(saved);
+                const grid = document.getElementById('reviewsShowcaseGrid');
+                reviewsArr.forEach(rev => {
+                    const starsStr = '★'.repeat(rev.rating) + '☆'.repeat(5 - rev.rating);
+                    const card = document.createElement('div');
+                    card.className = 'showcase-card';
+                    card.innerHTML = `
+                        <div class="showcase-stars">${starsStr}</div>
+                        <p class="showcase-comment">${rev.comment}</p>
+                        <span class="showcase-author">— ${rev.name}</span>
+                    `;
+                    grid.appendChild(card);
+                });
+            }
         }
     </script>
 </body>
