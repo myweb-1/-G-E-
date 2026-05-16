@@ -146,13 +146,13 @@ body {
 .marquee-content { display: inline-block; padding-left: 100%; animation: marquee 15s linear infinite; }
 @keyframes marquee { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
 
-/* Grid Collection (3 columns layout as requested) */
+/* Grid Collection (3 columns layout setup) */
 .collection-section { padding: 40px 15px; background: #000000; text-align: center; }
 .collection-title { color: #ffffff; font-size: 24px; letter-spacing: 3px; margin-bottom: 30px; font-weight: 900; }
 
 .products-grid { 
     display: grid !important; 
-    grid-template-columns: repeat(3, 1fr) !important; 
+    grid-template-columns: repeat(3, 1fr) !important; /* ثابتة 3 في الصف للشاشات الكبيرة */
     gap: 20px; 
     max-width: 1200px; 
     margin: 0 auto; 
@@ -325,18 +325,30 @@ body {
 .submit-order-btn { flex: 2; background: #ffffff; color: #000000; font-weight: bold; border: none; padding: 13px; cursor: pointer; font-size: 13px; }
 .cancel-btn { flex: 1; background: #1c1c1c; color: #fff; border: none; padding: 13px; cursor: pointer; font-size: 13px; }
 
-/* Responsive Media Queries */
-@media (max-width: 992px) {
-    .products-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 15px; } 
-    .product-img-box { height: 300px; }
+/* ========================================================
+   Responsive Media Queries (تعديل الـ 3 منتجات القاتل)
+   ======================================================== */
+
+/* الشاشات المتوسطة وشاشات اللاب توب والتابلت العريض (بتفضل 3 منتجات) */
+@media (max-width: 1024px) {
+    .products-grid { 
+        grid-template-columns: repeat(3, 1fr) !important; /* مجبر يفضل 3 هنا كمان */
+        gap: 15px; 
+    } 
+    .product-img-box { height: 320px; }
 }
 
+/* شاشات الـ iPad الصغير والتابلت العمودي */
 @media (max-width: 768px) {
     .hero-section { background-image: url('bg.jpg'); }
-    .products-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 10px; } 
+    .products-grid { 
+        grid-template-columns: repeat(3, 1fr) !important; /* بيفضل 3 عشان طلبك */
+        gap: 10px; 
+    } 
     .product-img-box { height: 240px; }
 }
 
+/* الموبايلات فقط (هنا بيتحول لـ 2 عشان مستحيل شاشة الموبايل تشيل 3 جمب بعض بدون ما يبوظوا) */
 @media (max-width: 480px) {
     .navbar { padding: 0 15px !important; height: 60px !important; }
     .nav-brand-text { font-size: 17px !important; letter-spacing: 2px; }
