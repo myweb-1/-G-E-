@@ -1,4 +1,4 @@
-/* إعادة تعيين الهوامش العامة */
+/* إعادة تعيين الأبعاد العامة */
 * {
     margin: 0;
     padding: 0;
@@ -12,51 +12,54 @@ body {
     overflow-x: hidden;
 }
 
-/* البار العلوي الجديد المقسم بثلاث صناديق صريحة لمنع التداخل */
+/* البار العلوي الثابت الصارم بأسلوب براند Mavin الفاخر */
 .navbar {
     display: flex !important;
-    direction: ltr !important; /* إجبار البار يترتب من الشمال لليمين عشان الأيقونة واللوجو يثبتوا */
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 20px;
-    background: rgba(0, 0, 0, 0.85) !important; /* أسود معتم فخم يمنع تداخل الكلام خلفه */
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 65px;
-    z-index: 99999;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 0 20px !important;
+    background: rgba(0, 0, 0, 0.75) !important; /* خلفية شفافة غامقة لإبراز العناصر */
+    backdrop-filter: blur(12px) !important; /* تأثير التمويه الزجاجي لـ Mavin */
+    -webkit-backdrop-filter: blur(12px) !important;
+    position: fixed !important; /* تثبيت دائم وحقيقي */
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 65px !important;
+    z-index: 999999 !important; /* ظهور مطلق فوق كل عناصر الموقع */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-/* الصناديق الثلاثة لضمان توزيع الأبعاد */
-.nav-left-box {
-    width: 25%;
+/* توزيع عناصر البار الصارمة (يسار - سنتر - يمين) لمنع التداخل نهائياً */
+.nav-left {
+    width: 20%;
     display: flex;
     justify-content: flex-start;
     align-items: center;
 }
 
-.nav-center-box {
-    width: 50%;
+.nav-center {
+    width: 60%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.nav-right-box {
-    width: 25%;
+.nav-right {
+    width: 20%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 }
 
-/* تصميم الـ 3 شرط بالـ CSS الصافي لضمان الظهور المطلق */
+/* زر الـ 3 شرط (المنيو) على اليسار */
 .nav-menu-btn {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 24px;
-    height: 16px;
+    width: 22px;
+    height: 14px;
     cursor: pointer;
 }
 
@@ -64,21 +67,53 @@ body {
     display: block;
     width: 100%;
     height: 2px;
-    background-color: #ffffff !important; /* اللون أبيض صريح */
+    background-color: #ffffff !important;
+    transition: all 0.3s ease;
 }
 
-/* تنسيق كلمة اللوجو السنتر */
+/* لوجو براند Anger في السنتر بالظبط */
 .nav-brand-text {
     color: #ffffff !important;
     font-size: 22px !important;
-    font-weight: bold;
+    font-weight: bold !important;
     letter-spacing: 4px;
     text-transform: uppercase;
     text-align: center;
     white-space: nowrap;
 }
 
-/* القائمة الجانبية (المنيو) */
+/* أيقونة السلة الشيك على اليمين بالبار */
+.nav-cart-btn {
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-cart-icon {
+    width: 22px;
+    height: 22px;
+    fill: #ffffff !important;
+}
+
+.nav-cart-count {
+    position: absolute;
+    top: -6px;
+    right: -8px;
+    background: #ff3b30;
+    color: #ffffff;
+    font-size: 10px;
+    font-weight: bold;
+    width: 17px;
+    height: 17px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* المنيو الجانبي المتجاوب */
 .menu-sidebar {
     position: fixed;
     top: 0;
@@ -87,7 +122,7 @@ body {
     height: 100vh;
     background: #0b0c10;
     border-right: 1px solid #1f2833;
-    z-index: 100000;
+    z-index: 1000000;
     padding: 25px;
     display: flex;
     flex-direction: column;
@@ -126,7 +161,7 @@ body {
     font-weight: 500;
 }
 
-/* الواجهة الرئيسية مع إعطاء مساحة (Padding) علوية مساوية لارتفاع البار */
+/* واجهة العرض الرئيسية الهيرو المعدلة لتنزيل المحتوى أسفل البار الثابت */
 .hero-section {
     height: 100vh;
     width: 100%;
@@ -138,7 +173,7 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    padding-top: 65px; 
+    padding-top: 65px; /* نفس ارتفاع البار عشان مفيش حاجة تندفن تحته */
 }
 
 /* الشريط المتحرك */
@@ -164,7 +199,7 @@ body {
     100% { transform: translate3d(-100%, 0, 0); }
 }
 
-/* قسم المنتجات العام */
+/* قسم المنتجات */
 .collection-section {
     padding: 40px 10px;
     background: #000000;
@@ -173,16 +208,15 @@ body {
 
 .collection-title {
     color: #ffffff;
-    font-size: 26px;
+    font-size: 24px;
     letter-spacing: 3px;
     margin-bottom: 30px;
     font-weight: 900;
-    text-transform: uppercase;
 }
 
-/* الـ 3 منتجات جنب بعض دائماً */
+/* الـ 3 منتجات في سطر واحد ثابت دون انقسام */
 .products-grid {
-    display: grid;
+    display: grid !important;
     grid-template-columns: repeat(3, 1fr) !important;
     gap: 12px;
     max-width: 1200px;
@@ -251,10 +285,9 @@ body {
     font-size: 11px;
     color: #888;
     text-decoration: line-through;
-    font-weight: 400;
 }
 
-/* تنسيق المقاسات */
+/* اختيار المقاسات التفاعلية السلسة */
 .product-sizes-select {
     display: flex;
     flex-wrap: wrap;
@@ -288,7 +321,7 @@ body {
     border-color: #ffffff;
 }
 
-/* زر السلة للكارت */
+/* زر الـ Add to Cart */
 .add-to-cart-btn {
     display: block;
     width: 100%;
@@ -299,7 +332,6 @@ body {
     font-weight: 900;
     font-size: 12px;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
     transition: all 0.3s ease;
     border: 1px solid #ffffff;
     cursor: pointer;
@@ -310,73 +342,35 @@ body {
     color: #ffffff;
 }
 
-/* حاوية التحكم العائمة لمنع أي تداخل أو ركوب للأيقونات فوق بعض */
-.floating-controls-container {
+/* حل أزمة الواتساب العملاق: تم إنشاؤه بحجم صغير ناعم وثابت بالأسفل */
+.floating-whatsapp-fixed {
     position: fixed !important;
-    bottom: 30px !important;
-    right: 25px !important;
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 15px !important; 
-    z-index: 999999 !important;
-}
-
-.floating-cart {
-    position: relative !important;
-    width: 55px !important;
-    height: 55px !important;
-    background-color: #000000 !important;
-    border: 2px solid #ffffff !important;
+    bottom: 25px !important;
+    right: 20px !important;
+    width: 50px !important;
+    height: 50px !important;
+    background-color: #25D366 !important; /* لون الواتساب الأصلي الأخضر المريح أو استبدله بـ #000000 */
     border-radius: 50% !important;
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
-    cursor: pointer !important;
-    box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.2) !important;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.4) !important; 
+    z-index: 99999 !important;
+    transition: transform 0.3s ease !important;
 }
 
-.cart-svg-icon {
-    width: 24px;
-    height: 24px;
-    fill: #ffffff;
+.floating-whatsapp-fixed:hover {
+    transform: scale(1.1) !important;
 }
 
-.cart-count {
-    position: absolute;
-    top: -5px;
-    left: -5px;
-    background: #ff3b30;
-    color: #ffffff;
-    font-size: 11px;
-    font-weight: bold;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.floating-whatsapp {
-    width: 55px !important;
-    height: 55px !important;
-    background-color: #000000 !important; 
-    border: 2px solid #ffffff !important; 
-    border-radius: 50% !important;
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-    box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.2) !important; 
-}
-
-.whatsapp-black-svg {
-    width: 30px !important;
-    height: 30px !important;
-    fill: #ffffff !important; 
+.whatsapp-fixed-svg {
+    width: 28px !important;
+    height: 28px !important;
+    fill: #ffffff !important;
     display: block !important;
 }
 
-/* السلة الجانبية يميناً */
+/* سلة التسوق الجانبية الشيت الفخمة */
 .cart-sidebar {
     position: fixed;
     top: 0;
@@ -385,7 +379,7 @@ body {
     height: 100vh;
     background: #0b0c10;
     border-left: 1px solid #1f2833;
-    z-index: 1000000;
+    z-index: 2000000;
     display: flex;
     flex-direction: column;
     transition: right 0.3s ease;
@@ -447,13 +441,11 @@ body {
 .item-info p {
     font-size: 11px;
     color: #aaa;
-    margin-bottom: 4px;
 }
 
 .item-info span {
     font-size: 13px;
     font-weight: bold;
-    color: #ffffff;
 }
 
 .remove-item-btn {
@@ -491,7 +483,7 @@ body {
     text-align: center;
 }
 
-/* الاستمارة */
+/* استمارة الشحن والبيانات المودال */
 .checkout-overlay {
     position: fixed;
     top: 0;
@@ -499,7 +491,7 @@ body {
     width: 100vw;
     height: 100vh;
     background: rgba(0,0,0,0.85);
-    z-index: 2000000;
+    z-index: 3000000;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -556,7 +548,6 @@ body {
     background: #000000;
     color: #25D366;
     font-weight: bold;
-    border-color: #333;
 }
 
 .form-group textarea {
@@ -589,23 +580,23 @@ body {
     cursor: pointer;
 }
 
-/* التجاوب الصارم للموبايل */
+/* شاشات الموبايل والتابلت - تجاوب صارم ونظيف جداً */
 @media (max-width: 768px) {
     .hero-section {
         background-image: url('bg.jpg');
     }
     .product-img-box {
-        height: 240px;
+        height: 220px;
     }
 }
 
 @media (max-width: 480px) {
     .navbar {
-        padding: 10px 15px;
-        height: 60px;
+        padding: 0 15px !important;
+        height: 60px !important;
     }
     .nav-brand-text {
-        font-size: 18px !important;
+        font-size: 17px !important;
         letter-spacing: 2px;
     }
     .hero-section {
@@ -614,11 +605,11 @@ body {
         padding-top: 60px;
     }
     .collection-title {
-        font-size: 20px;
+        font-size: 18px;
         margin-bottom: 20px;
     }
     .product-img-box {
-        height: 160px;
+        height: 155px;
     }
     .product-price {
         font-size: 11px;
@@ -631,23 +622,10 @@ body {
         padding: 2px 4px;
     }
     .add-to-cart-btn {
-        font-size: 10px;
+        font-size: 9px;
         padding: 8px 2px;
     }
     .cart-sidebar {
         width: 290px;
-    }
-    .floating-controls-container {
-        bottom: 25px !important; 
-        right: 15px !important;
-        gap: 10px !important;
-    }
-    .floating-cart, .floating-whatsapp {
-        width: 48px !important;
-        height: 48px !important;
-    }
-    .whatsapp-black-svg {
-        width: 24px !important;
-        height: 24px !important;
     }
 }
