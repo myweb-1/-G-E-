@@ -1,255 +1,120 @@
-/* Core & Reset Layout Setup */
+/* Reset & Base Setup */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 body {
     background-color: #000000;
     color: #ffffff;
     overflow-x: hidden;
-    direction: rtl; /* إصلاح الاتجاه افتراضياً لكل العناصر */
+    direction: rtl;
 }
 
 /* Navbar */
 .navbar {
-    display: flex !important;
-    justify-content: space-between !important;
-    align-items: center !important;
-    padding: 0 20px !important;
-    background: rgba(0, 0, 0, 0.85) !important;
-    backdrop-filter: blur(12px) !important;
-    -webkit-backdrop-filter: blur(12px) !important;
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    width: 100% !important;
-    height: 65px !important;
-    z-index: 999999 !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    background: #000000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 65px;
+    z-index: 9999;
+    border-bottom: 1px solid #111;
 }
+.nav-menu-btn { display: flex; flex-direction: column; gap: 4px; cursor: pointer; }
+.nav-menu-btn span { display: block; width: 20px; height: 2px; background: #fff; }
+.nav-brand-text { font-size: 20px; font-weight: bold; letter-spacing: 2px; }
 
-.nav-left { display: flex; justify-content: flex-start; align-items: center; }
-.nav-menu-btn { display: flex; flex-direction: column; justify-content: space-between; width: 22px; height: 14px; cursor: pointer; }
-.nav-menu-btn span { display: block; width: 100%; height: 2px; background-color: #ffffff !important; }
-.nav-brand-text { color: #ffffff !important; font-size: 22px !important; font-weight: bold !important; letter-spacing: 4px; text-transform: uppercase; }
-
-/* Left Sidebar Menu */
+/* Sidebar Menu */
 .menu-sidebar {
     position: fixed;
     top: 0;
-    right: -300px; /* تعديل الاتجاه لليمين ليتناسق مع العربي */
-    width: 280px;
+    right: -300px;
+    width: 260px;
     height: 100vh;
     background: #050508;
-    border-left: 1px solid #11161d;
-    z-index: 1000000;
-    padding: 25px;
-    display: flex;
-    flex-direction: column;
+    z-index: 10000;
+    padding: 20px;
     transition: right 0.3s ease;
-    text-align: right;
+    border-left: 1px solid #111;
 }
 .menu-sidebar.active { right: 0; }
-.close-menu-btn { background: transparent; border: none; color: #ffffff; font-size: 28px; cursor: pointer; text-align: right;}
-.menu-links { display: flex; flex-direction: column; gap: 25px; margin-top: 20px; }
-.menu-links a { color: #ffffff; text-decoration: none; font-size: 14px; font-weight: 500; }
-.complaints-section { margin-top: auto; display: flex; flex-direction: column; gap: 12px; }
-.complaint-btn { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 12px; font-size: 13px; font-weight: bold; text-decoration: none; border-radius: 4px; }
-.wa-btn { background: #11141a; color: #25D366; border: 1px solid rgba(37, 211, 102, 0.3); }
-.call-btn { background: #11141a; color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.1); }
+.close-menu-btn { background: transparent; border: none; color: #fff; font-size: 24px; cursor: pointer; }
+.menu-links { display: flex; flex-direction: column; gap: 20px; margin-top: 30px; }
+.menu-links a { color: #fff; text-decoration: none; font-size: 14px; }
 
-/* Hero and Marquee */
-.hero-section { height: 60vh; width: 100%; background: #0a0a0a url('bg-desktop.jpg') center/cover no-repeat; padding-top: 65px; }
-.marquee-bar { background: #ffffff; color: #000000; padding: 12px 0; overflow: hidden; white-space: nowrap; font-weight: bold; font-size: 12px; }
-.marquee-content { display: inline-block; padding-right: 100%; animation: marquee 22s linear infinite; }
-@keyframes marquee { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(100%, 0, 0); } }
+/* Hero */
+.hero-section { height: 50vh; background: #0a0a0a; padding-top: 65px; }
 
-/* Grid Collection Layout (3 Columns Fixed) */
-.collection-section { padding: 60px 15px; background: #000000; text-align: center; }
-.collection-title { color: #ffffff; font-size: 22px; letter-spacing: 3px; margin-bottom: 40px; font-weight: 900; }
-.products-grid { display: grid !important; grid-template-columns: repeat(3, 1fr) !important; gap: 20px; max-width: 1200px; margin: 0 auto; }
-.product-card { background: #050508; border: 1px solid #11161d; overflow: hidden; cursor: pointer; transition: all 0.3s ease; display: flex; flex-direction: column; text-align: right; }
-.product-card:hover { border-color: #ffffff; }
-.product-img-box { width: 100%; height: 420px; background: #15191d; position: relative; overflow: hidden; }
-.product-img-box img { width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; transition: opacity 0.4s ease; }
+/* Products Grid (Strict 3 Columns) */
+.collection-section { padding: 40px 15px; text-align: center; }
+.collection-title { font-size: 20px; margin-bottom: 30px; letter-spacing: 2px; }
+.products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; max-width: 1200px; margin: 0 auto; }
+.product-card { background: #050508; border: 1px solid #111; overflow: hidden; }
+.product-img-box { width: 100%; height: 350px; position: relative; background: #15191d; }
+.product-img-box img { width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; transition: opacity 0.3s; }
 .img-back { opacity: 0; }
 .product-card:hover .img-front { opacity: 0; }
 .product-card:hover .img-back { opacity: 1; }
-.product-details { padding: 20px 15px; }
-.product-card-title { font-size: 13px; font-weight: bold; color: #cccccc; margin-bottom: 8px; }
-.product-price { color: #ffffff; font-size: 16px; font-weight: 900; display: flex; gap: 8px; }
-.product-price span { font-size: 12px; color: #555555; text-decoration: line-through; }
+.product-details { padding: 15px; text-align: right; }
+.product-card-title { font-size: 13px; color: #ccc; margin-bottom: 5px; }
+.product-price { font-size: 15px; font-weight: bold; }
+.product-price span { font-size: 12px; color: #555; text-decoration: line-through; margin-right: 5px; }
 
-/* FOMO Badge */
-.urgency-badge { display: flex; align-items: center; gap: 6px; margin-top: 12px; background: rgba(255, 59, 48, 0.08); padding: 6px 10px; border-radius: 2px; border: 1px solid rgba(255, 59, 48, 0.15); width: fit-content; }
-.pulse-dot { width: 6px; height: 6px; background-color: #ff3b30; border-radius: 50%; animation: pulseGlow 1.5s infinite; }
-.urgency-text { font-size: 10px; color: #ff3b30; font-weight: bold; }
-@keyframes pulseGlow { 0%, 100% { transform: scale(0.9); opacity: 0.6; } 50% { transform: scale(1.3); opacity: 1; } }
+/* Trust Signals */
+.trust-signals-section { padding: 30px 15px; text-align: right; background: #020203; border-top: 1px solid #111; }
+.trust-item { margin-bottom: 20px; }
+.trust-item h3 { font-size: 15px; margin-bottom: 4px; }
+.trust-item p { font-size: 12px; color: #777; }
 
-/* Reviews */
-.site-reviews-section { background: #020203; padding: 60px 20px; text-align: center; border-top: 1px solid #111116; }
-.reviews-section-title { font-size: 22px; color: #ffffff; margin-bottom: 30px; }
-.reviews-showcase-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; max-width: 1200px; margin: 0 auto; text-align: right; }
-.showcase-card { background: #050508; border: 1px solid #11161d; padding: 25px; }
-.showcase-stars { color: #ff3b30; margin-bottom: 10px; }
-.showcase-comment { font-size: 13px; color: #bbbbbb; line-height: 1.6; }
+/* Checkout Section & Original Form Layout Fix */
+.quick-checkout-section { padding: 40px 15px; background: #000000; border-top: 1px solid #111; }
+.fast-form-wrapper { max-width: 600px; margin: 0 auto; background: #050508; border: 1px solid #111; padding: 25px; border-radius: 4px; text-align: right; }
+.fast-form-title { font-size: 18px; margin-bottom: 5px; }
+.fast-form-subtitle { font-size: 12px; color: #666; margin-bottom: 20px; }
 
-/* Checkout Section (حل مشكلة التداخل بالكامل وتنسيق المدخلات) */
-.quick-checkout-section { background: #000000; padding: 60px 20px; border-top: 1px solid #111116; }
-.checkout-container { max-width: 700px; margin: 0 auto; }
-.trust-signals-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; text-align: center; margin-bottom: 40px; }
-.trust-card { background: #050508; border: 1px solid #11161d; padding: 20px 10px; }
-.trust-icon { font-size: 24px; display: block; margin-bottom: 8px; }
-.trust-card h4 { font-size: 13px; color: #ffffff; margin-bottom: 4px; }
-.trust-card p { font-size: 11px; color: #777777; }
+.fast-form { display: flex; flex-direction: column; gap: 15px; }
+.fast-form input { width: 100%; background: #000; border: 1px solid #222; padding: 12px; color: #fff; font-size: 14px; border-radius: 4px; outline: none; }
+.fast-form input:focus { border-color: #fff; }
 
-/* الفورم الجديد المنظم */
-.fast-form-wrapper { 
-    background: #050508; 
-    border: 1px solid #1c1c24; 
-    padding: 35px 25px; 
-    border-radius: 4px; 
-    text-align: right; 
-}
-.fast-form-title { font-size: 20px; font-weight: 900; margin-bottom: 6px; }
-.fast-form-subtitle { font-size: 12px; color: #666666; margin-bottom: 25px; }
-
-.fast-form { 
+/* تنسيق الخانات اللي جوة بعضها لمنع التداخل نهائياً وتحسين الفت في الشاشات */
+.address-row-combined { 
     display: flex; 
-    flex-direction: column; 
-    gap: 20px; /* مسافة ثابتة وممتازة بين حقول الإدخال لتمنع التداخل */
-}
-.fast-input-group { 
-    display: flex; 
-    flex-direction: column; 
-    gap: 8px; 
+    gap: 10px; 
     width: 100%;
 }
-.fast-input-group label { 
-    font-size: 13px; 
-    color: #aaaaaa; 
-    font-weight: bold; 
-    text-align: right;
+.address-row-combined input {
+    flex: 1; /* يخلي الخانات تتوزع بالتساوي بالظبط بدون ما تركب فوق بعض */
 }
-.fast-input-group input, 
-.fast-input-group textarea { 
-    width: 100% !important; 
-    background: #000000 !important; 
-    border: 1px solid #2c2c35 !important; 
-    padding: 14px !important; 
-    color: #ffffff !important; 
-    font-size: 14px !important; 
-    outline: none; 
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-.fast-input-group input:focus, 
-.fast-input-group textarea:focus { 
-    border-color: #ffffff !important; 
-}
-.fast-input-group textarea { height: 100px; resize: none; }
 
-.selected-product-box { 
-    background: #0d0d13; 
-    border: 1px dashed rgba(255,255,255,0.1); 
-    padding: 14px; 
-    font-size: 13px; 
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
-    border-radius: 4px;
-}
-.selected-product-box strong { color: #25D366; }
-
-.fast-submit-btn { 
-    background: #ffffff !important; 
-    color: #000000 !important; 
-    border: none !important; 
-    padding: 16px !important; 
-    font-size: 14px !important; 
-    font-weight: 900 !important; 
-    cursor: pointer; 
-    width: 100% !important;
-    border-radius: 4px;
-    transition: all 0.2s ease;
-}
-.fast-submit-btn:hover { background: #e5e5e5 !important; }
+.selected-product-box { background: #0d0d13; border: 1px dashed #222; padding: 12px; font-size: 12px; color: #aaa; border-radius: 4px; }
+.fast-submit-btn { background: #fff; color: #000; border: none; padding: 14px; font-size: 14px; font-weight: bold; cursor: pointer; border-radius: 4px; }
 
 /* Footer */
-.mavin-footer { background-color: #000000; border-top: 1px solid #111116; padding: 40px 20px; text-align: center; }
-.footer-nav-menu { display: flex; justify-content: center; gap: 20px; margin-bottom: 20px; flex-wrap: wrap; }
-.footer-nav-menu a { color: #ffffff; text-decoration: none; font-size: 12px; }
-.footer-socials-row { display: flex; justify-content: center; gap: 20px; margin-bottom: 20px; }
-.footer-socials-row a { color: #666666; font-size: 18px; }
-.footer-copyright { font-size: 11px; color: #444444; }
+.mavin-footer { padding: 30px 15px; text-align: center; border-top: 1px solid #111; background: #000; }
+.footer-links { display: flex; justify-content: center; gap: 15px; margin-bottom: 15px; }
+.footer-links a { color: #fff; text-decoration: none; font-size: 12px; }
+.footer-socials { margin-bottom: 15px; font-size: 13px; }
+.footer-socials a { color: #aaa; text-decoration: none; }
+.footer-copyright { font-size: 11px; color: #444; }
 
-/* Modals Core */
-.fabric-modal-overlay, .about-modal-overlay, .review-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0, 0, 0, 0.95); z-index: 99999999; display: flex; justify-content: center; align-items: center; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
-.fabric-modal-overlay.active, .about-modal-overlay.active, .review-overlay.active { opacity: 1; pointer-events: auto; }
-.fabric-modal-content, .about-modal-content, .review-modal { background: #050508; border: 1px solid #1c1c24; width: 90%; max-width: 450px; padding: 30px; border-radius: 4px; position: relative; text-align: right; }
-.close-fabric-btn, .close-about-btn, .close-review-modal-btn { position: absolute; top: 15px; left: 15px; background: #111116; border: none; color: #ffffff; font-size: 20px; width: 30px; height: 30px; border-radius: 50%; cursor: pointer; }
-
-/* ========================================================
-   Responsive Media Queries (تنسيق الموبايل والشاشات الصغيرة)
-   ======================================================== */
-
-@media (max-width: 1024px) {
-    .products-grid { gap: 15px; }
-    .product-img-box { height: 320px; }
-}
-
-@media (max-width: 768px) {
-    .products-grid { gap: 10px; }
-    .product-img-box { height: 230px; }
-    .trust-signals-grid { grid-template-columns: 1fr; gap: 12px; } /* جعل علامات الثقة عمودية في التابلت والموبايل */
-}
-
-/* الموبايل الصغير جداً - منع أي تداخل نهائياً وتحسين الفت */
+/* Mobile Optimization */
 @media (max-width: 480px) {
-    .navbar { height: 60px !important; }
-    .nav-brand-text { font-size: 18px !important; }
-    .hero-section { height: 40vh; }
+    .products-grid { grid-template-columns: repeat(3, 1fr) !important; gap: 5px; }
+    .product-img-box { height: 120px; }
+    .product-card-title { font-size: 8px; }
+    .product-price { font-size: 9px; }
     
-    /* الحفاظ التام على الـ 3 أعمدة بدون أي تأثير على حقول الفورم */
-    .products-grid { 
-        grid-template-columns: repeat(3, 1fr) !important; 
-        gap: 6px !important; 
-    }
-    .product-img-box { height: 125px; } 
-    .product-details { padding: 8px 4px; }
-    .product-card-title { font-size: 8.5px; line-height: 1.2; margin-bottom: 4px; }
-    .product-price { font-size: 10px; flex-direction: column; gap: 0px; }
-    .product-price span { font-size: 8px; }
-    
-    .urgency-badge { padding: 3px 5px; margin-top: 4px; }
-    .urgency-text { font-size: 7px; }
-    
-    /* إصلاح تداخل الفيلدات والفورم على الموبايل */
-    .fast-form-wrapper { 
-        padding: 25px 15px !important; 
-    }
-    .fast-form {
-        gap: 16px !important; /* مساحة واضحة تمنع تراكم المدخلات */
-    }
-    .fast-input-group label {
-        font-size: 12px;
-    }
-    .fast-input-group input, 
-    .fast-input-group textarea { 
-        padding: 12px !important; 
-        font-size: 13px !important; 
-    }
-    .selected-product-box {
-        font-size: 11px;
+    /* جعل حقول العنوان المجمعة تترتب بشكل مرن مريح على الموبايل عشان الشاشة ضيقة */
+    .address-row-combined {
         flex-direction: column;
-        align-items: flex-start;
-        gap: 5px;
-    }
-    .fast-submit-btn {
-        padding: 14px !important;
-        font-size: 13px !important;
+        gap: 10px;
     }
 }
