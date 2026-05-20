@@ -1,4 +1,6 @@
-/* Core & Reset Setup */
+/* ========================================================
+   Core & Reset Setup
+   ======================================================== */
 * {
     margin: 0;
     padding: 0;
@@ -12,7 +14,9 @@ body {
     overflow-x: hidden;
 }
 
-/* Navbar (Mavin Style Minimalist) */
+/* ========================================================
+   Navbar (Mavin Style Minimalist)
+   ======================================================== */
 .navbar {
     display: flex !important;
     flex-direction: row !important;
@@ -61,7 +65,9 @@ body {
     white-space: nowrap;
 }
 
-/* Left Sidebar Menu */
+/* ========================================================
+   Left Sidebar Menu
+   ======================================================== */
 .menu-sidebar {
     position: fixed;
     top: 0;
@@ -96,7 +102,9 @@ body {
 .call-btn { background: #11141a !important; color: #ffffff !important; border: 1px solid rgba(255, 255, 255, 0.1); }
 .call-btn:hover { background: #ffffff !important; color: #000000 !important; }
 
-/* Modals System styling */
+/* ========================================================
+   Modals System Styling
+   ======================================================== */
 .fabric-modal-overlay, .about-modal-overlay, .review-overlay, .product-modal-overlay, .checkout-overlay {
     position: fixed;
     top: 0;
@@ -117,7 +125,7 @@ body {
 
 .fabric-modal-content, .about-modal-content, .review-modal, .checkout-modal { background: #050508; border: 1px solid #1f2833; width: 100%; max-width: 460px; border-radius: 4px; position: relative; padding: 35px 25px; box-shadow: 0 10px 40px rgba(0,0,0,0.8); text-align: left; }
 .close-fabric-btn, .close-about-btn, .close-review-modal-btn, .close-modal-btn { position: absolute; top: 15px; right: 15px; background: rgba(255, 255, 255, 0.05); border: none; color: #ffffff; font-size: 14px; width: 30px; height: 30px; border-radius: 50%; cursor: pointer; display: flex; justify-content: center; align-items: center; transition: background 0.2s; }
-.close-fabric-btn:hover, .close-about-btn:hover, .close-review-modal-btn:hover:hover { background: #ff3b30; color: #000; }
+.close-fabric-btn:hover, .close-about-btn:hover, .close-review-modal-btn:hover { background: #ff3b30; color: #000; }
 
 .fabric-title { font-size: 20px; font-weight: bold; color: #ffffff; margin-bottom: 8px; }
 .fabric-subtitle { font-size: 13px; color: #8a929a; margin-bottom: 25px; }
@@ -140,19 +148,23 @@ body {
 .rating-stars .star:hover, .rating-stars .star:hover ~ .star, .rating-stars .star.selected, .rating-stars .star.selected ~ .star { color: #ff3b30; transform: scale(1.1); }
 .submit-review-btn { width: 100%; background: #ff3b30; color: #ffffff; font-weight: bold; font-size: 14px; border: none; padding: 14px; cursor: pointer; text-transform: uppercase; }
 
-/* Hero and Marquee Text */
+/* ========================================================
+   Hero and Marquee Text
+   ======================================================== */
 .hero-section { height: 100vh; width: 100%; background-image: url('bg-desktop.jpg'); background-size: cover; background-position: center; padding-top: 65px; }
 .marquee-bar { background: #ffffff; color: #000000; padding: 12px 0; overflow: hidden; white-space: nowrap; font-weight: bold; text-transform: uppercase; }
 .marquee-content { display: inline-block; padding-left: 100%; animation: marquee 15s linear infinite; }
 @keyframes marquee { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
 
-/* Grid Collection (3 columns layout setup) */
+/* ========================================================
+   Grid Collection (3 columns layout setup)
+   ======================================================== */
 .collection-section { padding: 40px 15px; background: #000000; text-align: center; }
 .collection-title { color: #ffffff; font-size: 24px; letter-spacing: 3px; margin-bottom: 30px; font-weight: 900; }
 
 .products-grid { 
     display: grid !important; 
-    grid-template-columns: repeat(3, 1fr) !important; /* الأساسي 3 في الصف للشاشات الكبيرة */
+    grid-template-columns: repeat(3, 1fr) !important;
     gap: 20px; 
     max-width: 1200px; 
     margin: 0 auto; 
@@ -170,7 +182,9 @@ body {
 .product-price { color: #ffffff; font-size: 15px; font-weight: 900; display: flex; gap: 5px; align-items: center; }
 .product-price span { font-size: 11px; color: #666; text-decoration: line-through; }
 
-/* Showcased Reviews */
+/* ========================================================
+   Showcased Reviews
+   ======================================================== */
 .site-reviews-section { background: #000000; padding: 60px 20px; text-align: center; max-width: 1200px; margin: 0 auto; }
 .reviews-section-title { font-family: 'Impact', sans-serif; font-size: 26px; color: #ffffff; letter-spacing: 2px; margin-bottom: 5px; }
 .reviews-section-subtitle { font-size: 13px; color: #8a929a; margin-bottom: 40px; }
@@ -180,7 +194,9 @@ body {
 .showcase-comment { font-size: 13px; color: #cccccc; line-height: 1.6; margin-bottom: 15px; }
 .showcase-author { font-size: 11px; color: #8a929a; font-weight: bold; }
 
-/* Mavin Style Minimalist Footer */
+/* ========================================================
+   Mavin Style Minimalist Footer
+   ======================================================== */
 .mavin-footer {
     background-color: #000000;
     border-top: 1px solid #1c1c1c;
@@ -270,7 +286,9 @@ body {
     color: #000000;
 }
 
-/* Product Modal Layout */
+/* ========================================================
+   Product Modal Layout
+   ======================================================== */
 .product-modal-content { background: #050508 !important; border: 1px solid #1c1c1c !important; width: 100% !important; max-width: 480px !important; border-radius: 4px !important; padding: 25px !important; max-height: 95vh; overflow-y: auto; }
 .modal-body-layout { display: flex !important; flex-direction: column !important; gap: 15px !important; }
 .modal-main-img-container { width: 100% !important; height: 300px !important; background: #15191d !important; position: relative; overflow: hidden !important; }
@@ -286,18 +304,21 @@ body {
 .modal-sizes-select input[type="radio"] { display: none !important; }
 .modal-sizes-select input[type="radio"]:checked + span { color: #000000 !important; background: #ffffff !important; border-color: #ffffff !important; }
 
-/* Size chart container */
+/* Size Chart Container */
 .size-guide-container { background: #09090c; border: 1px solid #15151a; padding: 12px; margin-bottom: 15px; }
 .size-guide-title { font-size: 12px; font-weight: bold; margin-bottom: 8px; color: #8a929a; }
 .size-guide-table { width: 100%; border-collapse: collapse; font-size: 11px; color: #aaaaaa; text-align: center; }
 .size-guide-table th, .size-guide-table td { padding: 6px; border: 1px solid #1c1c24; }
 .size-guide-table th { background: #111116; color: #fff; }
 
+/* تـصـحـيـح الـخـطـأ الـكـتـابـي هـنـا */
 .modal-buy-now-btn { width: 100% !important; background: #ffffff !important; color: #000000 !important; border: none !important; padding: 13px !important; font-weight: bold !important; font-size: 13px !important; text-transform: uppercase !important; margin-bottom: 8px; cursor: pointer; }
-.modal-add-to-cart-btn { width: 100% !important; background: transparent !important; color: #ffffff !important; border: 1px solid #333 !important; padding: 13px !important; font-weight: bold !size: 13px !important; text-transform: uppercase !important; cursor: pointer; }
+.modal-add-to-cart-btn { width: 100% !important; background: transparent !important; color: #ffffff !important; border: 1px solid #333 !important; padding: 13px !important; font-weight: bold !important; font-size: 13px !important; text-transform: uppercase !important; cursor: pointer; }
 .modal-add-to-cart-btn:hover { border-color: #fff; }
 
-/* Shopping Cart Controls */
+/* ========================================================
+   Shopping Cart Controls
+   ======================================================== */
 .floating-controls-container { position: fixed !important; top: 50% !important; right: 20px !important; transform: translateY(-50%) !important; z-index: 999999 !important; }
 .floating-cart { position: relative !important; width: 52px !important; height: 52px !important; background-color: #000000 !important; border: 1px solid #ffffff !important; border-radius: 50% !important; display: flex !important; justify-content: center !important; align-items: center !important; cursor: pointer !important; box-shadow: 0px 4px 20px rgba(255, 255, 255, 0.15) !important; }
 .cart-svg-icon { width: 22px; height: 22px; fill: #ffffff; }
@@ -315,7 +336,9 @@ body {
 .cart-total-box { display: flex; justify-content: space-between; font-size: 15px; font-weight: bold; margin-bottom: 15px; }
 .checkout-btn { width: 100%; background: #ffffff; color: #000000; border: none; padding: 13px; font-weight: bold; font-size: 13px; cursor: pointer; text-transform: uppercase; text-align: center; }
 
-/* Checkout Form */
+/* ========================================================
+   Checkout Form
+   ======================================================== */
 .form-group { margin-bottom: 15px; text-align: left; }
 .form-group label { display: block; font-size: 12px; color: #888; margin-bottom: 5px; }
 .form-group input, .form-group textarea { width: 100%; background: #0c0c10; border: 1px solid #222; padding: 11px; color: #ffffff; font-size: 13px; outline: none; }
@@ -326,9 +349,8 @@ body {
 .cancel-btn { flex: 1; background: #1c1c1c; color: #fff; border: none; padding: 13px; cursor: pointer; font-size: 13px; }
 
 /* ========================================================
-   Responsive Media Queries (تثبيت الـ 3 منتجات في كل مكان)
+   Responsive Media Queries (تثبيت الـ 3 منتجات وتحسين الأبعاد)
    ======================================================== */
-
 @media (max-width: 1024px) {
     .products-grid { 
         grid-template-columns: repeat(3, 1fr) !important; 
@@ -346,21 +368,40 @@ body {
     .product-img-box { height: 240px; }
 }
 
-/* تعديل الموبايل الحاسم ليعرض 3 منتجات بناءً على طلبك */
+/* التعديل الحاسم والمطور للموبايل لضمان عدم تداخل النصوص */
 @media (max-width: 480px) {
     .navbar { padding: 0 15px !important; height: 60px !important; }
     .nav-brand-text { font-size: 17px !important; letter-spacing: 2px; }
     .hero-section { background-image: url('bg-mobile.jpg'); }
     
     .products-grid { 
-        grid-template-columns: repeat(3, 1fr) !important; /* بقت 3 منتجات رسمياً على الموبايل */
-        gap: 5px; /* صغرنا المسافة شوية عشان المساحة */
+        grid-template-columns: repeat(3, 1fr) !important; /* 3 أعمدة ثنائية */
+        gap: 6px; 
     }
-    .product-img-box { height: 130px; } /* صغرنا ارتفاع الصورة عشان تطلع متناسقة ومربعة */
+    .product-img-box { height: 125px; } 
     
-    .product-card-title { font-size: 9px; font-weight: bold; letter-spacing: 0px; } /* صغرنا الخطوط */
-    .product-price { font-size: 10px; flex-direction: column; gap: 1px; } /* السعر والخصم تحت بعض عشان الشاشة */
+    .product-details { 
+        padding: 8px 4px !important; /* تقليص الحواف الجانبية لمنع النصوص من الاختناق */
+    }
+    
+    .product-card-title { 
+        font-size: 9px; 
+        font-weight: bold; 
+        letter-spacing: 0px; 
+        line-height: 1.2;
+    } 
+    
+    .product-price { 
+        font-size: 10px; 
+        flex-direction: column; 
+        align-items: flex-start; /* محاذاة مرتبة للأسفل والأطراف */
+        gap: 1px; 
+    } 
     .product-price span { font-size: 8px; }
+    
+    /* تعطيل الـ Hover Animation على الهواتف والاعتماد على اللمس المباشر */
+    .product-card:hover .img-front { opacity: 1; }
+    .product-card:hover .img-back { opacity: 0; transform: none; }
     
     .floating-controls-container { right: 12px !important; }
     .floating-cart { width: 46px !important; height: 46px !important; }
