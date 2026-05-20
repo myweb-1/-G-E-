@@ -4,14 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ANGER | Horror Clothing Brand</title>
-    <!-- استدعاء ملف الـ CSS الخاص بك -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- ========================================================
-       1. Navbar (الشريط العلوي)
-       ======================================================== -->
+    <!-- Navbar -->
     <nav class="navbar">
         <div class="nav-left">
             <div class="nav-menu-btn" id="openMenuBtn">
@@ -26,9 +23,7 @@
         <div class="nav-right"></div>
     </nav>
 
-    <!-- ========================================================
-       2. Left Sidebar Menu (القائمة الجانبية اليسرى)
-       ======================================================== -->
+    <!-- Sidebar Menu -->
     <div class="menu-sidebar" id="menuSidebar">
         <div class="menu-header">
             <button class="close-menu-btn" id="closeMenuBtn">&times;</button>
@@ -39,307 +34,62 @@
             <a href="#" id="openAboutBtn">عن البراند</a>
             <a href="#" id="openFabricBtn">تفاصيل الخامات</a>
         </div>
-        <hr class="menu-divider">
-        <div class="complaints-section">
-            <span class="complaints-title">الدعم والمساعدة</span>
-            <div class="complaints-buttons">
-                <!-- استبدل الرقم برقم الواتساب الخاص بك -->
-                <a href="https://wa.me/201000000000" target="_blank" class="complaint-btn wa-btn">واتساب الدعم</a>
-                <a href="tel:+201000000000" class="complaint-btn call-btn">إتصال هاتفي</a>
+    </div>
+
+    <!-- Hero Section with Background Marquee Inside -->
+    <header class="hero-section">
+        <div class="marquee-bar">
+            <div class="marquee-content">
+                DROP 01: THE ABYSS OUT NOW • شحن سريع لجميع المحافظات • DROP 01: THE ABYSS OUT NOW • 
             </div>
         </div>
-    </div>
-
-    <!-- ========================================================
-       3. Hero Section & Marquee (الواجهة الرئيسية والشريط المتحرك)
-       ======================================================== -->
-    <header class="hero-section">
-        <!-- الصورة الخلفية يتم التحكم بها من الـ CSS عبر bg-desktop.jpg و bg-mobile.jpg -->
     </header>
 
-    <div class="marquee-bar">
-        <div class="marquee-content">
-            شحن سريع لجميع محافظات مصر • التشكيلة الأولى: DROP 01 OUT NOW • خامات قطنية ثقيلة 100% • شحن سريع لجميع محافظات مصر •
-        </div>
-    </div>
-
-    <!-- ========================================================
-       4. Grid Collection (شبكة المنتجات - تظهر 3 في الصف دائمًا)
-       ======================================================== -->
+    <!-- Products Grid (3 Columns) -->
     <main class="collection-section">
-        <h2 class="collection-title">DROP 01: THE ABYSS</h2>
+        <h2 class="collection-title">THE ABYSS COLLECTION</h2>
         
         <div class="products-grid">
             
             <!-- المنتج الأول -->
-            <div class="product-card" onclick="openProductDetail('تيشرت ANGER الأسود - OVERSIZED', '650 EGP', 'img-front1.jpg', 'img-back1.jpg')">
+            <div class="product-card" onclick="openProductDetail('ANGER OVERSIZED TEE', '650 EGP', 'img-front1.jpg', 'img-back1.jpg')">
                 <div class="product-img-box">
-                    <img class="img-front" src="img-front1.jpg" alt="ANGER Tee Front">
-                    <img class="img-back" src="img-back1.jpg" alt="ANGER Tee Back">
+                    <img class="img-front" src="img-front1.jpg" alt="Front">
+                    <img class="img-back" src="img-back1.jpg" alt="Back">
                 </div>
                 <div class="product-details">
                     <h3 class="product-card-title">ANGER OVERSIZED TEE</h3>
-                    <div class="product-price">650 EGP <span>850 EGP</span></div>
+                    <div class="product-price">650 EGP</div>
                 </div>
             </div>
 
             <!-- المنتج الثاني -->
-            <div class="product-card" onclick="openProductDetail('هودي Blood Spatter البني', '950 EGP', 'img-front2.jpg', 'img-back2.jpg')">
+            <div class="product-card" onclick="openProductDetail('BLOOD SPATTER HOODIE', '950 EGP', 'img-front2.jpg', 'img-back2.jpg')">
                 <div class="product-img-box">
-                    <img class="img-front" src="img-front2.jpg" alt="Hoodie Front">
-                    <img class="img-back" src="img-back2.jpg" alt="Hoodie Back">
+                    <img class="img-front" src="img-front2.jpg" alt="Front">
+                    <img class="img-back" src="img-back2.jpg" alt="Back">
                 </div>
                 <div class="product-details">
                     <h3 class="product-card-title">BLOOD SPATTER HOODIE</h3>
-                    <div class="product-price">950 EGP <span>1200 EGP</span></div>
+                    <div class="product-price">950 EGP</div>
                 </div>
             </div>
 
             <!-- المنتج الثالث -->
-            <div class="product-card" onclick="openProductDetail('سويت شيرت Abyss المضلع', '750 EGP', 'img-front3.jpg', 'img-back3.jpg')">
+            <div class="product-card" onclick="openProductDetail('ABYSS SWEATSHIRT', '750 EGP', 'img-front3.jpg', 'img-back3.jpg')">
                 <div class="product-img-box">
-                    <img class="img-front" src="img-front3.jpg" alt="Sweatshirt Front">
-                    <img class="img-back" src="img-back3.jpg" alt="Sweatshirt Back">
+                    <img class="img-front" src="img-front3.jpg" alt="Front">
+                    <img class="img-back" src="img-back3.jpg" alt="Back">
                 </div>
                 <div class="product-details">
                     <h3 class="product-card-title">ABYSS SWEATSHIRT</h3>
-                    <div class="product-price">750 EGP <span>950 EGP</span></div>
+                    <div class="product-price">750 EGP</div>
                 </div>
             </div>
 
         </div>
     </main>
 
-    <!-- ========================================================
-       5. Showcased Reviews (آراء العملاء)
-       ======================================================== -->
-    <section class="site-reviews-section">
-        <h2 class="reviews-section-title">FEEDBACK</h2>
-        <p class="reviews-section-subtitle">ماذا يقول ضحايا براند ANGER عن التجربة</p>
-        <div class="reviews-showcase-grid">
-            <div class="showcase-card">
-                <div class="showcase-stars">★★★★★</div>
-                <p class="showcase-comment">التقفيل والـ Fit مرعب بجد، والطباعة مش بتروح في الغسيل خالص. عاش جداً.</p>
-                <div class="showcase-author">أحمد م. - القاهرة</div>
-            </div>
-            <div class="showcase-card">
-                <div class="showcase-stars">★★★★★</div>
-                <p class="showcase-comment">الخامة تقيلة ومريحة، والتغليف لوحده قصة تانية خالص لايق جداً مع الـ Vibe.</p>
-                <div class="showcase-author">كريم س. - الإسكندرية</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ========================================================
-       6. Floating Cart Button (زر السلة العائم الأيمن)
-       ======================================================== -->
-    <div class="floating-controls-container">
-        <div class="floating-cart" id="openCartBtn">
-            <!-- أيقونة العربة SVG المضيئة -->
-            <svg class="cart-svg-icon" viewBox="0 0 24 24">
-                <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1 .9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
-            </svg>
-            <span class="cart-count" id="cartCount">0</span>
-        </div>
-    </div>
-
-    <!-- ========================================================
-       7. Cart Sidebar (سلة المشتريات الجانبية)
-       ======================================================== -->
-    <div class="cart-sidebar" id="cartSidebar">
-        <div class="cart-header">
-            <h3>سلة المشتريات</h3>
-            <button class="close-menu-btn" id="closeCartBtn">&times;</button>
-        </div>
-        <div class="cart-items" id="cartItemsContainer">
-            <!-- المنتجات المضافة تظهر هنا ديناميكياً عبر الجافاسكريبت -->
-        </div>
-        <div class="cart-footer">
-            <div class="cart-total-box">
-                <span>الإجمالي:</span>
-                <span id="cartTotalValue">0 EGP</span>
-            </div>
-            <button class="checkout-btn" id="openCheckoutBtn">إتمام الطلب بأمان</button>
-        </div>
-    </div>
-
-    <!-- ========================================================
-       8. Modals System System Overlays (النوافذ المنبثقة)
-       ======================================================== -->
-    
-    <!--أ: نافذة تفاصيل المنتج وشراء الآن -->
-    <div class="product-modal-overlay" id="productModal">
-        <div class="product-modal-content">
-            <button class="close-modal-btn" id="closeProductModalBtn">&times;</button>
-            <div class="modal-body-layout">
-                <div class="modal-main-img-container">
-                    <img id="modalMainImg" src="" alt="Product View">
-                </div>
-                <div class="modal-thumbnails" id="modalThumbnails">
-                    <!-- الصور المصغرة يتم حقنها من الـ JS -->
-                </div>
-                <div class="modal-details-side">
-                    <h3 class="modal-product-title" id="modalProductTitle">اسم المنتج</h3>
-                    <div class="modal-product-price" id="modalProductPrice">0 EGP</div>
-                    
-                    <div class="size-guide-container">
-                        <div class="size-guide-title">جدول مقاسات ANGER (سم)</div>
-                        <table class="size-guide-table">
-                            <thead>
-                                <tr><th>المقاس</th><th>العرض (الصدر)</th><th>الطول الكامل</th></tr>
-                            </thead>
-                            <tbody>
-                                <tr><td>M</td><td>56</td><td>73</td></tr>
-                                <tr><td>L</td><td>59</td><td>76</td></tr>
-                                <tr><td>XL</td><td>62</td><td>79</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <div class="modal-sizes-select">
-                        <label><input type="radio" name="prod-size" value="M" checked><span>M</span></label>
-                        <label><input type="radio" name="prod-size" value="L"><span>L</span></label>
-                        <label><input type="radio" name="prod-size" value="XL"><span>XL</span></label>
-                    </div>
-                    
-                    <button class="modal-buy-now-btn" id="modalBuyNowBtn">شراء الآن (كاش)</button>
-                    <button class="modal-add-to-cart-btn" id="addToCartBtn">إضافة للعربة</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ب: نافذة تفاصيل الخامات (Fabric Modal) -->
-    <div class="fabric-modal-overlay" id="fabricModal">
-        <div class="fabric-modal-content">
-            <button class="close-fabric-btn" id="closeFabricBtn">&times;</button>
-            <h3 class="fabric-title">دليل الخامات والجودة</h3>
-            <p class="fabric-subtitle">نصنع الملابس لتتحمل أقصى ظروف الاستخدام اليومي</p>
-            <div class="fabric-features">
-                <div class="feature-item">
-                    <div>
-                        <h4>قطن مصري 100%</h4>
-                        <p>منسوج بكثافة عالية (320-380 GSM) ليعطيك الهيكل الثقيل والمريح في نفس الوقت.</p>
-                    </div>
-                </div>
-                <div class="feature-item">
-                    <div>
-                        <h4>طباعة حرارية مضادة للتقشير</h4>
-                        <p>نستخدم أحدث تقنيات الـ DTF والـ Screen Printing لضمان ثبات الألوان والرسومات داخل النسيج.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ج: نافذة عن البراند (About Us Modal) -->
-    <div class="about-modal-overlay" id="aboutModal">
-        <div class="about-modal-content">
-            <button class="close-about-btn" id="closeAboutBtnModal">&times;</button>
-            <h3 class="about-title">ANGER STUDIO</h3>
-            <p class="dark-quote">"تحويل الجانب المظلم والغموض إلى أزياء تعبر عنك"</p>
-            <p class="about-p">براند ANGER تأسس ليقدم رؤية مختلفة لملابس الـ Streetwear في مصر. نهتم بالتفاصيل المعقدة، والقصّات العريضة (Oversized) والتصاميم الخارجة عن المألوف.</p>
-            <p class="dark-footer-quote">MADE IN EGYPT BY ASHRAF STUDIO</p>
-        </div>
-    </div>
-
-    <!-- د: نافذة إتمام الطلب الشحن والفواتير (Checkout Modal) -->
-    <div class="checkout-overlay" id="checkoutModal">
-        <div class="checkout-modal-content checkout-modal">
-            <button class="close-modal-btn" id="closeCheckoutBtnModal">&times;</button>
-            <h3 class="review-title">بيانات الشحن</h3>
-            <p class="review-subtitle">يرجى كتابة العنوان بدقة لضمان سرعة التوصيل</p>
-            
-            <form id="checkoutForm">
-                <div class="form-group">
-                    <label>الاسم بالكامل</label>
-                    <input type="text" required placeholder="محمد أحمد">
-                </div>
-                <div class="form-group">
-                    <label>رقم الموبايل الأساسي</label>
-                    <input type="tel" required placeholder="010XXXXXXXX">
-                </div>
-                <div class="form-group">
-                    <label>المحافظة والمدينة</label>
-                    <input type="text" required placeholder="المنوفية - السادات">
-                </div>
-                <div class="form-group">
-                    <label>العنوان بالتفصيل (اسم الشارع / المبنى)</label>
-                    <textarea required placeholder="المنطقة الخامسة - عمارة رقم..."></textarea>
-                </div>
-                <div class="form-group">
-                    <label>طريقة الدفع المتوفرة</label>
-                    <input type="text" value="الدفع عند الاستلام (كاش)" readonly>
-                </div>
-                <div class="form-actions">
-                    <button type="submit" class="submit-order-btn">تأكيد طلب الأوردر</button>
-                    <button type="button" class="cancel-btn" id="cancelCheckoutBtn">إلغاء</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <!-- ========================================================
-       9. Footer (الفوتر المتناسق البسيط)
-       ======================================================== -->
-    <footer class="mavin-footer">
-        <div class="mavin-footer-container">
-            <div class="footer-nav-menu">
-                <a href="#">سياسة الاستبدال والاسترجاع</a>
-                <a href="#">الشروط والأحكام</a>
-                <a href="#">تتبع شحنتك</a>
-            </div>
-            <div class="footer-socials-row">
-                <a href="#" target="_blank">Instagram</a>
-                <a href="#" target="_blank">Facebook</a>
-                <a href="#" target="_blank">TikTok</a>
-            </div>
-            <div class="footer-copyright-row">
-                <p class="footer-copyright">© 2026 ANGER. All Rights Reserved. Built by Ashraf Studio.</p>
-            </div>
-        </div>
-        <button class="scroll-top-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">↑</button>
-    </footer>
-
-    <!-- استدعاء ملف الـ Javascript الخاص بنا أسفل الصفحة -->
     <script src="script.js"></script>
-    <script>
-        // دالة مساعدة لربط كروت المنتجات بالـ Modal وجلب تفاصيلها ديناميكياً
-        function openProductDetail(title, price, frontImg, backImg) {
-            document.getElementById('modalProductTitle').textContent = title;
-            document.getElementById('modalProductPrice').textContent = price;
-            const mainImg = document.getElementById('modalMainImg');
-            mainImg.src = frontImg;
-            
-            // إضافة صور مصغرة داخل الـ Modal لتبديل الأوجه
-            const thumbContainer = document.getElementById('modalThumbnails');
-            thumbContainer.innerHTML = `
-                <img class="active-thumb" src="${frontImg}" onclick="document.getElementById('modalMainImg').src='${frontImg}'; toggleThumb(this)">
-                <img src="${backImg}" onclick="document.getElementById('modalMainImg').src='${backImg}'; toggleThumb(this)">
-            `;
-            
-            document.getElementById('productModal').classList.add('active');
-        }
-
-        function toggleThumb(element) {
-            document.querySelectorAll('.modal-thumbnails img').forEach(img => img.classList.remove('active-thumb'));
-            element.classList.add('active-thumb');
-        }
-
-        // ربط تشغيل الـ Modals المتبقية (عن البراند والخامات والشحن)
-        document.getElementById('openFabricBtn').addEventListener('click', (e) => { e.preventDefault(); document.getElementById('fabricModal').classList.add('active'); });
-        document.getElementById('closeFabricBtn').addEventListener('click', () => document.getElementById('fabricModal').classList.remove('active'));
-        
-        document.getElementById('openAboutBtn').addEventListener('click', (e) => { e.preventDefault(); document.getElementById('aboutModal').classList.add('active'); });
-        document.getElementById('closeAboutBtnModal').addEventListener('click', () => document.getElementById('aboutModal').classList.remove('active'));
-        
-        document.getElementById('openCheckoutBtn').addEventListener('click', () => { document.getElementById('checkoutModal').classList.add('active'); });
-        document.getElementById('closeCheckoutBtnModal').addEventListener('click', () => document.getElementById('checkoutModal').classList.remove('active'));
-        document.getElementById('cancelCheckoutBtn').addEventListener('click', () => document.getElementById('checkoutModal').classList.remove('active'));
-        document.getElementById('modalBuyNowBtn').addEventListener('click', () => { 
-            document.getElementById('productModal').classList.remove('active');
-            document.getElementById('checkoutModal').classList.add('active'); 
-        });
-    </script>
 </body>
 </html>
