@@ -608,17 +608,50 @@
         function closeCheckoutForm() { document.getElementById('checkoutOverlay').classList.remove('active'); }
 
         function sendOrder(event) {
-            event.preventDefault();
-            const name = document.getElementById('clientName').value; const phone1 = document.getElementById('clientPhone1').value;
-            const phone2 = document.getElementById('clientPhone2').value; const address = document.getElementById('clientAddress').value;
-            const finalTotal = document.getElementById('finalTotalDisplay').value;
-            let itemsText = ''; cart.forEach((item, i) => { itemsText += `${i+1}- Item: ${item.name} \n   Size: ${item.size} \n   Qty: ${item.qty}\n-------------------------\n`; });
-            const message = encodeURIComponent(`🔥 New Order from Λ И G E Я 🔥\n\n📦 Ordered Items:\n-------------------------\n${itemsText}💰 Total Amount: ${finalTotal}\n\n👤 Shipping Details:\n- Customer Name: ${name}\n- Phone 1: ${phone1}\n- Phone 2: ${phone2}\n- Delivery Address: ${address}`);
-            window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
-            cart = []; updateCartUI(); closeCheckoutForm();
-            setTimeout(() => { document.getElementById('reviewOverlay').classList.add('active'); initStars(); }, 600);
-        }
+    event.preventDefault(); // منع الصفحة من الريفرش
 
+    const name = document.getElementById('clientName').value;
+    const phone1 = document.getElementById('clientPhone1').value;
+    const phone2 = document.getElementById('clientPhone2').value;
+    const address = document.getElementById('clientAddress').value;
+    const finalTotal = document.getElementById('finalTotalDisplay').value;
+
+    // 1. تجميع تفاصيل المنتجات والروابط بشكل منسق جداً للإيميل
+    let itemsText = '';
+    cart.forEach((item, i) => {
+        itemsText += `[المنتج ${i+1}]: ${item.name} - المقاس: ${item.size} - العدد: ${item.qty}\n`;
+        
+        // محاولة لقط رابط الصورة من السلة المعروضة في الصفحة
+        const cartImages = document.querySelectorAll('#cartItems img');
+        if (cartImages[i]) {
+            itemsText += `رابط الصورة: ${cartImages[i].src}\n`;
+        }
+        itemsText += `-----------------------\n`;
+    });
+
+    // 2. وضع النص المنسق جوة الـ input المخفي
+    const hiddenInput = document.getElementById('orderedProductsImages');
+    if (hiddenInput) {
+        hiddenInput.value = itemsText;
+    }
+
+    // 3. إرسال الفورم أوتوماتيك لـ Formspree بعد ما اتأكدنا إن الخانة اتملت
+    const formElement = document.getElementById('orderForm');
+    
+    // بنعمل Submit للفورم برمجياً عشان تروح لـ Formspree مباشرة
+    formElement.submit();
+
+    // 4. تصفير السلة وإظهار تقييم النجوم (كودك القديم)
+    cart = [];
+    if (typeof updateCartUI === 'function') updateCartUI();
+    if (typeof closeCheckoutForm === 'function') closeCheckoutForm();
+    
+    setTimeout(() => {
+        const reviewOverlay = document.getElementById('reviewOverlay');
+        if (reviewOverlay) reviewOverlay.classList.add('active');
+        if (typeof initStars === 'function') initStars();
+    }, 600);
+}
         function initStars() {
             const stars = document.querySelectorAll('.rating-stars .star');
             stars.forEach(star => {
