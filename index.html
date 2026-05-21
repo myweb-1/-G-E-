@@ -373,32 +373,39 @@
     <div class="checkout-overlay" id="checkoutOverlay">
         <div class="checkout-modal">
             <h3>Order Shipping Details</h3>
-            <form id="orderForm" onsubmit="sendOrder(event)">
-                <div class="form-group">
-                    <label>Full Name</label>
-                    <input type="text" id="clientName" required placeholder="John Doe...">
-                </div>
-                <div class="form-group">
-                    <label>Final Total Price</label>
-                    <input type="text" id="finalTotalDisplay" readonly>
-                </div>
-                <div class="form-group">
-                    <label>Primary Phone Number</label>
-                    <input type="tel" id="clientPhone1" required placeholder="01xxxxxxxxx">
-                </div>
-                <div class="form-group">
-                    <label>Alternative Phone Number</label>
-                    <input type="tel" id="clientPhone2" required placeholder="01xxxxxxxxx">
-                </div>
-                <div class="form-group">
-                    <label>Full Delivery Address</label>
-                    <textarea id="clientAddress" required placeholder="Governorate, City, Street name, Building..."></textarea>
-                </div>
-                <div class="form-actions">
-                    <button type="submit" class="submit-order-btn">Submit Order via WhatsApp</button>
-                    <button type="button" class="cancel-btn" onclick="closeCheckoutForm()">Cancel</button>
-                </div>
-            </form>
+         <form id="orderForm" action="https://formspree.io/f/xgoqadvg" method="POST">
+            
+            <div class="form-group">
+                <label>Full Name</label>
+                <input type="text" id="clientName" name="clientName" required placeholder="John Doe...">
+            </div>
+            
+            <div class="form-group">
+                <label>Final Total Price</label>
+                <input type="text" id="finalTotalDisplay" name="finalTotal" readonly>
+            </div>
+            
+            <div class="form-group">
+                <label>Primary Phone Number</label>
+                <input type="tel" id="clientPhone1" name="clientPhone1" required placeholder="01xxxxxxxxx">
+            </div>
+            
+            <div class="form-group">
+                <label>Alternative Phone Number</label>
+                <input type="tel" id="clientPhone2" name="clientPhone2" required placeholder="01xxxxxxxxx">
+            </div>
+            
+            <div class="form-group">
+                <label>Full Delivery Address</label>
+                <textarea id="clientAddress" name="clientAddress" required placeholder="Governorate, City, Street name, Building..."></textarea>
+            </div>
+            
+            <div class="form-actions">
+                <button type="submit" class="submit-order-btn">Submit Order</button>
+                <button type="button" class="cancel-btn" onclick="closeCheckoutForm()">Cancel</button>
+            </div>
+            
+        </form>
         </div>
     </div>
 
