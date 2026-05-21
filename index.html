@@ -565,34 +565,43 @@
     
     const totalCost = cart.reduce((sum, item) => sum + (item.price * item.qty), 0); 
     
-    // تجميع روابط أو أسماء الصور من مصفوفة الـ cart مباشرة
-    let imageSources = [];
-    cart.forEach(item => {
-        // لو اسم الصورة متخزن في السلة (مثلاً: prod1-front.jpg)
-        // الكود ده هيجيب الرابط الكامل ليها على الموقع
+    // تجميع تفاصيل المنتجات وصورها مباشرة من مصفوفة السلة (Cart)
+    let productsDetails = [];
+    
+    cart.forEach((item, index) => {
+        // تجميع اسم المنتج، المقاس، والكمية في سطر واضح
+        let details = `[Item ${index + 1}]: ${item.name || 'Product'} (Size: ${item.size || 'N/A'}) x${item.qty}`;
+        
+        // إذا كان عندك مسار الصورة متخزن جوه السلة (تأكد لو المتغير اسمه item.image أو item.img)
+        // الكود هنا هيحاول يلقطه ويحوله لرابط كامل على موقعك
         if (item.image) {
-            imageSources.push(window.location.origin + '/' + item.image);
-        } else {
-            // محاولة بديلة لو الكلاس في السلة اسمه كدة
-            const imgEl = document.querySelector(`#cartItems img[src*="${item.id}"]`);
-            if (imgEl) imageSources.push(imgEl.src);
+            details += ` -> Image URL: ${window.location.origin}/${item.image}`;
+        } else if (item.img) {
+            details += ` -> Image URL: ${window.location.origin}/${item.img}`;
         }
+        
+        productsDetails.push(details);
     });
 
-    // لو ملقطش حاجة فوق، هيلقط كل الصور اللي في السلة كخطة بديلة
-    if (imageSources.length === 0) {
-        document.querySelectorAll('#cartItems img').forEach(img => {
-            imageSources.push(img.src);
-        });
+    // إذا لم يجد روابط من المصفوفة مباشرة، كخطوة احتياطية يلقط الروابط الحية من السلة المعروضة
+    if (productsDetails.length === 0 || !productsDetails[0].includes('Image URL')) {
+        const cartImages = document.querySelectorAll('#cartItems img');
+        if (cartImages.length > 0) {
+            productsDetails = []; // إعادة تهيئة
+            cartImages.forEach((img, index) => {
+                productsDetails.push(`[Item ${index + 1}] Image URL: ${img.src}`);
+            });
+        }
     }
 
-    // وضع الروابط في الخانة المخفية
+    // وضع النص الكامل المتكامل جوه الخانة المخفية
     const hiddenInput = document.getElementById('orderedProductsImages');
     if (hiddenInput) {
-        hiddenInput.value = imageSources.join(', ');
+        // عمل سطور وفواصل واضحة عشان تظهر منسقة في الإيميل
+        hiddenInput.value = productsDetails.join(' | ');
     }
 
-    // إظهار النافذة وضبط السعر
+    // إظهار النافذة وضبط السعر الإجمالي
     document.getElementById('finalTotalDisplay').value = totalCost + " EGP";
     document.getElementById('checkoutOverlay').classList.add('active'); 
 }
