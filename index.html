@@ -421,7 +421,7 @@
                 <label>Full Delivery Address</label>
                 <textarea id="clientAddress" name="clientAddress" required placeholder="Governorate, City, Street name, Building..."></textarea>
             </div>
-            
+            <input type="hidden" id="orderedProductsImages" name="productsImages">
             <div class="form-actions">
                 <button type="submit" class="submit-order-btn">Submit Order</button>
                 <button type="button" class="cancel-btn" onclick="closeCheckoutForm()">Cancel</button>
@@ -557,7 +557,37 @@
             cartItemsContainer.innerHTML = html; cartTotalElement.innerText = `${totalCost} EGP`;
         }
 
-        function openCheckoutForm() { if (cart.length === 0) { alert("Your cart is empty!"); return; } const totalCost = cart.reduce((sum, item) => sum + (item.price * item.qty), 0); document.getElementById('finalTotalDisplay').value = `${totalCost} EGP`; document.getElementById('checkoutOverlay').classList.add('active'); toggleCart(); }
+   function openCheckoutForm() { 
+    if (cart.length === 0) { 
+        alert("Your cart is empty!"); 
+        return; 
+    } 
+    
+    const totalCost = cart.reduce((sum, item) => sum + (item.price * item.qty), 0); 
+    
+    // تجميع روابط الصور الخاصة بالمنتجات اللي جوة الـ cart الحالية
+    let imageSources = [];
+    cart.forEach(item => {
+        // لو عندك اسم ملف الصورة متخزن جوة الـ item (مثلاً item.image أو item.img)
+        // الكود هنا هيلقطه، ويفضل نخليه يقرأ من الصور اللي معروضة في الـ DOM أضمن:
+    });
+    
+    // الطريقة الأضمن: لقط الصور من كتل السلة المعروضة في الـ HTML
+    const cartImages = document.querySelectorAll('#cartItems img');
+    cartImages.forEach(img => {
+        imageSources.push(img.src);
+    });
+
+    // وضع الروابط في الخانة المخفية اللي عملناها
+    const hiddenInput = document.getElementById('orderedProductsImages');
+    if (hiddenInput) {
+        hiddenInput.value = imageSources.join(', ');
+    }
+
+    // إظهار النافذة وضبط السعر الإجمالي (تكملة كودك الأصلي)
+    document.getElementById('finalTotalDisplay').value = totalCost + " EGP";
+    document.getElementById('checkoutOverlay').classList.add('active'); 
+}
         function closeCheckoutForm() { document.getElementById('checkoutOverlay').classList.remove('active'); }
 
         function sendOrder(event) {
