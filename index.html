@@ -521,11 +521,12 @@
 
         function buyItNowFromModal() {
             const selectedSize = document.querySelector('input[name="modal-size"]:checked').value;
-            cart = [{ id: currentModalProductId, name: currentModalProductName, price: currentModalProductPrice, size: selectedSize, qty: 1 }];
-            updateCartUI(); closeProductModal();
-            document.getElementById('finalTotalDisplay').value = `${currentModalProductPrice} EGP`;
-            document.getElementById('checkoutOverlay').classList.add('active');
-        }
+           cart = [{ id: currentModalProductId, name: currentModalProductName, price: currentModalProductPrice, size: selectedSize, qty: 1 }];
+updateCartUI(); closeProductModal();
+// 👇 التعديل هنا: حساب السعر + 70 جنيه شحن للمنتج الواحد المباشر
+let totalWithShipping = currentModalProductPrice + 70;
+document.getElementById('finalTotalDisplay').value = totalWithShipping + " EGP (شامل 70 جنيه شحن)";
+document.getElementById('checkoutOverlay').classList.add('active');1
 
         function addFromModalToCart() {
             const selectedSize = document.querySelector('input[name="modal-size"]:checked').value;
@@ -595,15 +596,16 @@
     }
 
     // وضع النص الكامل المتكامل جوه الخانة المخفية
-    const hiddenInput = document.getElementById('orderedProductsImages');
-    if (hiddenInput) {
-        // عمل سطور وفواصل واضحة عشان تظهر منسقة في الإيميل
-        hiddenInput.value = productsDetails.join(' | ');
-    }
+   const hiddenInput = document.getElementById('orderedProductsImages');
+if (hiddenInput) {
+    // عمل سطور وفواصل واضحة عشان تظهر منسقة في الإيميل
+    hiddenInput.value = productsDetails.join(' | ');
+}
 
-    // إظهار النافذة وضبط السعر الإجمالي
-    document.getElementById('finalTotalDisplay').value = totalCost + " EGP";
-    document.getElementById('checkoutOverlay').classList.add('active'); 
+// 👇 التعديل هنا: إضافة 70 جنيه شحن ثابتة على إجمالي الأوردر بالكامل 👇
+let finalCostWithShipping = totalCost + 70;
+document.getElementById('finalTotalDisplay').value = finalCostWithShipping + " EGP (شامل 70 جنيه شحن)";
+document.getElementById('checkoutOverlay').classList.add('active'); 
 }
         function closeCheckoutForm() { document.getElementById('checkoutOverlay').classList.remove('active'); }
 
