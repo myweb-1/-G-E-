@@ -519,19 +519,46 @@
             setModalImage(modalImagesArray[currentImageIndex], currentImageIndex);
         }
 
-        function buyItNowFromModal() {
+      function buyItNowFromModal() {
             const selectedSize = document.querySelector('input[name="modal-size"]:checked').value;
-           cart = [{ id: currentModalProductId, name: currentModalProductName, price: currentModalProductPrice, size: selectedSize, qty: 1 }];
-updateCartUI(); closeProductModal();
-// 👇 التعديل هنا: حساب السعر + 70 جنيه شحن للمنتج الواحد المباشر
-let totalWithShipping = currentModalProductPrice + 70;
-document.getElementById('finalTotalDisplay').value = totalWithShipping + " EGP (شامل 70 جنيه شحن)";
-document.getElementById('checkoutOverlay').classList.add('active');1
+            cart = [{ 
+                id: currentModalProductId, 
+                name: currentModalProductName, 
+                price: currentModalProductPrice, 
+                size: selectedSize, 
+                qty: 1,
+                img: `prod${currentModalProductId}-front.jpg`
+            }];
+            
+            updateCartUI(); 
+            closeProductModal();
+            
+            let totalWithShipping = currentModalProductPrice + 70;
+            document.getElementById('finalTotalDisplay').value = totalWithShipping + " EGP (شامل 70 جنيه شحن)";
+            
+            const hiddenInput = document.getElementById('orderedProductsImages');
+            if (hiddenInput) {
+                hiddenInput.value = `[Item 1]: ${currentModalProductName} (Size: ${selectedSize}) x1 -> Image URL: ${window.location.origin}/prod${currentModalProductId}-front.jpg`;
+            }
+            
+            document.getElementById('checkoutOverlay').classList.add('active');
+        }
 
         function addFromModalToCart() {
             const selectedSize = document.querySelector('input[name="modal-size"]:checked').value;
             const existingItem = cart.find(item => item.id === currentModalProductId && item.size === selectedSize);
-            if (existingItem) { existingItem.qty += 1; } else { cart.push({ id: currentModalProductId, name: currentModalProductName, price: currentModalProductPrice, size: selectedSize, qty: 1 }); }
+            if (existingItem) { 
+                existingItem.qty += 1; 
+            } else { 
+                cart.push({ 
+                    id: currentModalProductId, 
+                    name: currentModalProductName, 
+                    price: currentModalProductPrice, 
+                    size: selectedSize, 
+                    qty: 1,
+                    img: `prod${currentModalProductId}-front.jpg`
+                }); 
+            }
             updateCartUI();
             const btn = document.getElementById('modalAddToCartBtn');
             btn.innerText = "✓ Added To Cart"; btn.style.background = "#ffffff"; btn.style.color = "#000000";
@@ -558,66 +585,48 @@ document.getElementById('checkoutOverlay').classList.add('active');1
             cartItemsContainer.innerHTML = html; cartTotalElement.innerText = `${totalCost} EGP`;
         }
 
- function openCheckoutForm() { 
-    if (cart.length === 0) { 
-        alert("Your cart is empty!"); 
-        return; 
-    } 
-    
-    const totalCost = cart.reduce((sum, item) => sum + (item.price * item.qty), 0); 
-    
-    // تجميع تفاصيل المنتجات وصورها مباشرة من مصفوفة السلة (Cart)
-    let productsDetails = [];
-    
-    cart.forEach((item, index) => {
-        // تجميع اسم المنتج، المقاس، والكمية في سطر واضح
-        let details = `[Item ${index + 1}]: ${item.name || 'Product'} (Size: ${item.size || 'N/A'}) x${item.qty}`;
-        
-        // إذا كان عندك مسار الصورة متخزن جوه السلة (تأكد لو المتغير اسمه item.image أو item.img)
-        // الكود هنا هيحاول يلقطه ويحوله لرابط كامل على موقعك
-        if (item.image) {
-            details += ` -> Image URL: ${window.location.origin}/${item.image}`;
-        } else if (item.img) {
-            details += ` -> Image URL: ${window.location.origin}/${item.img}`;
-        }
-        
-        productsDetails.push(details);
-    });
-
-    // إذا لم يجد روابط من المصفوفة مباشرة، كخطوة احتياطية يلقط الروابط الحية من السلة المعروضة
-    if (productsDetails.length === 0 || !productsDetails[0].includes('Image URL')) {
-        const cartImages = document.querySelectorAll('#cartItems img');
-        if (cartImages.length > 0) {
-            productsDetails = []; // إعادة تهيئة
-            cartImages.forEach((img, index) => {
-                productsDetails.push(`[Item ${index + 1}] Image URL: ${img.src}`);
+        function openCheckoutForm() { 
+            if (cart.length === 0) { 
+                alert("Your cart is empty!"); 
+                return; 
+            } 
+            
+            const totalCost = cart.reduce((sum, item) => sum + (item.price * item.qty), 0); 
+            let productsDetails = [];
+            
+            cart.forEach((item, index) => {
+                let details = `[Item ${index + 1}]: ${item.name || 'Product'} (Size: ${item.size || 'N/A'}) x${item.qty}`;
+                if (item.img) {
+                    details += ` -> Image URL: ${window.location.origin}/${item.img}`;
+                }
+                productsDetails.push(details);
             });
+
+            const hiddenInput = document.getElementById('orderedProductsImages');
+            if (hiddenInput) {
+                hiddenInput.value = productsDetails.join(' | ');
+            }
+
+            let finalCostWithShipping = totalCost + 70;
+            document.getElementById('finalTotalDisplay').value = finalCostWithShipping + " EGP (شامل 70 جنيه شحن)";
+            document.getElementById('checkoutOverlay').classList.add('active'); 
         }
-    }
 
-    // وضع النص الكامل المتكامل جوه الخانة المخفية
-   const hiddenInput = document.getElementById('orderedProductsImages');
-if (hiddenInput) {
-    // عمل سطور وفواصل واضحة عشان تظهر منسقة في الإيميل
-    hiddenInput.value = productsDetails.join(' | ');
-}
-
-// 👇 التعديل هنا: إضافة 70 جنيه شحن ثابتة على إجمالي الأوردر بالكامل 👇
-let finalCostWithShipping = totalCost + 70;
-document.getElementById('finalTotalDisplay').value = finalCostWithShipping + " EGP (شامل 70 جنيه شحن)";
-document.getElementById('checkoutOverlay').classList.add('active'); 
-}
         function closeCheckoutForm() { document.getElementById('checkoutOverlay').classList.remove('active'); }
 
         function sendOrder(event) {
-    event.preventDefault(); // منع الصفحة من الريفرش
+            event.preventDefault();
 
-    const name = document.getElementById('clientName').value;
-    const phone1 = document.getElementById('clientPhone1').value;
-    const phone2 = document.getElementById('clientPhone2').value;
-    const address = document.getElementById('clientAddress').value;
-    const finalTotal = document.getElementById('finalTotalDisplay').value;
+            const name = document.getElementById('clientName').value;
+            const phone1 = document.getElementById('clientPhone1').value;
+            const phone2 = document.getElementById('clientPhone2').value;
+            const address = document.getElementById('clientAddress').value;
+            const productData = document.getElementById('orderedProductsImages').value;
+            const finalPrice = document.getElementById('finalTotalDisplay').value;
 
+            const form = document.getElementById('orderForm');
+            form.submit();
+        }
     // 1. تجميع تفاصيل المنتجات والروابط بشكل منسق جداً للإيميل
     let itemsText = '';
     cart.forEach((item, i) => {
