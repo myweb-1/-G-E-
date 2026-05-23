@@ -396,29 +396,29 @@
            <form id="orderForm" action="https://formspree.io/f/xgoqadvg" method="POST" onsubmit="sendOrder(event)">
                 <div class="form-group">
                     <label>Full Name</label>
-                    <input type="text" id="clientName" required placeholder="John Doe...">
+                    <input type="text" id="clientName" name="clientName" required placeholder="John Doe...">
                 </div>
                 <div class="form-group">
                     <label>Final Total Price</label>
-                    <input type="text" id="finalTotalDisplay" readonly>
+                    <input type="text" id="finalTotalDisplay" name="finalTotal" readonly>
                 </div>
                 <div class="form-group">
                     <label>Primary Phone Number</label>
-                    <input type="tel" id="clientPhone1" required placeholder="01xxxxxxxxx">
+                   <input type="tel" id="clientPhone1" name="clientPhone1" required placeholder="01xxxxxxxxx">
                 </div>
                 <div class="form-group">
                     <label>Alternative Phone Number</label>
-                    <input type="tel" id="clientPhone2" required placeholder="01xxxxxxxxx">
+                    <input type="tel" id="clientPhone2" name="clientPhone2" required placeholder="01xxxxxxxxx">
                 </div>
                 <div class="form-group">
                     <label>Full Delivery Address</label>
-                    <textarea id="clientAddress" required placeholder="Governorate, City, Street name, Building..."></textarea>
+                   <textarea id="clientAddress" name="clientAddress" required placeholder="Governorate, City, Street name, Building..."></textarea>
                 </div>
-                <div class="form-actions">
-                    <input type="hidden" id="orderedProductsImages" name="productsImages">
-                    <button type="submit" class="submit-order-btn">Submit Order via WhatsApp</button>
-                    <button type="button" class="cancel-btn" onclick="closeCheckoutForm()">Cancel</button>
-                </div>
+                  <div class="form-actions">
+                  <input type="hidden" id="orderedProductsImages" name="productsImages">
+                  <button type="submit" class="submit-order-btn">تأكيد طلب الأوردر وشحن المنتج</button>
+               <button type="button" class="cancel-btn" onclick="closeCheckoutForm()">Cancel</button>
+             </div>
             </form>
         </div>
     </div>
@@ -549,20 +549,20 @@
             cartItemsContainer.innerHTML = html; cartTotalElement.innerText = `${totalCost} EGP`;
         }
 
-       function openCheckoutForm() { 
+      function openCheckoutForm() { 
     if (cart.length === 0) { 
         alert("Your cart is empty!"); 
         return; 
     } 
     
-    // 1. حساب إجمالي سعر المنتجات
+    // 1. حساب سعر التيشرتات
     const productsCost = cart.reduce((sum, item) => sum + (item.price * item.qty), 0); 
     
-    // 2. إضافة 70 جنيه مصاريف الشحن
+    // 2. إضافة الـ 70 جنيه شحن ثابته
     const shippingCost = 70;
     const finalTotalWithShipping = productsCost + shippingCost; 
 
-    // 3. تجميع الأوردر بشكل مؤقت للـ input المخفي
+    // 3. بناء تقرير المنتجات للخانة المخفية
     let itemsText = ''; 
     cart.forEach((item, i) => { 
         itemsText += `[المنتج ${i+1}]: ${item.name} - المقاس: ${item.size} - العدد: ${item.qty} \n`;
@@ -575,15 +575,15 @@
 
     itemsText += `سعر المنتجات: ${productsCost} EGP\n`;
     itemsText += `مصاريف الشحن: ${shippingCost} EGP\n`;
-    itemsText += `الإجمالي الكلي: ${finalTotalWithShipping} EGP\n`;
+    itemsText += `الإجمالي الكلي المستحق: ${finalTotalWithShipping} EGP\n`;
 
     const hiddenInput = document.getElementById('orderedProductsImages');
     if (hiddenInput) {
         hiddenInput.value = itemsText;
     }
 
-    // 4. عرض السعر شامل الشحن للعميل قبل التأكيد
-    document.getElementById('finalTotalDisplay').value = finalTotalWithShipping + " EGP (شامل 70 جنيه شحن)";
+    // 4. تحديث الخانة أمام العميل ليرى السعر النهائي شاملاً الشحن فوراً
+    document.getElementById('finalTotalDisplay').value = finalTotalWithShipping + " EGP (شامل 70 جنيه مصاريف الشحن)";
     
     // إظهار النافذة
     document.getElementById('checkoutOverlay').classList.add('active'); 
