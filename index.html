@@ -588,7 +588,9 @@
     // إظهار النافذة
     document.getElementById('checkoutOverlay').classList.add('active'); 
 }
-
+function closeCheckoutForm() { 
+    document.getElementById('checkoutOverlay').classList.remove('active'); 
+}
 function sendOrder(event) {
     event.preventDefault(); // منع الصفحة من الريفرش أو الإرسال التلقائي السريع
 
