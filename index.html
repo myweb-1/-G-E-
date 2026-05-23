@@ -590,7 +590,7 @@
 }
 
 function sendOrder(event) {
-    event.preventDefault(); // منع الصفحة من الريفرش العشوائي
+    event.preventDefault(); // منع الصفحة من الريفرش أو الإرسال التلقائي السريع
 
     const name = document.getElementById('clientName').value;
     const phone1 = document.getElementById('clientPhone1').value;
@@ -603,11 +603,12 @@ function sendOrder(event) {
     const shippingCost = 70;
     const finalTotalWithShipping = productsCost + shippingCost;
 
-    // 2. إنشاء نص التقرير وضمان لقط روابط الصور الحية على الإنترنت
+    // 2. إنشاء نص التقرير وضمان لقط المنتجات والمقاسات والروابط
     let itemsText = '';
     cart.forEach((item, i) => {
         itemsText += `[المنتج ${i+1}]: ${item.name} - المقاس: ${item.size} - العدد: ${item.qty}\n`;
         
+        // جلب رابط الصورة من السلة المفتوحة بالصفحة
         const cartImages = document.querySelectorAll('.cart-item img, .cart-items img, #cartItems img');
         if (cartImages[i]) {
             itemsText += `رابط الصورة: ${cartImages[i].src}\n`;
@@ -618,30 +619,35 @@ function sendOrder(event) {
         itemsText += `-----------------------\n`;
     });
 
+    // إضافة الحسبة التفصيلية للتقرير
     itemsText += `سعر المنتجات: ${productsCost} EGP\n`;
     itemsText += `مصاريف الشحن: ${shippingCost} EGP\n`;
     itemsText += `الإجمالي النهائي المستحق: ${finalTotalWithShipping} EGP\n`;
 
-    // 3. حقن التقرير الكامل في الخانة المخفية
+    // 3. حقن التقرير الكامل في الخانة المخفية "فوراً"
     const hiddenInput = document.getElementById('orderedProductsImages');
     if (hiddenInput) {
         hiddenInput.value = itemsText;
     }
 
-    // 4. إرسال البيانات أوتوماتيكياً إلى سيرفر Formspree
-    const formElement = document.getElementById('orderForm');
-    formElement.submit();
-
-    // 5. تفريغ السلة وعرض شاشة التقييم الأصلي
-    cart = [];
-    if (typeof updateCartUI === 'function') updateCartUI();
-    if (typeof closeCheckoutForm === 'function') closeCheckoutForm();
-    
+    // 4. تأخير الإرسال لكسر من الثانية للتأكيد من حفظ البيانات في الفورم
     setTimeout(() => {
-        const reviewOverlay = document.getElementById('reviewOverlay');
-        if (reviewOverlay) reviewOverlay.classList.add('active');
-        if (typeof initStars === 'function') initStars();
-    }, 600);
+        const formElement = document.getElementById('orderForm');
+        
+        // عمل الإرسال الفعلي برمجياً لـ Formspree بعد ما الخانة اتملت 100%
+        HTMLFormElement.prototype.submit.call(formElement);
+
+        // 5. تفريغ السلة وعرض شاشة التقييم الأصلي بعد الإرسال
+        cart = [];
+        if (typeof updateCartUI === 'function') updateCartUI();
+        if (typeof closeCheckoutForm === 'function') closeCheckoutForm();
+        
+        setTimeout(() => {
+            const reviewOverlay = document.getElementById('reviewOverlay');
+            if (reviewOverlay) reviewOverlay.classList.add('active');
+            if (typeof initStars === 'function') initStars();
+        }, 600);
+    }, 100); 
 }
 
         function initStars() {
@@ -675,4 +681,3 @@ function sendOrder(event) {
 </body>
 </html>
 
-دا الHYML
