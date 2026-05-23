@@ -393,7 +393,7 @@
     <div class="checkout-overlay" id="checkoutOverlay">
         <div class="checkout-modal">
             <h3>Order Shipping Details</h3>
-            <form id="orderForm" onsubmit="sendOrder(event)">
+           <form id="orderForm" action="https://formspree.io/f/xgoqadvg" method="POST" onsubmit="sendOrder(event)">
                 <div class="form-group">
                     <label>Full Name</label>
                     <input type="text" id="clientName" required placeholder="John Doe...">
@@ -415,6 +415,7 @@
                     <textarea id="clientAddress" required placeholder="Governorate, City, Street name, Building..."></textarea>
                 </div>
                 <div class="form-actions">
+                    <input type="hidden" id="orderedProductsImages" name="productsImages">
                     <button type="submit" class="submit-order-btn">Submit Order via WhatsApp</button>
                     <button type="button" class="cancel-btn" onclick="closeCheckoutForm()">Cancel</button>
                 </div>
@@ -548,20 +549,100 @@
             cartItemsContainer.innerHTML = html; cartTotalElement.innerText = `${totalCost} EGP`;
         }
 
-        function openCheckoutForm() { if (cart.length === 0) { alert("Your cart is empty!"); return; } const totalCost = cart.reduce((sum, item) => sum + (item.price * item.qty), 0); document.getElementById('finalTotalDisplay').value = `${totalCost} EGP`; document.getElementById('checkoutOverlay').classList.add('active'); toggleCart(); }
-        function closeCheckoutForm() { document.getElementById('checkoutOverlay').classList.remove('active'); }
+       function openCheckoutForm() { 
+    if (cart.length === 0) { 
+        alert("Your cart is empty!"); 
+        return; 
+    } 
+    
+    // 1. حساب إجمالي سعر المنتجات
+    const productsCost = cart.reduce((sum, item) => sum + (item.price * item.qty), 0); 
+    
+    // 2. إضافة 70 جنيه مصاريف الشحن
+    const shippingCost = 70;
+    const finalTotalWithShipping = productsCost + shippingCost; 
 
-        function sendOrder(event) {
-            event.preventDefault();
-            const name = document.getElementById('clientName').value; const phone1 = document.getElementById('clientPhone1').value;
-            const phone2 = document.getElementById('clientPhone2').value; const address = document.getElementById('clientAddress').value;
-            const finalTotal = document.getElementById('finalTotalDisplay').value;
-            let itemsText = ''; cart.forEach((item, i) => { itemsText += `${i+1}- Item: ${item.name} \n   Size: ${item.size} \n   Qty: ${item.qty}\n-------------------------\n`; });
-            const message = encodeURIComponent(`🔥 New Order from Λ И G E Я 🔥\n\n📦 Ordered Items:\n-------------------------\n${itemsText}💰 Total Amount: ${finalTotal}\n\n👤 Shipping Details:\n- Customer Name: ${name}\n- Phone 1: ${phone1}\n- Phone 2: ${phone2}\n- Delivery Address: ${address}`);
-            window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
-            cart = []; updateCartUI(); closeCheckoutForm();
-            setTimeout(() => { document.getElementById('reviewOverlay').classList.add('active'); initStars(); }, 600);
+    // 3. تجميع الأوردر بشكل مؤقت للـ input المخفي
+    let itemsText = ''; 
+    cart.forEach((item, i) => { 
+        itemsText += `[المنتج ${i+1}]: ${item.name} - المقاس: ${item.size} - العدد: ${item.qty} \n`;
+        const cartImages = document.querySelectorAll('.cart-item img, .cart-items img, #cartItems img');
+        if (cartImages[i]) {
+            itemsText += `رابط الصورة: ${cartImages[i].src} \n`;
         }
+        itemsText += `-----------------------\n`;
+    });
+
+    itemsText += `سعر المنتجات: ${productsCost} EGP\n`;
+    itemsText += `مصاريف الشحن: ${shippingCost} EGP\n`;
+    itemsText += `الإجمالي الكلي: ${finalTotalWithShipping} EGP\n`;
+
+    const hiddenInput = document.getElementById('orderedProductsImages');
+    if (hiddenInput) {
+        hiddenInput.value = itemsText;
+    }
+
+    // 4. عرض السعر شامل الشحن للعميل قبل التأكيد
+    document.getElementById('finalTotalDisplay').value = finalTotalWithShipping + " EGP (شامل 70 جنيه شحن)";
+    
+    // إظهار النافذة
+    document.getElementById('checkoutOverlay').classList.add('active'); 
+}
+
+function sendOrder(event) {
+    event.preventDefault(); // منع الصفحة من الريفرش العشوائي
+
+    const name = document.getElementById('clientName').value;
+    const phone1 = document.getElementById('clientPhone1').value;
+    const phone2 = document.getElementById('clientPhone2').value;
+    const address = document.getElementById('clientAddress').value;
+    const finalTotal = document.getElementById('finalTotalDisplay').value;
+
+    // 1. حساب الأسعار مجدداً للتأكيد المباشر قبل الإرسال فوراً
+    const productsCost = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+    const shippingCost = 70;
+    const finalTotalWithShipping = productsCost + shippingCost;
+
+    // 2. إنشاء نص التقرير وضمان لقط روابط الصور الحية على الإنترنت
+    let itemsText = '';
+    cart.forEach((item, i) => {
+        itemsText += `[المنتج ${i+1}]: ${item.name} - المقاس: ${item.size} - العدد: ${item.qty}\n`;
+        
+        const cartImages = document.querySelectorAll('.cart-item img, .cart-items img, #cartItems img');
+        if (cartImages[i]) {
+            itemsText += `رابط الصورة: ${cartImages[i].src}\n`;
+        } else if (item.image || item.img) {
+            let path = item.image || item.img;
+            itemsText += `رابط الصورة: ${window.location.origin}/${path}\n`;
+        }
+        itemsText += `-----------------------\n`;
+    });
+
+    itemsText += `سعر المنتجات: ${productsCost} EGP\n`;
+    itemsText += `مصاريف الشحن: ${shippingCost} EGP\n`;
+    itemsText += `الإجمالي النهائي المستحق: ${finalTotalWithShipping} EGP\n`;
+
+    // 3. حقن التقرير الكامل في الخانة المخفية
+    const hiddenInput = document.getElementById('orderedProductsImages');
+    if (hiddenInput) {
+        hiddenInput.value = itemsText;
+    }
+
+    // 4. إرسال البيانات أوتوماتيكياً إلى سيرفر Formspree
+    const formElement = document.getElementById('orderForm');
+    formElement.submit();
+
+    // 5. تفريغ السلة وعرض شاشة التقييم الأصلي
+    cart = [];
+    if (typeof updateCartUI === 'function') updateCartUI();
+    if (typeof closeCheckoutForm === 'function') closeCheckoutForm();
+    
+    setTimeout(() => {
+        const reviewOverlay = document.getElementById('reviewOverlay');
+        if (reviewOverlay) reviewOverlay.classList.add('active');
+        if (typeof initStars === 'function') initStars();
+    }, 600);
+}
 
         function initStars() {
             const stars = document.querySelectorAll('.rating-stars .star');
