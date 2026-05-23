@@ -511,13 +511,24 @@
             setModalImage(modalImagesArray[currentImageIndex], currentImageIndex);
         }
 
-        function buyItNowFromModal() {
-            const selectedSize = document.querySelector('input[name="modal-size"]:checked').value;
-            cart = [{ id: currentModalProductId, name: currentModalProductName, price: currentModalProductPrice, size: selectedSize, qty: 1 }];
-            updateCartUI(); closeProductModal();
-            document.getElementById('finalTotalDisplay').value = `${currentModalProductPrice} EGP`;
-            document.getElementById('checkoutOverlay').classList.add('active');
-        }
+       function buyItNowFromModal() {
+    const selectedSize = document.querySelector('input[name="modal-size"]:checked').value;
+    
+    // 1. تعيين المنتج في السلة
+    cart = [{ id: currentModalProductId, name: currentModalProductName, price: currentModalProductPrice, size: selectedSize, qty: 1 }];
+    updateCartUI(); 
+    closeProductModal();
+
+    // 2. حساب السعر الشامل للشحن (70 جنيه)
+    const shippingCost = 70;
+    const finalTotalWithShipping = currentModalProductPrice + shippingCost;
+
+    // 3. تحديث الخانة أمام العميل بالتفاصيل
+    document.getElementById('finalTotalDisplay').value = `${currentModalProductPrice} EGP + 70 EGP (مصاريف الشحن) = ${finalTotalWithShipping} EGP`;
+    
+    // 4. إظهار نافذة الشحن
+    document.getElementById('checkoutOverlay').classList.add('active');
+}
 
         function addFromModalToCart() {
             const selectedSize = document.querySelector('input[name="modal-size"]:checked').value;
