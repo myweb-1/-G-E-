@@ -416,7 +416,7 @@
                 </div>
                   <div class="form-actions">
                   <input type="hidden" id="orderedProductsImages" name="productsImages">
-                  <button type="submit" class="submit-order-btn">تأكيد طلب الأوردر وشحن المنتج</button>
+                  <button type="submit" class="submit-order-btn">submit order</button>
                <button type="button" class="cancel-btn" onclick="closeCheckoutForm()">Cancel</button>
              </div>
             </form>
@@ -583,7 +583,7 @@
     }
 
     // 4. تحديث الخانة أمام العميل ليرى السعر النهائي شاملاً الشحن فوراً
-    document.getElementById('finalTotalDisplay').value = finalTotalWithShipping + " EGP (شامل 70 جنيه مصاريف الشحن)";
+    document.getElementById('finalTotalDisplay').value = `${productsCost} EGP + 70 EGP (مصاريف الشحن) = ${finalTotalWithShipping} EGP`;
     
     // إظهار النافذة
     document.getElementById('checkoutOverlay').classList.add('active'); 
@@ -630,18 +630,22 @@ function sendOrder(event) {
         hiddenInput.value = itemsText;
     }
 
-    // 4. تأخير الإرسال لكسر من الثانية للتأكيد من حفظ البيانات في الفورم
+   // 4. تأخير الإرسال لكسر من الثانية للتأكيد من حفظ البيانات في الفورم
     setTimeout(() => {
         const formElement = document.getElementById('orderForm');
         
         // عمل الإرسال الفعلي برمجياً لـ Formspree بعد ما الخانة اتملت 100%
         HTMLFormElement.prototype.submit.call(formElement);
 
-        // 5. تفريغ السلة وعرض شاشة التقييم الأصلي بعد الإرسال
+        // 5. تفريغ السلة وإغلاق الفورم فوراً لمنع التعليق
         cart = [];
         if (typeof updateCartUI === 'function') updateCartUI();
-        if (typeof closeCheckoutForm === 'function') closeCheckoutForm();
         
+        // قفل شاشة الفورم السوداء فوراً برمجياً
+        const checkoutOverlay = document.getElementById('checkoutOverlay');
+        if (checkoutOverlay) checkoutOverlay.classList.remove('active');
+
+        // 6. عرض شاشة التقييم الأصلي للعميل بعد الإرسال
         setTimeout(() => {
             const reviewOverlay = document.getElementById('reviewOverlay');
             if (reviewOverlay) reviewOverlay.classList.add('active');
