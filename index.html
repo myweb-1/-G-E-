@@ -520,11 +520,11 @@
     closeProductModal();
 
     // 2. حساب السعر الشامل للشحن (70 جنيه)
-    const shippingCost = 70;
+    const shippingCost = 80;
     const finalTotalWithShipping = currentModalProductPrice + shippingCost;
 
     // 3. تحديث الخانة أمام العميل بالتفاصيل
-    document.getElementById('finalTotalDisplay').value = `${currentModalProductPrice} EGP + 70 EGP (مصاريف الشحن) = ${finalTotalWithShipping} EGP`;
+    document.getElementById('finalTotalDisplay').value = `${currentModalProductPrice} EGP + 80 EGP (مصاريف الشحن) = ${finalTotalWithShipping} EGP`;
     
     // 4. إظهار نافذة الشحن
     document.getElementById('checkoutOverlay').classList.add('active');
@@ -569,8 +569,8 @@
     // 1. حساب سعر التيشرتات
     const productsCost = cart.reduce((sum, item) => sum + (item.price * item.qty), 0); 
     
-    // 2. إضافة الـ 70 جنيه شحن ثابته
-    const shippingCost = 70;
+    // 2. إضافة الـ 80 جنيه شحن ثابته
+    const shippingCost = 80;
     const finalTotalWithShipping = productsCost + shippingCost; 
 
     // 3. بناء تقرير المنتجات للخانة المخفية
@@ -594,7 +594,7 @@
     }
 
     // 4. تحديث الخانة أمام العميل ليرى السعر النهائي شاملاً الشحن فوراً
-   document.getElementById('finalTotalDisplay').value = `${productsCost} EGP + 70 EGP (مصاريف الشحن) = ${finalTotalWithShipping} EGP`;
+   document.getElementById('finalTotalDisplay').value = `${productsCost} EGP + 80 EGP (مصاريف الشحن) = ${finalTotalWithShipping} EGP`;
     
     // إظهار النافذة
     document.getElementById('checkoutOverlay').classList.add('active'); 
@@ -613,7 +613,7 @@ function sendOrder(event) {
 
     // 1. حساب الأسعار مجدداً للتأكيد المباشر قبل الإرسال فوراً
     const productsCost = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
-    const shippingCost = 70;
+    const shippingCost = 80;
     const finalTotalWithShipping = productsCost + shippingCost;
 
     // 2. إنشاء نص التقرير وضمان لقط المنتجات والمقاسات والروابط
