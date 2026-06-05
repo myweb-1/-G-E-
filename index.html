@@ -341,13 +341,6 @@
                 <div class="modal-details-side">
                     <h2 id="modalProductTitle" class="modal-product-title"></h2>
                     <div id="modalProductPrice" class="modal-product-price"></div>
-                    
-                    <div id="modalColorSection" style="display: none; margin-bottom: 20px;">
-                        <div class="size-section-title">Select Color:</div>
-                        <div class="modal-sizes-select" id="modalColorsContainer">
-                            <label><input type="radio" name="modal-color" value="BLACK" checked onclick="handleColorChange('pants1-black.jpg')"><span>Black</span></label>
-                            <label><input type="radio" name="modal-color" value="WHITE" onclick="handleColorChange('pants1-white.jpg')"><span>White</span></label>
-                        </div>
                     </div>
 
                     <div class="size-section-title">Select Size:</div>
@@ -517,26 +510,24 @@
         function closeReviewModalOnOutsideClick(e) { if(e.target.id === 'reviewOverlay') closeReviewAndReset(); }
         function toggleCart() { document.getElementById('cartSidebar').classList.toggle('active'); }
         function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+function openProductModal(id, name, price, frontImg, backImg, isPants = false, pantsPrefix = "") {
+    currentModalProductId = id;
+    currentModalProductName = name;
+    currentModalProductPrice = price;
+    modalImagesArray = [frontImg, backImg];
+    currentImageIndex = 0;
+    
+    document.getElementById('modalProductTitle').innerText = name;
+    document.getElementById('modalProductPrice').innerHTML = `${price} EGP`;
+    document.getElementById('thumbFront').src = frontImg;
+    document.getElementById('thumbBack').src = backImg;
+    setModalImage(frontImg, 0);
 
-        function openProductModal(id, name, price, frontImg, backImg) {
-            currentModalProductId = id; currentModalProductName = name; currentModalProductPrice = price;
-            modalImagesArray = [frontImg, backImg]; currentImageIndex = 0;
-            document.getElementById('modalProductTitle').innerText = name;
-            document.getElementById('modalProductPrice').innerHTML = `${price} EGP <span style="font-size:14px; color:#888; text-decoration:line-through; margin-left:8px;">800 EGP</span>`;
-            document.getElementById('thumbFront').src = frontImg; document.getElementById('thumbBack').src = backImg;
-            setModalImage(frontImg, 0);
+    // تم حذف منطق الألوان هنا
 
-            const colorSection = document.getElementById('modalColorSection');
-            if(id === 11) {
-                colorSection.style.display = 'block';
-                document.querySelector('input[name="modal-color"][value="BLACK"]').checked = true;
-            } else {
-                colorSection.style.display = 'none';
-            }
-
-            document.getElementById('productModal').classList.add('active');
-            document.body.style.overflow = 'hidden'; 
-        }
+    document.getElementById('productModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
 
         function handleColorChange(imgSrc) {
             setModalImage(imgSrc, 0);
