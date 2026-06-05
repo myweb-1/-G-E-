@@ -511,56 +511,45 @@
         function closeReviewModalOnOutsideClick(e) { if(e.target.id === 'reviewOverlay') closeReviewAndReset(); }
         function toggleCart() { document.getElementById('cartSidebar').classList.toggle('active'); }
         function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
-// 1. الدالة المسؤولة عن فتح الـ Modal وتجهيز البيانات
 function openProductModal(id, name, price, img1, img2, img3) {
     // 1. حفظ البيانات
-    currentModalProductId = id;
-    currentModalProductName = name;
-    currentModalProductPrice = price;
+    window.currentModalProductId = id;
+    window.currentModalProductName = name;
+    window.currentModalProductPrice = price;
 
-    // 2. تحديث الواجهة (نفس كودك السابق)
-    document.getElementById('modalProductTitle').innerText = name;
-    document.getElementById('modalMainImage').src = img1;
-    // ... باقي كود تحديث الصور ...
+    // 2. تحديث الواجهة
+    const title = document.getElementById('modalProductTitle');
+    if (title) title.innerText = name;
+
+    const priceEl = document.getElementById('modalProductPrice');
+    if (priceEl) priceEl.innerText = price + " EGP";
+
+    const mainImg = document.getElementById('modalMainImage');
+    if (mainImg) mainImg.src = img1;
 
     // 3. فتح الـ Modal
     const modal = document.getElementById('productModal');
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
+    if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
 
-    // *** الحل هنا: نربط الزر داخل الدالة نفسها ***
+    // 4. ربط زر الشراء (بشكل مباشر)
     const buyBtn = document.getElementById('buyNowBtn');
-    // نلغي أي مستمع قديم للزر لتجنب التكرار
-    const newBtn = buyBtn.cloneNode(true);
-    buyBtn.parentNode.replaceChild(newBtn, buyBtn);
-
-    newBtn.addEventListener('click', function() {
-        const selectedSize = document.querySelector('input[name="size"]:checked');
-        if (!selectedSize) {
-            alert("من فضلك اختر المقاس أولاً!");
-            return;
-        }
-        console.log("تم الشراء: " + name + " بمقاس: " + selectedSize.value);
-        // هنا كود الدفع الخاص بك
-    });
+    if (buyBtn) {
+        // نضع الدالة مباشرة هنا
+        buyBtn.onclick = function() {
+            const selectedSize = document.querySelector('input[name="size"]:checked');
+            if (!selectedSize) {
+                alert("من فضلك اختر المقاس أولاً!");
+            } else {
+                console.log("تم الشراء: " + name + " بمقاس: " + selectedSize.value);
+                // هنا ضع رابط الدفع الخاص بك
+                // window.location.href = '/checkout?id=' + id + '&size=' + selectedSize.value;
+            }
+        };
+    }
 }
-// 2. هذا الجزء الجديد هو الذي سيجعل زر الشراء يعمل
-// ضعه في ملف الـ JavaScript الخاص بك خارج الدالة السابقة
-// نضع مستمع الأحداث على مستوى الصفحة بالكامل
-document.addEventListener('click', function(event) {
-    // نتحقق: هل العنصر الذي ضغطنا عليه هو زر الشراء؟
-    if (event.target && event.target.id === 'buyNowBtn') {
-        console.log("تم الضغط على زر الشراء!");
-
-        // التحقق من المقاس
-        // ملاحظة: تأكد أن حقول المقاسات داخل الـ Modal لها نفس الـ name="size"
-        const selectedSize = document.querySelector('input[name="size"]:checked');
-        
-        if (!selectedSize) {
-            alert("من فضلك اختر المقاس أولاً!");
-            return; // توقف هنا ولا تكمل
-        }
-
         const finalSize = selectedSize.value;
         console.log(`تم شراء: ${currentModalProductName}، المقاس: ${finalSize}`);
         
