@@ -511,20 +511,21 @@
         function closeReviewModalOnOutsideClick(e) { if(e.target.id === 'reviewOverlay') closeReviewAndReset(); }
         function toggleCart() { document.getElementById('cartSidebar').classList.toggle('active'); }
         function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+// 1. الدالة المسؤولة عن فتح الـ Modal وتجهيز البيانات
 function openProductModal(id, name, price, img1, img2, img3) {
-    // 1. حفظ البيانات في المتغيرات العامة (حتى يراها زر "إتمام الشراء")
+    // حفظ البيانات في المتغيرات العامة
     currentModalProductId = id;
     currentModalProductName = name;
-    currentModalProductPrice = price; // هذا هو السطر الذي كان ينقصك!
+    currentModalProductPrice = price;
 
-    // 2. تحديث واجهة الـ Modal
+    // تحديث واجهة الـ Modal
     const title = document.getElementById('modalProductTitle');
     if (title) title.innerText = name;
 
     const priceEl = document.getElementById('modalProductPrice');
     if (priceEl) priceEl.innerText = price + " EGP";
 
-    // 3. تحديث الصور
+    // تحديث الصور
     const thumbFront = document.getElementById('thumbFront');
     const thumbBack = document.getElementById('thumbBack');
     const thumbSide = document.getElementById('thumbSide');
@@ -535,15 +536,40 @@ function openProductModal(id, name, price, img1, img2, img3) {
     if (thumbSide) thumbSide.src = img3;
     if (mainImg) mainImg.src = img1;
 
-    // 4. فتح النافذة
+    // فتح النافذة
     const modal = document.getElementById('productModal');
     if (modal) {
         modal.classList.add('active');
         document.body.style.overflow = 'hidden';
     } else {
-        console.error("خطأ: الـ Modal غير موجود في صفحة الـ HTML!");
+        console.error("خطأ: غير موجود في صفحة الـ HTML!");
     }
 }
+
+// 2. هذا الجزء الجديد هو الذي سيجعل زر الشراء يعمل
+// ضعه في ملف الـ JavaScript الخاص بك خارج الدالة السابقة
+document.addEventListener('DOMContentLoaded', function() {
+    const buyNowBtn = document.getElementById('buyNowBtn'); // تأكد أن هذا هو الـ ID الخاص بزر "BUY IT NOW" في الـ HTML
+
+    if (buyNowBtn) {
+        buyNowBtn.addEventListener('click', function() {
+            // التحقق من المقاس المختار
+            const selectedSize = document.querySelector('input[name="size"]:checked');
+            
+            if (!selectedSize) {
+                alert("من فضلك اختر المقاس أولاً!");
+                return;
+            }
+
+            // إذا تم اختيار مقاس، نقوم بالعملية (مثلاً الانتقال لصفحة الدفع)
+            const finalSize = selectedSize.value;
+            console.log(`تم شراء: ${currentModalProductName}، المقاس: ${finalSize}`);
+            
+            // هنا تضع كود إتمام الشراء، مثلاً:
+            // window.location.href = `/checkout?id=${currentModalProductId}&size=${finalSize}`;
+        });
+    }
+});
 
         function closeProductModal() { document.getElementById('productModal').classList.remove('active'); document.body.style.overflow = ''; }
         function closeProductModalOnOutsideClick(e) { if(e.target.id === 'productModal') closeProductModal(); }
