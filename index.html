@@ -265,28 +265,29 @@
         <h2 class="collection-title">THE PANTS DROP</h2>
         <div class="products-grid">
             
-        <div class="product-card" onclick="openProductModal(11, 'WIDE LEG PANTS BLACK', 550, 'pants1-black.jpg', 'pants01-black.jpg', 'pants02-black.jpg')">
-                <div class="product-img-box">
-                    <img src="pants1-black.jpg" alt="Anger WIDE LEG Pants" class="img-front">
-                    <img src="pants01-black.jpg" alt="Anger WIDE LEG Pants" class="img-front2">
-                     <img src="pants02-black.jpg" alt="Anger WIDE LEG Pants" class="img-back">
-                </div>
-                <div class="product-details">
-                    <div class="product-card-title">COMPRESSION PANTS</div>
-                    <div class="product-price">EGP 550 <span>EGP 800</span></div>
-                </div>
-            </div>
-           <div class="product-card" onclick="openProductModal(11, 'WIDE LEG PANTS GRAY', 550, 'pants1-Gray.jpg', 'pants01-Gray.jpg', 'pants02-Gray.jpg')">
-                <div class="product-img-box">
-                    <img src="pants1-Grey.jpg" alt="Anger WIDE LEG Pants" class="img-front">
-                    <img src="pants01-Grey.jpg" alt="Anger WIDE LEG Pants" class="img-front2">
-                     <img src="pants02-Grey.jpg" alt="Anger WIDE LEG Pants" class="img-back">
-                </div>
-                <div class="product-details">
-                    <div class="product-card-title">WIDE LEG PANTS</div>
-                    <div class="product-price">EGP 550 <span>EGP 800</span></div>
-                </div>
-            </div>
+       <div class="product-card" onclick="openProductModal(11, 'WIDE LEG PANTS BLACK', 550, 'pants1-black.jpg', 'pants01-black.jpg', 'pants02-black.jpg')">
+    <div class="product-img-box">
+        <img src="pants1-black.jpg" alt="Anger WIDE LEG Pants" class="img-front">
+        <img src="pants01-black.jpg" alt="Anger WIDE LEG Pants" class="img-front2">
+        <img src="pants02-black.jpg" alt="Anger WIDE LEG Pants" class="img-back">
+    </div>
+    <div class="product-details">
+        <div class="product-card-title">WIDE LEG PANTS BLACK</div>
+        <div class="product-price">EGP 550 <span>EGP 800</span></div>
+    </div>
+</div>
+
+<div class="product-card" onclick="openProductModal(12, 'WIDE LEG PANTS GRAY', 550, 'pants1-Grey.jpg', 'pants01-Grey.jpg', 'pants02-Grey.jpg')">
+    <div class="product-img-box">
+        <img src="pants1-Grey.jpg" alt="Anger WIDE LEG Pants" class="img-front">
+        <img src="pants01-Grey.jpg" alt="Anger WIDE LEG Pants" class="img-front2">
+        <img src="pants02-Grey.jpg" alt="Anger WIDE LEG Pants" class="img-back">
+    </div>
+    <div class="product-details">
+        <div class="product-card-title">WIDE LEG PANTS GRAY</div>
+        <div class="product-price">EGP 550 <span>EGP 800</span></div>
+    </div>
+</div>
             
         </div>
     </section>
@@ -510,27 +511,23 @@
         function closeReviewModalOnOutsideClick(e) { if(e.target.id === 'reviewOverlay') closeReviewAndReset(); }
         function toggleCart() { document.getElementById('cartSidebar').classList.toggle('active'); }
         function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
-function openProductModal(id, name, price, img1, img2, img3) {
-    // التأكد من وجود العناصر قبل محاولة تغييرها لتجنب توقف الكود
-    const titleEl = document.getElementById('modalProductTitle');
-    if (titleEl) titleEl.innerText = name;
-
-    const priceEl = document.getElementById('modalProductPrice');
-    if (priceEl) priceEl.innerText = price + " EGP";
-
-    // تحديث الصور
-    const thumbFront = document.getElementById('thumbFront');
-    const thumbBack = document.getElementById('thumbBack');
-    const thumbSide = document.getElementById('thumbSide');
-
-    if (thumbFront) thumbFront.src = img1;
-    if (thumbBack) thumbBack.src = img2;
-    if (thumbSide) thumbSide.src = img3; // إضافة الصورة الثالثة
-
-    setModalImage(img1, 0); // عرض الصورة الأولى كافتراضية
-
-    document.getElementById('productModal').classList.add('active');
-    document.body.style.overflow = 'hidden';
+function setModalImage(src, index) {
+    // تحديث الصورة الرئيسية
+    document.getElementById('modalMainImage').src = src;
+    
+    // إزالة التحديد عن كل الصور
+    document.getElementById('thumbFront').classList.remove('active-thumb');
+    document.getElementById('thumbBack').classList.remove('active-thumb');
+    document.getElementById('thumbSide').classList.remove('active-thumb');
+    
+    // إضافة التحديد للصورة المختارة فقط
+    if (index === 0) {
+        document.getElementById('thumbFront').classList.add('active-thumb');
+    } else if (index === 1) {
+        document.getElementById('thumbBack').classList.add('active-thumb');
+    } else if (index === 2) {
+        document.getElementById('thumbSide').classList.add('active-thumb');
+    }
 }
         function handleColorChange(imgSrc) {
             setModalImage(imgSrc, 0);
