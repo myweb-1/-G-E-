@@ -511,27 +511,36 @@
         function closeReviewModalOnOutsideClick(e) { if(e.target.id === 'reviewOverlay') closeReviewAndReset(); }
         function toggleCart() { document.getElementById('cartSidebar').classList.toggle('active'); }
         function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
-function setModalImage(src, index) {
-    // تحديث الصورة الرئيسية
-    document.getElementById('modalMainImage').src = src;
-    
-    // إزالة التحديد عن كل الصور
-    document.getElementById('thumbFront').classList.remove('active-thumb');
-    document.getElementById('thumbBack').classList.remove('active-thumb');
-    document.getElementById('thumbSide').classList.remove('active-thumb');
-    
-    // إضافة التحديد للصورة المختارة فقط
-    if (index === 0) {
-        document.getElementById('thumbFront').classList.add('active-thumb');
-    } else if (index === 1) {
-        document.getElementById('thumbBack').classList.add('active-thumb');
-    } else if (index === 2) {
-        document.getElementById('thumbSide').classList.add('active-thumb');
-    }<div class="modal-thumbnails">
-    <img id="thumbFront" src="" onclick="setModalImage(this.src, 0)" class="active-thumb">
-    <img id="thumbBack" src="" onclick="setModalImage(this.src, 1)">
-    <img id="thumbSide" src="" onclick="setModalImage(this.src, 2)">
-</div>
+function openProductModal(id, name, price, img1, img2, img3) {
+    console.log("جاري محاولة فتح المنتج:", name); // للمساعدة في الـ Console
+
+    // 1. تحديث البيانات الأساسية (بشرط وجودها)
+    const title = document.getElementById('modalProductTitle');
+    if (title) title.innerText = name;
+
+    const priceEl = document.getElementById('modalProductPrice');
+    if (priceEl) priceEl.innerText = price + " EGP";
+
+    // 2. تحديث الصور (بشرط وجودها)
+    const thumbFront = document.getElementById('thumbFront');
+    const thumbBack = document.getElementById('thumbBack');
+    const thumbSide = document.getElementById('thumbSide');
+    const mainImg = document.getElementById('modalMainImage');
+
+    if (thumbFront) thumbFront.src = img1;
+    if (thumbBack) thumbBack.src = img2;
+    if (thumbSide) thumbSide.src = img3;
+    if (mainImg) mainImg.src = img1;
+
+    // 3. عرض النافذة (أهم خطوة)
+    const modal = document.getElementById('productModal');
+    if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        console.log("تم فتح الـ Modal بنجاح");
+    } else {
+        console.error("خطأ: الـ Modal غير موجود في الـ HTML!");
+    }
 }
         function handleColorChange(imgSrc) {
             setModalImage(imgSrc, 0);
