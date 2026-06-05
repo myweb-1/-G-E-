@@ -761,7 +761,27 @@ document.addEventListener('DOMContentLoaded', function() {
                 let starsHtml = ''; for(let i=0; i<r.rating; i++) starsHtml += '★';
                 container.innerHTML += `<div class="review-showcase-card"><div class="rev-card-header"><span class="rev-user-name">${r.name}</span><span class="rev-stars">${starsHtml}</span></div><p class="rev-card-body">"${r.text}"</p><span class="rev-card-date">${r.date}</span></div>`;
             });
+        }<script>
+    // .. كود الدالة openProductModal الموجودة عندك سابقاً ..
+
+    // .. والكود الجديد هنا في الأسفل ..
+    document.addEventListener('DOMContentLoaded', function() {
+        const buyNowBtn = document.getElementById('buyNowBtn'); 
+        
+        if (buyNowBtn) {
+            buyNowBtn.addEventListener('click', function(event) {
+                console.log("تم الضغط على الزر!");
+                const selectedSize = document.querySelector('input[name="size"]:checked');
+                if (!selectedSize) {
+                    alert("من فضلك اختر المقاس أولاً!");
+                    return;
+                }
+                console.log("تم اختيار المقاس: " + selectedSize.value);
+            });
         }
+    });
+</script>
+</body>
     </script>
 </body>
 </html>
