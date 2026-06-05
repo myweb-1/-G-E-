@@ -265,7 +265,7 @@
         <h2 class="collection-title">THE PANTS DROP</h2>
         <div class="products-grid">
             
-            <div class="product-card" onclick="openProductModal(11, 'WIDE LEG PANTS BLACK', 550,'pants1-black.jpg')">
+        <div class="product-card" onclick="openProductModal(11, 'WIDE LEG PANTS BLACK', 550, 'pants1-black.jpg', 'pants01-black.jpg', 'pants02-black.jpg')">
                 <div class="product-img-box">
                     <img src="pants1-black.jpg" alt="Anger WIDE LEG Pants" class="img-front">
                     <img src="pants01-black.jpg" alt="Anger WIDE LEG Pants" class="img-front2">
@@ -276,7 +276,7 @@
                     <div class="product-price">EGP 550 <span>EGP 800</span></div>
                 </div>
             </div>
-            <div class="product-card" onclick="openProductModal(12, 'WIDE LEG PANTS GRAY', 550,'pants1-Grey.jpg')">
+           <div class="product-card" onclick="openProductModal(11, 'WIDE LEG PANTS GRAY', 550, 'pants1-Gray.jpg', 'pants01-Gray.jpg', 'pants02-Gray.jpg')">
                 <div class="product-img-box">
                     <img src="pants1-Grey.jpg" alt="Anger WIDE LEG Pants" class="img-front">
                     <img src="pants01-Grey.jpg" alt="Anger WIDE LEG Pants" class="img-front2">
@@ -510,19 +510,19 @@
         function closeReviewModalOnOutsideClick(e) { if(e.target.id === 'reviewOverlay') closeReviewAndReset(); }
         function toggleCart() { document.getElementById('cartSidebar').classList.toggle('active'); }
         function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
-function openProductModal(id, name, price, frontImg, backImg, isPants = false, pantsPrefix = "") {
-    currentModalProductId = id;
-    currentModalProductName = name;
-    currentModalProductPrice = price;
-    modalImagesArray = [frontImg, backImg];
-    currentImageIndex = 0;
+function openProductModal(id, name, price, img1, img2, img3) {
+    // 1. تحديث الصور في الـ Modal
+    document.getElementById('thumbFront').src = img1;
+    document.getElementById('thumbBack').src = img2;
+    document.getElementById('thumbSide').src = img3; // تأكد أن لديك هذا الـ id في الـ HTML
     
+    // 2. تحديث باقي البيانات
     document.getElementById('modalProductTitle').innerText = name;
-    document.getElementById('modalProductPrice').innerHTML = `${price} EGP`;
-    document.getElementById('thumbFront').src = frontImg;
-    document.getElementById('thumbBack').src = backImg;
-    setModalImage(frontImg, 0);
-
+    document.getElementById('modalProductPrice').innerText = price + " EGP";
+    
+    // 3. عرض الـ Modal
+    document.getElementById('productModal').classList.add('active');
+}
     // تم حذف منطق الألوان هنا
 
     document.getElementById('productModal').classList.add('active');
