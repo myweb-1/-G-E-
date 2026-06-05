@@ -540,16 +540,10 @@ function openProductModal(id, name, price, img1, img2, img3) {
     if (modal) {
         modal.classList.add('active');
         document.body.style.overflow = 'hidden';
-    }
-}
-        console.log("تم فتح الـ Modal بنجاح");
     } else {
-        console.error("خطأ: الـ Modal غير موجود في الـ HTML!");
+        console.error("خطأ: الـ Modal غير موجود في صفحة الـ HTML!");
     }
 }
-        function handleColorChange(imgSrc) {
-            setModalImage(imgSrc, 0);
-        }
 
         function closeProductModal() { document.getElementById('productModal').classList.remove('active'); document.body.style.overflow = ''; }
         function closeProductModalOnOutsideClick(e) { if(e.target.id === 'productModal') closeProductModal(); }
