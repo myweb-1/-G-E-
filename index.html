@@ -260,37 +260,7 @@
 
         </div>
     </section>
-<!-- ================= قسم البناطيل الجديد (Pants Section) ================= -->
-<section class="collection-section" style="border-top: 1px solid #111; padding-top: 40px;">
-    <h2 class="collection-title">THE PANTS DROP</h2>
-    <div class="products-grid">
-        
-        <!-- كارد البنطلون الأسود -->
-        <div class="product-card" onclick="openProductModal(11, 'COMPRESSION PANTS - BLACK', 550, 'pants1-black.jpg', 'pants1-black.jpg')">
-            <div class="product-img-box">
-                <img src="pants1-black.jpg" alt="Anger Pants Black" class="img-front">
-                <img src="pants1-black.jpg" alt="Anger Pants Black" class="img-back">
-            </div>
-            <div class="product-details">
-                <div class="product-card-title">COMPRESSION PANTS (BLACK)</div>
-                <div class="product-price">EGP 550 <span>EGP 800</span></div>
-            </div>
-        </div>
 
-        <!-- كارد البنطلون الأبيض -->
-        <div class="product-card" onclick="openProductModal(12, 'COMPRESSION PANTS - WHITE', 550, 'pants1-white.jpg', 'pants1-white.jpg')">
-            <div class="product-img-box">
-                <img src="pants1-white.jpg" alt="Anger Pants White" class="img-front">
-                <img src="pants1-white.jpg" alt="Anger Pants White" class="img-back">
-            </div>
-            <div class="product-details">
-                <div class="product-card-title">COMPRESSION PANTS (WHITE)</div>
-                <div class="product-price">EGP 550 <span>EGP 800</span></div>
-            </div>
-        </div>
-
-    </div>
-</section>
     <section class="site-reviews-section">
         <h2 class="reviews-section-title">THE VOICES OF RAGE</h2>
         <p class="reviews-section-subtitle">What the community says about our gear:</p>
@@ -608,4 +578,42 @@
     cart.forEach((item, i) => { 
         itemsText += `[المنتج ${i+1}]: ${item.name} - المقاس: ${item.size} - العدد: ${item.qty} \n`;
         const cartImages = document.querySelectorAll('.cart-item img, .cart-items img, #cartItems img');
-        if (cartImages[i])
+        if (cartImages[i]) {
+            itemsText += `رابط الصورة: ${cartImages[i].src} \n`;
+        }
+        itemsText += `-----------------------\n`;
+    });
+
+    itemsText += `سعر المنتجات: ${productsCost} EGP\n`;
+    itemsText += `مصاريف الشحن: ${shippingCost} EGP\n`;
+    itemsText += `الإجمالي الكلي المستحق: ${finalTotalWithShipping} EGP\n`;
+
+    const hiddenInput = document.getElementById('orderedProductsImages');
+    if (hiddenInput) {
+        hiddenInput.value = itemsText;
+    }
+
+    // 4. تحديث الخانة أمام العميل ليرى السعر النهائي شاملاً الشحن فوراً
+   document.getElementById('finalTotalDisplay').value = `${productsCost} EGP + 80 EGP (مصاريف الشحن) = ${finalTotalWithShipping} EGP`;
+    
+    // إظهار النافذة
+    document.getElementById('checkoutOverlay').classList.add('active'); 
+}
+function closeCheckoutForm() { 
+    document.getElementById('checkoutOverlay').classList.remove('active'); 
+}
+function sendOrder(event) {
+    event.preventDefault(); // منع الصفحة من الريفرش أو الإرسال التلقائي السريع
+
+    const name = document.getElementById('clientName').value;
+    const phone1 = document.getElementById('clientPhone1').value;
+    const phone2 = document.getElementById('clientPhone2').value;
+    const address = document.getElementById('clientAddress').value;
+    const finalTotal = document.getElementById('finalTotalDisplay').value;
+
+    // 1. حساب الأسعار مجدداً للتأكيد المباشر قبل الإرسال فوراً
+    const productsCost = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+    const shippingCost = 80;
+    const finalTotalWithShipping = productsCost + shippingCost;
+
+  
