@@ -527,7 +527,11 @@ function setModalImage(src, index) {
         document.getElementById('thumbBack').classList.add('active-thumb');
     } else if (index === 2) {
         document.getElementById('thumbSide').classList.add('active-thumb');
-    }
+    }<div class="modal-thumbnails">
+    <img id="thumbFront" src="" onclick="setModalImage(this.src, 0)" class="active-thumb">
+    <img id="thumbBack" src="" onclick="setModalImage(this.src, 1)">
+    <img id="thumbSide" src="" onclick="setModalImage(this.src, 2)">
+</div>
 }
         function handleColorChange(imgSrc) {
             setModalImage(imgSrc, 0);
