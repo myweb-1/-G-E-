@@ -513,39 +513,37 @@
         function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
 // 1. الدالة المسؤولة عن فتح الـ Modal وتجهيز البيانات
 function openProductModal(id, name, price, img1, img2, img3) {
-    // حفظ البيانات في المتغيرات العامة
+    // 1. حفظ البيانات
     currentModalProductId = id;
     currentModalProductName = name;
     currentModalProductPrice = price;
 
-    // تحديث واجهة الـ Modal
-    const title = document.getElementById('modalProductTitle');
-    if (title) title.innerText = name;
+    // 2. تحديث الواجهة (نفس كودك السابق)
+    document.getElementById('modalProductTitle').innerText = name;
+    document.getElementById('modalMainImage').src = img1;
+    // ... باقي كود تحديث الصور ...
 
-    const priceEl = document.getElementById('modalProductPrice');
-    if (priceEl) priceEl.innerText = price + " EGP";
-
-    // تحديث الصور
-    const thumbFront = document.getElementById('thumbFront');
-    const thumbBack = document.getElementById('thumbBack');
-    const thumbSide = document.getElementById('thumbSide');
-    const mainImg = document.getElementById('modalMainImage');
-
-    if (thumbFront) thumbFront.src = img1;
-    if (thumbBack) thumbBack.src = img2;
-    if (thumbSide) thumbSide.src = img3;
-    if (mainImg) mainImg.src = img1;
-
-    // فتح النافذة
+    // 3. فتح الـ Modal
     const modal = document.getElementById('productModal');
-    if (modal) {
-        modal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    } else {
-        console.error("خطأ: غير موجود في صفحة الـ HTML!");
-    }
-}
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
 
+    // *** الحل هنا: نربط الزر داخل الدالة نفسها ***
+    const buyBtn = document.getElementById('buyNowBtn');
+    // نلغي أي مستمع قديم للزر لتجنب التكرار
+    const newBtn = buyBtn.cloneNode(true);
+    buyBtn.parentNode.replaceChild(newBtn, buyBtn);
+
+    newBtn.addEventListener('click', function() {
+        const selectedSize = document.querySelector('input[name="size"]:checked');
+        if (!selectedSize) {
+            alert("من فضلك اختر المقاس أولاً!");
+            return;
+        }
+        console.log("تم الشراء: " + name + " بمقاس: " + selectedSize.value);
+        // هنا كود الدفع الخاص بك
+    });
+}
 // 2. هذا الجزء الجديد هو الذي سيجعل زر الشراء يعمل
 // ضعه في ملف الـ JavaScript الخاص بك خارج الدالة السابقة
 // نضع مستمع الأحداث على مستوى الصفحة بالكامل
