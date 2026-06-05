@@ -512,14 +512,14 @@
         function toggleCart() { document.getElementById('cartSidebar').classList.toggle('active'); }
         function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
 
-    // دالة فتح البرودكت<sصcript><script>
+    // دالة فتح البرودكت<sصcript><script><script>
     // 1. المتغيرات الأساسية
     window.cart = window.cart || [];
     window.currentModalProductId = null;
     window.currentModalProductName = "";
     window.currentModalProductPrice = 0;
 
-    // 2. دالة فتح المودال (المنتج)
+    // 2. دالة فتح المنتج (Modal)
     function openProductModal(id, name, price, img1, img2) {
         window.currentModalProductId = id;
         window.currentModalProductName = name;
@@ -535,47 +535,50 @@
         document.body.style.overflow = 'hidden';
     }
 
-    // 3. الدوال المسؤولة عن الأزرار
-    function addFromModalToCart() {
-        const sizeInput = document.querySelector('input[name="modal-size"]:checked');
-        if (!sizeInput) { alert("من فضلك اختر المقاس"); return; }
+    // 3. تحديث واجهة السلة (تحسب سعر المنتجات فقط)
+    function updateCartUI() {
+        const cartItems = document.getElementById('cartItems');
+        const cartTotal = document.getElementById('cartTotal');
+        const count = document.getElementById('cartCount');
         
-        window.cart.push({ 
-            id: window.currentModalProductId, 
-            name: window.currentModalProductName, 
-            price: window.currentModalProductPrice, 
-            size: sizeInput.value, 
-            qty: 1 
-        });
-        updateCartUI();
-        closeProductModal();
-        toggleCart();
+        count.innerText = window.cart.length;
+        let total = 0;
+        
+        cartItems.innerHTML = window.cart.map(i => {
+            total += (i.price * i.qty);
+            return `<div class="cart-item"><h4>${i.name}</h4><p>المقاس: ${i.size} | ${i.price} EGP</p></div>`;
+        }).join('');
+        
+        cartTotal.innerText = total + " EGP";
     }
 
-    function buyItNowFromModal() {
-        const sizeInput = document.querySelector('input[name="modal-size"]:checked');
-        if (!sizeInput) { alert("من فضلك اختر المقاس"); return; }
+    // 4. فتح صفحة الدفع (تحسب السعر النهائي + 80 جنيه شحن)
+    function openCheckoutForm() {
+        if (window.cart.length === 0) { alert("السلة فارغة!"); return; }
         
-        window.cart = [{ 
-            id: window.currentModalProductId, 
-            name: window.currentModalProductName, 
-            price: window.currentModalProductPrice, 
-            size: sizeInput.value, 
-            qty: 1 
-        }];
-        updateCartUI();
-        closeProductModal();
-        openCheckoutForm();
+        const productsCost = window.cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+        const shippingCost = 80;
+        const finalTotal = productsCost + shippingCost;
+
+        // عرض السعر داخل الـ Input الخاص بالدفع
+        const priceDisplay = document.getElementById('finalTotalDisplay');
+        if (priceDisplay) {
+            priceDisplay.value = `${productsCost} + 80 (شحن) = ${finalTotal} EGP`;
+        }
+
+        document.getElementById('checkoutOverlay').classList.add('active');
     }
 
-    // 4. دالة الإرسال (الجزء الذي كان يسبب المشكلة في الطلب)
+    // 5. دالة إرسال الطلب
     function sendOrder(event) {
         event.preventDefault();
         const form = document.getElementById('orderForm');
         
-        // تجميع بيانات المنتجات للحقل المخفي
-        let details = window.cart.map(i => `${i.name} (مقاس: ${i.size})`).join(', ');
-        document.getElementById('orderedProductsDetails').value = details;
+        // تجهيز بيانات الطلب (سعر المنتجات + سعر الشحن)
+        const productsCost = window.cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+        let itemsDetails = window.cart.map(i => `${i.name} (${i.size})`).join(', ');
+        
+        document.getElementById('orderedProductsDetails').value = itemsDetails + ` | الإجمالي شامل الشحن: ${productsCost + 80} EGP`;
 
         fetch(form.action, {
             method: 'POST',
@@ -589,32 +592,36 @@
                 updateCartUI();
                 closeCheckoutForm();
             } else {
-                alert("حدث خطأ في الإرسال، جرب مرة أخرى.");
+                alert("حدث خطأ في الإرسال.");
             }
         })
         .catch(err => alert("خطأ في الاتصال: " + err));
     }
 
-    // 5. دوال المساعدة (مهمة جداً لعدم توقف الموقع)
-    function updateCartUI() {
-        const cartItems = document.getElementById('cartItems');
-        const cartTotal = document.getElementById('cartTotal');
-        const count = document.getElementById('cartCount');
-        
-        count.innerText = window.cart.length;
-        let total = 0;
-        cartItems.innerHTML = window.cart.map(i => {
-            total += i.price;
-            return `<div>${i.name} - ${i.size} - ${i.price} EGP</div>`;
-        }).join('');
-        cartTotal.innerText = total + " EGP";
+    // دوال مساعدة
+    function addFromModalToCart() {
+        const sizeInput = document.querySelector('input[name="modal-size"]:checked');
+        if (!sizeInput) { alert("من فضلك اختر المقاس"); return; }
+        window.cart.push({ id: window.currentModalProductId, name: window.currentModalProductName, price: window.currentModalProductPrice, size: sizeInput.value, qty: 1 });
+        updateCartUI();
+        closeProductModal();
+        toggleCart();
+    }
+
+    function buyItNowFromModal() {
+        const sizeInput = document.querySelector('input[name="modal-size"]:checked');
+        if (!sizeInput) { alert("من فضلك اختر المقاس"); return; }
+        window.cart = [{ id: window.currentModalProductId, name: window.currentModalProductName, price: window.currentModalProductPrice, size: sizeInput.value, qty: 1 }];
+        updateCartUI();
+        closeProductModal();
+        openCheckoutForm();
     }
 
     function toggleCart() { document.getElementById('cartSidebar').classList.toggle('active'); }
     function closeProductModal() { document.getElementById('productModal').classList.remove('active'); document.body.style.overflow = ''; }
     function closeCheckoutForm() { document.getElementById('checkoutOverlay').classList.remove('active'); }
-    function openCheckoutForm() { document.getElementById('checkoutOverlay').classList.add('active'); }
 </script>
+
 
 
 
