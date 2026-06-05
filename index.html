@@ -512,14 +512,14 @@
         function toggleCart() { document.getElementById('cartSidebar').classList.toggle('active'); }
         function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
 
-    // دالة فتح البرودكت<script>
-    // 1. تعريف المتغيرات الأساسية (تأكد أنها معرفة مرة واحدة فقط)
+    // دالة فتح البرودكت<sصcript><script>
+    // 1. المتغيرات الأساسية
     window.cart = window.cart || [];
     window.currentModalProductId = null;
     window.currentModalProductName = "";
     window.currentModalProductPrice = 0;
 
-    // 2. دالة فتح المودال (المسؤولة عن تشغيل المنتج)
+    // 2. دالة فتح المودال (المنتج)
     function openProductModal(id, name, price, img1, img2) {
         window.currentModalProductId = id;
         window.currentModalProductName = name;
@@ -535,7 +535,7 @@
         document.body.style.overflow = 'hidden';
     }
 
-    // 3. دالة إضافة للسلة
+    // 3. الدوال المسؤولة عن الأزرار
     function addFromModalToCart() {
         const sizeInput = document.querySelector('input[name="modal-size"]:checked');
         if (!sizeInput) { alert("من فضلك اختر المقاس"); return; }
@@ -552,7 +552,6 @@
         toggleCart();
     }
 
-    // 4. دالة الشراء
     function buyItNowFromModal() {
         const sizeInput = document.querySelector('input[name="modal-size"]:checked');
         if (!sizeInput) { alert("من فضلك اختر المقاس"); return; }
@@ -568,7 +567,55 @@
         closeProductModal();
         openCheckoutForm();
     }
+
+    // 4. دالة الإرسال (الجزء الذي كان يسبب المشكلة في الطلب)
+    function sendOrder(event) {
+        event.preventDefault();
+        const form = document.getElementById('orderForm');
+        
+        // تجميع بيانات المنتجات للحقل المخفي
+        let details = window.cart.map(i => `${i.name} (مقاس: ${i.size})`).join(', ');
+        document.getElementById('orderedProductsDetails').value = details;
+
+        fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { 'Accept': 'application/json' }
+        })
+        .then(response => {
+            if (response.ok) {
+                alert("تم إرسال الطلب بنجاح!");
+                window.cart = [];
+                updateCartUI();
+                closeCheckoutForm();
+            } else {
+                alert("حدث خطأ في الإرسال، جرب مرة أخرى.");
+            }
+        })
+        .catch(err => alert("خطأ في الاتصال: " + err));
+    }
+
+    // 5. دوال المساعدة (مهمة جداً لعدم توقف الموقع)
+    function updateCartUI() {
+        const cartItems = document.getElementById('cartItems');
+        const cartTotal = document.getElementById('cartTotal');
+        const count = document.getElementById('cartCount');
+        
+        count.innerText = window.cart.length;
+        let total = 0;
+        cartItems.innerHTML = window.cart.map(i => {
+            total += i.price;
+            return `<div>${i.name} - ${i.size} - ${i.price} EGP</div>`;
+        }).join('');
+        cartTotal.innerText = total + " EGP";
+    }
+
+    function toggleCart() { document.getElementById('cartSidebar').classList.toggle('active'); }
+    function closeProductModal() { document.getElementById('productModal').classList.remove('active'); document.body.style.overflow = ''; }
+    function closeCheckoutForm() { document.getElementById('checkoutOverlay').classList.remove('active'); }
+    function openCheckoutForm() { document.getElementById('checkoutOverlay').classList.add('active'); }
 </script>
+
 
 
 
