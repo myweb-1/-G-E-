@@ -514,20 +514,21 @@
 
     // دالة فتح البرودكت
     function openProductModal(id, name, price, img1, img2) {
-        currentModalProductId = id;
-        currentModalProductName = name;
-        currentModalProductPrice = price;
+    console.log("تم الضغط على المنتج: " + name); // ده عشان نتأكد لو شغال
+    currentModalProductId = id;
+    currentModalProductName = name;
+    currentModalProductPrice = price;
 
-        document.getElementById('modalProductTitle').innerText = name;
-        document.getElementById('modalProductPrice').innerText = price + " EGP";
-        document.getElementById('modalMainImage').src = img1;
-        document.getElementById('thumbFront').src = img1;
-        document.getElementById('thumbBack').src = img2;
+    document.getElementById('modalProductTitle').innerText = name;
+    document.getElementById('modalProductPrice').innerText = price + " EGP";
+    document.getElementById('modalMainImage').src = img1;
+    document.getElementById('thumbFront').src = img1;
+    document.getElementById('thumbBack').src = img2;
 
-        const modal = document.getElementById('productModal');
-        modal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    }
+    document.getElementById('productModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
 
     // دالة إغلاق البرودكت
     function closeProductModal() {
