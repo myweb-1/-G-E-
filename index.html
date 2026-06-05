@@ -511,24 +511,27 @@
         function toggleCart() { document.getElementById('cartSidebar').classList.toggle('active'); }
         function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
 function openProductModal(id, name, price, img1, img2, img3) {
-    // 1. تحديث الصور في الـ Modal
-    document.getElementById('thumbFront').src = img1;
-    document.getElementById('thumbBack').src = img2;
-    document.getElementById('thumbSide').src = img3; // تأكد أن لديك هذا الـ id في الـ HTML
-    
-    // 2. تحديث باقي البيانات
-    document.getElementById('modalProductTitle').innerText = name;
-    document.getElementById('modalProductPrice').innerText = price + " EGP";
-    
-    // 3. عرض الـ Modal
-    document.getElementById('productModal').classList.add('active');
-}
-    // تم حذف منطق الألوان هنا
+    // التأكد من وجود العناصر قبل محاولة تغييرها لتجنب توقف الكود
+    const titleEl = document.getElementById('modalProductTitle');
+    if (titleEl) titleEl.innerText = name;
+
+    const priceEl = document.getElementById('modalProductPrice');
+    if (priceEl) priceEl.innerText = price + " EGP";
+
+    // تحديث الصور
+    const thumbFront = document.getElementById('thumbFront');
+    const thumbBack = document.getElementById('thumbBack');
+    const thumbSide = document.getElementById('thumbSide');
+
+    if (thumbFront) thumbFront.src = img1;
+    if (thumbBack) thumbBack.src = img2;
+    if (thumbSide) thumbSide.src = img3; // إضافة الصورة الثالثة
+
+    setModalImage(img1, 0); // عرض الصورة الأولى كافتراضية
 
     document.getElementById('productModal').classList.add('active');
     document.body.style.overflow = 'hidden';
 }
-
         function handleColorChange(imgSrc) {
             setModalImage(imgSrc, 0);
         }
