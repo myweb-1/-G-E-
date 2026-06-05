@@ -765,20 +765,27 @@ document.addEventListener('DOMContentLoaded', function() {
     // .. كود الدالة openProductModal الموجودة عندك سابقاً ..
 
     // .. والكود الجديد هنا في الأسفل ..
-    document.addEventListener('DOMContentLoaded', function() {
-        const buyNowBtn = document.getElementById('buyNowBtn'); 
+  // تأكد من ربط الزر مباشرة بعد تحميل الصفحة
+const buyNowBtn = document.getElementById('buyNowBtn');
+
+if (buyNowBtn) {
+    buyNowBtn.addEventListener('click', function() {
+        console.log("تم الضغط على زر الشراء!");
         
-        if (buyNowBtn) {
-            buyNowBtn.addEventListener('click', function(event) {
-                console.log("تم الضغط على الزر!");
-                const selectedSize = document.querySelector('input[name="size"]:checked');
-                if (!selectedSize) {
-                    alert("من فضلك اختر المقاس أولاً!");
-                    return;
-                }
-                console.log("تم اختيار المقاس: " + selectedSize.value);
-            });
+        // البحث عن المقاس
+        const selectedSize = document.querySelector('input[name="size"]:checked');
+        
+        if (!selectedSize) {
+            alert("من فضلك اختر المقاس أولاً!");
+            return;
         }
+
+        console.log("تم اختيار المقاس: " + selectedSize.value);
+        // هنا يمكنك إضافة كود الانتقال لصفحة الدفع
+    });
+} else {
+    console.warn("تنبيه: لم يتم العثور على زر بـ ID 'buyNowBtn'");
+}
     });
 </script>
 </body>
