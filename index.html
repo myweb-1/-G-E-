@@ -548,26 +548,26 @@ function openProductModal(id, name, price, img1, img2, img3) {
 
 // 2. هذا الجزء الجديد هو الذي سيجعل زر الشراء يعمل
 // ضعه في ملف الـ JavaScript الخاص بك خارج الدالة السابقة
-document.addEventListener('DOMContentLoaded', function() {
-    const buyNowBtn = document.getElementById('buyNowBtn'); // تأكد أن هذا هو الـ ID الخاص بزر "BUY IT NOW" في الـ HTML
+// نضع مستمع الأحداث على مستوى الصفحة بالكامل
+document.addEventListener('click', function(event) {
+    // نتحقق: هل العنصر الذي ضغطنا عليه هو زر الشراء؟
+    if (event.target && event.target.id === 'buyNowBtn') {
+        console.log("تم الضغط على زر الشراء!");
 
-    if (buyNowBtn) {
-        buyNowBtn.addEventListener('click', function() {
-            // التحقق من المقاس المختار
-            const selectedSize = document.querySelector('input[name="size"]:checked');
-            
-            if (!selectedSize) {
-                alert("من فضلك اختر المقاس أولاً!");
-                return;
-            }
+        // التحقق من المقاس
+        // ملاحظة: تأكد أن حقول المقاسات داخل الـ Modal لها نفس الـ name="size"
+        const selectedSize = document.querySelector('input[name="size"]:checked');
+        
+        if (!selectedSize) {
+            alert("من فضلك اختر المقاس أولاً!");
+            return; // توقف هنا ولا تكمل
+        }
 
-            // إذا تم اختيار مقاس، نقوم بالعملية (مثلاً الانتقال لصفحة الدفع)
-            const finalSize = selectedSize.value;
-            console.log(`تم شراء: ${currentModalProductName}، المقاس: ${finalSize}`);
-            
-            // هنا تضع كود إتمام الشراء، مثلاً:
-            // window.location.href = `/checkout?id=${currentModalProductId}&size=${finalSize}`;
-        });
+        const finalSize = selectedSize.value;
+        console.log(`تم شراء: ${currentModalProductName}، المقاس: ${finalSize}`);
+        
+        // هنا يمكنك إضافة كود إتمام الشراء، مثلاً:
+        // window.location.href = `/checkout?id=${currentModalProductId}&size=${finalSize}`;
     }
 });
 
