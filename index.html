@@ -513,22 +513,28 @@
         function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
 
     // دالة فتح البرودكت
+    <script>
+    // الدوال الأساسية للتحكم في المودال
     function openProductModal(id, name, price, img1, img2) {
-    console.log("تم الضغط على المنتج: " + name); // ده عشان نتأكد لو شغال
-    currentModalProductId = id;
-    currentModalProductName = name;
-    currentModalProductPrice = price;
+        console.log("تم الضغط على المنتج: " + name);
+        currentModalProductId = id;
+        currentModalProductName = name;
+        currentModalProductPrice = price;
 
-    document.getElementById('modalProductTitle').innerText = name;
-    document.getElementById('modalProductPrice').innerText = price + " EGP";
-    document.getElementById('modalMainImage').src = img1;
-    document.getElementById('thumbFront').src = img1;
-    document.getElementById('thumbBack').src = img2;
+        document.getElementById('modalProductTitle').innerText = name;
+        document.getElementById('modalProductPrice').innerText = price + " EGP";
+        document.getElementById('modalMainImage').src = img1;
+        document.getElementById('thumbFront').src = img1;
+        document.getElementById('thumbBack').src = img2;
 
-    document.getElementById('productModal').classList.add('active');
-    document.body.style.overflow = 'hidden';
-}
-    // ... الدوال التانية فوق هنا ...
+        document.getElementById('productModal').classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeProductModal() {
+        document.getElementById('productModal').classList.remove('active');
+        document.body.style.overflow = '';
+    }
 
     // دالة الإضافة للسلة
     function addFromModalToCart() {
@@ -539,7 +545,14 @@
         }
         const selectedSize = selectedSizeElement.value;
 
-        cart.push({ id: currentModalProductId, name: currentModalProductName, price: currentModalProductPrice, size: selectedSize, qty: 1 });
+        cart.push({ 
+            id: currentModalProductId, 
+            name: currentModalProductName, 
+            price: currentModalProductPrice, 
+            size: selectedSize, 
+            qty: 1 
+        });
+        
         updateCartUI();
         closeProductModal();
         toggleCart();
@@ -554,12 +567,20 @@
         }
         const selectedSize = selectedSizeElement.value;
         
-        cart = [{ id: currentModalProductId, name: currentModalProductName, price: currentModalProductPrice, size: selectedSize, qty: 1 }];
+        cart = [{ 
+            id: currentModalProductId, 
+            name: currentModalProductName, 
+            price: currentModalProductPrice, 
+            size: selectedSize, 
+            qty: 1 
+        }];
+        
         updateCartUI();
         closeProductModal();
         openCheckoutForm();
     }
 </script>
+
 
 
     // دالة إغلاق البرودكت
