@@ -511,52 +511,55 @@
         function closeReviewModalOnOutsideClick(e) { if(e.target.id === 'reviewOverlay') closeReviewAndReset(); }
         function toggleCart() { document.getElementById('cartSidebar').classList.toggle('active'); }
         function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
-function openProductModal(id, name, price, img1, img2, img3) {
-    // 1. حفظ البيانات
-    window.currentModalProductId = id;
-    window.currentModalProductName = name;
-    window.currentModalProductPrice = price;
 
-    // 2. تحديث الواجهة
-    const title = document.getElementById('modalProductTitle');
-    if (title) title.innerText = name;
+    // دالة فتح البرودكت
+    function openProductModal(id, name, price, img1, img2) {
+        currentModalProductId = id;
+        currentModalProductName = name;
+        currentModalProductPrice = price;
 
-    const priceEl = document.getElementById('modalProductPrice');
-    if (priceEl) priceEl.innerText = price + " EGP";
+        document.getElementById('modalProductTitle').innerText = name;
+        document.getElementById('modalProductPrice').innerText = price + " EGP";
+        document.getElementById('modalMainImage').src = img1;
+        document.getElementById('thumbFront').src = img1;
+        document.getElementById('thumbBack').src = img2;
 
-    const mainImg = document.getElementById('modalMainImage');
-    if (mainImg) mainImg.src = img1;
-
-    // 3. فتح الـ Modal
-    const modal = document.getElementById('productModal');
-    if (modal) {
+        const modal = document.getElementById('productModal');
         modal.classList.add('active');
         document.body.style.overflow = 'hidden';
     }
 
-    // 4. ربط زر الشراء (بشكل مباشر)
-    const buyBtn = document.getElementById('buyNowBtn');
-    if (buyBtn) {
-        // نضع الدالة مباشرة هنا
-        buyBtn.onclick = function() {
-            const selectedSize = document.querySelector('input[name="size"]:checked');
-            if (!selectedSize) {
-                alert("من فضلك اختر المقاس أولاً!");
-            } else {
-                console.log("تم الشراء: " + name + " بمقاس: " + selectedSize.value);
-                // هنا ضع رابط الدفع الخاص بك
-                // window.location.href = '/checkout?id=' + id + '&size=' + selectedSize.value;
-            }
-        };
+    // دالة إغلاق البرودكت
+    function closeProductModal() {
+        document.getElementById('productModal').classList.remove('active');
+        document.body.style.overflow = '';
     }
-}
-        const finalSize = selectedSize.value;
-        console.log(`تم شراء: ${currentModalProductName}، المقاس: ${finalSize}`);
-        
-        // هنا يمكنك إضافة كود إتمام الشراء، مثلاً:
-        // window.location.href = `/checkout?id=${currentModalProductId}&size=${finalSize}`;
+
+    // --- بقية الدوال الخاصة بك (تأكد من بقائها كما هي) ---
+    function toggleMenu() { document.getElementById('menuSidebar').classList.toggle('active'); }
+    function toggleCart() { document.getElementById('cartSidebar').classList.toggle('active'); }
+    
+    // تأكد أن دالة addFromModalToCart و buyItNowFromModal موجودة هنا في الأسفل
+    function addFromModalToCart() {
+        const selectedSize = document.querySelector('input[name="modal-size"]:checked').value;
+        cart.push({ id: currentModalProductId, name: currentModalProductName, price: currentModalProductPrice, size: selectedSize, qty: 1 });
+        updateCartUI();
+        closeProductModal();
+        toggleCart();
     }
-});
+
+    function buyItNowFromModal() {
+        const selectedSize = document.querySelector('input[name="modal-size"]:checked').value;
+        cart = [{ id: currentModalProductId, name: currentModalProductName, price: currentModalProductPrice, size: selectedSize, qty: 1 }];
+        updateCartUI();
+        closeProductModal();
+        openCheckoutForm();
+    }
+
+    // أضف هنا باقي الدوال (sendOrder, loadSavedReviews, الخ...)
+    // ...
+</script>
+
 
         function closeProductModal() { document.getElementById('productModal').classList.remove('active'); document.body.style.overflow = ''; }
         function closeProductModalOnOutsideClick(e) { if(e.target.id === 'productModal') closeProductModal(); }
