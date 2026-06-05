@@ -512,14 +512,18 @@
         function toggleCart() { document.getElementById('cartSidebar').classList.toggle('active'); }
         function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
 
-    // دالة فتح البرودكت
-    <script>
-    // الدوال الأساسية للتحكم في المودال
+    // دالة فتح البرودكت<script>
+    // 1. تعريف المتغيرات الأساسية (تأكد أنها معرفة مرة واحدة فقط)
+    window.cart = window.cart || [];
+    window.currentModalProductId = null;
+    window.currentModalProductName = "";
+    window.currentModalProductPrice = 0;
+
+    // 2. دالة فتح المودال (المسؤولة عن تشغيل المنتج)
     function openProductModal(id, name, price, img1, img2) {
-        console.log("تم الضغط على المنتج: " + name);
-        currentModalProductId = id;
-        currentModalProductName = name;
-        currentModalProductPrice = price;
+        window.currentModalProductId = id;
+        window.currentModalProductName = name;
+        window.currentModalProductPrice = price;
 
         document.getElementById('modalProductTitle').innerText = name;
         document.getElementById('modalProductPrice').innerText = price + " EGP";
@@ -531,55 +535,41 @@
         document.body.style.overflow = 'hidden';
     }
 
-    function closeProductModal() {
-        document.getElementById('productModal').classList.remove('active');
-        document.body.style.overflow = '';
-    }
-
-    // دالة الإضافة للسلة
+    // 3. دالة إضافة للسلة
     function addFromModalToCart() {
-        const selectedSizeElement = document.querySelector('input[name="modal-size"]:checked');
-        if (!selectedSizeElement) {
-            alert("من فضلك اختر المقاس أولاً!");
-            return;
-        }
-        const selectedSize = selectedSizeElement.value;
-
-        cart.push({ 
-            id: currentModalProductId, 
-            name: currentModalProductName, 
-            price: currentModalProductPrice, 
-            size: selectedSize, 
+        const sizeInput = document.querySelector('input[name="modal-size"]:checked');
+        if (!sizeInput) { alert("من فضلك اختر المقاس"); return; }
+        
+        window.cart.push({ 
+            id: window.currentModalProductId, 
+            name: window.currentModalProductName, 
+            price: window.currentModalProductPrice, 
+            size: sizeInput.value, 
             qty: 1 
         });
-        
         updateCartUI();
         closeProductModal();
         toggleCart();
     }
 
-    // دالة الشراء المباشر
+    // 4. دالة الشراء
     function buyItNowFromModal() {
-        const selectedSizeElement = document.querySelector('input[name="modal-size"]:checked');
-        if (!selectedSizeElement) {
-            alert("من فضلك اختر المقاس أولاً!");
-            return;
-        }
-        const selectedSize = selectedSizeElement.value;
+        const sizeInput = document.querySelector('input[name="modal-size"]:checked');
+        if (!sizeInput) { alert("من فضلك اختر المقاس"); return; }
         
-        cart = [{ 
-            id: currentModalProductId, 
-            name: currentModalProductName, 
-            price: currentModalProductPrice, 
-            size: selectedSize, 
+        window.cart = [{ 
+            id: window.currentModalProductId, 
+            name: window.currentModalProductName, 
+            price: window.currentModalProductPrice, 
+            size: sizeInput.value, 
             qty: 1 
         }];
-        
         updateCartUI();
         closeProductModal();
         openCheckoutForm();
     }
 </script>
+
 
 
 
