@@ -528,6 +528,38 @@
     document.getElementById('productModal').classList.add('active');
     document.body.style.overflow = 'hidden';
 }
+    // ... الدوال التانية فوق هنا ...
+
+    // دالة الإضافة للسلة
+    function addFromModalToCart() {
+        const selectedSizeElement = document.querySelector('input[name="modal-size"]:checked');
+        if (!selectedSizeElement) {
+            alert("من فضلك اختر المقاس أولاً!");
+            return;
+        }
+        const selectedSize = selectedSizeElement.value;
+
+        cart.push({ id: currentModalProductId, name: currentModalProductName, price: currentModalProductPrice, size: selectedSize, qty: 1 });
+        updateCartUI();
+        closeProductModal();
+        toggleCart();
+    }
+
+    // دالة الشراء المباشر
+    function buyItNowFromModal() {
+        const selectedSizeElement = document.querySelector('input[name="modal-size"]:checked');
+        if (!selectedSizeElement) {
+            alert("من فضلك اختر المقاس أولاً!");
+            return;
+        }
+        const selectedSize = selectedSizeElement.value;
+        
+        cart = [{ id: currentModalProductId, name: currentModalProductName, price: currentModalProductPrice, size: selectedSize, qty: 1 }];
+        updateCartUI();
+        closeProductModal();
+        openCheckoutForm();
+    }
+</script>
 
 
     // دالة إغلاق البرودكت
