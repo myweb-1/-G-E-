@@ -512,16 +512,19 @@
         function toggleCart() { document.getElementById('cartSidebar').classList.toggle('active'); }
         function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
 function openProductModal(id, name, price, img1, img2, img3) {
-    console.log("جاري محاولة فتح المنتج:", name); // للمساعدة في الـ Console
+    // 1. حفظ البيانات في المتغيرات العامة (حتى يراها زر "إتمام الشراء")
+    currentModalProductId = id;
+    currentModalProductName = name;
+    currentModalProductPrice = price; // هذا هو السطر الذي كان ينقصك!
 
-    // 1. تحديث البيانات الأساسية (بشرط وجودها)
+    // 2. تحديث واجهة الـ Modal
     const title = document.getElementById('modalProductTitle');
     if (title) title.innerText = name;
 
     const priceEl = document.getElementById('modalProductPrice');
     if (priceEl) priceEl.innerText = price + " EGP";
 
-    // 2. تحديث الصور (بشرط وجودها)
+    // 3. تحديث الصور
     const thumbFront = document.getElementById('thumbFront');
     const thumbBack = document.getElementById('thumbBack');
     const thumbSide = document.getElementById('thumbSide');
@@ -532,11 +535,13 @@ function openProductModal(id, name, price, img1, img2, img3) {
     if (thumbSide) thumbSide.src = img3;
     if (mainImg) mainImg.src = img1;
 
-    // 3. عرض النافذة (أهم خطوة)
+    // 4. فتح النافذة
     const modal = document.getElementById('productModal');
     if (modal) {
         modal.classList.add('active');
         document.body.style.overflow = 'hidden';
+    }
+}
         console.log("تم فتح الـ Modal بنجاح");
     } else {
         console.error("خطأ: الـ Modal غير موجود في الـ HTML!");
