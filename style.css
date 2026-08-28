@@ -367,3 +367,29 @@ body {
     
     .mavin-footer { padding: 40px 15px 40px 15px; }
 }
+/* تنسيق المنتجات غير المتاحة (Sold Out) */
+.product-card.sold-out {
+    opacity: 0.75;
+    position: relative;
+    cursor: pointer;
+}
+
+.product-card.sold-out .product-img-box {
+    position: relative;
+}
+
+.sold-out-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background-color: #ff2a2a;
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    letter-spacing: 1px;
+    z-index: 10;
+    border-radius: 2px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    text-transform: uppercase;
+}
