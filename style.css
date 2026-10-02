@@ -179,8 +179,10 @@ body::before {
     overflow: hidden;
     padding-top: 70px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
 }
 
 .hero-section video {
@@ -195,6 +197,32 @@ body::before {
     object-fit: cover;
     z-index: -1;
     filter: brightness(0.6) contrast(1.1);
+}
+
+/* Hero Content Fix for Mobile Font Size & Spacing */
+.hero-content, .hero-slide, .slider-content {
+    z-index: 2;
+    padding: 0 20px;
+    max-width: 900px;
+}
+
+.hero-content h1, .hero-slide h1, .slider-content h1 {
+    font-size: 48px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: #ffffff;
+    margin-bottom: 15px;
+    text-shadow: 0 0 30px rgba(0,0,0,0.8);
+    line-height: 1.1;
+}
+
+.hero-content p, .hero-slide p, .slider-content p {
+    font-size: 16px;
+    color: #d0d5dd;
+    letter-spacing: 1px;
+    margin-bottom: 25px;
+    line-height: 1.5;
 }
 
 .marquee-bar { background: #ffffff; color: #000000; padding: 10px 0; overflow: hidden; white-space: nowrap; font-weight: 900; font-size: 12px; text-transform: uppercase; letter-spacing: 3px; }
@@ -395,7 +423,7 @@ body::before {
 .cancel-btn { flex: 1; background: #0c0c10; color: #fff; border: 1px solid rgba(255,255,255,0.1); padding: 14px; cursor: pointer; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; }
 
 /* ========================================================
-   Responsive Media Queries (ثبيت الـ 3 منتجات جنباً إلى جنب في كل الشاشات)
+   Responsive Media Queries (ثبيت الـ 3 منتجات جنباً إلى جنب + تصليح خط الهيرو)
    ======================================================== */
 
 @media (max-width: 1024px) {
@@ -409,9 +437,23 @@ body::before {
 @media (max-width: 768px) {
     .products-grid { 
         grid-template-columns: repeat(3, 1fr) !important; 
-        gap: 10px; 
+        gap: 8px !important; 
     } 
-    .product-img-box { height: 220px; }
+    .product-img-box { height: 180px !important; }
+    
+    /* تصليح خط السلايد الأول (Hero Section) للموبايل */
+    .hero-content h1, .hero-slide h1, .slider-content h1 {
+        font-size: 26px !important;
+        letter-spacing: 2px !important;
+        line-height: 1.2 !important;
+        margin-bottom: 10px !important;
+    }
+    
+    .hero-content p, .hero-slide p, .slider-content p {
+        font-size: 13px !important;
+        line-height: 1.4 !important;
+        margin-bottom: 15px !important;
+    }
 }
 
 @media (max-width: 480px) {
@@ -420,13 +462,24 @@ body::before {
     
     .products-grid { 
         grid-template-columns: repeat(3, 1fr) !important; 
-        gap: 6px !important; 
+        gap: 5px !important; 
     }
-    .product-img-box { height: 125px !important; }
+    .product-img-box { height: 110px !important; }
     
-    .product-card-title { font-size: 8px !important; font-weight: 700; letter-spacing: 0px; margin-bottom: 3px; }
-    .product-price { font-size: 9px !important; flex-direction: column; gap: 1px; }
-    .product-price span { font-size: 7px !important; }
+    .product-details { padding: 8px 6px !important; }
+    .product-card-title { font-size: 7px !important; font-weight: 700; letter-spacing: 0px; margin-bottom: 2px; }
+    .product-price { font-size: 8px !important; flex-direction: column; gap: 1px; }
+    .product-price span { font-size: 6px !important; }
+    
+    /* خط أصغر ومناسب جداً لشاشات الهواتف الضيقة جداً */
+    .hero-content h1, .hero-slide h1, .slider-content h1 {
+        font-size: 22px !important;
+        letter-spacing: 1.5px !important;
+    }
+    
+    .hero-content p, .hero-slide p, .slider-content p {
+        font-size: 11px !important;
+    }
     
     .floating-controls-container { right: 10px !important; }
     .floating-cart { width: 44px !important; height: 44px !important; }
