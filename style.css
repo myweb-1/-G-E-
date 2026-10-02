@@ -152,7 +152,6 @@ body {
     align-items: center;
 }
 
-/* تنسيق فيديو الخلفية ليتكيف مع جميع الشاشات تلقائياً */
 .hero-section video {
     position: absolute;
     top: 50%;
@@ -350,7 +349,7 @@ body {
 .cancel-btn { flex: 1; background: #1c1c1c; color: #fff; border: none; padding: 13px; cursor: pointer; font-size: 13px; }
 
 /* ========================================================
-   Responsive Media Queries (ثبيت الـ 3 منتجات في كل مكان)
+   Responsive Media Queries (ثبيت الـ 3 منتجات في كل الشاشات)
    ======================================================== */
 
 @media (max-width: 1024px) {
