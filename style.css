@@ -141,7 +141,7 @@ body {
 .submit-review-btn { width: 100%; background: #ff3b30; color: #ffffff; font-weight: bold; font-size: 14px; border: none; padding: 14px; cursor: pointer; text-transform: uppercase; }
 
 /* Hero and Marquee Text */
-.hero-section { height: 100vh; width: 100%; background-image: url('bg-desktop.jpg'); background-size: cover; background-position: center; padding-top: 65px; }
+.hero-section { height: 100vh; width: 100%; background-image: url('bg-background.mp4'); background-size: cover; background-position: center; padding-top: 65px; }
 .marquee-bar { background: #ffffff; color: #000000; padding: 12px 0; overflow: hidden; white-space: nowrap; font-weight: bold; text-transform: uppercase; }
 .marquee-content { display: inline-block; padding-left: 100%; animation: marquee 15s linear infinite; }
 @keyframes marquee { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
