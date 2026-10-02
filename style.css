@@ -437,18 +437,21 @@ body::before {
 @media (max-width: 768px) {
     .products-grid { 
         grid-template-columns: repeat(3, 1fr) !important; 
-        gap: 8px !important; 
+        gap: 6px !important; 
+        padding: 0 4px !important;
     } 
-    .product-img-box { height: 180px !important; }
+    .product-img-box { height: 130px !important; }
+    .product-details { padding: 8px 4px !important; }
+    .product-card-title { font-size: 8px !important; letter-spacing: 0px !important; margin-bottom: 4px !important; }
+    .product-price { font-size: 9px !important; gap: 4px !important; }
+    .product-price span { font-size: 7px !important; }
     
-    /* تصليح خط السلايد الأول (Hero Section) للموبايل */
     .hero-content h1, .hero-slide h1, .slider-content h1 {
         font-size: 26px !important;
         letter-spacing: 2px !important;
         line-height: 1.2 !important;
         margin-bottom: 10px !important;
     }
-    
     .hero-content p, .hero-slide p, .slider-content p {
         font-size: 13px !important;
         line-height: 1.4 !important;
@@ -457,34 +460,32 @@ body::before {
 }
 
 @media (max-width: 480px) {
-    .navbar { padding: 0 12px !important; height: 60px !important; }
-    .nav-brand-text { font-size: 15px !important; letter-spacing: 3px; }
+    .navbar { padding: 0 10px !important; height: 60px !important; }
+    .nav-brand-text { font-size: 14px !important; letter-spacing: 2px; }
     
     .products-grid { 
         grid-template-columns: repeat(3, 1fr) !important; 
-        gap: 5px !important; 
+        gap: 4px !important; 
+        padding: 0 2px !important;
     }
-    .product-img-box { height: 110px !important; }
+    .product-img-box { height: 100px !important; }
     
-    .product-details { padding: 8px 6px !important; }
-    .product-card-title { font-size: 7px !important; font-weight: 700; letter-spacing: 0px; margin-bottom: 2px; }
-    .product-price { font-size: 8px !important; flex-direction: column; gap: 1px; }
+    .product-details { padding: 6px 3px !important; }
+    .product-card-title { font-size: 7px !important; font-weight: 700; letter-spacing: 0px; margin-bottom: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .product-price { font-size: 8px !important; flex-direction: row; flex-wrap: wrap; gap: 2px; }
     .product-price span { font-size: 6px !important; }
     
-    /* خط أصغر ومناسب جداً لشاشات الهواتف الضيقة جداً */
     .hero-content h1, .hero-slide h1, .slider-content h1 {
-        font-size: 22px !important;
-        letter-spacing: 1.5px !important;
+        font-size: 20px !important;
+        letter-spacing: 1px !important;
     }
-    
     .hero-content p, .hero-slide p, .slider-content p {
-        font-size: 11px !important;
+        font-size: 10px !important;
     }
     
-    .floating-controls-container { right: 10px !important; }
-    .floating-cart { width: 44px !important; height: 44px !important; }
-    
-    .mavin-footer { padding: 40px 15px; }
+    .floating-controls-container { right: 8px !important; }
+    .floating-cart { width: 40px !important; height: 40px !important; }
+    .mavin-footer { padding: 30px 10px; }
 }
 
 /* تنسيق المنتجات غير المتاحة (Sold Out / Dark Horror Badge) */
