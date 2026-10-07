@@ -1,504 +1,592 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Λ И G E Я — THE ABYSS COLLECTION</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Cinzel+Decorative:wght@700;900&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
-    
-    <style>
-        /* ==========================================
-           GLOBAL & RESET STYLES
-           ========================================== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Cairo', sans-serif;
-            -webkit-tap-highlight-color: transparent;
-        }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Λ И G E Я | THE ABYSS</title>
+    <meta name="google-site-verification" content="BBiuBLETdLxysiWV_vBXGaYJ-EXlosJoqJqsrhrGWjc" />
+    <meta name="google-site-verification" content="83gf4TmC49Iu6Gus072x1bhn_fpXwZJ2j1k8fucouWE" />
+    <meta name="description" content="Anger Studio - The premier Egyptian brand specialized in athletic compression t-shirts and dark gothic streetwear.">
+    <meta name="keywords" content="Anger, anger wear, anger studio, compression t-shirt egypt, streetwear">
+    <link rel="canonical" href="https://anger-wear.online/">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cairo:wght@400;600;700;900&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+    
+    <!-- External CSS File -->
+    <link rel="stylesheet" href="style.css">
 
-        :root {
-            --bg-primary: #030303;
-            --bg-surface: #0a0a0a;
-            --bg-card: #0d0d0d;
-            --accent-red: #e60000;
-            --accent-red-hover: #ff1a1a;
-            --border-color: #1a1a1a;
-            --border-light: #2a2a2a;
-            --text-primary: #ffffff;
-            --text-muted: #888888;
-        }
-
-        body {
-            background-color: var(--bg-primary);
-            color: #e0e0e0;
-            overflow-x: hidden;
-            line-height: 1.6;
-        }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #050505; }
-        ::-webkit-scrollbar-thumb { background: var(--border-light); border-radius: 3px; }
-        ::-webkit-scrollbar-thumb:hover { background: var(--accent-red); }
-
-        /* ==========================================
-           NAVBAR & SIDEBAR
-           ========================================== */
-        .navbar {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 70px;
-            background: rgba(3, 3, 3, 0.95);
-            backdrop-filter: blur(12px);
-            z-index: 1000;
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 0 25px;
-            border-bottom: 1px solid rgba(255, 0, 0, 0.2);
-        }
-
-        .nav-brand-text {
-            font-family: 'Cinzel Decorative', cursive, serif;
-            font-size: 1.8rem; font-weight: 900; color: #fff;
-            letter-spacing: 4px;
-            text-shadow: 0 0 12px rgba(255, 0, 0, 0.6);
-        }
-
-        .nav-menu-btn {
-            cursor: pointer; display: flex; flex-direction: column; gap: 6px; padding: 5px;
-        }
-        .nav-menu-btn span {
-            display: block; width: 28px; height: 2px; background-color: #fff; transition: all 0.3s;
-        }
-
-        .menu-sidebar {
-            position: fixed; top: 0; right: -320px;
-            width: 320px; height: 100vh;
-            background: #080808; z-index: 1001;
-            transition: right 0.4s cubic-bezier(0.77, 0, 0.175, 1);
-            border-left: 1px solid var(--border-color);
-            display: flex; flex-direction: column; padding: 30px 20px;
-            box-shadow: -10px 0 30px rgba(0,0,0,0.9);
-        }
-        .menu-sidebar.active { right: 0; }
-
-        .menu-header { display: flex; justify-content: flex-end; margin-bottom: 30px; }
-        .close-menu-btn { background: none; border: none; color: #888; font-size: 2rem; cursor: pointer; transition: color 0.3s; }
-        .close-menu-btn:hover { color: var(--accent-red); }
-
-        .menu-links { display: flex; flex-direction: column; gap: 20px; }
-        .menu-links a {
-            color: #ccc; text-decoration: none; font-size: 1.1rem; font-weight: 700;
-            transition: all 0.3s;
-        }
-        .menu-links a:hover { color: var(--accent-red); padding-right: 8px; }
-
-        /* Overlay when sidebar active */
-        .sidebar-backdrop {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.7); z-index: 1000; display: none;
-            backdrop-filter: blur(4px);
-        }
-        .sidebar-backdrop.active { display: block; }
-
-        /* ==========================================
-           HERO SECTION & MARQUEE
-           ========================================== */
-        .hero-section {
-            position: relative; width: 100%; height: 100vh;
-            display: flex; align-items: center; justify-content: center;
-            overflow: hidden; padding: 0 20px; text-align: center;
-            background: #000;
-        }
-        .hero-overlay {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle, rgba(230,0,0,0.08) 0%, rgba(3,3,3,0.95) 85%);
-            z-index: 2;
-        }
-        .hero-content { position: relative; z-index: 3; max-width: 800px; margin-top: 40px; }
-        .hero-badge {
-            display: inline-block; padding: 6px 18px; background: rgba(230, 0, 0, 0.15);
-            border: 1px solid rgba(230, 0, 0, 0.4); color: var(--accent-red);
-            font-size: 0.85rem; font-weight: 700; letter-spacing: 3px; margin-bottom: 20px; border-radius: 20px;
-        }
-        .cinematic-title {
-            font-family: 'Cinzel Decorative', cursive, serif; font-size: 4rem; font-weight: 900;
-            color: #fff; letter-spacing: 6px; text-shadow: 0 0 25px rgba(255, 0, 0, 0.6); margin-bottom: 10px;
-        }
-        .cinematic-tagline {
-            font-family: 'UnifrakturMaguntia', cursive; font-size: 2.2rem; color: var(--accent-red); margin-bottom: 30px;
-        }
-        .hero-cta-btn {
-            display: inline-block; padding: 16px 42px; background: var(--accent-red); color: #fff;
-            text-decoration: none; font-weight: 800; letter-spacing: 2px; border-radius: 4px;
-            box-shadow: 0 0 25px rgba(230, 0, 0, 0.5); transition: all 0.3s;
-        }
-        .hero-cta-btn:hover { background: var(--accent-red-hover); transform: translateY(-3px); }
-
-        .marquee-bar {
-            width: 100%; background: var(--accent-red); color: #000; padding: 12px 0;
-            overflow: hidden; white-space: nowrap; font-weight: 900; font-size: 1.1rem; letter-spacing: 2px;
-        }
-        .marquee-content { display: inline-block; animation: marquee 20s linear infinite; }
-        @keyframes marquee { 0% { transform: translateX(0%); } 100% { transform: translateX(50%); } }
-
-        /* ==========================================
-           PRODUCTS GRID & CARDS
-           ========================================== */
-        .collection-section { max-width: 1200px; margin: 80px auto; padding: 0 20px; }
-        .collection-title {
-            font-family: 'Cinzel Decorative', cursive, serif; font-size: 2.2rem; color: #fff;
-            text-align: center; margin-bottom: 40px; letter-spacing: 3px; position: relative;
-        }
-        .collection-title::after {
-            content: ''; display: block; width: 60px; height: 3px; background: var(--accent-red); margin: 12px auto 0;
-        }
-
-        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-        .product-card {
-            background: var(--bg-surface); border: 1px solid var(--border-color);
-            border-radius: 6px; overflow: hidden; cursor: pointer; transition: all 0.3s; position: relative;
-        }
-        .product-card:hover { border-color: rgba(230,0,0,0.5); transform: translateY(-6px); box-shadow: 0 12px 30px rgba(0,0,0,0.8); }
-        .product-img-box { position: relative; width: 100%; padding-top: 125%; background: #000; }
-        .product-img-box img {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: opacity 0.5s ease;
-        }
-        .product-img-box .img-back { opacity: 0; }
-        .product-card:hover .img-back { opacity: 1; }
-        .product-card:hover .img-front { opacity: 0; }
-
-        .product-details { padding: 20px; text-align: center; }
-        .product-card-title { font-size: 1rem; font-weight: 700; color: #eee; margin-bottom: 8px; }
-        .product-price { color: var(--accent-red); font-weight: 900; font-size: 1.15rem; }
-        .product-price span { color: #555; text-decoration: line-through; font-size: 0.85rem; margin-right: 8px; }
-
-        /* ==========================================
-           PRODUCT MODAL (SHOPIFY STYLE)
-           ========================================== */
-        .product-modal-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(8px);
-            z-index: 2000; display: flex; align-items: center; justify-content: center;
-            opacity: 0; pointer-events: none; transition: opacity 0.3s; padding: 20px;
-        }
-        .product-modal-overlay.active { opacity: 1; pointer-events: auto; }
-
-        .product-modal-content {
-            background: var(--bg-card); border: 1px solid var(--border-light);
-            width: 100%; max-width: 880px; max-height: 90vh; border-radius: 8px;
-            position: relative; overflow-y: auto; padding: 30px; box-shadow: 0 0 40px rgba(0,0,0,0.95);
-        }
-        .close-modal-btn { position: absolute; top: 15px; left: 20px; background: none; border: none; color: #888; font-size: 2rem; cursor: pointer; transition: color 0.3s; }
-        .close-modal-btn:hover { color: var(--accent-red); }
-
-        .modal-body-layout { display: flex; flex-direction: row-reverse; gap: 40px; align-items: flex-start; }
-        .modal-images-side { flex: 1; width: 50%; display: flex; flex-direction: column; gap: 15px; }
-        .modal-main-img-container { position: relative; width: 100%; padding-top: 120%; background: #000; border-radius: 6px; overflow: hidden; border: 1px solid var(--border-color); }
-        .modal-main-img-container img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; }
-
-        .modal-thumbnails { display: flex; gap: 12px; }
-        .modal-thumbnails img {
-            width: 70px; height: 85px; object-fit: cover; border-radius: 4px; border: 1px solid var(--border-color);
-            cursor: pointer; opacity: 0.5; transition: all 0.3s;
-        }
-        .modal-thumbnails img.active-thumb, .modal-thumbnails img:hover { opacity: 1; border-color: var(--accent-red); }
-
-        .modal-details-side { flex: 1; width: 50%; display: flex; flex-direction: column; text-align: right; }
-        .modal-product-title { font-size: 1.6rem; font-weight: 900; color: #fff; margin-bottom: 10px; }
-        .modal-product-price { font-size: 1.4rem; color: var(--accent-red); font-weight: 900; margin-bottom: 20px; border-bottom: 1px solid var(--border-color); padding-bottom: 15px; }
-
-        .size-section-title { font-size: 0.9rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 12px; font-weight: 700; }
-        .modal-sizes-select { display: flex; gap: 10px; margin-bottom: 25px; }
-        .modal-sizes-select label { flex: 1; cursor: pointer; }
-        .modal-sizes-select input { display: none; }
-        .modal-sizes-select span {
-            display: flex; align-items: center; justify-content: center; height: 44px;
-            background: #111; border: 1px solid var(--border-light); color: #fff; font-weight: 700; border-radius: 4px; transition: all 0.3s;
-        }
-        .modal-sizes-select input:checked + span { background: #fff; color: #000; border-color: #fff; }
-
-        .modal-buy-now-btn { width: 100%; padding: 15px; background: var(--accent-red); color: #fff; border: none; font-weight: 900; cursor: pointer; border-radius: 4px; margin-bottom: 12px; transition: background 0.3s; }
-        .modal-buy-now-btn:hover { background: var(--accent-red-hover); }
-        .modal-add-to-cart-btn { width: 100%; padding: 13px; background: transparent; color: #fff; border: 1px solid var(--border-light); font-weight: 700; cursor: pointer; border-radius: 4px; transition: all 0.3s; }
-        .modal-add-to-cart-btn:hover { border-color: #fff; }
-
-        /* Toast Message */
-        .toast-msg {
-            position: fixed; top: 20px; left: 50%; transform: translateX(-50%) translateY(-100px);
-            background: var(--accent-red); color: #fff; padding: 12px 25px; border-radius: 30px;
-            font-weight: 700; font-size: 0.95rem; z-index: 3000; opacity: 0; transition: all 0.4s ease;
-            box-shadow: 0 5px 20px rgba(230,0,0,0.4);
-        }
-        .toast-msg.show { transform: translateX(-50%) translateY(0); opacity: 1; }
-
-        /* Floating Cart */
-        .floating-cart {
-            position: fixed; bottom: 30px; left: 30px; width: 60px; height: 60px;
-            background: var(--accent-red); border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            cursor: pointer; box-shadow: 0 0 25px rgba(230,0,0,0.6); z-index: 999; transition: transform 0.3s;
-        }
-        .floating-cart:hover { transform: scale(1.08); }
-        .cart-count {
-            position: absolute; top: -2px; right: -2px; background: #fff; color: #000;
-            font-size: 0.8rem; font-weight: 900; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
-        }
-
-        @media (max-width: 768px) {
-            .cinematic-title { font-size: 2.8rem; }
-            .modal-body-layout { flex-direction: column; }
-            .modal-images-side, .modal-details-side { width: 100%; }
-        }
-    </style>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 <body>
 
-    <!-- NAVBAR -->
-    <nav class="navbar">
-        <div class="nav-brand-text">Λ И G E Я</div>
-        <div class="nav-menu-btn" id="openMenuBtn">
-            <span></span><span></span><span></span>
-        </div>
-    </nav>
+    <nav class="navbar">
+        <div class="nav-left">
+            <div class="nav-menu-btn" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div class="nav-center">
+            <div class="nav-brand-text">Λ И G E Я</div>
+        </div>
+        <div class="nav-right"></div>
+    </nav>
 
-    <!-- SIDEBAR BACKDROP -->
-    <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+    <div class="menu-sidebar" id="menuSidebar">
+        <div class="menu-header">
+            <button class="close-menu-btn" onclick="toggleMenu()">✕</button>
+        </div>
+        <div class="menu-links">
+            <a href="#">Home</a>
+            <a href="#">Products</a>
+            <a href="#" onclick="openFabricModal(event)">Fabric Info</a>
+            <a href="#" onclick="openAboutModal(event)">About Us (The Abyss)</a>
+            
+            <hr class="menu-divider">
+            
+            <div class="complaints-section">
+                <span class="complaints-title">💀 Support & Complaints</span>
+                <div class="complaints-buttons">
+                    <a href="https://wa.me/201275859172?text=I%20have%20a%20complaint%20or%20inquiry%20regarding%20%CE%9B%20%D0%98%20G%20E%20%D0%Я" target="_blank" class="complaint-btn wa-btn">
+                        💬 WhatsApp Support
+                    </a>
+                    <a href="tel:+201275859172" class="complaint-btn call-btn">
+                        📞 Direct Call
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <!-- SIDEBAR MENU -->
-    <aside class="menu-sidebar" id="sidebarMenu">
-        <div class="menu-header">
-            <button class="close-menu-btn" id="closeMenuBtn">&times;</button>
-        </div>
-        <div class="menu-links">
-            <a href="#collection" class="menu-link">المجموعات</a>
-            <a href="#about" class="menu-link">عن البراند</a>
-            <a href="#contact" class="menu-link">التواصل والشكاوى</a>
-        </div>
-    </aside>
+    <!-- Redesigned Hero Section with Bold, Mysterious Gothic Branding -->
+    <div class="hero-section">
+        <video autoplay muted loop playsinline class="hero-video">
+            <source src="bg-background.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-badge">THE ELITE APPAREL SANCTUARY</div>
+            <h1 class="cinematic-title">Λ И G E Я</h1>
+            <div class="cinematic-tagline">𝖂𝖊𝖑𝖈𝖔𝖒𝖊 𝖙𝖔 𝖙𝖍𝖊 𝕬𝖇𝖞𝖘𝖘</div>
+            <p class="cinematic-subtitle">Engineered for the merciless. High-performance athletic compression and uncompromising dark gothic aesthetics built from raw iron and absolute power.</p>
+            <a href="#collectionStart" class="hero-cta-btn">Explore The Drops</a>
+        </div>
+    </div>
 
-    <!-- HERO SECTION -->
-    <section class="hero-section">
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <div class="hero-badge">THE ABYSS COLLECTION</div>
-            <h1 class="cinematic-title">Λ И G E Я</h1>
-            <p class="cinematic-tagline">Embrace The Darkness</p>
-            <a href="#collection" class="hero-cta-btn">تسوق الآن</a>
-        </div>
-    </section>
+    <div class="marquee-bar">
+        <div class="marquee-content">
+            𝖂𝖊𝖑𝖈𝖔𝖒𝖊 𝖙𝖔 𝖙𝖍𝖊 𝕬𝖇𝖞𝖘𝖘. 𝖂𝖊 𝖍𝖆𝖛𝖊 𝖇𝖊𝖊𝖓 𝖊𝖝𝖕𝖊𝖈𝖙𝖎𝖓𝖌 𝖞𝖔𝖚. &nbsp;&nbsp;&nbsp; 
+            𝖂𝖊𝖑𝖈𝖔𝖒𝖊 𝖙𝖔 𝖙𝖍𝖊 𝕬𝖇𝖞𝖘𝖘. 𝖂𝖊 𝖍𝖆𝖛𝖊 𝖇𝖊𝖊𝖓 𝖖𝖚𝖎𝖊𝖙𝖑𝖞 𝖜𝖆𝖏𝖙𝖎𝖓𝖌 🇫🇴𝖗 𝖞𝖔𝖚.
+        </div>
+    </div>
 
-    <!-- MARQUEE -->
-    <div class="marquee-bar">
-        <div class="marquee-content">
-            FREE SHIPPING ON ORDERS OVER 1500 EGP — Λ И G E Я STYLES — HIGH PERFORMANCE APPAREL —
-        </div>
-    </div>
+    <section class="collection-section" id="collectionStart">
+        <h2 class="collection-title">THE COMPRESSION DROP</h2>
+        <div class="products-grid">
+            
+            <div class="product-card" onclick="openProductModal(event, 1, 'Anger COMPRESSION DROP 01', 400, 'prod1-front.jpg', 'prod1-back.jpg')">
+                <div class="product-img-box">
+                    <img src="prod1-front.jpg" alt="Anger" class="img-front">
+                    <img src="prod1-back.jpg" alt="Anger" class="img-back">
+                </div>
+                <div class="product-details">
+                    <div class="product-card-title">Anger COMPRESSION DROP 01</div>
+                    <div class="product-price">EGP 400 <span>EGP 550</span></div>
+                </div>
+            </div>
 
-    <!-- COLLECTION SECTION -->
-    <section class="collection-section" id="collection">
-        <h2 class="collection-title">THE ABYSS DROP</h2>
-        <div class="products-grid">
-            
-            <!-- PRODUCT 1 -->
-            <div class="product-card" data-title="Oversized Heavyweight Hoodie" data-price="950 EGP" data-img1="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=600" data-img2="https://images.unsplash.com/photo-1509967419530-da38b4704bc6?w=600">
-                <div class="product-img-box">
-                    <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=600" class="img-front" alt="Hoodie Front">
-                    <img src="https://images.unsplash.com/photo-1509967419530-da38b4704bc6?w=600" class="img-back" alt="Hoodie Back">
-                </div>
-                <div class="product-details">
-                    <div class="product-card-title">Oversized Heavyweight Hoodie</div>
-                    <div class="product-price">950 EGP <span>1200 EGP</span></div>
-                </div>
-            </div>
+            <div class="product-card" onclick="openProductModal(event, 2, 'Anger COMPRESSION DROP 02', 400, 'prod2-front.jpg', 'prod2-back.jpg')">
+                <div class="product-img-box">
+                    <img src="prod2-front.jpg" alt="Anger" class="img-front">
+                    <img src="prod2-back.jpg" alt="Anger" class="img-back">
+                </div>
+                <div class="product-details">
+                    <div class="product-card-title">Anger COMPRESSION DROP 02</div>
+                    <div class="product-price">EGP 400 <span>EGP 550</span></div>
+                </div>
+            </div>
 
-            <!-- PRODUCT 2 -->
-            <div class="product-card" data-title="Compression Armored Tee" data-price="550 EGP" data-img1="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=600" data-img2="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=600">
-                <div class="product-img-box">
-                    <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=600" class="img-front" alt="Tee Front">
-                    <img src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=600" class="img-back" alt="Tee Back">
-                </div>
-                <div class="product-details">
-                    <div class="product-card-title">Compression Armored Tee</div>
-                    <div class="product-price">550 EGP <span>700 EGP</span></div>
-                </div>
-            </div>
+            <div class="product-card" onclick="openProductModal(event, 3, 'BAT MAN COMPRESSION DROP 03', 400, 'prod3-front.jpg', 'prod3-back.jpg')">
+                <div class="product-img-box">
+                    <img src="prod3-front.jpg" alt="Anger" class="img-front">
+                    <img src="prod3-back.jpg" alt="Anger" class="img-back">
+                </div>
+                <div class="product-details">
+                    <div class="product-card-title">BAT MAN COMPRESSION DROP 03</div>
+                    <div class="product-price">EGP 400 <span>EGP 550</span></div>
+                </div>
+            </div>
+            
+            <div class="product-card" onclick="openProductModal(event, 4, 'BAT MAN COMPRESSION DROP 04', 400, 'prod4-front.jpg', 'prod4-back.png')">
+                <div class="product-img-box">
+                    <img src="prod4-front.jpg" alt="Anger" class="img-front">
+                    <img src="prod4-back.png" alt="Anger" class="img-back">
+                </div>
+                <div class="product-details">
+                    <div class="product-card-title">BAT MAN COMPRESSION DROP 04</div>
+                    <div class="product-price">EGP 400 <span>EGP 550</span></div>
+                </div>
+            </div>
 
-            <!-- PRODUCT 3 -->
-            <div class="product-card" data-title="Abyss Tactical Sweatpants" data-price="800 EGP" data-img1="https://images.unsplash.com/photo-1552902865-b72c031ac5ea?w=600" data-img2="https://images.unsplash.com/photo-1517445312882-bc9910d016b7?w=600">
-                <div class="product-img-box">
-                    <img src="https://images.unsplash.com/photo-1552902865-b72c031ac5ea?w=600" class="img-front" alt="Pants Front">
-                    <img src="https://images.unsplash.com/photo-1517445312882-bc9910d016b7?w=600" class="img-back" alt="Pants Back">
-                </div>
-                <div class="product-details">
-                    <div class="product-card-title">Abyss Tactical Sweatpants</div>
-                    <div class="product-price">800 EGP <span>1000 EGP</span></div>
-                </div>
-            </div>
+        </div>
+    </section>
 
-        </div>
-    </section>
+    <section class="collection-section" style="border-top: 1px solid #111; padding-top: 40px;">
+        <h2 class="collection-title">THE PANTS DROP</h2>
+        <div class="products-grid">
+            
+            <div class="product-card sold-out" onclick="openProductModal(event, 11, 'WIDE LEG PANTS BLACK', 550, 'pants1-black.jpg', 'pants01-black.jpg')">
+                <div class="product-img-box">
+                    <span class="sold-out-badge">SOLD OUT</span>
+                    <img src="pants1-black.jpg" alt="Anger WIDE LEG Pants" class="img-front">
+                    <img src="pants01-black.jpg" alt="Anger WIDE LEG Pants" class="img-back">
+                </div>
+                <div class="product-details">
+                    <div class="product-card-title">WIDE LEG PANTS BLACK</div>
+                    <div class="product-price">EGP 550 <span>EGP 800</span></div>
+                </div>
+            </div>
 
-    <!-- SHOPIFY-STYLE PRODUCT MODAL -->
-    <div class="product-modal-overlay" id="productModal">
-        <div class="product-modal-content">
-            <button class="close-modal-btn" id="closeModalBtn">&times;</button>
-            <div class="modal-body-layout">
-                <div class="modal-images-side">
-                    <div class="modal-main-img-container">
-                        <img id="modalMainImg" src="" alt="Product Main">
-                    </div>
-                    <div class="modal-thumbnails" id="modalThumbnails"></div>
-                </div>
-                <div class="modal-details-side">
-                    <h2 class="modal-product-title" id="modalTitle">اسم المنتج</h2>
-                    <div class="modal-product-price" id="modalPrice">0 EGP</div>
+            <div class="product-card sold-out" onclick="openProductModal(event, 12, 'WIDE LEG PANTS GRAY', 550, 'pants1-Grey.jpg', 'pants01-Grey.jpg')">
+                <div class="product-img-box">
+                    <span class="sold-out-badge">SOLD OUT</span>
+                    <img src="pants1-Grey.jpg" alt="Anger WIDE LEG Pants" class="img-front">
+                    <img src="pants01-Grey.jpg" alt="Anger WIDE LEG Pants" class="img-back">
+                </div>
+                <div class="product-details">
+                    <div class="product-card-title">WIDE LEG PANTS GRAY</div>
+                    <div class="product-price">EGP 550 <span>EGP 800</span></div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
 
-                    <div class="size-section-title">اختر المقاس:</div>
-                    <div class="modal-sizes-select">
-                        <label><input type="radio" name="size" value="M"><span>M</span></label>
-                        <label><input type="radio" name="size" value="L" checked><span>L</span></label>
-                        <label><input type="radio" name="size" value="XL"><span>XL</span></label>
-                        <label><input type="radio" name="size" value="XXL"><span>XXL</span></label>
-                    </div>
+    <!-- Modals & Scripts -->
+    <div class="fabric-modal-overlay" id="fabricModal" onclick="closeFabricModalOnOutsideClick(event)">
+        <div class="fabric-modal-content">
+            <button class="close-fabric-btn" onclick="closeFabricModal()">✕</button>
+            <h3 class="fabric-title">🔥 Λ И G E Я Fabric Specs</h3>
+            <p class="fabric-subtitle">Compression t-shirts engineered for maximum performance:</p>
+            
+            <div class="fabric-features">
+                <div class="feature-item">
+                    <span class="feature-icon">🛡️</span>
+                    <div>
+                        <h4>High Compression & Flexibility</h4>
+                        <p>Provides optimal muscle pressure to improve circulation and reduce fatigue, featuring premium 4-way stretch mobility.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">💧</span>
+                    <div>
+                        <h4>Dry-Fit Sweat Wicking</h4>
+                        <p>Advanced moisture-wicking technology pulls sweat away from your skin, keeping you dry during intense workouts.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">🧵</span>
+                    <div>
+                        <h4>Flat-lock Stitching</h4>
+                        <p>Seamless flat seams completely eliminate skin chafing and friction, built to withstand heavy lifting.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-                    <button class="modal-buy-now-btn" id="buyNowBtn">BUY IT NOW</button>
-                    <button class="modal-add-to-cart-btn" id="addToCartBtn">ADD TO CART</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    <div class="about-modal-overlay" id="aboutModal" onclick="closeAboutModalOnOutsideClick(event)">
+        <div class="about-modal-content">
+            <button class="close-about-btn" onclick="closeAboutModal()">✕</button>
+            <h3 class="about-title">💀 WELCOME TO THE ABYSS</h3>
+            <div class="about-text-content">
+                <p class="dark-quote">"We don't just make athletic wear.. We arm the monsters that wake up in the dark."</p>
+                <p class="about-p">
+                    <strong>Λ И G E Я</strong> is the final sanctuary for those fueled by pain, those who make heavy iron their personal symphony. We are here to transform your suppressed rage into a devastating force that breaks all limits.
+                </p>
+                <p class="about-p">
+                    Fear? Left behind. Fatigue? Our fuel. <strong>Λ И G E Я</strong> compression gear is designed to stick like a second skin, giving you the dominance that commands the room.
+                </p>
+                <p class="dark-footer-quote">WE ARE BORN IN RAGE. WE LIVE IN IRON.</p>
+            </div>
+        </div>
+    </div>
 
-    <!-- FLOATING CART BUTTON -->
-    <div class="floating-cart" id="floatingCartBtn">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="#fff"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
-        <span class="cart-count" id="cartCount">0</span>
-    </div>
+    <div class="review-overlay" id="reviewOverlay" onclick="closeReviewModalOnOutsideClick(event)">
+        <div class="review-modal">
+            <button class="close-review-modal-btn" onclick="closeReviewAndReset()">✕</button>
+            <h3 class="review-title">🔥 Join The Elite</h3>
+            <p class="review-subtitle">How was your experience with Λ И G E Я gear?</p>
+            
+            <div class="form-group">
+                <label>Your Full Name</label>
+                <input type="text" id="reviewerName" placeholder="e.g., John Doe">
+            </div>
 
-    <!-- TOAST NOTIFICATION -->
-    <div class="toast-msg" id="toastMsg">تمت الإضافة إلى السلة بنجاح!</div>
+            <div class="rating-stars" id="ratingStars">
+                <span class="star" data-value="1">★</span>
+                <span class="star" data-value="2">★</span>
+                <span class="star" data-value="3">★</span>
+                <span class="star" data-value="4">★</span>
+                <span class="star" data-value="5">★</span>
+            </div>
 
-    <!-- JAVASCRIPT LOGIC -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
+            <div class="form-group">
+                <label>Your Review Message</label>
+                <textarea id="reviewText" placeholder="What does it feel like to wear your rage?..."></textarea>
+            </div>
 
-            // --- 1. SIDEBAR MENU TOGGLE ---
-            const openMenuBtn = document.getElementById('openMenuBtn');
-            const closeMenuBtn = document.getElementById('closeMenuBtn');
-            const sidebarMenu = document.getElementById('sidebarMenu');
-            const sidebarBackdrop = document.getElementById('sidebarBackdrop');
-            const menuLinks = document.querySelectorAll('.menu-link');
+            <div class="form-actions">
+                <button type="button" class="submit-order-btn" onclick="submitReview()">Submit to The Abyss</button>
+            </div>
+        </div>
+    </div>
 
-            function toggleMenu(show) {
-                if (show) {
-                    sidebarMenu.classList.add('active');
-                    sidebarBackdrop.classList.add('active');
-                } else {
-                    sidebarMenu.classList.remove('active');
-                    sidebarBackdrop.classList.remove('active');
-                }
-            }
+    <footer class="mavin-footer">
+        <div class="mavin-footer-container">
+            <div class="footer-nav-menu">
+                <a href="https://wa.me/201275859172?text=I%20have%20a%20complaint%20or%20inquiry%20regarding%20%CE%9B%20%D0%98%20G%20E%20%D0%Я" target="_blank">Help Center</a>
+                <a href="#" onclick="openReviewModalFromFooter(event)">Submit Review</a>
+                <a href="#" onclick="openFabricModal(event)">Fabric Info</a>
+                <a href="#" onclick="openAboutModal(event)">About Us</a>
+            </div>
+            
+            <div class="footer-socials-row">
+                <a href="https://www.instagram.com/anger.wear_1?igsh=MTcxZGZuenIwNHQ1cw==" target="_blank" aria-label="Instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="https://wa.me/201275859172" target="_blank" aria-label="WhatsApp">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </a>
+            </div>
 
-            if (openMenuBtn) openMenuBtn.addEventListener('click', () => toggleMenu(true));
-            if (closeMenuBtn) closeMenuBtn.addEventListener('click', () => toggleMenu(false));
-            if (sidebarBackdrop) sidebarBackdrop.addEventListener('click', () => toggleMenu(false));
+            <div class="footer-copyright-row">
+                <p class="footer-copyright">&copy; 2026 Λ И G E Я. Built from anger.</p>
+            </div>
+        </div>
+        <button class="scroll-top-btn" onclick="scrollToTop()" aria-label="Scroll to top">▲</button>
+    </footer>
 
-            menuLinks.forEach(link => {
-                link.addEventListener('click', () => toggleMenu(false));
-            });
+    <!-- Product & Cart Modals -->
+    <div class="product-modal-overlay" id="productModal" onclick="closeProductModalOnOutsideClick(event)">
+        <div class="product-modal-content">
+            <button class="close-modal-btn" onclick="closeProductModal()">✕</button>
+            <div class="modal-body-layout">
+                <div class="modal-images-side">
+                    <div class="modal-main-img-container">
+                        <img id="modalMainImage" src="" alt="Product Large View">
+                        <button class="img-nav-btn prev-btn" onclick="switchModalImage(-1)">❮</button>
+                        <button class="img-nav-btn next-btn" onclick="switchModalImage(1)">❯</button>
+                    </div>
+                    <div class="modal-thumbnails">
+                        <img id="thumbFront" src="" onclick="setModalImage(this.src, 0)" class="active-thumb">
+                        <img id="thumbBack" src="" onclick="setModalImage(this.src, 1)">
+                    </div>
+                </div>
 
-            // --- 2. PRODUCT MODAL LOGIC ---
-            const productCards = document.querySelectorAll('.product-card');
-            const productModal = document.getElementById('productModal');
-            const closeModalBtn = document.getElementById('closeModalBtn');
-            const modalMainImg = document.getElementById('modalMainImg');
-            const modalThumbnails = document.getElementById('modalThumbnails');
-            const modalTitle = document.getElementById('modalTitle');
-            const modalPrice = document.getElementById('modalPrice');
-            const addToCartBtn = document.getElementById('addToCartBtn');
-            const buyNowBtn = document.getElementById('buyNowBtn');
-            const cartCountEl = document.getElementById('cartCount');
-            const floatingCartBtn = document.getElementById('floatingCartBtn');
-            const toastMsg = document.getElementById('toastMsg');
+                <div class="modal-details-side">
+                    <h2 id="modalProductTitle" class="modal-product-title"></h2>
+                    <div id="modalProductPrice" class="modal-product-price"></div>
 
-            let cartCount = 0;
+                    <div class="size-section-title">Select Size:</div>
+                    <div class="modal-sizes-select">
+                        <label><input type="radio" name="modal-size" value="M" checked><span>M</span></label>
+                        <label><input type="radio" name="modal-size" value="L"><span>L</span></label>
+                        <label><input type="radio" name="modal-size" value="XL"><span>XL</span></label>
+                        <label><input type="radio" name="modal-size" value="XXL"><span>XXL</span></label>
+                    </div>
 
-            function showToast(text) {
-                toastMsg.innerText = text;
-                toastMsg.classList.add('show');
-                setTimeout(() => {
-                    toastMsg.classList.remove('show');
-                }, 3000);
-            }
+                    <div class="size-guide-container">
+                        <div class="size-guide-title">📐 Approximate Size Chart:</div>
+                        <table class="size-guide-table">
+                            <thead>
+                                <tr>
+                                    <th>Size</th>
+                                    <th>Weight Range</th>
+                                    <th>Height Range</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td><strong>M</strong></td><td>55 - 68 kg</td><td>160 - 172 cm</td></tr>
+                                <tr><td><strong>L</strong></td><td>69 - 78 kg</td><td>170 - 178 cm</td></tr>
+                                <tr><td><strong>XL</strong></td><td>79 - 88 kg</td><td>170 - 178 cm</td></tr>
+                                <tr><td><strong>XXL</strong></td><td>89 - 100 kg</td><td>180 - 192 cm</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
 
-            productCards.forEach(card => {
-                card.addEventListener('click', () => {
-                    const title = card.getAttribute('data-title');
-                    const price = card.getAttribute('data-price');
-                    const img1 = card.getAttribute('data-img1');
-                    const img2 = card.getAttribute('data-img2');
-                    const images = [img1, img2].filter(Boolean);
+                    <div class="modal-action-buttons">
+                        <button id="modalBuyNowBtn" class="modal-buy-now-btn" onclick="buyItNowFromModal()">Buy It Now</button>
+                        <button id="modalAddToCartBtn" class="modal-add-to-cart-btn" onclick="addFromModalToCart()">Add To Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-                    modalTitle.innerText = title;
-                    modalPrice.innerText = price;
-                    modalMainImg.src = images[0];
+    <div class="floating-controls-container">
+        <div class="floating-cart" onclick="toggleCart()">
+            <svg viewBox="0 0 24 24" class="cart-svg-icon">
+                <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
+            </svg>
+            <span class="cart-count" id="cartCount">0</span>
+        </div>
+    </div>
 
-                    modalThumbnails.innerHTML = '';
-                    images.forEach((imgSrc, index) => {
-                        const thumb = document.createElement('img');
-                        thumb.src = imgSrc;
-                        if (index === 0) thumb.classList.add('active-thumb');
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Shopping Cart</h3>
+            <button class="close-cart-btn" onclick="toggleCart()">✕</button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <p class="empty-msg">Your cart is empty</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total-box">
+                <span>Total Amount:</span>
+                <span id="cartTotal">0 EGP</span>
+            </div>
+            <button class="checkout-btn" onclick="openCheckoutForm()">Proceed To Order</button>
+        </div>
+    </div>
 
-                        thumb.addEventListener('click', () => {
-                            modalMainImg.src = imgSrc;
-                            document.querySelectorAll('.modal-thumbnails img').forEach(t => t.classList.remove('active-thumb'));
-                            thumb.classList.add('active-thumb');
-                        });
+    <div class="checkout-overlay" id="checkoutOverlay">
+        <div class="checkout-modal">
+            <h3>Order Shipping Details</h3>
+            <form id="orderForm" action="https://formspree.io/f/xgoqadvg" method="POST" onsubmit="sendOrder(event)">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" id="clientName" name="clientName" required placeholder="John Doe...">
+                </div>
+                <div class="form-group">
+                    <label>Final Total Price</label>
+                    <input type="text" id="finalTotalDisplay" name="finalTotal" readonly>
+                </div>
+                <div class="form-group">
+                    <label>Primary Phone Number</label>
+                    <input type="tel" id="clientPhone1" name="clientPhone1" required placeholder="01xxxxxxxxx">
+                </div>
+                <div class="form-group">
+                    <label>Alternative Phone Number</label>
+                    <input type="tel" id="clientPhone2" name="clientPhone2" required placeholder="01xxxxxxxxx">
+                </div>
+                <div class="form-group">
+                    <label>Full Delivery Address</label>
+                    <textarea id="clientAddress" name="clientAddress" required placeholder="Governorate, City, Street name, Building..."></textarea>
+                </div>
+                <div class="form-actions">
+                    <input type="hidden" id="orderedProductsDetails" name="productsDetails">
+                    <button type="submit" class="submit-order-btn">Submit Order</button>
+                    <button type="button" class="cancel-btn" onclick="closeCheckoutForm()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
 
-                        modalThumbnails.appendChild(thumb);
-                    });
+    <audio id="bgAudio" loop>
+        <source src="background-sound.mp3" type="audio/mpeg">
+    </audio>
 
-                    productModal.classList.add('active');
-                });
-            });
+    <script>
+        let cart = [];
+        let currentModalProductId = null;
+        let currentModalProductName = "";
+        let currentModalProductPrice = 0;
+        let modalImagesArray = [];
+        let currentImageIndex = 0;
+        let selectedRating = 0;
 
-            if (closeModalBtn) {
-                closeModalBtn.addEventListener('click', () => {
-                    productModal.classList.remove('active');
-                });
-            }
+        document.addEventListener("DOMContentLoaded", () => {
+            initStars();
+        });
 
-            if (productModal) {
-                productModal.addEventListener('click', (e) => {
-                    if (e.target === productModal) {
-                        productModal.classList.remove('active');
-                    }
-                });
-            }
+        function startHiddenAudio() {
+            const audio = document.getElementById('bgAudio');
+            audio.play().then(() => {
+                document.removeEventListener('click', startHiddenAudio);
+                document.removeEventListener('touchstart', startHiddenAudio);
+            }).catch((error) => {
+                console.log("Audio play blocked, waiting for user click.", error);
+            });
+        }
+        document.addEventListener('click', startHiddenAudio);
+        document.addEventListener('touchstart', startHiddenAudio);
 
-            if (addToCartBtn) {
-                addToCartBtn.addEventListener('click', () => {
-                    const selectedSize = document.querySelector('input[name="size"]:checked')?.value || 'L';
-                    cartCount++;
-                    cartCountEl.innerText = cartCount;
-                    showToast(`تمت إضافة ${modalTitle.innerText} (مقاس ${selectedSize}) إلى السلة!`);
-                    productModal.classList.remove('active');
-                });
-            }
+        function toggleMenu() {
+            document.getElementById('menuSidebar').classList.toggle('active');
+        }
 
-            if (buyNowBtn) {
-                buyNowBtn.addEventListener('click', () => {
-                    const selectedSize = document.querySelector('input[name="size"]:checked')?.value || 'L';
-                    showToast(`جاري التوجه لصفحة الدفع لـ ${modalTitle.innerText} (${selectedSize})`);
-                });
-            }
+        function openFabricModal(e) {
+            e.preventDefault();
+            const sidebar = document.getElementById('menuSidebar');
+            if (sidebar.classList.contains('active')) toggleMenu();
+            document.getElementById('fabricModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
 
-            if (floatingCartBtn) {
-                floatingCartBtn.addEventListener('click', () => {
-                    showToast(`تحتوي السلة على ${cartCount} عناصر`);
-                });
-            }
-        });
-    </script>
+        function closeFabricModal() { document.getElementById('fabricModal').classList.remove('active'); document.body.style.overflow = ''; }
+        function closeFabricModalOnOutsideClick(e) { if(e.target.id === 'fabricModal') closeFabricModal(); }
+        
+        function openAboutModal(e) { e.preventDefault(); const sidebar = document.getElementById('menuSidebar'); if (sidebar.classList.contains('active')) toggleMenu(); document.getElementById('aboutModal').classList.add('active'); document.body.style.overflow = 'hidden'; }
+        function closeAboutModal() { document.getElementById('aboutModal').classList.remove('active'); document.body.style.overflow = ''; }
+        function closeAboutModalOnOutsideClick(e) { if(e.target.id === 'aboutModal') closeAboutModal(); }
+        
+        function openReviewModalFromFooter(e) { e.preventDefault(); document.getElementById('reviewOverlay').classList.add('active'); }
+        function closeReviewModalOnOutsideClick(e) { if(e.target.id === 'reviewOverlay') closeReviewAndReset(); }
+        function closeReviewAndReset() { document.getElementById('reviewOverlay').classList.remove('active'); }
+
+        function initStars() {
+            const stars = document.querySelectorAll('#ratingStars .star');
+            stars.forEach(star => {
+                star.addEventListener('click', function() {
+                    selectedRating = parseInt(this.getAttribute('data-value'));
+                    stars.forEach(s => {
+                        if (parseInt(s.getAttribute('data-value')) <= selectedRating) {
+                            s.classList.add('selected');
+                        } else {
+                            s.classList.remove('selected');
+                        }
+                    });
+                });
+            });
+        }
+
+        function submitReview() {
+            const name = document.getElementById('reviewerName').value;
+            const text = document.getElementById('reviewText').value;
+            if(!name || !text || selectedRating === 0) {
+                alert("من فضلك املأ جميع الحقول واقترح تقييماً بالنجوم.");
+                return;
+            }
+            alert("شكراً لك! تم إرسال تقييمك إلى الـ Abyss بنجاح.");
+            closeReviewAndReset();
+        }
+
+        function toggleCart() { document.getElementById('cartSidebar').classList.toggle('active'); }
+        function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+
+        function openProductModal(event, id, name, price, img1, img2) {
+            const card = event.currentTarget;
+            if (card.classList.contains('sold-out')) {
+                alert("عذراً، هذا المنتج غير متاح حالياً (Sold Out).");
+                return;
+            }
+
+            window.currentModalProductId = id;
+            window.currentModalProductName = name;
+            window.currentModalProductPrice = price;
+            modalImagesArray = [img1, img2];
+            currentImageIndex = 0;
+
+            document.getElementById('modalProductTitle').innerText = name;
+            document.getElementById('modalProductPrice').innerText = price + " EGP";
+            document.getElementById('modalMainImage').src = img1;
+            document.getElementById('thumbFront').src = img1;
+            document.getElementById('thumbBack').src = img2;
+            document.getElementById('thumbFront').classList.add('active-thumb');
+            document.getElementById('thumbBack').classList.remove('active-thumb');
+
+            document.getElementById('productModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function setModalImage(src, index) {
+            currentImageIndex = index;
+            document.getElementById('modalMainImage').src = src;
+            document.querySelectorAll('.modal-thumbnails img').forEach((img, idx) => {
+                if(idx === index) img.classList.add('active-thumb');
+                else img.classList.remove('active-thumb');
+            });
+        }
+
+        function switchModalImage(direction) {
+            currentImageIndex = (currentImageIndex + direction + modalImagesArray.length) % modalImagesArray.length;
+            setModalImage(modalImagesArray[currentImageIndex], currentImageIndex);
+        }
+
+        function updateCartUI() {
+            const cartItems = document.getElementById('cartItems');
+            const cartTotal = document.getElementById('cartTotal');
+            const count = document.getElementById('cartCount');
+            
+            count.innerText = window.cart.length;
+            let total = 0;
+            
+            if(window.cart.length === 0) {
+                cartItems.innerHTML = '<p class="empty-msg">Your cart is empty</p>';
+            } else {
+                cartItems.innerHTML = window.cart.map(i => {
+                    total += (i.price * i.qty);
+                    return `<div class="cart-item"><h4>${i.name}</h4><p>المقاس: ${i.size} | ${i.price} EGP</p></div>`;
+                }).join('');
+            }
+            cartTotal.innerText = total + " EGP";
+        }
+
+        function openCheckoutForm() {
+            if (window.cart.length === 0) { alert("السلة فارغة!"); return; }
+            const productsCost = window.cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            const shippingCost = 80;
+            const finalTotal = productsCost + shippingCost;
+
+            const priceDisplay = document.getElementById('finalTotalDisplay');
+            if (priceDisplay) {
+                priceDisplay.value = `${productsCost} + 80 (شحن) = ${finalTotal} EGP`;
+            }
+            document.getElementById('checkoutOverlay').classList.add('active');
+        }
+
+        function sendOrder(event) {
+            event.preventDefault();
+            const form = document.getElementById('orderForm');
+            const productsCost = window.cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            let itemsDetails = window.cart.map(i => `${i.name} (${i.size})`).join(', ');
+            
+            document.getElementById('orderedProductsDetails').value = itemsDetails + ` | الإجمالي شامل الشحن: ${productsCost + 80} EGP`;
+
+            fetch(form.action, {
+                method: 'POST',
+                body: new FormData(form),
+                headers: { 'Accept': 'application/json' }
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert("تم إرسال الطلب بنجاح!");
+                    window.cart = [];
+                    updateCartUI();
+                    closeCheckoutForm();
+                } else {
+                    alert("حدث خطأ في الإرسال.");
+                }
+            })
+            .catch(err => alert("خطأ في الاتصال: " + err));
+        }
+
+        function addFromModalToCart() {
+            const sizeInput = document.querySelector('input[name="modal-size"]:checked');
+            if (!sizeInput) { alert("من فضلك اختر المقاس"); return; }
+            window.cart.push({ id: window.currentModalProductId, name: window.currentModalProductName, price: window.currentModalProductPrice, size: sizeInput.value, qty: 1 });
+            updateCartUI();
+            closeProductModal();
+            toggleCart();
+        }
+
+        function buyItNowFromModal() {
+            const sizeInput = document.querySelector('input[name="modal-size"]:checked');
+            if (!sizeInput) { alert("من فضلك اختر المقاس"); return; }
+            window.cart = [{ id: window.currentModalProductId, name: window.currentModalProductName, price: window.currentModalProductPrice, size: sizeInput.value, qty: 1 }];
+            updateCartUI();
+            closeProductModal();
+            openCheckoutForm();
+        }
+
+        function closeProductModal() { document.getElementById('productModal').classList.remove('active'); document.body.style.overflow = ''; }
+        function closeCheckoutForm() { document.getElementById('checkoutOverlay').classList.remove('active'); }
+    </script>
 </body>
 </html>
