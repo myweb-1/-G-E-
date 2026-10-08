@@ -47,7 +47,7 @@ body {
 }
 
 /* ==========================================================================
-   NAVBAR & SIDEBAR (Enhanced Hamburger Menu & Logo)
+   NAVBAR & SIDEBAR
    ========================================================================== */
 .navbar {
     position: fixed;
@@ -75,33 +75,29 @@ body {
     text-shadow: 0 0 10px var(--accent-red-glow);
 }
 
-/* تحسين شكل زر الـ 3 شرط (Hamburger Menu) ليصبح أنيقاً واحترافياً */
 .nav-menu-btn {
     cursor: pointer;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    width: 30px;
-    height: 22px;
-    padding: 2px;
-    background: transparent;
-    border: none;
-    z-index: 1005;
+    gap: 5px;
+    padding: 8px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
+}
+
+.nav-menu-btn:hover {
+    border-color: var(--accent-red);
 }
 
 .nav-menu-btn span {
     display: block;
-    width: 100%;
+    width: 24px;
     height: 2px;
     background-color: var(--text-primary);
+    transition: all 0.3s ease;
     border-radius: 2px;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
-}
-
-.nav-menu-btn:hover span {
-    background-color: var(--accent-red);
-    box-shadow: 0 0 8px var(--accent-red-glow);
 }
 
 .menu-sidebar {
@@ -343,12 +339,12 @@ body {
 }
 
 /* ==========================================================================
-   PRODUCTS & COLLECTIONS (3 Products Grid Layout)
+   PRODUCTS & COLLECTIONS (3 Products per row)
    ========================================================================== */
 .collection-section {
-    max-width: 1400px;
+    max-width: 1300px;
     margin: 80px auto;
-    padding: 0 25px;
+    padding: 0 20px;
 }
 
 .collection-title {
@@ -370,7 +366,6 @@ body {
     margin: 10px auto 0;
 }
 
-/* تعديل شبكة المنتجات لتكون 3 منتجات بجانب بعضها بشكل منظم ومريح للعين */
 .products-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -380,7 +375,7 @@ body {
 .product-card {
     background: var(--bg-surface);
     border: 1px solid var(--border-color);
-    border-radius: 4px;
+    border-radius: 6px;
     overflow: hidden;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -468,7 +463,7 @@ body {
 }
 
 /* ==========================================================================
-   SHOPIFY-STYLE PRODUCT MODAL (Product Left, Size & Order Right)
+   SHOPIFY-STYLE PRODUCT MODAL (Product Left, Options Right)
    ========================================================================== */
 .product-modal-overlay {
     position: fixed;
@@ -498,13 +493,13 @@ body {
     background: var(--bg-card);
     border: 1px solid var(--border-light);
     width: 100%;
-    max-width: 1050px;
+    max-width: 1000px;
     max-height: 90vh;
-    border-radius: 6px;
+    border-radius: 8px;
     position: relative;
     overflow-y: auto;
     padding: 40px;
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.9);
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.95);
 }
 
 .close-modal-btn {
@@ -524,17 +519,16 @@ body {
     color: var(--accent-red);
 }
 
-/* ترتيب شوبيفاي: الصور على الشمال، والبيانات واختيار المقاس والطلب على اليمين */
 .modal-body-layout {
     display: flex;
-    flex-direction: row;
-    gap: 45px;
+    flex-direction: row-reverse; /* لضمان أن التفاصيل يمين والصور يسار تماماً مثل شوبيفاي */
+    gap: 40px;
     align-items: flex-start;
 }
 
 .modal-images-side {
     flex: 1.1;
-    width: 52%;
+    width: 55%;
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -545,7 +539,7 @@ body {
     width: 100%;
     padding-top: 120%;
     background: #000000;
-    border-radius: 4px;
+    border-radius: 6px;
     overflow: hidden;
     border: 1px solid var(--border-color);
 }
@@ -592,7 +586,7 @@ body {
     width: 70px;
     height: 85px;
     object-fit: cover;
-    border-radius: 3px;
+    border-radius: 4px;
     border: 1px solid var(--border-light);
     cursor: pointer;
     opacity: 0.5;
@@ -607,16 +601,17 @@ body {
 
 .modal-details-side {
     flex: 0.9;
-    width: 48%;
+    width: 45%;
     display: flex;
     flex-direction: column;
+    text-align: left; /* اتجاه واجهة شوبيفاي الإنجليزية/المنظمة */
 }
 
 .modal-product-title {
     font-size: 1.8rem;
     font-weight: 900;
     color: var(--text-primary);
-    margin-bottom: 10px;
+    margin-bottom: 12px;
     letter-spacing: 1px;
 }
 
@@ -630,7 +625,7 @@ body {
 }
 
 .size-section-title {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: var(--text-muted);
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -640,7 +635,7 @@ body {
 
 .modal-sizes-select {
     display: flex;
-    gap: 12px;
+    gap: 10px;
     margin-bottom: 25px;
 }
 
@@ -662,7 +657,7 @@ body {
     border: 1px solid var(--border-light);
     color: var(--text-primary);
     font-weight: 700;
-    border-radius: 3px;
+    border-radius: 4px;
     transition: all 0.3s ease;
 }
 
@@ -725,7 +720,7 @@ body {
     font-size: 1rem;
     letter-spacing: 1px;
     cursor: pointer;
-    border-radius: 3px;
+    border-radius: 4px;
     transition: background 0.3s ease;
 }
 
@@ -742,7 +737,7 @@ body {
     font-weight: 700;
     font-size: 0.95rem;
     cursor: pointer;
-    border-radius: 3px;
+    border-radius: 4px;
     transition: all 0.3s ease;
 }
 
@@ -1169,7 +1164,7 @@ body {
     color: var(--text-primary);
 }
 
-.footer-socials-rows {
+.footer-socials-row {
     display: flex;
     gap: 20px;
 }
@@ -1209,11 +1204,11 @@ body {
 }
 
 /* ==========================================================================
-   RESPONSIVE DESIGN (MOBILE, TABLET & DESKTOP ADAPTATION)
+   RESPONSIVE DESIGN (MOBILE ADAPTATION)
    ========================================================================== */
 @media (max-width: 1024px) {
     .products-grid {
-        grid-template-columns: repeat(2, 1fr); /* تابلت: منتجان بجانب بعضهما */
+        grid-template-columns: repeat(2, 1fr); /* تابلت: منتجان بجانب بعض */
     }
 }
 
@@ -1225,20 +1220,11 @@ body {
     .cinematic-tagline { 
         font-size: 1.5rem; 
     }
-    
-    /* شبكة المنتجات تصبح منتجاً واحداً أو اثنين حسب رغبة الشاشة، هنا جعلناها 2 لتناسب الموبايل بشكل متناسق أو منتج واحد */
     .products-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 15px;
+        grid-template-columns: 1fr; /* موبايل: منتج واحد لعرض مثالي وواضح */
     }
-    
-    .product-card-title {
-        font-size: 0.85rem;
-    }
-
-    /* نافذة الشراء تتكيف عمودياً على الموبايل */
     .modal-body-layout { 
-        flex-direction: column; 
+        flex-direction: column; /* في الموبايل تصبح الصورة بالأعلى والتفاصيل بالأسفل */
         gap: 20px; 
     }
     .modal-images-side, 
@@ -1248,14 +1234,5 @@ body {
     .cart-sidebar { 
         width: 100%; 
         right: -100%; 
-    }
-    .product-modal-content {
-        padding: 20px;
-    }
-}
-
-@media (max-width: 480px) {
-    .products-grid {
-        grid-template-columns: 1fr; /* الموبايل الصغير: منتج واحد في كل صف لراحة التصفح */
     }
 }
