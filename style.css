@@ -23,7 +23,7 @@
 
 html {
     scroll-behavior: smooth;
-    font-size: 14px; /* تصغير الفونت الأساسي لضبط الأحجام كلها */
+    font-size: 14px;
 }
 
 body {
@@ -300,12 +300,13 @@ body {
 }
 
 /* ==========================================
-   5. COLLECTIONS & PRODUCTS GRID (3 SIDE-BY-SIDE)
+   5. COLLECTIONS & PRODUCTS GRID
    ========================================== */
 .collection-section {
-    padding: 50px 3% 30px;
-    max-width: 1300px;
+    padding: 40px 3% 30px;
+    max-width: 1200px;
     margin: 0 auto;
+    width: 100%;
 }
 
 .collection-title {
@@ -314,15 +315,16 @@ body {
     font-weight: 900;
     letter-spacing: 2px;
     text-align: center;
-    margin-bottom: 35px;
+    margin-bottom: 25px;
     color: #fff;
 }
 
-/* إجبار 3 كروت في الصف للكمبيوتر والتابلت الواسع، وتوزيع متناسق للموبايل */
+/* شبكة المنتجات الرئيسية (3 منتجات بالشاشة الكبيرة) */
 .products-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    gap: 16px;
+    width: 100%;
 }
 
 .product-card {
@@ -334,6 +336,7 @@ body {
     transition: var(--transition-smooth);
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 
 .product-card:hover {
@@ -362,44 +365,45 @@ body {
 
 .sold-out-badge {
     position: absolute;
-    top: 10px; right: 10px;
+    top: 8px; right: 8px;
     background: rgba(139, 0, 0, 0.9);
     color: #fff;
-    font-size: 0.65rem;
+    font-size: 0.6rem;
     font-weight: 700;
-    padding: 4px 8px;
+    padding: 3px 6px;
     border-radius: 3px;
     letter-spacing: 0.5px;
     z-index: 10;
 }
 
 .product-details {
-    padding: 14px;
+    padding: 10px 12px;
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 4px;
     background: var(--bg-surface);
     border-top: 1px solid var(--border-dark);
     flex-grow: 1;
 }
 
 .product-card-title {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: 700;
     color: var(--text-primary);
+    line-height: 1.3;
 }
 
 .product-price {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     font-weight: 900;
     color: #fff;
 }
 
 .product-price span {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     color: var(--text-muted);
     text-decoration: line-through;
-    margin-right: 8px;
+    margin-right: 6px;
     font-weight: 400;
 }
 
@@ -430,16 +434,17 @@ body {
     background: var(--bg-surface);
     border: 1px solid var(--border-dark);
     width: 100%;
-    max-width: 900px;
-    max-height: 85vh;
+    max-width: 850px;
+    max-height: 90vh;
     border-radius: 8px;
     overflow-y: auto;
     position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
 }
 
 .close-modal-btn, .close-fabric-btn, .close-about-btn, .close-review-modal-btn, .close-cart-btn {
     position: absolute;
-    top: 15px; right: 15px;
+    top: 12px; right: 12px;
     background: var(--bg-card);
     border: 1px solid var(--border-dark);
     color: var(--text-primary);
@@ -450,18 +455,21 @@ body {
     justify-content: center;
     font-size: 0.9rem;
     cursor: pointer;
-    z-index: 10;
+    z-index: 20;
 }
 
 .close-modal-btn:hover { background: var(--accent-red); border-color: var(--accent-red); }
 
+/* تخطيط نافذة الشراء: يمين وشمال بشكل احترافي */
 .modal-body-layout {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 25px;
-    padding: 25px;
+    gap: 20px;
+    padding: 20px;
+    direction: ltr; /* ترتيب متناسق: الصور يسار أو يمين حسب رغبتك */
 }
 
+/* معرض الصور على اليمين / اليسار */
 .modal-images-side {
     display: flex;
     flex-direction: column;
@@ -495,6 +503,7 @@ body {
     cursor: pointer;
     display: flex; align-items: center; justify-content: center;
     font-size: 0.8rem;
+    z-index: 5;
 }
 
 .prev-btn { left: 10px; }
@@ -502,11 +511,11 @@ body {
 
 .modal-thumbnails {
     display: flex;
-    gap: 10px;
+    gap: 8px;
 }
 
 .modal-thumbnails img {
-    width: 60px;
+    width: 55px;
     aspect-ratio: 3/4;
     object-fit: cover;
     border-radius: 4px;
@@ -516,17 +525,20 @@ body {
 
 .modal-thumbnails img.active-thumb { border-color: #fff; }
 
+/* قسم التفاصيل وأزرار الطلب */
 .modal-details-side {
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 12px;
+    justify-content: center;
 }
 
 .modal-product-title {
     font-family: 'Cinzel Decorative', serif;
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     font-weight: 700;
     color: #fff;
+    line-height: 1.3;
 }
 
 .modal-product-price {
@@ -554,13 +566,16 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 42px;
+    min-width: 40px;
     height: 36px;
+    padding: 0 8px;
     background: var(--bg-card);
     border: 1px solid var(--border-dark);
     border-radius: 4px;
     font-weight: 700;
     font-size: 0.8rem;
+    color: var(--text-primary);
+    transition: var(--transition-smooth);
 }
 
 .modal-sizes-select input:checked + span {
@@ -606,7 +621,7 @@ body {
 
 .modal-buy-now-btn, .modal-add-to-cart-btn, .checkout-btn, .submit-order-btn {
     width: 100%;
-    padding: 11px;
+    padding: 12px;
     border-radius: 4px;
     font-weight: 700;
     font-size: 0.85rem;
@@ -615,6 +630,7 @@ body {
     cursor: pointer;
     border: none;
     transition: var(--transition-smooth);
+    text-align: center;
 }
 
 .modal-buy-now-btn { background: #fff; color: #000; }
@@ -839,7 +855,7 @@ body {
 }
 
 /* ==========================================
-   10. RESPONSIVE GRID OVERRIDES (MOBILE & TABLET)
+   10. RESPONSIVE OVERRIDES (MOBILE & TABLET)
    ========================================== */
 
 /* للتابلت: الحفاظ على 3 منتجات ولكن بمقاسات مضغوطة */
@@ -850,17 +866,34 @@ body {
     }
 }
 
-/* للموبايل: عرض منتجين بجانب بعض (Columns: 2) لضمان عدم ضخامة العناصر ومنع التلخبط، مع إمكانية جعله منتج واحد حسب رغبتك (هنا تم ضبطه على منتجين لتوزيع شاشة الموبايل بشكل ذكي مثل Shopify) */
-@media (max-width: 600px) {
+/* للموبايل: منتجين جنب بعض بكل ثبات ومنع المساحات السوداء */
+@media (max-width: 768px) {
     html {
         font-size: 13px;
     }
 
-    .products-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
+    .collection-section {
+        padding: 25px 2% 20px;
     }
 
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr) !important; /* إجبار 2 منتج جنب بعض */
+        gap: 8px;
+    }
+
+    .product-details {
+        padding: 8px;
+    }
+
+    .product-card-title {
+        font-size: 0.8rem;
+    }
+
+    .product-price {
+        font-size: 0.85rem;
+    }
+
+    /* تحويل نافذة الشراء لتخطيط رأسي سلس للموبايل */
     .modal-body-layout {
         grid-template-columns: 1fr;
         padding: 15px;
