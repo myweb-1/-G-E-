@@ -1,5 +1,5 @@
 /* ==========================================
-   Λ И G E Я | REFINED MASTER CSS (FIXED SCALES)
+   Λ И G E Я | FINAL FIXED MASTER CSS
    ========================================== */
 
 :root {
@@ -11,7 +11,6 @@
     --text-primary: #f1f1f1;
     --text-muted: #888888;
     --accent-red: #8b0000;
-    --glow-red: rgba(139, 0, 0, 0.35);
     --transition-smooth: all 0.25s ease;
 }
 
@@ -86,10 +85,6 @@ body {
     transition: var(--transition-smooth);
 }
 
-.nav-menu-btn:hover span {
-    background-color: #ff3333;
-}
-
 .nav-brand-text {
     font-family: 'Cinzel Decorative', serif;
     font-weight: 900;
@@ -150,38 +145,6 @@ body {
     font-weight: 600;
 }
 
-.menu-divider {
-    border: none;
-    height: 1px;
-    background: var(--border-dark);
-    margin: 5px 0;
-}
-
-.complaints-title {
-    font-size: 0.8rem;
-    color: var(--text-muted);
-    margin-bottom: 8px;
-    display: block;
-}
-
-.complaints-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.complaint-btn {
-    padding: 10px;
-    border-radius: 4px;
-    text-decoration: none;
-    font-size: 0.85rem;
-    font-weight: 600;
-    text-align: center;
-}
-
-.wa-btn { background-color: #128c7e; color: #fff; }
-.call-btn { background-color: var(--bg-card); border: 1px solid var(--border-dark); color: var(--text-primary); }
-
 /* ==========================================
    3. HERO SECTION
    ========================================== */
@@ -223,14 +186,6 @@ body {
     max-width: 600px;
 }
 
-.hero-badge {
-    font-size: 0.75rem;
-    letter-spacing: 3px;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    margin-bottom: 12px;
-}
-
 .cinematic-title {
     font-family: 'Cinzel Decorative', serif;
     font-size: clamp(2rem, 5vw, 3.5rem);
@@ -240,90 +195,30 @@ body {
     color: #fff;
 }
 
-.cinematic-tagline {
-    font-family: 'UnifrakturMaguntia', cursive;
-    font-size: 1.3rem;
-    color: #aaa;
-    margin-bottom: 15px;
-}
-
-.cinematic-subtitle {
-    font-size: 0.9rem;
-    color: #ccc;
-    line-height: 1.5;
-    margin-bottom: 25px;
-}
-
-.hero-cta-btn {
-    display: inline-block;
-    padding: 10px 25px;
-    background: #fff;
-    color: #000;
-    font-weight: 700;
-    text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    border-radius: 2px;
-    font-size: 0.85rem;
-    transition: var(--transition-smooth);
-}
-
-.hero-cta-btn:hover {
-    background: var(--accent-red);
-    color: #fff;
-}
-
 /* ==========================================
-   4. MARQUEE BAR
-   ========================================== */
-.marquee-bar {
-    background: var(--bg-surface);
-    border-top: 1px solid var(--border-dark);
-    border-bottom: 1px solid var(--border-dark);
-    padding: 8px 0;
-    overflow: hidden;
-    white-space: nowrap;
-}
-
-.marquee-content {
-    display: inline-block;
-    animation: marquee 25s linear infinite;
-    font-family: 'UnifrakturMaguntia', cursive;
-    font-size: 1rem;
-    letter-spacing: 2px;
-    color: var(--text-muted);
-}
-
-@keyframes marquee {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-}
-
-/* ==========================================
-   5. COLLECTIONS & PRODUCTS GRID
+   4. PRODUCTS GRID (تم ضبط العرض لمنع أي فراغات جانبية)
    ========================================== */
 .collection-section {
-    padding: 40px 3% 30px;
-    max-width: 1200px;
+    padding: 30px 2% 20px;
+    max-width: 1400px;
     margin: 0 auto;
     width: 100%;
 }
 
 .collection-title {
     font-family: 'Cinzel Decorative', serif;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     font-weight: 900;
     letter-spacing: 2px;
     text-align: center;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
     color: #fff;
 }
 
-/* شبكة المنتجات الرئيسية (3 منتجات بالشاشة الكبيرة) */
 .products-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
+    grid-template-columns: repeat(3, 1fr); /* 3 منتجات للكمبيوتر */
+    gap: 15px;
     width: 100%;
 }
 
@@ -337,11 +232,6 @@ body {
     display: flex;
     flex-direction: column;
     width: 100%;
-}
-
-.product-card:hover {
-    border-color: var(--border-hover);
-    transform: translateY(-3px);
 }
 
 .product-img-box {
@@ -359,28 +249,11 @@ body {
     transition: var(--transition-smooth);
 }
 
-.product-img-box .img-back { opacity: 0; }
-.product-card:hover .product-img-box .img-front { opacity: 0; }
-.product-card:hover .product-img-box .img-back { opacity: 1; }
-
-.sold-out-badge {
-    position: absolute;
-    top: 8px; right: 8px;
-    background: rgba(139, 0, 0, 0.9);
-    color: #fff;
-    font-size: 0.6rem;
-    font-weight: 700;
-    padding: 3px 6px;
-    border-radius: 3px;
-    letter-spacing: 0.5px;
-    z-index: 10;
-}
-
 .product-details {
-    padding: 10px 12px;
+    padding: 12px;
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 5px;
     background: var(--bg-surface);
     border-top: 1px solid var(--border-dark);
     flex-grow: 1;
@@ -390,7 +263,6 @@ body {
     font-size: 0.85rem;
     font-weight: 700;
     color: var(--text-primary);
-    line-height: 1.3;
 }
 
 .product-price {
@@ -399,22 +271,14 @@ body {
     color: #fff;
 }
 
-.product-price span {
-    font-size: 0.75rem;
-    color: var(--text-muted);
-    text-decoration: line-through;
-    margin-right: 6px;
-    font-weight: 400;
-}
-
 /* ==========================================
-   6. SHOPIFY-STYLE COMPACT MODAL
+   5. SHOPIFY-STYLE QUICK BUY MODAL (تنسيق دقيق يمين وشمال)
    ========================================== */
-.product-modal-overlay, .fabric-modal-overlay, .about-modal-overlay, .review-overlay, .checkout-overlay {
+.product-modal-overlay {
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.85);
-    backdrop-filter: blur(6px);
+    background: rgba(0, 0, 0, 0.88);
+    backdrop-filter: blur(8px);
     z-index: 3000;
     display: flex;
     align-items: center;
@@ -422,10 +286,10 @@ body {
     opacity: 0;
     visibility: hidden;
     transition: var(--transition-smooth);
-    padding: 15px;
+    padding: 10px;
 }
 
-.product-modal-overlay.active, .fabric-modal-overlay.active, .about-modal-overlay.active, .review-overlay.active, .checkout-overlay.active {
+.product-modal-overlay.active {
     opacity: 1;
     visibility: visible;
 }
@@ -436,44 +300,48 @@ body {
     width: 100%;
     max-width: 850px;
     max-height: 90vh;
-    border-radius: 8px;
+    border-radius: 10px;
     overflow-y: auto;
     position: relative;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.9);
 }
 
-.close-modal-btn, .close-fabric-btn, .close-about-btn, .close-review-modal-btn, .close-cart-btn {
+.close-modal-btn {
     position: absolute;
     top: 12px; right: 12px;
     background: var(--bg-card);
     border: 1px solid var(--border-dark);
     color: var(--text-primary);
-    width: 30px; height: 30px;
+    width: 32px; height: 32px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.9rem;
+    font-size: 1rem;
     cursor: pointer;
     z-index: 20;
 }
 
-.close-modal-btn:hover { background: var(--accent-red); border-color: var(--accent-red); }
+.close-modal-btn:hover {
+    background: var(--accent-red);
+    border-color: var(--accent-red);
+}
 
-/* تخطيط نافذة الشراء: يمين وشمال بشكل احترافي */
+/* التقسيم الاحترافي لشوبيفاي: عمودين يمين وشمال */
 .modal-body-layout {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    padding: 20px;
-    direction: ltr; /* ترتيب متناسق: الصور يسار أو يمين حسب رغبتك */
+    gap: 25px;
+    padding: 25px;
+    direction: ltr;
+    align-items: start;
 }
 
-/* معرض الصور على اليمين / اليسار */
 .modal-images-side {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    width: 100%;
 }
 
 .modal-main-img-container {
@@ -487,27 +355,10 @@ body {
 }
 
 .modal-main-img-container img {
-    width: 100%; height: 100%;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
 }
-
-.img-nav-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0,0,0,0.6);
-    color: #fff;
-    border: 1px solid rgba(255,255,255,0.2);
-    width: 32px; height: 32px;
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 0.8rem;
-    z-index: 5;
-}
-
-.prev-btn { left: 10px; }
-.next-btn { right: 10px; }
 
 .modal-thumbnails {
     display: flex;
@@ -515,7 +366,7 @@ body {
 }
 
 .modal-thumbnails img {
-    width: 55px;
+    width: 60px;
     aspect-ratio: 3/4;
     object-fit: cover;
     border-radius: 4px;
@@ -523,34 +374,36 @@ body {
     cursor: pointer;
 }
 
-.modal-thumbnails img.active-thumb { border-color: #fff; }
+.modal-thumbnails img.active-thumb {
+    border-color: #fff;
+}
 
-/* قسم التفاصيل وأزرار الطلب */
 .modal-details-side {
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    justify-content: center;
+    gap: 15px;
+    width: 100%;
 }
 
 .modal-product-title {
     font-family: 'Cinzel Decorative', serif;
-    font-size: 1.15rem;
+    font-size: 1.25rem;
     font-weight: 700;
     color: #fff;
     line-height: 1.3;
 }
 
 .modal-product-price {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: 900;
-    color: var(--text-primary);
+    color: #fff;
 }
 
 .size-section-title {
     font-size: 0.8rem;
     font-weight: 600;
     color: var(--text-muted);
+    margin-bottom: 4px;
 }
 
 .modal-sizes-select {
@@ -559,21 +412,26 @@ body {
     flex-wrap: wrap;
 }
 
-.modal-sizes-select label { cursor: pointer; }
-.modal-sizes-select input { display: none; }
+.modal-sizes-select label {
+    cursor: pointer;
+}
+
+.modal-sizes-select input {
+    display: none;
+}
 
 .modal-sizes-select span {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-width: 40px;
-    height: 36px;
-    padding: 0 8px;
+    min-width: 45px;
+    height: 38px;
+    padding: 0 10px;
     background: var(--bg-card);
     border: 1px solid var(--border-dark);
     border-radius: 4px;
     font-weight: 700;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     color: var(--text-primary);
     transition: var(--transition-smooth);
 }
@@ -584,331 +442,79 @@ body {
     border-color: #fff;
 }
 
-.size-guide-container {
-    background: var(--bg-card);
-    border: 1px solid var(--border-dark);
-    border-radius: 6px;
-    padding: 10px;
-}
-
-.size-guide-title {
-    font-size: 0.75rem;
-    font-weight: 700;
-    margin-bottom: 6px;
-    color: #ddd;
-}
-
-.size-guide-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.75rem;
-    text-align: center;
-}
-
-.size-guide-table th, .size-guide-table td {
-    padding: 5px;
-    border-bottom: 1px solid var(--border-dark);
-}
-.size-guide-table th { color: var(--text-muted); }
-.size-guide-table td { color: #ccc; }
-
+/* أزرار الطلب والشراء بستايل شوبيفاي المميز */
 .modal-action-buttons {
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    margin-top: 5px;
+    gap: 10px;
+    margin-top: 10px;
 }
 
-.modal-buy-now-btn, .modal-add-to-cart-btn, .checkout-btn, .submit-order-btn {
+.modal-buy-now-btn {
     width: 100%;
-    padding: 12px;
-    border-radius: 4px;
-    font-weight: 700;
-    font-size: 0.85rem;
+    padding: 14px;
+    background: #ffffff;
+    color: #000000;
+    border-radius: 6px;
+    font-weight: 800;
+    font-size: 0.95rem;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 1px;
     cursor: pointer;
     border: none;
     transition: var(--transition-smooth);
     text-align: center;
 }
 
-.modal-buy-now-btn { background: #fff; color: #000; }
-.modal-buy-now-btn:hover { background: var(--accent-red); color: #fff; }
-.modal-add-to-cart-btn { background: var(--bg-card); color: #fff; border: 1px solid var(--border-dark); }
-.modal-add-to-cart-btn:hover { border-color: #fff; }
-
-/* ==========================================
-   7. FLOATING CART & SIDEBAR
-   ========================================== */
-.floating-controls-container {
-    position: fixed;
-    bottom: 20px; right: 20px;
-    z-index: 1500;
-}
-
-.floating-cart {
-    width: 48px; height: 48px;
-    background: var(--bg-surface);
-    border: 1px solid var(--border-dark);
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    cursor: pointer;
-    position: relative;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.6);
-}
-
-.cart-svg-icon { width: 20px; height: 20px; fill: #fff; }
-
-.cart-count {
-    position: absolute;
-    top: -3px; right: -3px;
+.modal-buy-now-btn:hover {
     background: var(--accent-red);
     color: #fff;
-    font-size: 0.65rem;
-    font-weight: 700;
-    width: 18px; height: 18px;
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
 }
 
-.cart-sidebar {
-    position: fixed;
-    top: 0; right: -100%;
-    width: 320px; max-width: 85%;
-    height: 100%;
-    background: var(--bg-surface);
-    border-left: 1px solid var(--border-dark);
-    z-index: 2500;
-    transition: var(--transition-smooth);
-    display: flex;
-    flex-direction: column;
-}
-
-.cart-sidebar.active { right: 0; }
-
-.cart-header {
-    padding: 18px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid var(--border-dark);
-}
-
-.cart-header h3 { font-size: 1rem; font-weight: 700; }
-
-.cart-items {
-    padding: 18px;
-    flex-grow: 1;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.empty-msg { color: var(--text-muted); text-align: center; margin-top: 30px; font-size: 0.85rem; }
-
-.cart-item {
-    background: var(--bg-card);
-    border: 1px solid var(--border-dark);
-    padding: 10px;
-    border-radius: 4px;
-}
-
-.cart-item h4 { font-size: 0.85rem; margin-bottom: 3px; }
-.cart-item p { font-size: 0.75rem; color: var(--text-muted); }
-
-.cart-footer {
-    padding: 18px;
-    border-top: 1px solid var(--border-dark);
-    background: var(--bg-card);
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.cart-total-box {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.95rem;
-    font-weight: 700;
-}
-
-.checkout-btn { background: #fff; color: #000; }
-.checkout-btn:hover { background: var(--accent-red); color: #fff; }
-
-/* ==========================================
-   8. CHECKOUT & SMALL MODALS
-   ========================================== */
-.checkout-modal, .fabric-modal-content, .about-modal-content, .review-modal {
-    background: var(--bg-surface);
-    border: 1px solid var(--border-dark);
-    padding: 20px;
-    border-radius: 8px;
+.modal-add-to-cart-btn {
     width: 100%;
-    max-width: 450px;
-    position: relative;
-}
-
-.checkout-modal h3, .fabric-title, .about-title, .review-title {
-    font-family: 'Cinzel Decorative', serif;
-    font-size: 1.1rem;
-    margin-bottom: 15px;
+    padding: 14px;
+    background: var(--bg-card);
     color: #fff;
-}
-
-.form-group {
-    margin-bottom: 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
-
-.form-group label { font-size: 0.75rem; color: var(--text-muted); }
-
-.form-group input, .form-group textarea {
-    background: var(--bg-card);
     border: 1px solid var(--border-dark);
-    padding: 9px;
-    border-radius: 4px;
-    color: var(--text-primary);
-    font-size: 0.85rem;
-    outline: none;
-}
-
-.form-actions { display: flex; gap: 8px; margin-top: 15px; }
-
-.cancel-btn {
-    background: var(--bg-card);
-    border: 1px solid var(--border-dark);
-    color: var(--text-primary);
-    padding: 10px 15px;
-    border-radius: 4px;
+    border-radius: 6px;
     font-weight: 700;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
     cursor: pointer;
-    font-size: 0.8rem;
-}
-
-.fabric-features { display: flex; flex-direction: column; gap: 10px; }
-
-.feature-item {
-    display: flex;
-    gap: 10px;
-    background: var(--bg-card);
-    padding: 10px;
-    border-radius: 4px;
-    border: 1px solid var(--border-dark);
-}
-
-.feature-icon { font-size: 1.2rem; }
-.feature-item h4 { font-size: 0.85rem; margin-bottom: 2px; }
-.feature-item p { font-size: 0.75rem; color: var(--text-muted); line-height: 1.4; }
-
-.about-text-content { display: flex; flex-direction: column; gap: 10px; }
-.dark-quote { font-family: 'UnifrakturMaguntia', cursive; font-size: 1rem; color: #ccc; text-align: center; }
-.about-p { font-size: 0.8rem; color: #aaa; line-height: 1.5; }
-.dark-footer-quote { font-size: 0.7rem; letter-spacing: 1px; text-align: center; color: var(--accent-red); font-weight: 700; }
-
-.rating-stars { display: flex; gap: 6px; margin-bottom: 10px; font-size: 1.2rem; cursor: pointer; }
-.star { color: #444; }
-.star.selected { color: #ffcc00; }
-
-/* ==========================================
-   9. FOOTER
-   ========================================== */
-.mavin-footer {
-    background: var(--bg-surface);
-    border-top: 1px solid var(--border-dark);
-    padding: 30px 4% 20px;
-    margin-top: 50px;
-}
-
-.mavin-footer-container {
-    max-width: 1000px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
+    transition: var(--transition-smooth);
     text-align: center;
 }
 
-.footer-nav-menu { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
-.footer-nav-menu a { color: var(--text-muted); text-decoration: none; font-size: 0.8rem; }
-
-.footer-socials-row { display: flex; gap: 12px; }
-.footer-socials-row a {
-    width: 32px; height: 32px;
-    background: var(--bg-card);
-    border: 1px solid var(--border-dark);
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    color: #fff; text-decoration: none;
-    font-size: 0.8rem;
-}
-
-.footer-copyright-row { font-size: 0.75rem; color: var(--text-muted); }
-.scroll-top-btn {
-    background: var(--bg-card); border: 1px solid var(--border-dark);
-    color: #fff; width: 32px; height: 32px; border-radius: 50%;
-    cursor: pointer; font-size: 0.8rem;
+.modal-add-to-cart-btn:hover {
+    border-color: #fff;
 }
 
 /* ==========================================
-   10. RESPONSIVE OVERRIDES (MOBILE & TABLET)
+   6. RESPONSIVE MOBILE FIXES (الضبط النهائي للموبايل)
    ========================================== */
-
-/* للتابلت: الحفاظ على 3 منتجات ولكن بمقاسات مضغوطة */
-@media (max-width: 1024px) {
-    .products-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 12px;
-    }
-}
-
-/* للموبايل: منتجين جنب بعض بكل ثبات ومنع المساحات السوداء */
 @media (max-width: 768px) {
-    html {
-        font-size: 13px;
+    /* إجبار منتجين جنب بعض بكل ثبات على الشاشات الصغيرة وبدون أي مساحة ميتة */
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 10px !important;
+        padding: 0 5px;
     }
 
     .collection-section {
-        padding: 25px 2% 20px;
+        padding: 20px 2%;
     }
 
-    .products-grid {
-        grid-template-columns: repeat(2, 1fr) !important; /* إجبار 2 منتج جنب بعض */
-        gap: 8px;
-    }
-
-    .product-details {
-        padding: 8px;
-    }
-
-    .product-card-title {
-        font-size: 0.8rem;
-    }
-
-    .product-price {
-        font-size: 0.85rem;
-    }
-
-    /* تحويل نافذة الشراء لتخطيط رأسي سلس للموبايل */
+    /* تحويل نافذة الشراء لعمود واحد متناسق وسلس جداً في الموبايل */
     .modal-body-layout {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr !important;
         padding: 15px;
         gap: 15px;
     }
 
-    .cinematic-title {
-        font-size: 1.8rem;
-    }
-
-    .navbar {
-        padding: 0 3%;
-    }
-
-    .nav-brand-text {
-        font-size: 1rem;
+    .product-modal-content {
+        max-height: 95vh;
+        margin: 10px;
     }
 }
