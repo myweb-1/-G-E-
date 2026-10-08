@@ -1,592 +1,641 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Λ И G E Я | THE ABYSS</title>
-    <meta name="google-site-verification" content="BBiuBLETdLxysiWV_vBXGaYJ-EXlosJoqJqsrhrGWjc" />
-    <meta name="google-site-verification" content="83gf4TmC49Iu6Gus072x1bhn_fpXwZJ2j1k8fucouWE" />
-    <meta name="description" content="Anger Studio - The premier Egyptian brand specialized in athletic compression t-shirts and dark gothic streetwear.">
-    <meta name="keywords" content="Anger, anger wear, anger studio, compression t-shirt egypt, streetwear">
-    <link rel="canonical" href="https://anger-wear.online/">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cairo:wght@400;600;700;900&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
-    
-    <!-- External CSS File -->
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Λ И G E Я | THE ABYSS</title>
+    <meta name="google-site-verification" content="BBiuBLETdLxysiWV_vBXGaYJ-EXlosJoqJqsrhrGWjc" />
+    <meta name="google-site-verification" content="83gf4TmC49Iu6Gus072x1bhn_fpXwZJ2j1k8fucouWE" />
+    <meta name="description" content="Anger Studio - The premier Egyptian brand specialized in athletic compression t-shirts and dark gothic streetwear.">
+    <meta name="keywords" content="Anger, anger wear, anger studio, compression t-shirt egypt, streetwear">
+    <link rel="canonical" href="https://anger-wear.online/">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cairo:wght@400;600;700;900&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+    
+    <!-- External CSS File -->
+    <link rel="stylesheet" href="style.css">
 
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 <body>
 
-    <nav class="navbar">
-        <div class="nav-left">
-            <div class="nav-menu-btn" onclick="toggleMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-        <div class="nav-center">
-            <div class="nav-brand-text">Λ И G E Я</div>
-        </div>
-        <div class="nav-right"></div>
-    </nav>
+    <nav class="navbar">
+        <div class="nav-left">
+            <div class="nav-menu-btn" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div class="nav-center">
+            <div class="nav-brand-text">Λ И G E Я</div>
+        </div>
+        <div class="nav-right"></div>
+    </nav>
 
-    <div class="menu-sidebar" id="menuSidebar">
-        <div class="menu-header">
-            <button class="close-menu-btn" onclick="toggleMenu()">✕</button>
-        </div>
-        <div class="menu-links">
-            <a href="#">Home</a>
-            <a href="#">Products</a>
-            <a href="#" onclick="openFabricModal(event)">Fabric Info</a>
-            <a href="#" onclick="openAboutModal(event)">About Us (The Abyss)</a>
-            
-            <hr class="menu-divider">
-            
-            <div class="complaints-section">
-                <span class="complaints-title">💀 Support & Complaints</span>
-                <div class="complaints-buttons">
-                    <a href="https://wa.me/201275859172?text=I%20have%20a%20complaint%20or%20inquiry%20regarding%20%CE%9B%20%D0%98%20G%20E%20%D0%Я" target="_blank" class="complaint-btn wa-btn">
-                        💬 WhatsApp Support
-                    </a>
-                    <a href="tel:+201275859172" class="complaint-btn call-btn">
-                        📞 Direct Call
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
+    <div class="menu-sidebar" id="menuSidebar">
+        <div class="menu-header">
+            <button class="close-menu-btn" onclick="toggleMenu()">✕</button>
+        </div>
+        <div class="menu-links">
+            <a href="#">Home</a>
+            <a href="#collectionStart">Products</a>
+            <a href="#" onclick="openFabricModal(event)">Fabric Info</a>
+            <a href="#" onclick="openAboutModal(event)">About Us (The Abyss)</a>
+            
+            <hr class="menu-divider">
+            
+            <div class="complaints-section">
+                <span class="complaints-title">💀 Support & Complaints</span>
+                <div class="complaints-buttons">
+                    <a href="https://wa.me/201275859172?text=I%20have%20a%20complaint%20or%20inquiry%20regarding%20%CE%9B%20%D0%98%20G%20E%20%D0%Я" target="_blank" class="complaint-btn wa-btn">
+                        💬 WhatsApp Support
+                    </a>
+                    <a href="tel:+201275859172" class="complaint-btn call-btn">
+                        📞 Direct Call
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <!-- Redesigned Hero Section with Bold, Mysterious Gothic Branding -->
-    <div class="hero-section">
-        <video autoplay muted loop playsinline class="hero-video">
-            <source src="bg-background.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <div class="hero-badge">THE ELITE APPAREL SANCTUARY</div>
-            <h1 class="cinematic-title">Λ И G E Я</h1>
-            <div class="cinematic-tagline">𝖂𝖊𝖑𝖈𝖔𝖒𝖊 𝖙𝖔 𝖙𝖍𝖊 𝕬𝖇𝖞𝖘𝖘</div>
-            <p class="cinematic-subtitle">Engineered for the merciless. High-performance athletic compression and uncompromising dark gothic aesthetics built from raw iron and absolute power.</p>
-            <a href="#collectionStart" class="hero-cta-btn">Explore The Drops</a>
-        </div>
-    </div>
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <video autoplay loop muted playsinline webkit-playsinline class="hero-video">
+            <source src="bg-background.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-badge">THE ELITE APPAREL SANCTUARY</div>
+            <h1 class="cinematic-title">Λ И G E Я</h1>
+            <div class="cinematic-tagline">𝖂𝖊𝖑𝖈𝖔𝖒𝖊 𝖙𝖔 𝖙𝖍𝖊 𝕬𝖇𝖞𝖘𝖘</div>
+            <p class="cinematic-subtitle">Engineered for the merciless. High-performance athletic compression and uncompromising dark gothic aesthetics built from raw iron and absolute power.</p>
+            <a href="#collectionStart" class="hero-cta-btn">Explore The Drops</a>
+        </div>
+    </div>
 
-    <div class="marquee-bar">
-        <div class="marquee-content">
-            𝖂𝖊𝖑𝖈𝖔𝖒𝖊 𝖙𝖔 𝖙𝖍𝖊 𝕬𝖇𝖞𝖘𝖘. 𝖂𝖊 𝖍𝖆𝖛𝖊 𝖇𝖊𝖊𝖓 𝖊𝖝𝖕𝖊𝖈𝖙𝖎𝖓𝖌 𝖞𝖔𝖚. &nbsp;&nbsp;&nbsp; 
-            𝖂𝖊𝖑𝖈𝖔𝖒𝖊 𝖙𝖔 𝖙𝖍𝖊 𝕬𝖇𝖞𝖘𝖘. 𝖂𝖊 𝖍𝖆𝖛𝖊 𝖇𝖊𝖊𝖓 𝖖𝖚𝖎𝖊𝖙𝖑𝖞 𝖜𝖆𝖏𝖙𝖎𝖓𝖌 🇫🇴𝖗 𝖞𝖔𝖚.
-        </div>
-    </div>
+    <div class="marquee-bar">
+        <div class="marquee-content">
+            𝖂𝖊𝖑𝖈𝖔𝖒𝖊 𝖙𝖔 𝖙𝖍𝖊 𝕬𝖇𝖞𝖘𝖘. 𝖂𝖊 𝖍𝖆𝖛𝖊 𝖇𝖊𝖊𝖓 𝖊𝖝𝖕𝖊𝖈𝖙𝖎𝖓𝖌 𝖞𝖔𝖚. &nbsp;&nbsp;&nbsp; 
+            𝖂𝖊𝖑𝖈𝖔𝖒𝖊 𝖙𝖔 𝖙𝖍𝖊 𝕬𝖇𝖞𝖘𝖘. 𝖂𝖊 𝖍𝖆𝖛𝖊 𝖇𝖊𝖊𝖓 𝖖𝖚𝖎𝖊𝖙𝖑𝖞 𝖜𝖆𝖎𝖙𝖎𝖓𝖌 𝖋𝖔𝖗 𝖞𝖔𝖚.
+        </div>
+    </div>
 
-    <section class="collection-section" id="collectionStart">
-        <h2 class="collection-title">THE COMPRESSION DROP</h2>
-        <div class="products-grid">
-            
-            <div class="product-card" onclick="openProductModal(event, 1, 'Anger COMPRESSION DROP 01', 400, 'prod1-front.jpg', 'prod1-back.jpg')">
-                <div class="product-img-box">
-                    <img src="prod1-front.jpg" alt="Anger" class="img-front">
-                    <img src="prod1-back.jpg" alt="Anger" class="img-back">
-                </div>
-                <div class="product-details">
-                    <div class="product-card-title">Anger COMPRESSION DROP 01</div>
-                    <div class="product-price">EGP 400 <span>EGP 550</span></div>
-                </div>
-            </div>
+    <section class="collection-section" id="collectionStart">
+        <h2 class="collection-title">THE COMPRESSION DROP</h2>
+        <div class="products-grid">
+            
+            <div class="product-card" onclick="openProductModal(event, 1, 'Anger COMPRESSION DROP 01', 400, 'prod1-front.jpg', 'prod1-back.jpg')">
+                <div class="product-img-box">
+                    <img src="prod1-front.jpg" alt="Anger" class="img-front">
+                    <img src="prod1-back.jpg" alt="Anger" class="img-back">
+                </div>
+                <div class="product-details">
+                    <div class="product-card-title">Anger COMPRESSION DROP 01</div>
+                    <div class="product-price">EGP 400 <span>EGP 550</span></div>
+                </div>
+            </div>
 
-            <div class="product-card" onclick="openProductModal(event, 2, 'Anger COMPRESSION DROP 02', 400, 'prod2-front.jpg', 'prod2-back.jpg')">
-                <div class="product-img-box">
-                    <img src="prod2-front.jpg" alt="Anger" class="img-front">
-                    <img src="prod2-back.jpg" alt="Anger" class="img-back">
-                </div>
-                <div class="product-details">
-                    <div class="product-card-title">Anger COMPRESSION DROP 02</div>
-                    <div class="product-price">EGP 400 <span>EGP 550</span></div>
-                </div>
-            </div>
+            <div class="product-card" onclick="openProductModal(event, 2, 'Anger COMPRESSION DROP 02', 400, 'prod2-front.jpg', 'prod2-back.jpg')">
+                <div class="product-img-box">
+                    <img src="prod2-front.jpg" alt="Anger" class="img-front">
+                    <img src="prod2-back.jpg" alt="Anger" class="img-back">
+                </div>
+                <div class="product-details">
+                    <div class="product-card-title">Anger COMPRESSION DROP 02</div>
+                    <div class="product-price">EGP 400 <span>EGP 550</span></div>
+                </div>
+            </div>
 
-            <div class="product-card" onclick="openProductModal(event, 3, 'BAT MAN COMPRESSION DROP 03', 400, 'prod3-front.jpg', 'prod3-back.jpg')">
-                <div class="product-img-box">
-                    <img src="prod3-front.jpg" alt="Anger" class="img-front">
-                    <img src="prod3-back.jpg" alt="Anger" class="img-back">
-                </div>
-                <div class="product-details">
-                    <div class="product-card-title">BAT MAN COMPRESSION DROP 03</div>
-                    <div class="product-price">EGP 400 <span>EGP 550</span></div>
-                </div>
-            </div>
-            
-            <div class="product-card" onclick="openProductModal(event, 4, 'BAT MAN COMPRESSION DROP 04', 400, 'prod4-front.jpg', 'prod4-back.png')">
-                <div class="product-img-box">
-                    <img src="prod4-front.jpg" alt="Anger" class="img-front">
-                    <img src="prod4-back.png" alt="Anger" class="img-back">
-                </div>
-                <div class="product-details">
-                    <div class="product-card-title">BAT MAN COMPRESSION DROP 04</div>
-                    <div class="product-price">EGP 400 <span>EGP 550</span></div>
-                </div>
-            </div>
+            <div class="product-card" onclick="openProductModal(event, 3, 'BAT MAN COMPRESSION DROP 03', 400, 'prod3-front.jpg', 'prod3-back.jpg')">
+                <div class="product-img-box">
+                    <img src="prod3-front.jpg" alt="Anger" class="img-front">
+                    <img src="prod3-back.jpg" alt="Anger" class="img-back">
+                </div>
+                <div class="product-details">
+                    <div class="product-card-title">BAT MAN COMPRESSION DROP 03</div>
+                    <div class="product-price">EGP 400 <span>EGP 550</span></div>
+                </div>
+            </div>
+            
+            <div class="product-card" onclick="openProductModal(event, 4, 'BAT MAN COMPRESSION DROP 04', 400, 'prod4-front.jpg', 'prod4-back.png')">
+                <div class="product-img-box">
+                    <img src="prod4-front.jpg" alt="Anger" class="img-front">
+                    <img src="prod4-back.png" alt="Anger" class="img-back">
+                </div>
+                <div class="product-details">
+                    <div class="product-card-title">BAT MAN COMPRESSION DROP 04</div>
+                    <div class="product-price">EGP 400 <span>EGP 550</span></div>
+                </div>
+            </div>
 
-        </div>
-    </section>
+        </div>
+    </section>
 
-    <section class="collection-section" style="border-top: 1px solid #111; padding-top: 40px;">
-        <h2 class="collection-title">THE PANTS DROP</h2>
-        <div class="products-grid">
-            
-            <div class="product-card sold-out" onclick="openProductModal(event, 11, 'WIDE LEG PANTS BLACK', 550, 'pants1-black.jpg', 'pants01-black.jpg')">
-                <div class="product-img-box">
-                    <span class="sold-out-badge">SOLD OUT</span>
-                    <img src="pants1-black.jpg" alt="Anger WIDE LEG Pants" class="img-front">
-                    <img src="pants01-black.jpg" alt="Anger WIDE LEG Pants" class="img-back">
-                </div>
-                <div class="product-details">
-                    <div class="product-card-title">WIDE LEG PANTS BLACK</div>
-                    <div class="product-price">EGP 550 <span>EGP 800</span></div>
-                </div>
-            </div>
+    <section class="collection-section" style="border-top: 1px solid #111; padding-top: 40px;">
+        <h2 class="collection-title">THE PANTS DROP</h2>
+        <div class="products-grid">
+            
+            <div class="product-card sold-out" onclick="openProductModal(event, 11, 'WIDE LEG PANTS BLACK', 550, 'pants1-black.jpg', 'pants01-black.jpg')">
+                <div class="product-img-box">
+                    <span class="sold-out-badge">SOLD OUT</span>
+                    <img src="pants1-black.jpg" alt="Anger WIDE LEG Pants" class="img-front">
+                    <img src="pants01-black.jpg" alt="Anger WIDE LEG Pants" class="img-back">
+                </div>
+                <div class="product-details">
+                    <div class="product-card-title">WIDE LEG PANTS BLACK</div>
+                    <div class="product-price">EGP 550 <span>EGP 800</span></div>
+                </div>
+            </div>
 
-            <div class="product-card sold-out" onclick="openProductModal(event, 12, 'WIDE LEG PANTS GRAY', 550, 'pants1-Grey.jpg', 'pants01-Grey.jpg')">
-                <div class="product-img-box">
-                    <span class="sold-out-badge">SOLD OUT</span>
-                    <img src="pants1-Grey.jpg" alt="Anger WIDE LEG Pants" class="img-front">
-                    <img src="pants01-Grey.jpg" alt="Anger WIDE LEG Pants" class="img-back">
-                </div>
-                <div class="product-details">
-                    <div class="product-card-title">WIDE LEG PANTS GRAY</div>
-                    <div class="product-price">EGP 550 <span>EGP 800</span></div>
-                </div>
-            </div>
-            
-        </div>
-    </section>
+            <div class="product-card sold-out" onclick="openProductModal(event, 12, 'WIDE LEG PANTS GRAY', 550, 'pants1-Grey.jpg', 'pants01-Grey.jpg')">
+                <div class="product-img-box">
+                    <span class="sold-out-badge">SOLD OUT</span>
+                    <img src="pants1-Grey.jpg" alt="Anger WIDE LEG Pants" class="img-front">
+                    <img src="pants01-Grey.jpg" alt="Anger WIDE LEG Pants" class="img-back">
+                </div>
+                <div class="product-details">
+                    <div class="product-card-title">WIDE LEG PANTS GRAY</div>
+                    <div class="product-price">EGP 550 <span>EGP 800</span></div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
 
-    <!-- Modals & Scripts -->
-    <div class="fabric-modal-overlay" id="fabricModal" onclick="closeFabricModalOnOutsideClick(event)">
-        <div class="fabric-modal-content">
-            <button class="close-fabric-btn" onclick="closeFabricModal()">✕</button>
-            <h3 class="fabric-title">🔥 Λ И G E Я Fabric Specs</h3>
-            <p class="fabric-subtitle">Compression t-shirts engineered for maximum performance:</p>
-            
-            <div class="fabric-features">
-                <div class="feature-item">
-                    <span class="feature-icon">🛡️</span>
-                    <div>
-                        <h4>High Compression & Flexibility</h4>
-                        <p>Provides optimal muscle pressure to improve circulation and reduce fatigue, featuring premium 4-way stretch mobility.</p>
-                    </div>
-                </div>
-                <div class="feature-item">
-                    <span class="feature-icon">💧</span>
-                    <div>
-                        <h4>Dry-Fit Sweat Wicking</h4>
-                        <p>Advanced moisture-wicking technology pulls sweat away from your skin, keeping you dry during intense workouts.</p>
-                    </div>
-                </div>
-                <div class="feature-item">
-                    <span class="feature-icon">🧵</span>
-                    <div>
-                        <h4>Flat-lock Stitching</h4>
-                        <p>Seamless flat seams completely eliminate skin chafing and friction, built to withstand heavy lifting.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <!-- Modals -->
+    <div class="fabric-modal-overlay" id="fabricModal" onclick="closeFabricModalOnOutsideClick(event)">
+        <div class="fabric-modal-content">
+            <button class="close-fabric-btn" onclick="closeFabricModal()">✕</button>
+            <h3 class="fabric-title">🔥 Λ И G E Я Fabric Specs</h3>
+            <p class="fabric-subtitle">Compression t-shirts engineered for maximum performance:</p>
+            
+            <div class="fabric-features">
+                <div class="feature-item">
+                    <span class="feature-icon">🛡️</span>
+                    <div>
+                        <h4>High Compression & Flexibility</h4>
+                        <p>Provides optimal muscle pressure to improve circulation and reduce fatigue, featuring premium 4-way stretch mobility.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">💧</span>
+                    <div>
+                        <h4>Dry-Fit Sweat Wicking</h4>
+                        <p>Advanced moisture-wicking technology pulls sweat away from your skin, keeping you dry during intense workouts.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">🧵</span>
+                    <div>
+                        <h4>Flat-lock Stitching</h4>
+                        <p>Seamless flat seams completely eliminate skin chafing and friction, built to withstand heavy lifting.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <div class="about-modal-overlay" id="aboutModal" onclick="closeAboutModalOnOutsideClick(event)">
-        <div class="about-modal-content">
-            <button class="close-about-btn" onclick="closeAboutModal()">✕</button>
-            <h3 class="about-title">💀 WELCOME TO THE ABYSS</h3>
-            <div class="about-text-content">
-                <p class="dark-quote">"We don't just make athletic wear.. We arm the monsters that wake up in the dark."</p>
-                <p class="about-p">
-                    <strong>Λ И G E Я</strong> is the final sanctuary for those fueled by pain, those who make heavy iron their personal symphony. We are here to transform your suppressed rage into a devastating force that breaks all limits.
-                </p>
-                <p class="about-p">
-                    Fear? Left behind. Fatigue? Our fuel. <strong>Λ И G E Я</strong> compression gear is designed to stick like a second skin, giving you the dominance that commands the room.
-                </p>
-                <p class="dark-footer-quote">WE ARE BORN IN RAGE. WE LIVE IN IRON.</p>
-            </div>
-        </div>
-    </div>
+    <div class="about-modal-overlay" id="aboutModal" onclick="closeAboutModalOnOutsideClick(event)">
+        <div class="about-modal-content">
+            <button class="close-about-btn" onclick="closeAboutModal()">✕</button>
+            <h3 class="about-title">💀 WELCOME TO THE ABYSS</h3>
+            <div class="about-text-content">
+                <p class="dark-quote">"We don't just make athletic wear.. We arm the monsters that wake up in the dark."</p>
+                <p class="about-p">
+                    <strong>Λ И G E Я</strong> is the final sanctuary for those fueled by pain, those who make heavy iron their personal symphony. We are here to transform your suppressed rage into a devastating force that breaks all limits.
+                </p>
+                <p class="about-p">
+                    Fear? Left behind. Fatigue? Our fuel. <strong>Λ И G E Я</strong> compression gear is designed to stick like a second skin, giving you the dominance that commands the room.
+                </p>
+                <p class="dark-footer-quote">WE ARE BORN IN RAGE. WE LIVE IN IRON.</p>
+            </div>
+        </div>
+    </div>
 
-    <div class="review-overlay" id="reviewOverlay" onclick="closeReviewModalOnOutsideClick(event)">
-        <div class="review-modal">
-            <button class="close-review-modal-btn" onclick="closeReviewAndReset()">✕</button>
-            <h3 class="review-title">🔥 Join The Elite</h3>
-            <p class="review-subtitle">How was your experience with Λ И G E Я gear?</p>
-            
-            <div class="form-group">
-                <label>Your Full Name</label>
-                <input type="text" id="reviewerName" placeholder="e.g., John Doe">
-            </div>
+    <div class="review-overlay" id="reviewOverlay" onclick="closeReviewModalOnOutsideClick(event)">
+        <div class="review-modal">
+            <button class="close-review-modal-btn" onclick="closeReviewAndReset()">✕</button>
+            <h3 class="review-title">🔥 Join The Elite</h3>
+            <p class="review-subtitle">How was your experience with Λ И G E Я gear?</p>
+            
+            <div class="form-group">
+                <label>Your Full Name</label>
+                <input type="text" id="reviewerName" placeholder="e.g., John Doe">
+            </div>
 
-            <div class="rating-stars" id="ratingStars">
-                <span class="star" data-value="1">★</span>
-                <span class="star" data-value="2">★</span>
-                <span class="star" data-value="3">★</span>
-                <span class="star" data-value="4">★</span>
-                <span class="star" data-value="5">★</span>
-            </div>
+            <div class="rating-stars" id="ratingStars">
+                <span class="star" data-value="1">★</span>
+                <span class="star" data-value="2">★</span>
+                <span class="star" data-value="3">★</span>
+                <span class="star" data-value="4">★</span>
+                <span class="star" data-value="5">★</span>
+            </div>
 
-            <div class="form-group">
-                <label>Your Review Message</label>
-                <textarea id="reviewText" placeholder="What does it feel like to wear your rage?..."></textarea>
-            </div>
+            <div class="form-group">
+                <label>Your Review Message</label>
+                <textarea id="reviewText" placeholder="What does it feel like to wear your rage?..."></textarea>
+            </div>
 
-            <div class="form-actions">
-                <button type="button" class="submit-order-btn" onclick="submitReview()">Submit to The Abyss</button>
-            </div>
-        </div>
-    </div>
+            <div class="form-actions">
+                <button type="button" class="submit-order-btn" onclick="submitReview()">Submit to The Abyss</button>
+            </div>
+        </div>
+    </div>
 
-    <footer class="mavin-footer">
-        <div class="mavin-footer-container">
-            <div class="footer-nav-menu">
-                <a href="https://wa.me/201275859172?text=I%20have%20a%20complaint%20or%20inquiry%20regarding%20%CE%9B%20%D0%98%20G%20E%20%D0%Я" target="_blank">Help Center</a>
-                <a href="#" onclick="openReviewModalFromFooter(event)">Submit Review</a>
-                <a href="#" onclick="openFabricModal(event)">Fabric Info</a>
-                <a href="#" onclick="openAboutModal(event)">About Us</a>
-            </div>
-            
-            <div class="footer-socials-row">
-                <a href="https://www.instagram.com/anger.wear_1?igsh=MTcxZGZuenIwNHQ1cw==" target="_blank" aria-label="Instagram">
-                    <i class="fa-brands fa-instagram"></i>
-                </a>
-                <a href="https://wa.me/201275859172" target="_blank" aria-label="WhatsApp">
-                    <i class="fa-brands fa-whatsapp"></i>
-                </a>
-            </div>
+    <footer class="mavin-footer">
+        <div class="mavin-footer-container">
+            <div class="footer-nav-menu">
+                <a href="https://wa.me/201275859172?text=I%20have%20a%20complaint%20or%20inquiry%20regarding%20%CE%9B%20%D0%98%20G%20E%20%D0%Я" target="_blank">Help Center</a>
+                <a href="#" onclick="openReviewModalFromFooter(event)">Submit Review</a>
+                <a href="#" onclick="openFabricModal(event)">Fabric Info</a>
+                <a href="#" onclick="openAboutModal(event)">About Us</a>
+            </div>
+            
+            <div class="footer-socials-row">
+                <a href="https://www.instagram.com/anger.wear_1?igsh=MTcxZGZuenIwNHQ1cw==" target="_blank" aria-label="Instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="https://wa.me/201275859172" target="_blank" aria-label="WhatsApp">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </a>
+            </div>
 
-            <div class="footer-copyright-row">
-                <p class="footer-copyright">&copy; 2026 Λ И G E Я. Built from anger.</p>
-            </div>
-        </div>
-        <button class="scroll-top-btn" onclick="scrollToTop()" aria-label="Scroll to top">▲</button>
-    </footer>
+            <div class="footer-copyright-row">
+                <p class="footer-copyright">&copy; 2026 Λ И G E Я. Built from anger.</p>
+            </div>
+        </div>
+        <button class="scroll-top-btn" onclick="scrollToTop()" aria-label="Scroll to top">▲</button>
+    </footer>
 
-    <!-- Product & Cart Modals -->
-    <div class="product-modal-overlay" id="productModal" onclick="closeProductModalOnOutsideClick(event)">
-        <div class="product-modal-content">
-            <button class="close-modal-btn" onclick="closeProductModal()">✕</button>
-            <div class="modal-body-layout">
-                <div class="modal-images-side">
-                    <div class="modal-main-img-container">
-                        <img id="modalMainImage" src="" alt="Product Large View">
-                        <button class="img-nav-btn prev-btn" onclick="switchModalImage(-1)">❮</button>
-                        <button class="img-nav-btn next-btn" onclick="switchModalImage(1)">❯</button>
-                    </div>
-                    <div class="modal-thumbnails">
-                        <img id="thumbFront" src="" onclick="setModalImage(this.src, 0)" class="active-thumb">
-                        <img id="thumbBack" src="" onclick="setModalImage(this.src, 1)">
-                    </div>
-                </div>
+    <!-- Product & Cart Modals -->
+    <div class="product-modal-overlay" id="productModal" onclick="closeProductModalOnOutsideClick(event)">
+        <div class="product-modal-content">
+            <button class="close-modal-btn" onclick="closeProductModal()">✕</button>
+            <div class="modal-body-layout">
+                <div class="modal-images-side">
+                    <div class="modal-main-img-container">
+                        <img id="modalMainImage" src="" alt="Product Large View">
+                        <button class="img-nav-btn prev-btn" onclick="switchModalImage(-1)">❮</button>
+                        <button class="img-nav-btn next-btn" onclick="switchModalImage(1)">❯</button>
+                    </div>
+                    <div class="modal-thumbnails">
+                        <img id="thumbFront" src="" onclick="setModalImage(this.src, 0)" class="active-thumb">
+                        <img id="thumbBack" src="" onclick="setModalImage(this.src, 1)">
+                    </div>
+                </div>
 
-                <div class="modal-details-side">
-                    <h2 id="modalProductTitle" class="modal-product-title"></h2>
-                    <div id="modalProductPrice" class="modal-product-price"></div>
+                <div class="modal-details-side">
+                    <h2 id="modalProductTitle" class="modal-product-title"></h2>
+                    <div id="modalProductPrice" class="modal-product-price"></div>
 
-                    <div class="size-section-title">Select Size:</div>
-                    <div class="modal-sizes-select">
-                        <label><input type="radio" name="modal-size" value="M" checked><span>M</span></label>
-                        <label><input type="radio" name="modal-size" value="L"><span>L</span></label>
-                        <label><input type="radio" name="modal-size" value="XL"><span>XL</span></label>
-                        <label><input type="radio" name="modal-size" value="XXL"><span>XXL</span></label>
-                    </div>
+                    <div class="size-section-title">Select Size:</div>
+                    <div class="modal-sizes-select">
+                        <label><input type="radio" name="modal-size" value="M" checked><span>M</span></label>
+                        <label><input type="radio" name="modal-size" value="L"><span>L</span></label>
+                        <label><input type="radio" name="modal-size" value="XL"><span>XL</span></label>
+                        <label><input type="radio" name="modal-size" value="XXL"><span>XXL</span></label>
+                    </div>
 
-                    <div class="size-guide-container">
-                        <div class="size-guide-title">📐 Approximate Size Chart:</div>
-                        <table class="size-guide-table">
-                            <thead>
-                                <tr>
-                                    <th>Size</th>
-                                    <th>Weight Range</th>
-                                    <th>Height Range</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr><td><strong>M</strong></td><td>55 - 68 kg</td><td>160 - 172 cm</td></tr>
-                                <tr><td><strong>L</strong></td><td>69 - 78 kg</td><td>170 - 178 cm</td></tr>
-                                <tr><td><strong>XL</strong></td><td>79 - 88 kg</td><td>170 - 178 cm</td></tr>
-                                <tr><td><strong>XXL</strong></td><td>89 - 100 kg</td><td>180 - 192 cm</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
+                    <div class="size-guide-container">
+                        <div class="size-guide-title">📐 Approximate Size Chart:</div>
+                        <table class="size-guide-table">
+                            <thead>
+                                <tr>
+                                    <th>Size</th>
+                                    <th>Weight Range</th>
+                                    <th>Height Range</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td><strong>M</strong></td><td>55 - 68 kg</td><td>160 - 172 cm</td></tr>
+                                <tr><td><strong>L</strong></td><td>69 - 78 kg</td><td>170 - 178 cm</td></tr>
+                                <tr><td><strong>XL</strong></td><td>79 - 88 kg</td><td>170 - 178 cm</td></tr>
+                                <tr><td><strong>XXL</strong></td><td>89 - 100 kg</td><td>180 - 192 cm</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
 
-                    <div class="modal-action-buttons">
-                        <button id="modalBuyNowBtn" class="modal-buy-now-btn" onclick="buyItNowFromModal()">Buy It Now</button>
-                        <button id="modalAddToCartBtn" class="modal-add-to-cart-btn" onclick="addFromModalToCart()">Add To Cart</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+                    <div class="modal-action-buttons">
+                        <button id="modalBuyNowBtn" class="modal-buy-now-btn" onclick="buyItNowFromModal()">Buy It Now</button>
+                        <button id="modalAddToCartBtn" class="modal-add-to-cart-btn" onclick="addFromModalToCart()">Add To Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <div class="floating-controls-container">
-        <div class="floating-cart" onclick="toggleCart()">
-            <svg viewBox="0 0 24 24" class="cart-svg-icon">
-                <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
-            </svg>
-            <span class="cart-count" id="cartCount">0</span>
-        </div>
-    </div>
+    <div class="floating-controls-container">
+        <div class="floating-cart" onclick="toggleCart()">
+            <svg viewBox="0 0 24 24" class="cart-svg-icon">
+                <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
+            </svg>
+            <span class="cart-count" id="cartCount">0</span>
+        </div>
+    </div>
 
-    <div class="cart-sidebar" id="cartSidebar">
-        <div class="cart-header">
-            <h3>Shopping Cart</h3>
-            <button class="close-cart-btn" onclick="toggleCart()">✕</button>
-        </div>
-        <div class="cart-items" id="cartItems">
-            <p class="empty-msg">Your cart is empty</p>
-        </div>
-        <div class="cart-footer">
-            <div class="cart-total-box">
-                <span>Total Amount:</span>
-                <span id="cartTotal">0 EGP</span>
-            </div>
-            <button class="checkout-btn" onclick="openCheckoutForm()">Proceed To Order</button>
-        </div>
-    </div>
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Shopping Cart</h3>
+            <button class="close-cart-btn" onclick="toggleCart()">✕</button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <p class="empty-msg">Your cart is empty</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total-box">
+                <span>Total Amount:</span>
+                <span id="cartTotal">0 EGP</span>
+            </div>
+            <button class="checkout-btn" onclick="openCheckoutForm()">Proceed To Order</button>
+        </div>
+    </div>
 
-    <div class="checkout-overlay" id="checkoutOverlay">
-        <div class="checkout-modal">
-            <h3>Order Shipping Details</h3>
-            <form id="orderForm" action="https://formspree.io/f/xgoqadvg" method="POST" onsubmit="sendOrder(event)">
-                <div class="form-group">
-                    <label>Full Name</label>
-                    <input type="text" id="clientName" name="clientName" required placeholder="John Doe...">
-                </div>
-                <div class="form-group">
-                    <label>Final Total Price</label>
-                    <input type="text" id="finalTotalDisplay" name="finalTotal" readonly>
-                </div>
-                <div class="form-group">
-                    <label>Primary Phone Number</label>
-                    <input type="tel" id="clientPhone1" name="clientPhone1" required placeholder="01xxxxxxxxx">
-                </div>
-                <div class="form-group">
-                    <label>Alternative Phone Number</label>
-                    <input type="tel" id="clientPhone2" name="clientPhone2" required placeholder="01xxxxxxxxx">
-                </div>
-                <div class="form-group">
-                    <label>Full Delivery Address</label>
-                    <textarea id="clientAddress" name="clientAddress" required placeholder="Governorate, City, Street name, Building..."></textarea>
-                </div>
-                <div class="form-actions">
-                    <input type="hidden" id="orderedProductsDetails" name="productsDetails">
-                    <button type="submit" class="submit-order-btn">Submit Order</button>
-                    <button type="button" class="cancel-btn" onclick="closeCheckoutForm()">Cancel</button>
-                </div>
-            </form>
-        </div>
-    </div>
+    <div class="checkout-overlay" id="checkoutOverlay" onclick="closeCheckoutFormOnOutsideClick(event)">
+        <div class="checkout-modal">
+            <h3>Order Shipping Details</h3>
+            <form id="orderForm" action="https://formspree.io/f/xgoqadvg" method="POST" onsubmit="sendOrder(event)">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" id="clientName" name="clientName" required placeholder="John Doe...">
+                </div>
+                <div class="form-group">
+                    <label>Final Total Price</label>
+                    <input type="text" id="finalTotalDisplay" name="finalTotal" readonly>
+                </div>
+                <div class="form-group">
+                    <label>Primary Phone Number</label>
+                    <input type="tel" id="clientPhone1" name="clientPhone1" required placeholder="01xxxxxxxxx">
+                </div>
+                <div class="form-group">
+                    <label>Alternative Phone Number</label>
+                    <input type="tel" id="clientPhone2" name="clientPhone2" required placeholder="01xxxxxxxxx">
+                </div>
+                <div class="form-group">
+                    <label>Full Delivery Address</label>
+                    <textarea id="clientAddress" name="clientAddress" required placeholder="Governorate, City, Street name, Building..."></textarea>
+                </div>
+                <div class="form-actions">
+                    <input type="hidden" id="orderedProductsDetails" name="productsDetails">
+                    <button type="submit" class="submit-order-btn">Submit Order</button>
+                    <button type="button" class="cancel-btn" onclick="closeCheckoutForm()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
 
-    <audio id="bgAudio" loop>
-        <source src="background-sound.mp3" type="audio/mpeg">
-    </audio>
+    <audio id="bgAudio" loop>
+        <source src="background-sound.mp3" type="audio/mpeg">
+    </audio>
 
-    <script>
-        let cart = [];
-        let currentModalProductId = null;
-        let currentModalProductName = "";
-        let currentModalProductPrice = 0;
-        let modalImagesArray = [];
-        let currentImageIndex = 0;
-        let selectedRating = 0;
-
-        document.addEventListener("DOMContentLoaded", () => {
-            initStars();
-        });
-
-        function startHiddenAudio() {
-            const audio = document.getElementById('bgAudio');
-            audio.play().then(() => {
-                document.removeEventListener('click', startHiddenAudio);
-                document.removeEventListener('touchstart', startHiddenAudio);
-            }).catch((error) => {
-                console.log("Audio play blocked, waiting for user click.", error);
-            });
-        }
-        document.addEventListener('click', startHiddenAudio);
-        document.addEventListener('touchstart', startHiddenAudio);
-
-        function toggleMenu() {
-            document.getElementById('menuSidebar').classList.toggle('active');
-        }
-
-        function openFabricModal(e) {
-            e.preventDefault();
-            const sidebar = document.getElementById('menuSidebar');
-            if (sidebar.classList.contains('active')) toggleMenu();
-            document.getElementById('fabricModal').classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeFabricModal() { document.getElementById('fabricModal').classList.remove('active'); document.body.style.overflow = ''; }
-        function closeFabricModalOnOutsideClick(e) { if(e.target.id === 'fabricModal') closeFabricModal(); }
-        
-        function openAboutModal(e) { e.preventDefault(); const sidebar = document.getElementById('menuSidebar'); if (sidebar.classList.contains('active')) toggleMenu(); document.getElementById('aboutModal').classList.add('active'); document.body.style.overflow = 'hidden'; }
-        function closeAboutModal() { document.getElementById('aboutModal').classList.remove('active'); document.body.style.overflow = ''; }
-        function closeAboutModalOnOutsideClick(e) { if(e.target.id === 'aboutModal') closeAboutModal(); }
-        
-        function openReviewModalFromFooter(e) { e.preventDefault(); document.getElementById('reviewOverlay').classList.add('active'); }
-        function closeReviewModalOnOutsideClick(e) { if(e.target.id === 'reviewOverlay') closeReviewAndReset(); }
-        function closeReviewAndReset() { document.getElementById('reviewOverlay').classList.remove('active'); }
-
-        function initStars() {
-            const stars = document.querySelectorAll('#ratingStars .star');
-            stars.forEach(star => {
-                star.addEventListener('click', function() {
-                    selectedRating = parseInt(this.getAttribute('data-value'));
-                    stars.forEach(s => {
-                        if (parseInt(s.getAttribute('data-value')) <= selectedRating) {
-                            s.classList.add('selected');
-                        } else {
-                            s.classList.remove('selected');
-                        }
-                    });
-                });
-            });
-        }
-
-        function submitReview() {
-            const name = document.getElementById('reviewerName').value;
-            const text = document.getElementById('reviewText').value;
-            if(!name || !text || selectedRating === 0) {
-                alert("من فضلك املأ جميع الحقول واقترح تقييماً بالنجوم.");
-                return;
-            }
-            alert("شكراً لك! تم إرسال تقييمك إلى الـ Abyss بنجاح.");
-            closeReviewAndReset();
-        }
-
-        function toggleCart() { document.getElementById('cartSidebar').classList.toggle('active'); }
-        function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
-
-        function openProductModal(event, id, name, price, img1, img2) {
-            const card = event.currentTarget;
-            if (card.classList.contains('sold-out')) {
-                alert("عذراً، هذا المنتج غير متاح حالياً (Sold Out).");
-                return;
-            }
-
-            window.currentModalProductId = id;
-            window.currentModalProductName = name;
-            window.currentModalProductPrice = price;
-            modalImagesArray = [img1, img2];
-            currentImageIndex = 0;
-
-            document.getElementById('modalProductTitle').innerText = name;
-            document.getElementById('modalProductPrice').innerText = price + " EGP";
-            document.getElementById('modalMainImage').src = img1;
-            document.getElementById('thumbFront').src = img1;
-            document.getElementById('thumbBack').src = img2;
-            document.getElementById('thumbFront').classList.add('active-thumb');
-            document.getElementById('thumbBack').classList.remove('active-thumb');
-
-            document.getElementById('productModal').classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function setModalImage(src, index) {
-            currentImageIndex = index;
-            document.getElementById('modalMainImage').src = src;
-            document.querySelectorAll('.modal-thumbnails img').forEach((img, idx) => {
-                if(idx === index) img.classList.add('active-thumb');
-                else img.classList.remove('active-thumb');
-            });
-        }
-
-        function switchModalImage(direction) {
-            currentImageIndex = (currentImageIndex + direction + modalImagesArray.length) % modalImagesArray.length;
-            setModalImage(modalImagesArray[currentImageIndex], currentImageIndex);
-        }
-
-        function updateCartUI() {
-            const cartItems = document.getElementById('cartItems');
-            const cartTotal = document.getElementById('cartTotal');
-            const count = document.getElementById('cartCount');
-            
-            count.innerText = window.cart.length;
-            let total = 0;
-            
-            if(window.cart.length === 0) {
-                cartItems.innerHTML = '<p class="empty-msg">Your cart is empty</p>';
-            } else {
-                cartItems.innerHTML = window.cart.map(i => {
-                    total += (i.price * i.qty);
-                    return `<div class="cart-item"><h4>${i.name}</h4><p>المقاس: ${i.size} | ${i.price} EGP</p></div>`;
-                }).join('');
-            }
-            cartTotal.innerText = total + " EGP";
-        }
-
-        function openCheckoutForm() {
-            if (window.cart.length === 0) { alert("السلة فارغة!"); return; }
-            const productsCost = window.cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
-            const shippingCost = 80;
-            const finalTotal = productsCost + shippingCost;
-
-            const priceDisplay = document.getElementById('finalTotalDisplay');
-            if (priceDisplay) {
-                priceDisplay.value = `${productsCost} + 80 (شحن) = ${finalTotal} EGP`;
-            }
-            document.getElementById('checkoutOverlay').classList.add('active');
-        }
-
-        function sendOrder(event) {
-            event.preventDefault();
-            const form = document.getElementById('orderForm');
-            const productsCost = window.cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
-            let itemsDetails = window.cart.map(i => `${i.name} (${i.size})`).join(', ');
-            
-            document.getElementById('orderedProductsDetails').value = itemsDetails + ` | الإجمالي شامل الشحن: ${productsCost + 80} EGP`;
-
-            fetch(form.action, {
-                method: 'POST',
-                body: new FormData(form),
-                headers: { 'Accept': 'application/json' }
-            })
-            .then(response => {
-                if (response.ok) {
-                    alert("تم إرسال الطلب بنجاح!");
-                    window.cart = [];
-                    updateCartUI();
-                    closeCheckoutForm();
-                } else {
-                    alert("حدث خطأ في الإرسال.");
-                }
-            })
-            .catch(err => alert("خطأ في الاتصال: " + err));
-        }
-
-        function addFromModalToCart() {
-            const sizeInput = document.querySelector('input[name="modal-size"]:checked');
-            if (!sizeInput) { alert("من فضلك اختر المقاس"); return; }
-            window.cart.push({ id: window.currentModalProductId, name: window.currentModalProductName, price: window.currentModalProductPrice, size: sizeInput.value, qty: 1 });
-            updateCartUI();
-            closeProductModal();
-            toggleCart();
-        }
-
-        function buyItNowFromModal() {
-            const sizeInput = document.querySelector('input[name="modal-size"]:checked');
-            if (!sizeInput) { alert("من فضلك اختر المقاس"); return; }
-            window.cart = [{ id: window.currentModalProductId, name: window.currentModalProductName, price: window.currentModalProductPrice, size: sizeInput.value, qty: 1 }];
-            updateCartUI();
-            closeProductModal();
-            openCheckoutForm();
-        }
-
-        function closeProductModal() { document.getElementById('productModal').classList.remove('active'); document.body.style.overflow = ''; }
-        function closeCheckoutForm() { document.getElementById('checkoutOverlay').classList.remove('active'); }
-    </script>
+    <!-- External JavaScript File -->
+    <script src="script.js"></script>
 </body>
 </html>
+let cart = [];
+let currentModalProductId = null;
+let currentModalProductName = "";
+let currentModalProductPrice = 0;
+let modalImagesArray = [];
+let currentImageIndex = 0;
+let selectedRating = 0;
+
+document.addEventListener("DOMContentLoaded", () => {
+    initStars();
+});
+
+function startHiddenAudio() {
+    const audio = document.getElementById('bgAudio');
+    if (audio) {
+        audio.play().then(() => {
+            document.removeEventListener('click', startHiddenAudio);
+            document.removeEventListener('touchstart', startHiddenAudio);
+        }).catch((error) => {
+            console.log("Audio play blocked, waiting for user interaction.", error);
+        });
+    }
+}
+document.addEventListener('click', startHiddenAudio);
+document.addEventListener('touchstart', startHiddenAudio);
+
+function toggleMenu() {
+    document.getElementById('menuSidebar').classList.toggle('active');
+}
+
+function openFabricModal(e) {
+    e.preventDefault();
+    const sidebar = document.getElementById('menuSidebar');
+    if (sidebar.classList.contains('active')) toggleMenu();
+    document.getElementById('fabricModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeFabricModal() { 
+    document.getElementById('fabricModal').classList.remove('active'); 
+    document.body.style.overflow = ''; 
+}
+
+function closeFabricModalOnOutsideClick(e) { 
+    if(e.target.id === 'fabricModal') closeFabricModal(); 
+}
+
+function openAboutModal(e) { 
+    e.preventDefault(); 
+    const sidebar = document.getElementById('menuSidebar'); 
+    if (sidebar.classList.contains('active')) toggleMenu(); 
+    document.getElementById('aboutModal').classList.add('active'); 
+    document.body.style.overflow = 'hidden'; 
+}
+
+function closeAboutModal() { 
+    document.getElementById('aboutModal').classList.remove('active'); 
+    document.body.style.overflow = ''; 
+}
+
+function closeAboutModalOnOutsideClick(e) { 
+    if(e.target.id === 'aboutModal') closeAboutModal(); 
+}
+
+function openReviewModalFromFooter(e) { 
+    e.preventDefault(); 
+    document.getElementById('reviewOverlay').classList.add('active'); 
+}
+
+function closeReviewModalOnOutsideClick(e) { 
+    if(e.target.id === 'reviewOverlay') closeReviewAndReset(); 
+}
+
+function closeReviewAndReset() { 
+    document.getElementById('reviewOverlay').classList.remove('active'); 
+}
+
+function initStars() {
+    const stars = document.querySelectorAll('#ratingStars .star');
+    stars.forEach(star => {
+        star.addEventListener('click', function() {
+            selectedRating = parseInt(this.getAttribute('data-value'));
+            stars.forEach(s => {
+                if (parseInt(s.getAttribute('data-value')) <= selectedRating) {
+                    s.classList.add('selected');
+                } else {
+                    s.classList.remove('selected');
+                }
+            });
+        });
+    });
+}
+
+function submitReview() {
+    const name = document.getElementById('reviewerName').value;
+    const text = document.getElementById('reviewText').value;
+    if(!name || !text || selectedRating === 0) {
+        alert("من فضلك املأ جميع الحقول واقترح تقييماً بالنجوم.");
+        return;
+    }
+    alert("شكراً لك! تم إرسال تقييمك إلى الـ Abyss بنجاح.");
+    closeReviewAndReset();
+}
+
+function toggleCart() { 
+    document.getElementById('cartSidebar').classList.toggle('active'); 
+}
+
+function scrollToTop() { 
+    window.scrollTo({ top: 0, behavior: 'smooth' }); 
+}
+
+function openProductModal(event, id, name, price, img1, img2) {
+    const card = event.currentTarget;
+    if (card.classList.contains('sold-out')) {
+        alert("عذراً، هذا المنتج غير متاح حالياً (Sold Out).");
+        return;
+    }
+
+    currentModalProductId = id;
+    currentModalProductName = name;
+    currentModalProductPrice = price;
+    modalImagesArray = [img1, img2];
+    currentImageIndex = 0;
+
+    document.getElementById('modalProductTitle').innerText = name;
+    document.getElementById('modalProductPrice').innerText = price + " EGP";
+    document.getElementById('modalMainImage').src = img1;
+    document.getElementById('thumbFront').src = img1;
+    document.getElementById('thumbBack').src = img2;
+    document.getElementById('thumbFront').classList.add('active-thumb');
+    document.getElementById('thumbBack').classList.remove('active-thumb');
+
+    document.getElementById('productModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function setModalImage(src, index) {
+    currentImageIndex = index;
+    document.getElementById('modalMainImage').src = src;
+    document.querySelectorAll('.modal-thumbnails img').forEach((img, idx) => {
+        if(idx === index) img.classList.add('active-thumb');
+        else img.classList.remove('active-thumb');
+    });
+}
+
+function switchModalImage(direction) {
+    currentImageIndex = (currentImageIndex + direction + modalImagesArray.length) % modalImagesArray.length;
+    setModalImage(modalImagesArray[currentImageIndex], currentImageIndex);
+}
+
+function updateCartUI() {
+    const cartItems = document.getElementById('cartItems');
+    const cartTotal = document.getElementById('cartTotal');
+    const count = document.getElementById('cartCount');
+    
+    count.innerText = cart.length;
+    let total = 0;
+    
+    if(cart.length === 0) {
+        cartItems.innerHTML = '<p class="empty-msg">Your cart is empty</p>';
+    } else {
+        cartItems.innerHTML = cart.map(i => {
+            total += (i.price * i.qty);
+            return `<div class="cart-item"><h4>${i.name}</h4><p>المقاس: ${i.size} | ${i.price} EGP</p></div>`;
+        }).join('');
+    }
+    cartTotal.innerText = total + " EGP";
+}
+
+function openCheckoutForm() {
+    if (cart.length === 0) { alert("السلة فارغة!"); return; }
+    const productsCost = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+    const shippingCost = 80;
+    const finalTotal = productsCost + shippingCost;
+
+    const priceDisplay = document.getElementById('finalTotalDisplay');
+    if (priceDisplay) {
+        priceDisplay.value = `${productsCost} + 80 (شحن) = ${finalTotal} EGP`;
+    }
+    document.getElementById('checkoutOverlay').classList.add('active');
+}
+
+function sendOrder(event) {
+    event.preventDefault();
+    const form = document.getElementById('orderForm');
+    const productsCost = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+    let itemsDetails = cart.map(i => `${i.name} (${i.size})`).join(', ');
+    
+    document.getElementById('orderedProductsDetails').value = itemsDetails + ` | الإجمالي شامل الشحن: ${productsCost + 80} EGP`;
+
+    fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+    })
+    .then(response => {
+        if (response.ok) {
+            alert("تم إرسال الطلب بنجاح!");
+            cart = [];
+            updateCartUI();
+            closeCheckoutForm();
+        } else {
+            alert("حدث خطأ في الإرسال.");
+        }
+    })
+    .catch(err => alert("خطأ في الاتصال: " + err));
+}
+
+function addFromModalToCart() {
+    const sizeInput = document.querySelector('input[name="modal-size"]:checked');
+    if (!sizeInput) { alert("من فضلك اختر المقاس"); return; }
+    cart.push({ id: currentModalProductId, name: currentModalProductName, price: currentModalProductPrice, size: sizeInput.value, qty: 1 });
+    updateCartUI();
+    closeProductModal();
+    toggleCart();
+}
+
+function buyItNowFromModal() {
+    const sizeInput = document.querySelector('input[name="modal-size"]:checked');
+    if (!sizeInput) { alert("من فضلك اختر المقاس"); return; }
+    cart = [{ id: currentModalProductId, name: currentModalProductName, price: currentModalProductPrice, size: sizeInput.value, qty: 1 }];
+    updateCartUI();
+    closeProductModal();
+    openCheckoutForm();
+}
+
+function closeProductModal() { 
+    document.getElementById('productModal').classList.remove('active'); 
+    document.body.style.overflow = ''; 
+}
+
+function closeProductModalOnOutsideClick(e) { 
+    if (e.target.id === 'productModal') closeProductModal(); 
+}
+
+function closeCheckoutForm() { 
+    document.getElementById('checkoutOverlay').classList.remove('active'); 
+}
+
+function closeCheckoutFormOnOutsideClick(e) { 
+    if (e.target.id === 'checkoutOverlay') closeCheckoutForm(); 
+}
