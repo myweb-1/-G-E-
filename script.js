@@ -45,6 +45,19 @@ function closeFabricModalOnOutsideClick(e) {
     if(e.target.id === 'fabricModal') closeFabricModal(); 
 }
 
+function switchFabricTab(tabName, btnElement) {
+    document.querySelectorAll('.fabric-tab-content').forEach(tab => {
+        tab.classList.remove('active');
+    });
+    
+    document.querySelectorAll('.fabric-tab-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+
+    document.getElementById('tab-' + tabName).classList.add('active');
+    btnElement.classList.add('active');
+}
+
 function openAboutModal(e) { 
     e.preventDefault(); 
     const sidebar = document.getElementById('menuSidebar'); 
