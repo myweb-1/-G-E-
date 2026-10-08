@@ -1,5 +1,5 @@
 /* ==========================================
-   Λ И G E Я | REFINED MASTER CSS (FIXED SCALES)
+   Λ И G E Я | REFINED SHOPIFY-STYLE MASTER CSS
    ========================================== */
 
 :root {
@@ -12,7 +12,7 @@
     --text-muted: #888888;
     --accent-red: #8b0000;
     --glow-red: rgba(139, 0, 0, 0.35);
-    --transition-smooth: all 0.25s ease;
+    --transition-smooth: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 * {
@@ -43,8 +43,9 @@ body {
     left: 0;
     width: 100%;
     height: 55px;
-    background: rgba(5, 5, 5, 0.95);
-    backdrop-filter: blur(10px);
+    background: rgba(5, 5, 5, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border-dark);
     display: flex;
     align-items: center;
@@ -300,11 +301,11 @@ body {
 }
 
 /* ==========================================
-   5. COLLECTIONS & PRODUCTS GRID
+   5. COLLECTIONS & PRODUCTS GRID (SHOPIFY LAYOUT)
    ========================================== */
 .collection-section {
-    padding: 50px 3% 30px;
-    max-width: 1300px;
+    padding: 40px 4% 30px;
+    max-width: 1280px;
     margin: 0 auto;
     width: 100%;
 }
@@ -315,39 +316,44 @@ body {
     font-weight: 900;
     letter-spacing: 2px;
     text-align: center;
-    margin-bottom: 35px;
+    margin-bottom: 25px;
     color: #fff;
 }
 
-/* تصحيح اسم الكلاس المعتمد في الـ HTML لديك */
+/* ضبط تقسيم الشبكة الافتراضي للشاشات الكبيرة */
 .products-grid, .shop-products-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
     width: 100%;
+    box-sizing: border-box;
 }
 
+/* كارت المنتج بمظهر شوبيفاي */
 .product-card {
     background: var(--bg-card);
     border: 1px solid var(--border-dark);
-    border-radius: 6px;
+    border-radius: 8px;
     overflow: hidden;
     cursor: pointer;
     transition: var(--transition-smooth);
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     width: 100%;
+    position: relative;
 }
 
 .product-card:hover {
     border-color: var(--border-hover);
-    transform: translateY(-3px);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.6);
 }
 
 .product-img-box {
     position: relative;
     width: 100%;
-    aspect-ratio: 3/4;
+    aspect-ratio: 1 / 1; /* نسبة صورة مربعة لضبط ارتفاع المنتجات */
     overflow: hidden;
     background: #000;
 }
@@ -356,28 +362,29 @@ body {
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
     object-fit: cover;
-    transition: var(--transition-smooth);
+    transition: transform 0.4s ease, opacity 0.3s ease;
 }
 
 .product-img-box .img-back { opacity: 0; }
 .product-card:hover .product-img-box .img-front { opacity: 0; }
-.product-card:hover .product-img-box .img-back { opacity: 1; }
+.product-card:hover .product-img-box .img-back { opacity: 1; transform: scale(1.04); }
 
 .sold-out-badge {
     position: absolute;
     top: 10px; right: 10px;
-    background: rgba(139, 0, 0, 0.9);
+    background: var(--accent-red);
     color: #fff;
     font-size: 0.65rem;
     font-weight: 700;
-    padding: 4px 8px;
-    border-radius: 3px;
+    padding: 3px 8px;
+    border-radius: 4px;
     letter-spacing: 0.5px;
     z-index: 10;
+    text-transform: uppercase;
 }
 
 .product-details {
-    padding: 14px;
+    padding: 12px;
     display: flex;
     flex-direction: column;
     gap: 6px;
@@ -387,33 +394,41 @@ body {
 }
 
 .product-card-title {
-    font-size: 0.9rem;
+    font-size: 0.88rem;
     font-weight: 700;
     color: var(--text-primary);
+    letter-spacing: 0.5px;
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .product-price {
     font-size: 0.95rem;
-    font-weight: 900;
+    font-weight: 800;
     color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .product-price span {
     font-size: 0.8rem;
     color: var(--text-muted);
     text-decoration: line-through;
-    margin-right: 8px;
     font-weight: 400;
 }
 
 /* ==========================================
-   6. SHOPIFY-STYLE COMPACT MODAL (FIXED)
+   6. SHOPIFY-STYLE COMPACT MODAL
    ========================================== */
 .product-modal-overlay, .fabric-modal-overlay, .about-modal-overlay, .review-overlay, .checkout-overlay {
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
     background: rgba(0, 0, 0, 0.85);
-    backdrop-filter: blur(6px);
+    backdrop-filter: blur(8px);
     z-index: 3000;
     display: flex;
     align-items: center;
@@ -429,26 +444,25 @@ body {
     visibility: visible;
 }
 
-/* تعديل عرض النافذة المستطيلة */
 .product-modal-content, .compact-modal {
     background: var(--bg-surface);
     border: 1px solid var(--border-dark);
     width: 100% !important;
-    max-width: 850px !important; /* تكبير المساحة لتستوعب التقسيم الأفقي */
+    max-width: 800px !important;
     max-height: 90vh;
-    border-radius: 8px;
+    border-radius: 10px;
     overflow-y: auto;
     position: relative;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.9);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.9);
 }
 
 .close-modal-btn, .close-fabric-btn, .close-about-btn, .close-review-modal-btn, .close-cart-btn {
     position: absolute;
-    top: 15px; right: 15px;
+    top: 12px; right: 12px;
     background: var(--bg-card);
     border: 1px solid var(--border-dark);
     color: var(--text-primary);
-    width: 30px; height: 30px;
+    width: 32px; height: 32px;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -456,17 +470,16 @@ body {
     font-size: 0.9rem;
     cursor: pointer;
     z-index: 20;
+    transition: var(--transition-smooth);
 }
 
-.close-modal-btn:hover { background: var(--accent-red); border-color: var(--accent-red); }
+.close-modal-btn:hover { background: var(--accent-red); border-color: var(--accent-red); color: #fff; }
 
-/* التقسيم: الصور على اليمين والتفاصيل والأزرار على الشمال */
 .modal-body-layout, .compact-layout {
     display: grid !important;
-    grid-template-columns: 1fr 1fr !important; /* عمودين متساويين */
-    gap: 25px !important;
-    padding: 25px !important;
-    direction: rtl !important; /* البرودكت يمين واختيار المقاس والزر شمال */
+    grid-template-columns: 1fr 1fr !important;
+    gap: 20px !important;
+    padding: 20px !important;
     align-items: start;
 }
 
@@ -480,7 +493,7 @@ body {
 .modal-main-img-container, .compact-main-img {
     position: relative;
     width: 100%;
-    aspect-ratio: 3/4;
+    aspect-ratio: 1 / 1;
     background: #000;
     border-radius: 6px;
     overflow: hidden;
@@ -512,12 +525,12 @@ body {
 
 .modal-thumbnails, .compact-thumbs {
     display: flex;
-    gap: 10px;
+    gap: 8px;
 }
 
 .modal-thumbnails img, .compact-thumbs img {
-    width: 60px;
-    aspect-ratio: 3/4;
+    width: 55px;
+    aspect-ratio: 1 / 1;
     object-fit: cover;
     border-radius: 4px;
     border: 1px solid var(--border-dark);
@@ -529,15 +542,14 @@ body {
 .modal-details-side, .compact-details {
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 12px;
     width: 100%;
-    direction: ltr; /* التكست الإنجليزي يضبط جهة اليسار داخل الحاوية */
     text-align: left;
 }
 
 .modal-product-title, .compact-title {
     font-family: 'Cinzel Decorative', serif;
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     font-weight: 700;
     color: #fff;
 }
@@ -567,7 +579,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 42px;
+    width: 40px;
     height: 36px;
     background: var(--bg-card);
     border: 1px solid var(--border-dark);
@@ -853,23 +865,24 @@ body {
 }
 
 /* ==========================================
-   10. RESPONSIVE GRID OVERRIDES (MOBILE FIXES)
+   10. RESPONSIVE MEDIA QUERIES (MOBILE FIXES)
    ========================================== */
 
-@media (max-width: 1024px) {
+/* الشاشات المتوسطة والأجهزة اللوحية (Tablets) */
+@media (max-width: 992px) {
     .products-grid, .shop-products-grid {
         grid-template-columns: repeat(3, 1fr);
         gap: 12px;
     }
 }
 
-/* حل مشكلة الموبايل بشكل قاطع ومباشر */
-@media (max-width: 600px) {
+/* حل الموبايل لظهور 2 منتج بجانب بعضهما */
+@media (max-width: 650px) {
     html {
         font-size: 13px;
     }
 
-    /* 1. إجبار 2 برودكت جنب بعض بكل ثبات بدون فراغ أسود */
+    /* عرض منتجين في الصف للموبايل */
     .products-grid, .shop-products-grid {
         grid-template-columns: repeat(2, 1fr) !important;
         gap: 8px !important;
@@ -877,15 +890,14 @@ body {
     }
 
     .collection-section {
-        padding: 30px 2% 20px !important;
+        padding: 20px 2.5% !important;
     }
 
-    /* 2. ضبط نافذة الشراء للموبايل لعدم تداخل العناصر */
+    /* تحويل Modal تفاصيل المنتج إلى عمود واحد رأسي لتنسيق الموبايل */
     .modal-body-layout, .compact-layout {
         grid-template-columns: 1fr !important;
         padding: 15px !important;
         gap: 15px !important;
-        direction: ltr !important;
     }
 
     .cinematic-title {
