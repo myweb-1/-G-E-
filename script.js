@@ -112,8 +112,10 @@ function scrollToTop() {
 
 function openProductModal(event, id, name, price, img1, img2) {
     const card = event.currentTarget;
-    if (card.classList.contains('sold-out')) {
-        alert("عذراً، هذا المنتج غير متاح حالياً (Sold Out).");
+    
+    // منع الطلب إذا كان المنتج sold-out أو Restock-ing
+    if (card && (card.classList.contains('sold-out') || card.classList.contains('Restock-ing'))) {
+        alert("عذراً، هذا المنتج غير متاح حالياً (RESTOCKING) ولا يمكن طلبه في الوقت الحالي.");
         return;
     }
 
