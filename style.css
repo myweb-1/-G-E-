@@ -369,7 +369,7 @@ body {
 .product-card:hover .product-img-box .img-front { opacity: 0; }
 .product-card:hover .product-img-box .img-back { opacity: 1; transform: scale(1.04); }
 
-.sold-out-badge {
+.Restok-ing-badge {
     position: absolute;
     top: 10px; right: 10px;
     background: var(--accent-red);
