@@ -1,5 +1,5 @@
 /* ==========================================
-   Λ И G E Я | FINAL FIXED MASTER CSS
+   Λ И G E Я | REFINED MASTER CSS (FIXED SCALES)
    ========================================== */
 
 :root {
@@ -11,6 +11,7 @@
     --text-primary: #f1f1f1;
     --text-muted: #888888;
     --accent-red: #8b0000;
+    --glow-red: rgba(139, 0, 0, 0.35);
     --transition-smooth: all 0.25s ease;
 }
 
@@ -85,6 +86,10 @@ body {
     transition: var(--transition-smooth);
 }
 
+.nav-menu-btn:hover span {
+    background-color: #ff3333;
+}
+
 .nav-brand-text {
     font-family: 'Cinzel Decorative', serif;
     font-weight: 900;
@@ -145,6 +150,38 @@ body {
     font-weight: 600;
 }
 
+.menu-divider {
+    border: none;
+    height: 1px;
+    background: var(--border-dark);
+    margin: 5px 0;
+}
+
+.complaints-title {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+    display: block;
+}
+
+.complaints-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.complaint-btn {
+    padding: 10px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.wa-btn { background-color: #128c7e; color: #fff; }
+.call-btn { background-color: var(--bg-card); border: 1px solid var(--border-dark); color: var(--text-primary); }
+
 /* ==========================================
    3. HERO SECTION
    ========================================== */
@@ -186,6 +223,14 @@ body {
     max-width: 600px;
 }
 
+.hero-badge {
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
+
 .cinematic-title {
     font-family: 'Cinzel Decorative', serif;
     font-size: clamp(2rem, 5vw, 3.5rem);
@@ -195,30 +240,90 @@ body {
     color: #fff;
 }
 
+.cinematic-tagline {
+    font-family: 'UnifrakturMaguntia', cursive;
+    font-size: 1.3rem;
+    color: #aaa;
+    margin-bottom: 15px;
+}
+
+.cinematic-subtitle {
+    font-size: 0.9rem;
+    color: #ccc;
+    line-height: 1.5;
+    margin-bottom: 25px;
+}
+
+.hero-cta-btn {
+    display: inline-block;
+    padding: 10px 25px;
+    background: #fff;
+    color: #000;
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 2px;
+    font-size: 0.85rem;
+    transition: var(--transition-smooth);
+}
+
+.hero-cta-btn:hover {
+    background: var(--accent-red);
+    color: #fff;
+}
+
 /* ==========================================
-   4. PRODUCTS GRID (تم ضبط العرض لمنع أي فراغات جانبية)
+   4. MARQUEE BAR
+   ========================================== */
+.marquee-bar {
+    background: var(--bg-surface);
+    border-top: 1px solid var(--border-dark);
+    border-bottom: 1px solid var(--border-dark);
+    padding: 8px 0;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.marquee-content {
+    display: inline-block;
+    animation: marquee 25s linear infinite;
+    font-family: 'UnifrakturMaguntia', cursive;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+}
+
+@keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* ==========================================
+   5. COLLECTIONS & PRODUCTS GRID
    ========================================== */
 .collection-section {
-    padding: 30px 2% 20px;
-    max-width: 1400px;
+    padding: 50px 3% 30px;
+    max-width: 1300px;
     margin: 0 auto;
     width: 100%;
 }
 
 .collection-title {
     font-family: 'Cinzel Decorative', serif;
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     font-weight: 900;
     letter-spacing: 2px;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 35px;
     color: #fff;
 }
 
-.products-grid {
+/* تصحيح اسم الكلاس المعتمد في الـ HTML لديك */
+.products-grid, .shop-products-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 منتجات للكمبيوتر */
-    gap: 15px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
     width: 100%;
 }
 
@@ -232,6 +337,11 @@ body {
     display: flex;
     flex-direction: column;
     width: 100%;
+}
+
+.product-card:hover {
+    border-color: var(--border-hover);
+    transform: translateY(-3px);
 }
 
 .product-img-box {
@@ -249,36 +359,61 @@ body {
     transition: var(--transition-smooth);
 }
 
+.product-img-box .img-back { opacity: 0; }
+.product-card:hover .product-img-box .img-front { opacity: 0; }
+.product-card:hover .product-img-box .img-back { opacity: 1; }
+
+.sold-out-badge {
+    position: absolute;
+    top: 10px; right: 10px;
+    background: rgba(139, 0, 0, 0.9);
+    color: #fff;
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 4px 8px;
+    border-radius: 3px;
+    letter-spacing: 0.5px;
+    z-index: 10;
+}
+
 .product-details {
-    padding: 12px;
+    padding: 14px;
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 6px;
     background: var(--bg-surface);
     border-top: 1px solid var(--border-dark);
     flex-grow: 1;
 }
 
 .product-card-title {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     font-weight: 700;
     color: var(--text-primary);
 }
 
 .product-price {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     font-weight: 900;
     color: #fff;
 }
 
+.product-price span {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-decoration: line-through;
+    margin-right: 8px;
+    font-weight: 400;
+}
+
 /* ==========================================
-   5. SHOPIFY-STYLE QUICK BUY MODAL (تنسيق دقيق يمين وشمال)
+   6. SHOPIFY-STYLE COMPACT MODAL (FIXED)
    ========================================== */
-.product-modal-overlay {
+.product-modal-overlay, .fabric-modal-overlay, .about-modal-overlay, .review-overlay, .checkout-overlay {
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.88);
-    backdrop-filter: blur(8px);
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(6px);
     z-index: 3000;
     display: flex;
     align-items: center;
@@ -286,65 +421,63 @@ body {
     opacity: 0;
     visibility: hidden;
     transition: var(--transition-smooth);
-    padding: 10px;
+    padding: 15px;
 }
 
-.product-modal-overlay.active {
+.product-modal-overlay.active, .fabric-modal-overlay.active, .about-modal-overlay.active, .review-overlay.active, .checkout-overlay.active {
     opacity: 1;
     visibility: visible;
 }
 
-.product-modal-content {
+/* تعديل عرض النافذة المستطيلة */
+.product-modal-content, .compact-modal {
     background: var(--bg-surface);
     border: 1px solid var(--border-dark);
-    width: 100%;
-    max-width: 850px;
+    width: 100% !important;
+    max-width: 850px !important; /* تكبير المساحة لتستوعب التقسيم الأفقي */
     max-height: 90vh;
-    border-radius: 10px;
+    border-radius: 8px;
     overflow-y: auto;
     position: relative;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.9);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.9);
 }
 
-.close-modal-btn {
+.close-modal-btn, .close-fabric-btn, .close-about-btn, .close-review-modal-btn, .close-cart-btn {
     position: absolute;
-    top: 12px; right: 12px;
+    top: 15px; right: 15px;
     background: var(--bg-card);
     border: 1px solid var(--border-dark);
     color: var(--text-primary);
-    width: 32px; height: 32px;
+    width: 30px; height: 30px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1rem;
+    font-size: 0.9rem;
     cursor: pointer;
     z-index: 20;
 }
 
-.close-modal-btn:hover {
-    background: var(--accent-red);
-    border-color: var(--accent-red);
-}
+.close-modal-btn:hover { background: var(--accent-red); border-color: var(--accent-red); }
 
-/* التقسيم الاحترافي لشوبيفاي: عمودين يمين وشمال */
-.modal-body-layout {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 25px;
-    padding: 25px;
-    direction: ltr;
+/* التقسيم: الصور على اليمين والتفاصيل والأزرار على الشمال */
+.modal-body-layout, .compact-layout {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important; /* عمودين متساويين */
+    gap: 25px !important;
+    padding: 25px !important;
+    direction: rtl !important; /* البرودكت يمين واختيار المقاس والزر شمال */
     align-items: start;
 }
 
-.modal-images-side {
+.modal-images-side, .compact-gallery {
     display: flex;
     flex-direction: column;
     gap: 10px;
     width: 100%;
 }
 
-.modal-main-img-container {
+.modal-main-img-container, .compact-main-img {
     position: relative;
     width: 100%;
     aspect-ratio: 3/4;
@@ -354,18 +487,35 @@ body {
     border: 1px solid var(--border-dark);
 }
 
-.modal-main-img-container img {
-    width: 100%;
-    height: 100%;
+.modal-main-img-container img, .compact-main-img img {
+    width: 100%; height: 100%;
     object-fit: cover;
 }
 
-.modal-thumbnails {
-    display: flex;
-    gap: 8px;
+.img-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.6);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.2);
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.8rem;
+    z-index: 5;
 }
 
-.modal-thumbnails img {
+.prev-btn { left: 10px; }
+.next-btn { right: 10px; }
+
+.modal-thumbnails, .compact-thumbs {
+    display: flex;
+    gap: 10px;
+}
+
+.modal-thumbnails img, .compact-thumbs img {
     width: 60px;
     aspect-ratio: 3/4;
     object-fit: cover;
@@ -374,147 +524,379 @@ body {
     cursor: pointer;
 }
 
-.modal-thumbnails img.active-thumb {
-    border-color: #fff;
-}
+.modal-thumbnails img.active-thumb, .compact-thumbs img.active { border-color: #fff; }
 
-.modal-details-side {
+.modal-details-side, .compact-details {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 14px;
     width: 100%;
+    direction: ltr; /* التكست الإنجليزي يضبط جهة اليسار داخل الحاوية */
+    text-align: left;
 }
 
-.modal-product-title {
+.modal-product-title, .compact-title {
     font-family: 'Cinzel Decorative', serif;
-    font-size: 1.25rem;
+    font-size: 1.2rem;
     font-weight: 700;
     color: #fff;
-    line-height: 1.3;
 }
 
-.modal-product-price {
-    font-size: 1.2rem;
+.modal-product-price, .compact-price {
+    font-size: 1.1rem;
     font-weight: 900;
-    color: #fff;
+    color: var(--text-primary);
 }
 
 .size-section-title {
     font-size: 0.8rem;
     font-weight: 600;
     color: var(--text-muted);
-    margin-bottom: 4px;
 }
 
-.modal-sizes-select {
+.modal-sizes-select, .compact-sizes {
     display: flex;
     gap: 8px;
     flex-wrap: wrap;
 }
 
-.modal-sizes-select label {
-    cursor: pointer;
-}
+.modal-sizes-select label, .compact-sizes label { cursor: pointer; }
+.modal-sizes-select input, .compact-sizes input { display: none; }
 
-.modal-sizes-select input {
-    display: none;
-}
-
-.modal-sizes-select span {
+.modal-sizes-select span, .compact-sizes span {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-width: 45px;
-    height: 38px;
-    padding: 0 10px;
+    width: 42px;
+    height: 36px;
     background: var(--bg-card);
     border: 1px solid var(--border-dark);
     border-radius: 4px;
     font-weight: 700;
-    font-size: 0.85rem;
-    color: var(--text-primary);
-    transition: var(--transition-smooth);
+    font-size: 0.8rem;
+    color: #fff;
 }
 
-.modal-sizes-select input:checked + span {
+.modal-sizes-select input:checked + span, .compact-sizes input:checked + span {
     background: #fff;
     color: #000;
     border-color: #fff;
 }
 
-/* أزرار الطلب والشراء بستايل شوبيفاي المميز */
-.modal-action-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 10px;
+.size-guide-container {
+    background: var(--bg-card);
+    border: 1px solid var(--border-dark);
+    border-radius: 6px;
+    padding: 10px;
 }
 
-.modal-buy-now-btn {
+.size-guide-title {
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: #ddd;
+}
+
+.size-guide-table {
     width: 100%;
-    padding: 14px;
-    background: #ffffff;
-    color: #000000;
-    border-radius: 6px;
-    font-weight: 800;
-    font-size: 0.95rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    cursor: pointer;
-    border: none;
-    transition: var(--transition-smooth);
+    border-collapse: collapse;
+    font-size: 0.75rem;
     text-align: center;
 }
 
-.modal-buy-now-btn:hover {
-    background: var(--accent-red);
-    color: #fff;
+.size-guide-table th, .size-guide-table td {
+    padding: 5px;
+    border-bottom: 1px solid var(--border-dark);
+}
+.size-guide-table th { color: var(--text-muted); }
+.size-guide-table td { color: #ccc; }
+
+.modal-action-buttons, .compact-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 5px;
 }
 
-.modal-add-to-cart-btn {
+.modal-buy-now-btn, .modal-add-to-cart-btn, .checkout-btn, .submit-order-btn, .compact-btn {
     width: 100%;
-    padding: 14px;
-    background: var(--bg-card);
-    color: #fff;
-    border: 1px solid var(--border-dark);
-    border-radius: 6px;
+    padding: 12px;
+    border-radius: 4px;
     font-weight: 700;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     cursor: pointer;
+    border: none;
     transition: var(--transition-smooth);
+}
+
+.modal-buy-now-btn, .compact-btn.primary { background: #fff; color: #000; }
+.modal-buy-now-btn:hover, .compact-btn.primary:hover { background: var(--accent-red); color: #fff; }
+.modal-add-to-cart-btn, .compact-btn.secondary { background: var(--bg-card); color: #fff; border: 1px solid var(--border-dark); }
+.modal-add-to-cart-btn:hover, .compact-btn.secondary:hover { border-color: #fff; }
+
+/* ==========================================
+   7. FLOATING CART & SIDEBAR
+   ========================================== */
+.floating-controls-container {
+    position: fixed;
+    bottom: 20px; right: 20px;
+    z-index: 1500;
+}
+
+.floating-cart {
+    width: 48px; height: 48px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-dark);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.6);
+}
+
+.cart-svg-icon { width: 20px; height: 20px; fill: #fff; }
+
+.cart-count {
+    position: absolute;
+    top: -3px; right: -3px;
+    background: var(--accent-red);
+    color: #fff;
+    font-size: 0.65rem;
+    font-weight: 700;
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+}
+
+.cart-sidebar {
+    position: fixed;
+    top: 0; right: -100%;
+    width: 320px; max-width: 85%;
+    height: 100%;
+    background: var(--bg-surface);
+    border-left: 1px solid var(--border-dark);
+    z-index: 2500;
+    transition: var(--transition-smooth);
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-sidebar.active { right: 0; }
+
+.cart-header {
+    padding: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-dark);
+}
+
+.cart-header h3 { font-size: 1rem; font-weight: 700; }
+
+.cart-items {
+    padding: 18px;
+    flex-grow: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.empty-msg { color: var(--text-muted); text-align: center; margin-top: 30px; font-size: 0.85rem; }
+
+.cart-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border-dark);
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.cart-item h4 { font-size: 0.85rem; margin-bottom: 3px; }
+.cart-item p { font-size: 0.75rem; color: var(--text-muted); }
+
+.cart-footer {
+    padding: 18px;
+    border-top: 1px solid var(--border-dark);
+    background: var(--bg-card);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.cart-total-box {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.95rem;
+    font-weight: 700;
+}
+
+.checkout-btn { background: #fff; color: #000; }
+.checkout-btn:hover { background: var(--accent-red); color: #fff; }
+
+/* ==========================================
+   8. CHECKOUT & SMALL MODALS
+   ========================================== */
+.checkout-modal, .fabric-modal-content, .about-modal-content, .review-modal {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-dark);
+    padding: 20px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 450px;
+    position: relative;
+}
+
+.checkout-modal h3, .fabric-title, .about-title, .review-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+.form-group {
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.form-group label { font-size: 0.75rem; color: var(--text-muted); }
+
+.form-group input, .form-group textarea {
+    background: var(--bg-card);
+    border: 1px solid var(--border-dark);
+    padding: 9px;
+    border-radius: 4px;
+    color: var(--text-primary);
+    font-size: 0.85rem;
+    outline: none;
+}
+
+.form-actions { display: flex; gap: 8px; margin-top: 15px; }
+
+.cancel-btn {
+    background: var(--bg-card);
+    border: 1px solid var(--border-dark);
+    color: var(--text-primary);
+    padding: 10px 15px;
+    border-radius: 4px;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+.fabric-features { display: flex; flex-direction: column; gap: 10px; }
+
+.feature-item {
+    display: flex;
+    gap: 10px;
+    background: var(--bg-card);
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid var(--border-dark);
+}
+
+.feature-icon { font-size: 1.2rem; }
+.feature-item h4 { font-size: 0.85rem; margin-bottom: 2px; }
+.feature-item p { font-size: 0.75rem; color: var(--text-muted); line-height: 1.4; }
+
+.about-text-content { display: flex; flex-direction: column; gap: 10px; }
+.dark-quote { font-family: 'UnifrakturMaguntia', cursive; font-size: 1rem; color: #ccc; text-align: center; }
+.about-p { font-size: 0.8rem; color: #aaa; line-height: 1.5; }
+.dark-footer-quote { font-size: 0.7rem; letter-spacing: 1px; text-align: center; color: var(--accent-red); font-weight: 700; }
+
+.rating-stars { display: flex; gap: 6px; margin-bottom: 10px; font-size: 1.2rem; cursor: pointer; }
+.star { color: #444; }
+.star.selected { color: #ffcc00; }
+
+/* ==========================================
+   9. FOOTER
+   ========================================== */
+.mavin-footer {
+    background: var(--bg-surface);
+    border-top: 1px solid var(--border-dark);
+    padding: 30px 4% 20px;
+    margin-top: 50px;
+}
+
+.mavin-footer-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
     text-align: center;
 }
 
-.modal-add-to-cart-btn:hover {
-    border-color: #fff;
+.footer-nav-menu { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
+.footer-nav-menu a { color: var(--text-muted); text-decoration: none; font-size: 0.8rem; }
+
+.footer-socials-row { display: flex; gap: 12px; }
+.footer-socials-row a {
+    width: 32px; height: 32px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-dark);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; text-decoration: none;
+    font-size: 0.8rem;
+}
+
+.footer-copyright-row { font-size: 0.75rem; color: var(--text-muted); }
+.scroll-top-btn {
+    background: var(--bg-card); border: 1px solid var(--border-dark);
+    color: #fff; width: 32px; height: 32px; border-radius: 50%;
+    cursor: pointer; font-size: 0.8rem;
 }
 
 /* ==========================================
-   6. RESPONSIVE MOBILE FIXES (الضبط النهائي للموبايل)
+   10. RESPONSIVE GRID OVERRIDES (MOBILE FIXES)
    ========================================== */
-@media (max-width: 768px) {
-    /* إجبار منتجين جنب بعض بكل ثبات على الشاشات الصغيرة وبدون أي مساحة ميتة */
-    .products-grid {
+
+@media (max-width: 1024px) {
+    .products-grid, .shop-products-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+    }
+}
+
+/* حل مشكلة الموبايل بشكل قاطع ومباشر */
+@media (max-width: 600px) {
+    html {
+        font-size: 13px;
+    }
+
+    /* 1. إجبار 2 برودكت جنب بعض بكل ثبات بدون فراغ أسود */
+    .products-grid, .shop-products-grid {
         grid-template-columns: repeat(2, 1fr) !important;
-        gap: 10px !important;
-        padding: 0 5px;
+        gap: 8px !important;
+        width: 100% !important;
     }
 
     .collection-section {
-        padding: 20px 2%;
+        padding: 30px 2% 20px !important;
     }
 
-    /* تحويل نافذة الشراء لعمود واحد متناسق وسلس جداً في الموبايل */
-    .modal-body-layout {
+    /* 2. ضبط نافذة الشراء للموبايل لعدم تداخل العناصر */
+    .modal-body-layout, .compact-layout {
         grid-template-columns: 1fr !important;
-        padding: 15px;
-        gap: 15px;
+        padding: 15px !important;
+        gap: 15px !important;
+        direction: ltr !important;
     }
 
-    .product-modal-content {
-        max-height: 95vh;
-        margin: 10px;
+    .cinematic-title {
+        font-size: 1.8rem;
+    }
+
+    .navbar {
+        padding: 0 3%;
+    }
+
+    .nav-brand-text {
+        font-size: 1rem;
     }
 }
