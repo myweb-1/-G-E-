@@ -55,13 +55,11 @@ function closeFabricModalOutsideClick(e) {
 
 function switchFabricTab(type) {
     const compTab = document.getElementById('compressionTab');
-    const suitTab = document.getElementById('suitTab');
     const hoodiesTab = document.getElementById('hoodiesTab');
     const pantsTab = document.getElementById('pantsTab');
     const buttons = document.querySelectorAll('.fabric-tabs .tab-btn');
     
     if (compTab) compTab.style.display = 'none';
-    if (suitTab) suitTab.style.display = 'none';
     if (hoodiesTab) hoodiesTab.style.display = 'none';
     if (pantsTab) pantsTab.style.display = 'none';
     
@@ -73,27 +71,12 @@ function switchFabricTab(type) {
     if (type === 'compression' && compTab) {
         compTab.style.display = 'block';
         if (buttons[0]) { buttons[0].style.color = '#fff'; buttons[0].style.borderBottom = '2px solid #ff4444'; }
-    } else if (type === 'suit' && suitTab) {
-        suitTab.style.display = 'block';
-        if (buttons[1]) { buttons[1].style.color = '#fff'; buttons[1].style.borderBottom = '2px solid #ff4444'; }
     } else if (type === 'hoodies' && hoodiesTab) {
         hoodiesTab.style.display = 'block';
-        if (buttons[2]) { buttons[2].style.color = '#fff'; buttons[2].style.borderBottom = '2px solid #ff4444'; }
+        if (buttons[1]) { buttons[1].style.color = '#fff'; buttons[1].style.borderBottom = '2px solid #ff4444'; }
     } else if (type === 'pants' && pantsTab) {
         pantsTab.style.display = 'block';
-        if (buttons[3]) { buttons[3].style.color = '#fff'; buttons[3].style.borderBottom = '2px solid #ff4444'; }
-    }
-}
-
-function changeSuitImage(imgSrc, element) {
-    const mainImg = document.getElementById('suitMainImage');
-    if (mainImg) {
-        mainImg.src = imgSrc;
-    }
-    const thumbs = document.querySelectorAll('.suit-thumb');
-    thumbs.forEach(thumb => thumb.classList.remove('active'));
-    if (element) {
-        element.classList.add('active');
+        if (buttons[2]) { buttons[2].style.color = '#fff'; buttons[2].style.borderBottom = '2px solid #ff4444'; }
     }
 }
 
@@ -299,25 +282,4 @@ function closeCheckoutForm() {
 
 function closeCheckoutFormOnOutsideClick(e) { 
     if (e.target.id === 'checkoutOverlay') closeCheckoutForm(); 
-}
-let currentLookbookIndex = 0;
-
-function moveLookbook(direction) {
-    const track = document.getElementById('lookbookTrack');
-    const slides = document.querySelectorAll('.lookbook-slide');
-    if (!track || slides.length === 0) return;
-
-    const slideWidth = slides[0].getBoundingClientRect().width + 15; // عرض السلايد + الـ Gap
-    const visibleSlides = window.innerWidth <= 650 ? 2 : 3;
-    const maxIndex = slides.length - visibleSlides;
-
-    currentLookbookIndex += direction;
-
-    if (currentLookbookIndex < 0) {
-        currentLookbookIndex = 0;
-    } else if (currentLookbookIndex > maxIndex) {
-        currentLookbookIndex = maxIndex;
-    }
-
-    track.style.transform = `translateX(-${currentLookbookIndex * slideWidth}px)`;
 }
