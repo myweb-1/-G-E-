@@ -210,35 +210,141 @@
         </div>
     </section>
 
-    <!-- Modals -->
-    <div class="fabric-modal-overlay" id="fabricModal" onclick="closeFabricModalOnOutsideClick(event)">
-        <div class="fabric-modal-content">
-            <button class="close-fabric-btn" onclick="closeFabricModal()">✕</button>
-            <h3 class="fabric-title">🔥 Λ И G E Я Fabric Specs</h3>
-            <p class="fabric-subtitle">Compression t-shirts engineered for maximum performance:</p>
-            
-            <div class="fabric-features">
-                <div class="feature-item">
-                    <span class="feature-icon">🛡️</span>
-                    <div>
-                        <h4>High Compression & Flexibility</h4>
-                        <p>Provides optimal muscle pressure to improve circulation and reduce fatigue, featuring premium 4-way stretch mobility.</p>
-                    </div>
-                </div>
-                <div class="feature-item">
-                    <span class="feature-icon">💧</span>
-                    <div>
-                        <h4>Dry-Fit Sweat Wicking</h4>
-                        <p>Advanced moisture-wicking technology pulls sweat away from your skin, keeping you dry during intense workouts.</p>
-                    </div>
-                </div>
-                <div class="feature-item">
-                    <span class="feature-icon">🧵</span>
-                    <div>
-                        <h4>Flat-lock Stitching</h4>
-                        <p>Seamless flat seams completely eliminate skin chafing and friction, built to withstand heavy lifting.</p>
-                    </div>
-                </div>
+  <!-- Modals -->
+<div class="fabric-modal-overlay" id="fabricModal" onclick="closeFabricModalOutsideClick(event)">
+  <div class="fabric-modal-content">
+    <button class="close-fabric-btn" onclick="closeFabricModal()">X</button>
+    <h3 class="fabric-title">🔥 Λ И G E Я Fabric & Specs</h3>
+    
+    <!-- Tab Switcher -->
+    <div class="fabric-tabs" style="display: flex; gap: 10px; margin: 15px 0 20px 0; border-bottom: 2px solid #333; padding-bottom: 10px; overflow-x: auto;">
+      <button class="tab-btn active" onclick="switchFabricTab('compression')" style="background: none; border: none; color: #fff; font-weight: bold; cursor: pointer; padding: 5px 10px; border-bottom: 2px solid #ff4444; font-size: 14px; white-space: nowrap;">Compression</button>
+      <button class="tab-btn" onclick="switchFabricTab('hoodies')" style="background: none; border: none; color: #aaa; font-weight: bold; cursor: pointer; padding: 5px 10px; border-bottom: 2px solid transparent; font-size: 14px; white-space: nowrap;">Hoodies (ميلتون)</button>
+      <button class="tab-btn" onclick="switchFabricTab('pants')" style="background: none; border: none; color: #aaa; font-weight: bold; cursor: pointer; padding: 5px 10px; border-bottom: 2px solid transparent; font-size: 14px; white-space: nowrap;">Pants (البناطيل)</button>
+    </div>
+
+    <!-- Compression Content -->
+    <div id="compressionTab" class="fabric-tab-content">
+      <p class="fabric-subtitle">Compression t-shirts engineered for maximum performance:</p>
+      <div class="fabric-features">
+        <div class="feature-item">
+          <span class="feature-icon">🛡️</span>
+          <div>
+            <h4>High Compression & Flexibility</h4>
+            <p>Provides optimal muscle pressure to improve circulation and reduce fatigue, featuring premium 4-way stretch mobility.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">💧</span>
+          <div>
+            <h4>Dry-Fit Sweat Wicking</h4>
+            <p>Advanced moisture-wicking technology pulls sweat away from your skin, keeping you dry during intense workouts.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">🧵</span>
+          <div>
+            <h4>Flat-lock Stitching</h4>
+            <p>Seamless flat seams completely eliminate skin chafing and friction, built to withstand heavy lifting.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hoodies Content -->
+    <div id="hoodiesTab" class="fabric-tab-content" style="display: none;">
+      <p class="fabric-subtitle">Heavyweight Cotton Fleece Hoodies built for warmth & style:</p>
+      <div class="fabric-features">
+        <div class="feature-item">
+          <span class="feature-icon">🧥</span>
+          <div>
+            <h4>Heavyweight Cotton Fleece (ميلتون قطن)</h4>
+            <p>Premium heavy cotton fleece offering supreme thermal warmth, solid structure, and exceptional durability for daily wear and winter training.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">☁️</span>
+          <div>
+            <h4>Ultra-Soft Brushed Interior</h4>
+            <p>Plush brushed inner lining designed for maximum softness, comfort, and heat retention against the skin.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">🎨</span>
+          <div>
+            <h4>High-Density Rubber Printing (طباعة رابر)</h4>
+            <p>Durable tactile rubber print engineered with high-density finish to resist cracking, peeling, and fading wash after wash.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pants Content -->
+    <div id="pantsTab" class="fabric-tab-content" style="display: none;">
+      <p class="fabric-subtitle">Athletic & Casual Pants engineered for ultimate comfort:</p>
+      <div class="fabric-features">
+        <div class="feature-item">
+          <span class="feature-icon">👖</span>
+          <div>
+            <h4>Premium Cotton Melton / Stretch Fabric</h4>
+            <p>Designed with durable fabrics offering high flexibility, comfortable fit, and movement freedom during training or everyday use.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">⚙️</span>
+          <div>
+            <h4>Reinforced Stitching & Pockets</h4>
+            <p>Built with secure zip pockets and heavy-duty stitching to withstand heavy motion and secure your essentials.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">🎨</span>
+          <div>
+            <h4>High-Density Rubber Printing (طباعة رابر)</h4>
+            <p>Featuring premium rubber logos and details designed to maintain shape and high durability over long-term use.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  function switchFabricTab(type) {
+    const compTab = document.getElementById('compressionTab');
+    const hoodiesTab = document.getElementById('hoodiesTab');
+    const pantsTab = document.getElementById('pantsTab');
+    const buttons = document.querySelectorAll('.fabric-tabs .tab-btn');
+    
+    // Hide all tabs
+    compTab.style.display = 'none';
+    hoodiesTab.style.display = 'none';
+    pantsTab.style.display = 'none';
+    
+    // Reset all buttons style
+    buttons.forEach(btn => {
+      btn.style.color = '#aaa';
+      btn.style.borderBottom = '2px solid transparent';
+    });
+    
+    // Show selected tab & highlight button
+    if (type === 'compression') {
+      compTab.style.display = 'block';
+      buttons[0].style.color = '#fff';
+      buttons[0].style.borderBottom = '2px solid #ff4444';
+    } else if (type === 'hoodies') {
+      hoodiesTab.style.display = 'block';
+      buttons[1].style.color = '#fff';
+      buttons[1].style.borderBottom = '2px solid #ff4444';
+    } else if (type === 'pants') {
+      pantsTab.style.display = 'block';
+      buttons[2].style.color = '#fff';
+      buttons[2].style.borderBottom = '2px solid #ff4444';
+    }
+  }
+</script>
+                
             </div>
         </div>
     </div>
