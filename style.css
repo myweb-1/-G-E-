@@ -101,7 +101,60 @@ body {
 }
 
 /* ==========================================
-   2. MENU SIDEBAR
+   2. GLOBAL NAVBAR TICKER (شريط الصور تحت النافبار)
+   ========================================== */
+.global-navbar-ticker {
+    position: relative;
+    top: 55px;
+    width: 100%;
+    overflow: hidden;
+    background: #050505;
+    border-bottom: 1px solid #1a1a1a;
+    padding: 6px 0;
+    z-index: 999;
+}
+
+.hero-ticker-track {
+    display: flex;
+    gap: 8px;
+    width: max-content;
+    animation: smoothHeroTicker 35s linear infinite;
+}
+
+.global-navbar-ticker:hover .hero-ticker-track {
+    animation-play-state: paused;
+}
+
+.hero-ticker-slide {
+    width: 45px;
+    height: 60px;
+    flex-shrink: 0;
+    border-radius: 4px;
+    overflow: hidden;
+    border: none;
+    background: transparent;
+    opacity: 0.85;
+    transition: opacity 0.2s ease;
+}
+
+.hero-ticker-slide:hover {
+    opacity: 1;
+}
+
+.hero-ticker-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+@keyframes smoothHeroTicker {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* ==========================================
+   3. MENU SIDEBAR
    ========================================== */
 .menu-sidebar {
     position: fixed;
@@ -184,7 +237,7 @@ body {
 .call-btn { background-color: var(--bg-card); border: 1px solid var(--border-dark); color: var(--text-primary); }
 
 /* ==========================================
-   3. HERO SECTION & HERO MINI TICKER
+   4. HERO SECTION
    ========================================== */
 .hero-section {
     position: relative;
@@ -195,7 +248,8 @@ body {
     justify-content: center;
     text-align: center;
     padding: 0 15px;
-    margin-top: 55px;
+    margin-top: 55px; /* لمراعاة الـ Navbar */
+    padding-top: 25px;
     overflow: hidden;
 }
 
@@ -221,53 +275,7 @@ body {
 .hero-content {
     position: relative;
     z-index: 3;
-    max-width: 650px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-/* Hero Mini Infinite Ticker */
-.hero-ticker-wrapper {
-    width: 100%;
-    overflow: hidden;
-    position: relative;
-    margin-bottom: 15px;
-    background: transparent;
-    padding: 4px 0;
-}
-
-.hero-ticker-track {
-    display: flex;
-    gap: 10px;
-    width: max-content;
-    animation: smoothHeroTicker 35s linear infinite;
-}
-
-.hero-ticker-wrapper:hover .hero-ticker-track {
-    animation-play-state: paused;
-}
-
-.hero-ticker-slide {
-    width: 75px;
-    height: 100px;
-    flex-shrink: 0;
-    border-radius: 6px;
-    overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    background: #000;
-}
-
-.hero-ticker-slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-@keyframes smoothHeroTicker {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+    max-width: 600px;
 }
 
 .hero-badge {
@@ -275,7 +283,7 @@ body {
     letter-spacing: 3px;
     color: var(--text-muted);
     text-transform: uppercase;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
 }
 
 .cinematic-title {
@@ -283,7 +291,7 @@ body {
     font-size: clamp(2rem, 5vw, 3.5rem);
     font-weight: 900;
     letter-spacing: 4px;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
     color: #fff;
 }
 
@@ -291,14 +299,14 @@ body {
     font-family: 'UnifrakturMaguntia', cursive;
     font-size: 1.3rem;
     color: #aaa;
-    margin-bottom: 12px;
+    margin-bottom: 15px;
 }
 
 .cinematic-subtitle {
     font-size: 0.9rem;
     color: #ccc;
     line-height: 1.5;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 .hero-cta-btn {
@@ -321,7 +329,7 @@ body {
 }
 
 /* ==========================================
-   4. MARQUEE BAR
+   5. MARQUEE BAR
    ========================================== */
 .marquee-bar {
     background: var(--bg-surface);
@@ -347,7 +355,7 @@ body {
 }
 
 /* ==========================================
-   5. COLLECTIONS & PRODUCTS GRID
+   6. COLLECTIONS & PRODUCTS GRID
    ========================================== */
 .collection-section {
     padding: 40px 4% 30px;
@@ -452,7 +460,7 @@ body {
 }
 
 /* ==========================================
-   6. INFINITE MOVING IMAGE TICKER (LOOKBOOK)
+   7. LOOKBOOK TICKER SECTION
    ========================================== */
 .lookbook-ticker-section {
     padding: 30px 0;
@@ -524,7 +532,7 @@ body {
 }
 
 /* ==========================================
-   7. RESTOCKING STYLES & BADGES
+   8. RESTOCKING STYLES & BADGES
    ========================================== */
 .restocking-badge,
 .Restok-ing-badge,
@@ -547,7 +555,7 @@ body {
 }
 
 /* ==========================================
-   8. MODALS & OVERLAYS
+   9. MODALS & OVERLAYS
    ========================================== */
 .product-modal-overlay, .fabric-modal-overlay, .about-modal-overlay, .review-overlay, .checkout-overlay {
     position: fixed;
@@ -774,7 +782,7 @@ body {
 .modal-add-to-cart-btn:hover { border-color: #fff; }
 
 /* ==========================================
-   9. FLOATING CART & SIDEBAR
+   10. FLOATING CART & SIDEBAR
    ========================================== */
 .floating-controls-container {
     position: fixed;
@@ -873,7 +881,7 @@ body {
 .checkout-btn:hover { background: var(--accent-red); color: #fff; }
 
 /* ==========================================
-   10. CHECKOUT & FABRIC MODAL DETAILS
+   11. CHECKOUT & FABRIC MODAL DETAILS
    ========================================== */
 .checkout-modal, .fabric-modal-content, .about-modal-content, .review-modal {
     background: var(--bg-surface);
@@ -949,7 +957,7 @@ body {
 .star.selected { color: #ffcc00; }
 
 /* ==========================================
-   11. FOOTER
+   12. FOOTER
    ========================================== */
 .mavin-footer {
     background: var(--bg-surface);
@@ -990,7 +998,7 @@ body {
 }
 
 /* ==========================================
-   12. RESPONSIVE MEDIA QUERIES (MOBILE)
+   13. RESPONSIVE MEDIA QUERIES (MOBILE)
    ========================================== */
 @media (max-width: 992px) {
     .products-grid, .shop-products-grid {
@@ -1021,8 +1029,8 @@ body {
     .nav-brand-text { font-size: 1rem; }
 
     .hero-ticker-slide {
-        width: 60px;
-        height: 80px;
+        width: 38px;
+        height: 50px;
     }
 
     .ticker-slide {
