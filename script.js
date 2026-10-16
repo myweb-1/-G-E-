@@ -28,38 +28,96 @@ function toggleMenu() {
     document.getElementById('menuSidebar').classList.toggle('active');
 }
 
-function openFabricModal(e) {
-    e.preventDefault();
+function openFabricModal(e, tabType = 'compression') {
+    if (e && e.preventDefault) e.preventDefault();
     const sidebar = document.getElementById('menuSidebar');
-    if (sidebar.classList.contains('active')) toggleMenu();
-    document.getElementById('fabricModal').classList.add('active');
-    document.body.style.overflow = 'hidden';
+    if (sidebar && sidebar.classList.contains('active')) toggleMenu();
+    
+    const modal = document.getElementById('fabricModal');
+    if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        switchFabricTab(tabType);
+    }
 }
 
 function closeFabricModal() { 
-    document.getElementById('fabricModal').classList.remove('active'); 
-    document.body.style.overflow = ''; 
+    const modal = document.getElementById('fabricModal');
+    if (modal) {
+        modal.classList.remove('active'); 
+        document.body.style.overflow = ''; 
+    }
 }
 
-function closeFabricModalOnOutsideClick(e) { 
-    if(e.target.id === 'fabricModal') closeFabricModal(); 
+function closeFabricModalOutsideClick(e) { 
+    if (e.target.id === 'fabricModal') closeFabricModal(); 
+}
+
+function switchFabricTab(type) {
+    const compTab = document.getElementById('compressionTab');
+    const suitTab = document.getElementById('suitTab');
+    const hoodiesTab = document.getElementById('hoodiesTab');
+    const pantsTab = document.getElementById('pantsTab');
+    const buttons = document.querySelectorAll('.fabric-tabs .tab-btn');
+    
+    if (compTab) compTab.style.display = 'none';
+    if (suitTab) suitTab.style.display = 'none';
+    if (hoodiesTab) hoodiesTab.style.display = 'none';
+    if (pantsTab) pantsTab.style.display = 'none';
+    
+    buttons.forEach(btn => {
+        btn.style.color = '#aaa';
+        btn.style.borderBottom = '2px solid transparent';
+    });
+    
+    if (type === 'compression' && compTab) {
+        compTab.style.display = 'block';
+        if (buttons[0]) { buttons[0].style.color = '#fff'; buttons[0].style.borderBottom = '2px solid #ff4444'; }
+    } else if (type === 'suit' && suitTab) {
+        suitTab.style.display = 'block';
+        if (buttons[1]) { buttons[1].style.color = '#fff'; buttons[1].style.borderBottom = '2px solid #ff4444'; }
+    } else if (type === 'hoodies' && hoodiesTab) {
+        hoodiesTab.style.display = 'block';
+        if (buttons[2]) { buttons[2].style.color = '#fff'; buttons[2].style.borderBottom = '2px solid #ff4444'; }
+    } else if (type === 'pants' && pantsTab) {
+        pantsTab.style.display = 'block';
+        if (buttons[3]) { buttons[3].style.color = '#fff'; buttons[3].style.borderBottom = '2px solid #ff4444'; }
+    }
+}
+
+function changeSuitImage(imgSrc, element) {
+    const mainImg = document.getElementById('suitMainImage');
+    if (mainImg) {
+        mainImg.src = imgSrc;
+    }
+    const thumbs = document.querySelectorAll('.suit-thumb');
+    thumbs.forEach(thumb => thumb.classList.remove('active'));
+    if (element) {
+        element.classList.add('active');
+    }
 }
 
 function openAboutModal(e) { 
     e.preventDefault(); 
     const sidebar = document.getElementById('menuSidebar'); 
-    if (sidebar.classList.contains('active')) toggleMenu(); 
-    document.getElementById('aboutModal').classList.add('active'); 
-    document.body.style.overflow = 'hidden'; 
+    if (sidebar && sidebar.classList.contains('active')) toggleMenu(); 
+    const modal = document.getElementById('aboutModal');
+    if (modal) {
+        modal.classList.add('active'); 
+        document.body.style.overflow = 'hidden'; 
+    }
 }
 
 function closeAboutModal() { 
-    document.getElementById('aboutModal').classList.remove('active'); 
-    document.body.style.overflow = ''; 
+    const modal = document.getElementById('aboutModal');
+    if (modal) {
+        modal.classList.remove('active'); 
+        document.body.style.overflow = ''; 
+    }
 }
 
 function closeAboutModalOnOutsideClick(e) { 
-    if(e.target.id === 'aboutModal') closeAboutModal(); 
+    if (e.target.id === 'aboutModal') closeAboutModal(); 
 }
 
 function openReviewModalFromFooter(e) { 
@@ -68,7 +126,7 @@ function openReviewModalFromFooter(e) {
 }
 
 function closeReviewModalOnOutsideClick(e) { 
-    if(e.target.id === 'reviewOverlay') closeReviewAndReset(); 
+    if (e.target.id === 'reviewOverlay') closeReviewAndReset(); 
 }
 
 function closeReviewAndReset() { 
@@ -94,7 +152,7 @@ function initStars() {
 function submitReview() {
     const name = document.getElementById('reviewerName').value;
     const text = document.getElementById('reviewText').value;
-    if(!name || !text || selectedRating === 0) {
+    if (!name || !text || selectedRating === 0) {
         alert("من فضلك املأ جميع الحقول واقترح تقييماً بالنجوم.");
         return;
     }
@@ -113,7 +171,6 @@ function scrollToTop() {
 function openProductModal(event, id, name, price, img1, img2) {
     const card = event.currentTarget;
     
-    // منع الطلب إذا كان المنتج sold-out أو Restock-ing
     if (card && (card.classList.contains('sold-out') || card.classList.contains('Restock-ing'))) {
         alert("عذراً، هذا المنتج غير متاح حالياً (RESTOCKING) ولا يمكن طلبه في الوقت الحالي.");
         return;
@@ -141,7 +198,7 @@ function setModalImage(src, index) {
     currentImageIndex = index;
     document.getElementById('modalMainImage').src = src;
     document.querySelectorAll('.modal-thumbnails img').forEach((img, idx) => {
-        if(idx === index) img.classList.add('active-thumb');
+        if (idx === index) img.classList.add('active-thumb');
         else img.classList.remove('active-thumb');
     });
 }
@@ -159,7 +216,7 @@ function updateCartUI() {
     count.innerText = cart.length;
     let total = 0;
     
-    if(cart.length === 0) {
+    if (cart.length === 0) {
         cartItems.innerHTML = '<p class="empty-msg">Your cart is empty</p>';
     } else {
         cartItems.innerHTML = cart.map(i => {
