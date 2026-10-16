@@ -300,3 +300,24 @@ function closeCheckoutForm() {
 function closeCheckoutFormOnOutsideClick(e) { 
     if (e.target.id === 'checkoutOverlay') closeCheckoutForm(); 
 }
+let currentLookbookIndex = 0;
+
+function moveLookbook(direction) {
+    const track = document.getElementById('lookbookTrack');
+    const slides = document.querySelectorAll('.lookbook-slide');
+    if (!track || slides.length === 0) return;
+
+    const slideWidth = slides[0].getBoundingClientRect().width + 15; // عرض السلايد + الـ Gap
+    const visibleSlides = window.innerWidth <= 650 ? 2 : 3;
+    const maxIndex = slides.length - visibleSlides;
+
+    currentLookbookIndex += direction;
+
+    if (currentLookbookIndex < 0) {
+        currentLookbookIndex = 0;
+    } else if (currentLookbookIndex > maxIndex) {
+        currentLookbookIndex = maxIndex;
+    }
+
+    track.style.transform = `translateX(-${currentLookbookIndex * slideWidth}px)`;
+}
