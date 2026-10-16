@@ -1086,3 +1086,107 @@ body {
         font-size: 1rem;
     }
 }
+/* Shopify-Style Compact Lookbook Carousel */
+.lookbook-carousel-section {
+    padding: 35px 20px;
+    background-color: #070707;
+    border-top: 1px solid #1a1a1a;
+    border-bottom: 1px solid #1a1a1a;
+}
+
+.lookbook-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.lookbook-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.lookbook-header h2 {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1.3rem;
+    letter-spacing: 2px;
+    color: #ffffff;
+    margin-bottom: 4px;
+}
+
+.lookbook-header p {
+    color: #666;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.lookbook-slider-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.lookbook-track-container {
+    width: 100%;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.lookbook-track {
+    display: flex;
+    gap: 15px;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.lookbook-slide {
+    flex: 0 0 calc(33.333% - 10px); /* يظهر 3 صور مصغرة جنباً إلى جنب في الشاشات الكبيرة */
+    max-width: calc(33.333% - 10px);
+    aspect-ratio: 4 / 5; /* نسبة أبعاد عمودية احترافية للملابس */
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid #222;
+    background: #111;
+}
+
+.lookbook-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.lookbook-slide:hover img {
+    transform: scale(1.03);
+}
+
+/* Slider Controls */
+.slider-btn {
+    background: rgba(15, 15, 15, 0.8);
+    border: 1px solid #333;
+    color: #fff;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+    transition: all 0.2s ease;
+    z-index: 2;
+}
+
+.slider-btn:hover {
+    background: #ff4444;
+    border-color: #ff4444;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 650px) {
+    .lookbook-slide {
+        flex: 0 0 calc(50% - 8px); /* يظهر صورتين مصغرتين فقط على الموبايل */
+        max-width: calc(50% - 8px);
+    }
+}
