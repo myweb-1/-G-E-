@@ -154,8 +154,14 @@ function scrollToTop() {
 function openProductModal(event, id, name, price, img1, img2) {
     const card = event.currentTarget;
     
-    if (card && (card.classList.contains('sold-out') || card.classList.contains('Restock-ing'))) {
-        alert("عذراً، هذا المنتج غير متاح حالياً (RESTOCKING) ولا يمكن طلبه في الوقت الحالي.");
+    // فحص شامل لتعطيل منتجات الـ Sold Out والـ Restocking بكل حالات الحروف
+    if (card && (
+        card.classList.contains('sold-out') || 
+        card.classList.contains('Sold-Out') || 
+        card.classList.contains('Restock-ing') || 
+        card.classList.contains('restocking')
+    )) {
+        alert("عذراً، هذا المنتج غير متاح حالياً ولا يمكن طلبه في الوقت الحالي.");
         return;
     }
 
