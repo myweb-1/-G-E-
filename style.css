@@ -1038,3 +1038,84 @@ body {
         height: 160px;
     }
 }
+/* ==========================================
+   FIX: PRODUCT CARD UNIFORM SIZE & BADGES
+   ========================================== */
+
+/* 1. تثبيت أبعاد الكارت وصندوق الصور لمنع التمدد بالطول أو العرض */
+.product-card {
+    position: relative !important;
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100% !important;
+    background: var(--bg-card);
+    border: 1px solid var(--border-dark);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.product-img-box {
+    position: relative !important;
+    width: 100% !important;
+    aspect-ratio: 1 / 1 !important; /* إجبار الصورة على أن تكون مربعة تماماً */
+    max-height: 280px !important;
+    overflow: hidden !important;
+    background: #000 !important;
+}
+
+.product-img-box img {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important; /* ملء المربع بدون أي تشوه أو مط للأبعاد */
+}
+
+.product-details {
+    flex-grow: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+}
+
+/* 2. تنسيق شارة SOLD OUT (باللون الأحمر المتوهج) */
+.sold-out-badge, .product-card.sold-out .sold-out-badge {
+    position: absolute !important;
+    top: 10px !important;
+    right: 10px !important;
+    background-color: #ff1a1a !important;
+    color: #ffffff !important;
+    font-size: 0.65rem !important;
+    font-weight: 800 !important;
+    padding: 4px 9px !important;
+    border-radius: 4px !important;
+    letter-spacing: 1px !important;
+    z-index: 99 !important;
+    box-shadow: 0 0 12px rgba(255, 0, 0, 0.8) !important;
+    text-transform: uppercase !important;
+    pointer-events: none !important;
+}
+
+/* 3. تنسيق شارة RESTOCKING (باللون البرتقالي المميز) */
+.restocking-badge, .Restock-ing-badge, .product-card.Restock-ing .Restock-ing-badge {
+    position: absolute !important;
+    top: 10px !important;
+    right: 10px !important;
+    background-color: #ff8c00 !important;
+    color: #ffffff !important;
+    font-size: 0.65rem !important;
+    font-weight: 800 !important;
+    padding: 4px 9px !important;
+    border-radius: 4px !important;
+    letter-spacing: 1px !important;
+    z-index: 99 !important;
+    box-shadow: 0 0 12px rgba(255, 140, 0, 0.8) !important;
+    text-transform: uppercase !important;
+    pointer-events: none !important;
+}
+
+/* تعتيم خفيف وإلغاء تفاعل الكروت غير المتاحة لضمان عدم طلبها */
+.product-card.sold-out, .product-card.Restock-ing {
+    opacity: 0.85;
+}
