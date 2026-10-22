@@ -248,7 +248,7 @@ body {
     justify-content: center;
     text-align: center;
     padding: 0 15px;
-    margin-top: 55px; /* لمراعاة الـ Navbar */
+    margin-top: 55px;
     padding-top: 25px;
     overflow: hidden;
 }
@@ -1038,11 +1038,10 @@ body {
         height: 160px;
     }
 }
+
 /* ==========================================
    FIX: PRODUCT CARD UNIFORM SIZE & BADGES
    ========================================== */
-
-/* 1. تثبيت أبعاد الكارت وصندوق الصور لمنع التمدد بالطول أو العرض */
 .product-card {
     position: relative !important;
     display: flex !important;
@@ -1057,7 +1056,7 @@ body {
 .product-img-box {
     position: relative !important;
     width: 100% !important;
-    aspect-ratio: 1 / 1 !important; /* إجبار الصورة على أن تكون مربعة تماماً */
+    aspect-ratio: 1 / 1 !important;
     max-height: 280px !important;
     overflow: hidden !important;
     background: #000 !important;
@@ -1069,7 +1068,7 @@ body {
     left: 0 !important;
     width: 100% !important;
     height: 100% !important;
-    object-fit: cover !important; /* ملء المربع بدون أي تشوه أو مط للأبعاد */
+    object-fit: cover !important;
 }
 
 .product-details {
@@ -1079,7 +1078,6 @@ body {
     justify-content: space-between !important;
 }
 
-/* 2. تنسيق شارة SOLD OUT (باللون الأحمر المتوهج) */
 .sold-out-badge, .product-card.sold-out .sold-out-badge {
     position: absolute !important;
     top: 10px !important;
@@ -1097,7 +1095,6 @@ body {
     pointer-events: none !important;
 }
 
-/* 3. تنسيق شارة RESTOCKING (باللون البرتقالي المميز) */
 .restocking-badge, .Restock-ing-badge, .product-card.Restock-ing .Restock-ing-badge {
     position: absolute !important;
     top: 10px !important;
@@ -1115,7 +1112,93 @@ body {
     pointer-events: none !important;
 }
 
-/* تعتيم خفيف وإلغاء تفاعل الكروت غير المتاحة لضمان عدم طلبها */
 .product-card.sold-out, .product-card.Restock-ing {
     opacity: 0.85;
+}
+
+/* ==========================================
+   BUNDLE OPTIONS STYLES
+   ========================================== */
+.bundle-section-title {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #fff;
+    margin-top: 5px;
+}
+
+.bundle-options-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.bundle-card {
+    position: relative;
+    background: var(--bg-card);
+    border: 1px solid var(--border-dark);
+    border-radius: 6px;
+    padding: 12px;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    display: flex;
+    align-items: center;
+}
+
+.bundle-card input {
+    display: none;
+}
+
+.bundle-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.bundle-title {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #ddd;
+}
+
+.bundle-price {
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: #fff;
+}
+
+.bundle-price del {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-left: 5px;
+}
+
+.bundle-card.active {
+    border-color: #ff4444;
+    background: rgba(139, 0, 0, 0.15);
+    box-shadow: 0 0 10px rgba(255, 68, 68, 0.2);
+}
+
+.bundle-card.offer-card {
+    border-color: #ff8c00;
+}
+
+.bundle-card.offer-card.active {
+    border-color: #ff8c00;
+    background: rgba(255, 140, 0, 0.15);
+    box-shadow: 0 0 12px rgba(255, 140, 0, 0.3);
+}
+
+.bundle-badge {
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    background: #ff8c00;
+    color: #000;
+    font-size: 0.6rem;
+    font-weight: 900;
+    padding: 2px 6px;
+    border-radius: 3px;
+    letter-spacing: 0.5px;
 }
