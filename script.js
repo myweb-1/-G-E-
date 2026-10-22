@@ -5,6 +5,7 @@ let currentModalProductPrice = 0;
 let modalImagesArray = [];
 let currentImageIndex = 0;
 let selectedRating = 0;
+let selectedBundleType = 'single'; // متغير لتتبع خيار العرض المختار
 
 document.addEventListener("DOMContentLoaded", () => {
     initStars();
@@ -151,6 +152,22 @@ function scrollToTop() {
     window.scrollTo({ top: 0, behavior: 'smooth' }); 
 }
 
+// دالة لتغيير الباقة السعرية داخل النافذة
+function selectBundle(type, price) {
+    selectedBundleType = type;
+    currentModalProductPrice = price;
+    
+    document.querySelectorAll('.bundle-card').forEach(card => card.classList.remove('active'));
+    if (event && event.currentTarget) {
+        event.currentTarget.classList.add('active');
+    }
+    
+    const priceDisplay = document.getElementById('modalProductPrice');
+    if (priceDisplay) {
+        priceDisplay.innerText = price + " EGP";
+    }
+}
+
 function openProductModal(event, id, name, price, img1, img2) {
     const card = event.currentTarget;
     
@@ -166,8 +183,32 @@ function openProductModal(event, id, name, price, img1, img2) {
     }
 
     currentModalProductId = id;
-    currentModalProductName = name;
+    
+    // إعادة تعيين العرض الافتراضي لقطعة واحدة عند فتح أي منتج
+    selectedBundleType = 'single';
     currentModalProductPrice = price;
+
+    const defaultBundleInput = document.querySelector('input[value="single"]');
+    if (defaultBundleInput) defaultBundleInput.checked = true;
+    
+    document.querySelectorAll('.bundle-card').forEach((c, idx) => {
+        if (idx === 0) c.classList.add('active');
+        else c.classList.remove('active');
+    });
+
+    // إظهار خيارات العروض فقط إذا كان المنتج بنطال (Pants / Baggy)
+    const bundleSection = document.querySelector('.bundle-options-container');
+    const bundleTitle = document.querySelector('.bundle-section-title');
+    
+    if (name.toLowerCase().includes('pants') || name.toLowerCase().includes('baggy')) {
+        if (bundleSection) bundleSection.style.display = 'flex';
+        if (bundleTitle) bundleTitle.style.display = 'block';
+    } else {
+        if (bundleSection) bundleSection.style.display = 'none';
+        if (bundleTitle) bundleTitle.style.display = 'none';
+    }
+
+    currentModalProductName = name;
     modalImagesArray = [img1, img2];
     currentImageIndex = 0;
 
@@ -258,7 +299,13 @@ function sendOrder(event) {
 function addFromModalToCart() {
     const sizeInput = document.querySelector('input[name="modal-size"]:checked');
     if (!sizeInput) { alert("من فضلك اختر المقاس"); return; }
-    cart.push({ id: currentModalProductId, name: currentModalProductName, price: currentModalProductPrice, size: sizeInput.value, qty: 1 });
+    
+    let finalName = currentModalProductName;
+    if (selectedBundleType === 'bundle3') {
+        finalName += " (BUY 2 GET 1 FREE Pack)";
+    }
+
+    cart.push({ id: currentModalProductId, name: finalName, price: currentModalProductPrice, size: sizeInput.value, qty: 1 });
     updateCartUI();
     closeProductModal();
     toggleCart();
@@ -267,7 +314,13 @@ function addFromModalToCart() {
 function buyItNowFromModal() {
     const sizeInput = document.querySelector('input[name="modal-size"]:checked');
     if (!sizeInput) { alert("من فضلك اختر المقاس"); return; }
-    cart = [{ id: currentModalProductId, name: currentModalProductName, price: currentModalProductPrice, size: sizeInput.value, qty: 1 }];
+    
+    let finalName = currentModalProductName;
+    if (selectedBundleType === 'bundle3') {
+        finalName += " (BUY 2 GET 1 FREE Pack)";
+    }
+
+    cart = [{ id: currentModalProductId, name: finalName, price: currentModalProductPrice, size: sizeInput.value, qty: 1 }];
     updateCartUI();
     closeProductModal();
     openCheckoutForm();
