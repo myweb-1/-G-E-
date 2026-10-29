@@ -5,9 +5,8 @@ let currentModalProductPrice = 0;
 let modalImagesArray = [];
 let currentImageIndex = 0;
 let selectedRating = 0;
-let selectedBundleType = 'single'; // متغير لتتبع خيار العرض المختار
+let selectedBundleType = 'single';
 
-// بيانات تليجرام البوت الخاص بك
 const BOT_TOKEN = "9259879377:AAG01WR9kKSD5XUKLvAUgm2QmiXJmqJrtzg"; 
 const CHAT_ID = "8997470767";
 
@@ -156,7 +155,6 @@ function scrollToTop() {
     window.scrollTo({ top: 0, behavior: 'smooth' }); 
 }
 
-// دالة لتغيير الباقة السعرية داخل النافذة
 function selectBundle(type, price) {
     selectedBundleType = type;
     currentModalProductPrice = price;
@@ -270,12 +268,11 @@ function openCheckoutForm() {
     document.getElementById('checkoutOverlay').classList.add('active');
 }
 
-// دالة إرسال الطلب المحدثة لتلتقط بيانات الـ HTML الصحيحة
+// دالة إرسال الطلب بعد التعديل لتجنب أخطاء تليجرام وإظهار البيانات بوضوح تام
 function sendOrder(event) {
     event.preventDefault();
     const form = document.getElementById('orderForm');
     
-    // التقاط البيانات مباشرة باستخدام الـ IDs الصحيحة الموجودة في الـ HTML الخاص بك
     const clientName = document.getElementById('clientName').value || "غير محدد";
     const clientPhone1 = document.getElementById('clientPhone1').value || "غير محدد";
     const clientPhone2 = document.getElementById('clientPhone2').value || "لا يوجد";
@@ -284,40 +281,38 @@ function sendOrder(event) {
     const productsCost = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
     const totalWithShipping = productsCost + 80;
     
-    let itemsDetails = cart.map(i => `• ${i.name} (مقاس: ${i.size}) - السعر: ${i.price} EGP`).join('\n');
+    let itemsDetails = cart.map(i => `- ${i.name} (مقاس: ${i.size}) | السعر: ${i.price} EGP`).join('\n');
     
     document.getElementById('orderedProductsDetails').value = cart.map(i => `${i.name} (${i.size})`).join(', ') + ` | الإجمالي شامل الشحن: ${totalWithShipping} EGP`;
 
-    // تنسيق الرسالة لتصلك على تليجرام بالتفاصيل الكاملة
-    const telegramMessage = `
-🛍️ **أوردر جديد لبراند الملابس!**
--------------------------------
-👤 **الاسم:** ${clientName}
-📱 **رقم الموبايل الأساسي:** ${clientPhone1}
-📞 **رقم الموبايل البديل:** ${clientPhone2}
-📍 **العنوان:** ${clientAddress}
--------------------------------
-🛒 **المنتجات:**
+    // رسالة نصية عادية بدون Markdown معقد لضمان ظهور كل البيانات بدون استثناء
+    const telegramMessage = 
+`أوردر جديد لبراند الملابس!
+-----------------------
+الاسم: ${clientName}
+الموبايل الأساسي: ${clientPhone1}
+الموبايل البديل: ${clientPhone2}
+العنوان: ${clientAddress}
+-----------------------
+المنتجات:
 ${itemsDetails}
--------------------------------
-💰 **إجمالي المنتجات:** ${productsCost} EGP
-🚚 **الشحن:** 80 EGP
-💵 **المبلغ الإجمالي:** ${totalWithShipping} EGP
-⏰ **الوقت:** ${new Date().toLocaleString('ar-EG')}
-  `;
+-----------------------
+إجمالي المنتجات: ${productsCost} EGP
+الشحن: 80 EGP
+المبلغ الإجمالي: ${totalWithShipping} EGP
+الوقت: ${new Date().toLocaleString('ar-EG')}`;
 
-    // إرسال الإشعار لـ Telegram Bot في الخلفية
+    // إرسال الإشعار لـ Telegram Bot (بدون parse_mode لتجنب أي تعارض)
     fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
             chat_id: CHAT_ID,
-            text: telegramMessage,
-            parse_mode: 'Markdown'
+            text: telegramMessage
         })
     }).catch(err => console.log("Telegram Error:", err));
 
-    // إرسال الطلب بالطريقة الاعتيادية للفورم (Formspree)
+    // إرسال الطلب لـ Formspree
     fetch(form.action, {
         method: 'POST',
         body: new FormData(form),
