@@ -175,7 +175,6 @@ function selectBundle(type, price) {
 function openProductModal(event, id, name, price, img1, img2) {
     const card = event.currentTarget;
     
-    // فحص شامل لتعطيل منتجات الـ Sold Out والـ Restocking بكل حالات الحروف
     if (card && (
         card.classList.contains('sold-out') || 
         card.classList.contains('Sold-Out') || 
@@ -187,8 +186,6 @@ function openProductModal(event, id, name, price, img1, img2) {
     }
 
     currentModalProductId = id;
-    
-    // إعادة تعيين العرض الافتراضي لقطعة واحدة عند فتح أي منتج
     selectedBundleType = 'single';
     currentModalProductPrice = price;
 
@@ -200,7 +197,6 @@ function openProductModal(event, id, name, price, img1, img2) {
         else c.classList.remove('active');
     });
 
-    // إظهار خيارات العروض فقط إذا كان المنتج بنطال (Pants / Baggy)
     const bundleSection = document.querySelector('.bundle-options-container');
     const bundleTitle = document.querySelector('.bundle-section-title');
     
@@ -274,16 +270,16 @@ function openCheckoutForm() {
     document.getElementById('checkoutOverlay').classList.add('active');
 }
 
-// تعديل دالة إرسال الطلب لترسل البيانات إلى تليجرام وإلى الفورم معاً
+// دالة إرسال الطلب المحدثة لتلتقط بيانات الـ HTML الصحيحة
 function sendOrder(event) {
     event.preventDefault();
     const form = document.getElementById('orderForm');
     
-    // جمع بيانات العميل من فورم الـ Checkout
-    const formData = new FormData(form);
-    const clientName = formData.get('name') || formData.get('customerName') || "غير محدد";
-    const clientPhone = formData.get('phone') || formData.get('customerPhone') || "غير محدد";
-    const clientAddress = formData.get('address') || formData.get('customerAddress') || "غير محدد";
+    // التقاط البيانات مباشرة باستخدام الـ IDs الصحيحة الموجودة في الـ HTML الخاص بك
+    const clientName = document.getElementById('clientName').value || "غير محدد";
+    const clientPhone1 = document.getElementById('clientPhone1').value || "غير محدد";
+    const clientPhone2 = document.getElementById('clientPhone2').value || "لا يوجد";
+    const clientAddress = document.getElementById('clientAddress').value || "غير محدد";
 
     const productsCost = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
     const totalWithShipping = productsCost + 80;
@@ -292,12 +288,13 @@ function sendOrder(event) {
     
     document.getElementById('orderedProductsDetails').value = cart.map(i => `${i.name} (${i.size})`).join(', ') + ` | الإجمالي شامل الشحن: ${totalWithShipping} EGP`;
 
-    // تنسيق الرسالة التي ستصلك على تليجرام
+    // تنسيق الرسالة لتصلك على تليجرام بالتفاصيل الكاملة
     const telegramMessage = `
 🛍️ **أوردر جديد لبراند الملابس!**
 -------------------------------
 👤 **الاسم:** ${clientName}
-📱 **الموبايل:** ${clientPhone}
+📱 **رقم الموبايل الأساسي:** ${clientPhone1}
+📞 **رقم الموبايل البديل:** ${clientPhone2}
 📍 **العنوان:** ${clientAddress}
 -------------------------------
 🛒 **المنتجات:**
@@ -320,7 +317,7 @@ ${itemsDetails}
         })
     }).catch(err => console.log("Telegram Error:", err));
 
-    // إرسال الطلب بالطريقة الاعتيادية للفورم (مثل Formspree أو Netlify)
+    // إرسال الطلب بالطريقة الاعتيادية للفورم (Formspree)
     fetch(form.action, {
         method: 'POST',
         body: new FormData(form),
