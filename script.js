@@ -270,30 +270,65 @@ function openCheckoutForm() {
     document.getElementById('checkoutOverlay').classList.add('active');
 }
 
+// دالة إرسال الطلب مباشرة عبر الواتساب مع تضمين تفاصيل العميل والمنتجات ورابط الصورة
 function sendOrder(event) {
     event.preventDefault();
-    const form = document.getElementById('orderForm');
-    const productsCost = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
-    let itemsDetails = cart.map(i => `${i.name} (${i.size})`).join(', ');
     
-    document.getElementById('orderedProductsDetails').value = itemsDetails + ` | الإجمالي شامل الشحن: ${productsCost + 80} EGP`;
+    const name = document.getElementById('name') ? document.getElementById('name').value : '';
+    const phone = document.getElementById('phone') ? document.getElementById('phone').value : '';
+    const address = document.getElementById('address') ? document.getElementById('address').value : '';
+    const notes = document.getElementById('notes') ? document.getElementById('notes').value : 'لا توجد ملاحظات';
 
-    fetch(form.action, {
-        method: 'POST',
-        body: new FormData(form),
-        headers: { 'Accept': 'application/json' }
-    })
-    .then(response => {
-        if (response.ok) {
-            alert("تم إرسال الطلب بنجاح!");
-            cart = [];
-            updateCartUI();
-            closeCheckoutForm();
-        } else {
-            alert("حدث خطأ في الإرسال.");
-        }
-    })
-    .catch(err => alert("خطأ في الاتصال: " + err));
+    const productsCost = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+    const shippingCost = 80;
+    const finalTotal = productsCost + shippingCost;
+
+    // تجميع تفاصيل المنتجات والمقاسات والصور
+    let itemsDetailsText = cart.map((i, index) => {
+        // إذا كان هناك رابط صورة مخزن أو متاح
+        let imgUrl = i.image || (modalImagesArray.length > 0 ? window.location.origin + "/" + modalImagesArray[0] : "");
+        return `
+*القطعة #${index + 1}:*
+📌 *المنتج:* ${i.name}
+📏 *المقاس:* ${i.size}
+💰 *السعر:* ${i.price} EGP
+🖼️ *صورة المنتج:* ${imgUrl}
+-----------------------------------`;
+    }).join('');
+
+    // صياغة رسالة الواتساب المتكاملة
+    const whatsappMessage = 
+`🔥 *طلب جديد من متجر Anger Wear* 🔥
+
+${itemsDetailsText}
+📦 *إجمالي المنتجات:* ${productsCost} EGP
+🚚 *مصاريف الشحن:* ${shippingCost} EGP
+💎 *الإجمالي النهائي شامل الشحن:* ${finalTotal} EGP
+
+-----------------------------------
+📍 *بيانات العميل لتأكيد الأوردر:*
+👤 *الاسم:* ${name}
+📞 *رقم الهاتف:* ${phone}
+🏡 *العنوان:* ${address}
+📝 *ملاحظات:* ${notes}
+
+أنا في انتظار تأكيد الأوردر من الـ WhatsApp!`;
+
+    // رقم الواتساب الخاص بك المرفق
+    const brandWhatsAppNumber = "201275859172";
+
+    // تشفير الرسالة وفتح رابط الواتساب مباشرة
+    const encodedMessage = encodeURIComponent(whatsappMessage);
+    const whatsappUrl = `https://wa.me/${brandWhatsAppNumber}?text=${encodedMessage}`;
+
+    // فتح نافذة الواتساب
+    window.open(whatsappUrl, '_blank');
+
+    // تفريغ السلة وإغلاق الفورم بعد التوجيه
+    alert("تم تجهيز طلبك بنجاح! سيتم توجيهك الآن لإرسال الأوردر عبر الواتساب.");
+    cart = [];
+    updateCartUI();
+    closeCheckoutForm();
 }
 
 function addFromModalToCart() {
@@ -305,7 +340,18 @@ function addFromModalToCart() {
         finalName += " (BUY 2 GET 1 FREE Pack)";
     }
 
-    cart.push({ id: currentModalProductId, name: finalName, price: currentModalProductPrice, size: sizeInput.value, qty: 1 });
+    // حفظ تفاصيل المنتج مع رابط الصورة الحالية
+    const currentImg = modalImagesArray.length > 0 ? modalImagesArray[currentImageIndex] : "";
+
+    cart.push({ 
+        id: currentModalProductId, 
+        name: finalName, 
+        price: currentModalProductPrice, 
+        size: sizeInput.value, 
+        qty: 1,
+        image: currentImg
+    });
+    
     updateCartUI();
     closeProductModal();
     toggleCart();
@@ -320,7 +366,17 @@ function buyItNowFromModal() {
         finalName += " (BUY 2 GET 1 FREE Pack)";
     }
 
-    cart = [{ id: currentModalProductId, name: finalName, price: currentModalProductPrice, size: sizeInput.value, qty: 1 }];
+    const currentImg = modalImagesArray.length > 0 ? modalImagesArray[currentImageIndex] : "";
+
+    cart = [{ 
+        id: currentModalProductId, 
+        name: finalName, 
+        price: currentModalProductPrice, 
+        size: sizeInput.value, 
+        qty: 1,
+        image: currentImg
+    }];
+    
     updateCartUI();
     closeProductModal();
     openCheckoutForm();
